@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C600"/>
   <link rel="stylesheet" href="./css/login.css"/>
   <link rel="stylesheet" href="./css/main.css"/>
+  <script defer src="./js/login.js"></script>
 </head>
 <body>
 <div class="login">
@@ -29,17 +30,17 @@
     <div class="logo-user" onclick="window.location='/login.html';"><img class="logo-user-image" src="./img/user-logo.png"/></div>
   </div>
   <div class="contacts">
+    <form id="login-form">
     <p class="item--tsf">Вход</p>
     <div class="item--dcH">Логин</div>
-    <label>
-      <input class="rectangle-38-Kbb">
-    </label>
+    <input type="text" name="login" id="login-field" placeholder="Login" class="rectangle-38-Kbb">
     <div class="item--eEZ">Пароль</div>
     <label>
-      <input class="rectangle-31-jNV" type="password">
+      <input type="password" name="password" id="password-field" placeholder="Password"  class="rectangle-31-jNV">
     </label>
-    <div class="item--JCd" onclick="window.location='/';">Войти</div>
+    <div class="item--JCd" type="submit" id="login-form-submit">Войти</div>
     <div class="item--gU5" onclick="window.location='/registration.html';">Регистрация</div>
+    </form>
   </div>
 </div>
 </body>

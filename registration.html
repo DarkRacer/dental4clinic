@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600"/>
   <link rel="stylesheet" href="./css/registration.css"/>
   <link rel="stylesheet" href="./css/main.css"/>
+  <script defer src="./js/registration.js"></script>
 </head>
 <body>
 <div class="registration">
@@ -34,44 +35,46 @@
     <div class="item--TJM">Отчество</div>
   </div>
   <div class="auto-group-j5ur-ACm">
-    <label>
-      <input class="rectangle-19-5ad">
-    </label>
-    <label>
-      <input class="rectangle-21-njw">
-    </label>
-    <label>
-      <input class="rectangle-23-71X">
-    </label>
-    <label>
-      <input class="rectangle-24-1sb">
-    </label>
-    <div class="item--wWM">Дата рождения</div>
-    <label>
-      <input class="rectangle-28-8aq">
-    </label>
-    <div class="item--r13">Адрес проживания</div>
-    <label>
-      <input class="rectangle-29-uV7">
-    </label>
-    <label>
-      <input class="rectangle-30-QRs">
-    </label>
-    <div class="item--K33">Логин</div>
-    <label>
-      <input class="rectangle-31-azZ" type="password">
-    </label>
-    <div class="item--uG9">Дополнительная информация</div>
-    <div class="item--Ypu">Пароль</div>
-    <label>
-      <input class="rectangle-26-Rdo">
-    </label>
-    <div class="item--MGZ">Телефон</div>
-    <label>
-      <input class="rectangle-27-dUy">
-    </label>
-    <div class="e-mail-9iD">E-mail</div>
-    <div class="item--FmF" onclick="window.location='/';">Создать</div>
+    <form id="registration-form">
+      <label for="name-field">
+        <input class="rectangle-19-5ad" type="text" name="name" id="name-field" placeholder="Имя" required>
+      </label>
+      <label for="surname-field">
+        <input class="rectangle-21-njw" type="text" name="surname" id="surname-field" placeholder="Фамилия" required>
+      </label>
+      <label for="secondName-field">
+        <input class="rectangle-23-71X" type="text" name="secondName" id="secondName-field" placeholder="Отчество" required>
+      </label>
+      <div class="item--wWM">Дата рождения</div>
+      <label for="birthday-field">
+        <input class="rectangle-24-1sb" type="date" name="birthday" id="birthday-field" placeholder="Дата рождения" required>
+      </label>
+      <div class="item--r13">Адрес проживания</div>
+      <label for="address-field">
+        <textarea class="rectangle-28-8aq" type="text" name="address" id="address-field" placeholder="Адрес проживания"></textarea>
+      </label>
+      <div class="item--uG9">Аллергии</div>
+      <label for="allergies-field">
+        <textarea class="rectangle-29-uV7" type="text" name="allergies" id="allergies-field" placeholder="Аллергии"></textarea>
+      </label>
+      <div class="item--K33">Логин</div>
+      <label for="login-field">
+        <input class="rectangle-30-QRs" type="text" name="login" id="login-field" placeholder="Логин" required>
+      </label>
+      <div class="item--Ypu">Пароль</div>
+      <label for="password-field">
+        <input class="rectangle-31-azZ" type="password" name="password" id="password-field" placeholder="Пароль" required>
+      </label>
+      <div class="item--MGZ">Телефон</div>
+      <label for="phone-field">
+        <input class="rectangle-26-Rdo" type="text" name="phone" id="phone-field" placeholder="Телефон" required>
+      </label>
+      <div class="e-mail-9iD">E-mail</div>
+      <label for="email-field">
+        <input class="rectangle-27-dUy" type="email" name="email" id="email-field" placeholder="E-mail">
+      </label>
+    <div class="item--FmF" type="submit" id="registration-form-submit">Регистрация</div>
+    </form>
   </div>
 </div>
 </body>
