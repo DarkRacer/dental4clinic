@@ -352,3 +352,82 @@ html {
   color: #000000;
   font-family: Open Sans, 'Source Sans Pro', serif;
 }
+.table {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  border: solid 0.1rem #5b5b5b;
+  box-sizing: border-box;
+  background-color: #363636;
+  border-radius: 0.4rem;
+  flex-shrink: 0;
+}
+.row-header {
+  width: 100%;
+  height: 6rem;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.cell-header {
+  box-sizing: border-box;
+  padding-top: 0.8%;
+  width: 34%;
+  height: 100%;
+  border: solid 0.1rem #5b5b5b;
+  background-color: #eff2f6;
+  flex-shrink: 0;
+}
+.cell-header-content {
+  margin-bottom: 2%;
+  width: 100%;
+  height: 2.5rem;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.row {
+  width: 100%;
+  height: 6rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.cell {
+  width: 34%;
+  height: 100%;
+  border: solid 0.1rem #245787;
+  box-sizing: border-box;
+  background-color: #e7f2f6;
+  flex-shrink: 0;
+}
+.cell-content {
+  margin-bottom: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+}
+
