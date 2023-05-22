@@ -13,33 +13,39 @@
   <script defer src="./js/login.js"></script>
 </head>
 <body>
-<div class="login">
+<div class="login-body">
   <div class="header-for-all">
-    <div class="logo" onclick="location.assign('/');">
-      <img class="logo-img" src="./img/logo.png"/>
-      <p class="dental4clinic-logo">Dental4Clinic</p>
+    <div class="header-div-left">
+      <div class="logo" onclick="location.assign('/');">
+        <img class="logo-img" src="./img/logo.png"/>
+        <p class="dental4clinic-logo">Dental4Clinic</p>
+      </div>
+      <p class="header-item">Записаться</p>
+      <p class="header-item">Цены</p>
+      <p class="header-item">Врачи</p>
+      <div class="header-item">О нас</div>
     </div>
-    <p class="header-item">Записаться</p>
-    <p class="header-item">Цены</p>
-    <p class="header-item">Врачи</p>
-    <div class="header-item">О нас</div>
-    <div class="phone-number">
-      <img class="phone" src="./img/phone.png"/>
-      <p class="number">+7 473-222-22-22</p>
+    <div class="header-div-right">
+      <div class="logo-user" onclick="window.location='/login.html';">
+        <img class="logo-user-image" src="./img/user-logo.png"/>
+      </div>
+      <div class="phone-number">
+        <img class="phone" src="./img/phone.png"/>
+        <p class="number">+7 473-222-22-22</p>
+      </div>
     </div>
-    <div class="logo-user" onclick="window.location='/login.html';"><img class="logo-user-image" src="./img/user-logo.png"/></div>
   </div>
   <div class="contacts">
     <form id="login-form">
-    <p class="item--tsf">Вход</p>
-    <div class="item--dcH">Логин</div>
-    <input type="text" name="login" id="login-field" placeholder="Login" class="rectangle-38-Kbb">
-    <div class="item--eEZ">Пароль</div>
+    <p class="title">Вход</p>
+    <div class="login">Логин</div>
+    <input type="text" name="login" id="login-field" placeholder="Login" class="login-field">
+    <div class="password">Пароль</div>
     <label>
-      <input type="password" name="password" id="password-field" placeholder="Password"  class="rectangle-31-jNV">
+      <input type="password" name="password" id="password-field" placeholder="Password"  class="password-field">
     </label>
-    <div class="item--JCd" type="submit" id="login-form-submit">Войти</div>
-    <div class="item--gU5" onclick="window.location='/registration.html';">Регистрация</div>
+    <div class="submit-button" type="submit" id="login-form-submit">Войти</div>
+    <div class="registration" onclick="window.location='/registration.html';">Регистрация</div>
     </form>
   </div>
 </div>

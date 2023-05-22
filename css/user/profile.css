@@ -1,7 +1,6 @@
 
 .user-profile-body {
   width: 100%;
-  overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -26,6 +25,7 @@
   padding: 2%;
   height: 100%;
   display: flex;
+  border: 1px solid;
   align-items: center;
   background-color: #e7f2f6;
   border-radius: 80px;

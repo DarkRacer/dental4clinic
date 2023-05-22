@@ -1,8 +1,7 @@
-.login {
+.login-body {
   box-sizing: border-box;
   padding-bottom: 25.1rem;
   width: 100%;
-  overflow: hidden;
   position: relative;
   align-items: center;
   display: flex;
@@ -21,7 +20,7 @@
   border-radius: 1.5rem;
   flex-shrink: 0;
 }
-.item--tsf {
+.title {
   width: 8.3rem;
   height: 3.9rem;
   position: absolute;
@@ -35,7 +34,7 @@
   font-family: Inter, 'Source Sans Pro';
   white-space: nowrap;
 }
-.rectangle-31-jNV {
+.password-field {
   width: 37.9rem;
   height: 5rem;
   position: absolute;
@@ -49,7 +48,7 @@
   line-height: 1.2125;
   font-style: italic;
 }
-.item--eEZ {
+.password {
   width: 6.9rem;
   height: 2rem;
   position: absolute;
@@ -64,7 +63,7 @@
   font-family: Inter, 'Source Sans Pro';
   white-space: nowrap;
 }
-.rectangle-38-Kbb {
+.login-field {
   width: 37.8rem;
   height: 5.1rem;
   position: absolute;
@@ -78,7 +77,7 @@
   line-height: 1.2125;
   font-style: italic;
 }
-.item--dcH {
+.login {
   width: 5.5rem;
   height: 2rem;
   position: absolute;
@@ -95,7 +94,7 @@
   font-family: Inter, 'Source Sans Pro';
   white-space: nowrap;
 }
-.item--JCd {
+.submit-button {
   width: 38rem;
   height: 5rem;
   cursor: pointer;
@@ -114,7 +113,7 @@
   background: linear-gradient(180deg, #245787 0%, #67cff4 100%);
   border-radius: 5rem;
 }
-.item--gU5 {
+.registration {
   width: 38rem;
   height: 5rem;
   cursor: pointer;

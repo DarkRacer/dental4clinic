@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Мои записи</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono%3A700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
+  <link rel="stylesheet" href="../css/user/appointments.css"/>
+  <link rel="stylesheet" href="../css/main.css"/>
+</head>
+<body>
+<div class="appointments-body">
+  <div class="header-for-all">
+    <div class="header-div-left">
+      <div class="logo" onclick="location.assign('/');">
+        <img class="logo-img" src="../img/logo.png"/>
+        <p class="dental4clinic-logo">Dental4Clinic</p>
+      </div>
+      <div class="first-header-item-selected">Мои записи</div>
+      <p class="header-item">Записаться</p>
+      <p class="header-item">Оплата услуг</p>
+      <p class="header-item">Цены</p>
+      <p class="header-item">Врачи</p>
+      <div class="header-item">О нас</div>
+    </div>
+    <div class="header-div-right">
+      <div class="logo-user" onclick="window.location='/user/profile.html';">
+        <img class="logo-user-image" src="../img/user-photo.png"/>
+      </div>
+      <div class="phone-number">
+        <img class="phone" src="../img/phone.png"/>
+        <p class="number">+7 473-222-22-22</p>
+      </div>
+    </div>
+  </div>
+  <div class="appointments-content-group">
+    <div class="calendar">
+      <div class="calendar-month-year">
+        <img class="calendar-month-before" src="../img/arrow.png"/>
+        <div class="calendar-month-year-content">Май 2023</div>
+        <img class="calendar-month-next" src="../img/arrow.png"/>
+      </div>
+      <div class="calendar-date-group">
+        <div class="calendar-date-group-row">
+          <div class="week-day">Понедельник</div>
+          <div class="week-day">Вторник</div>
+          <div class="week-day">Среда</div>
+          <div class="week-day">Четверг</div>
+          <div class="week-day">пятница</div>
+          <div class="week-day">Суббота</div>
+          <div class="week-day">Воскресенье</div>
+        </div>
+        <div class="calendar-date-group-row">
+          <div class="calendar-date">1</div>
+          <div class="calendar-date">2</div>
+          <div class="calendar-date">3</div>
+          <div class="calendar-date">4</div>
+          <div class="date-selected">5</div>
+          <div class="calendar-date">6</div>
+          <div class="calendar-date">7</div>
+        </div>
+        <div class="calendar-date-group-row">
+          <div class="date-selected">8</div>
+          <div class="calendar-date">9</div>
+          <div class="date-selected">10</div>
+          <div class="calendar-date">11</div>
+          <div class="calendar-date">12</div>
+          <div class="calendar-date">13</div>
+          <div class="calendar-date">14</div>
+        </div>
+        <div class="calendar-date-group-row">
+          <div class="calendar-date">15</div>
+          <div class="calendar-date">16</div>
+          <div class="calendar-date">17</div>
+          <div class="calendar-date">18</div>
+          <div class="calendar-date">19</div>
+          <div class="calendar-date">20</div>
+          <div class="calendar-date">21</div>
+        </div>
+        <div class="calendar-date-group-row">
+          <div class="calendar-date">22</div>
+          <div class="calendar-date">23</div>
+          <div class="calendar-date">24</div>
+          <div class="calendar-date">25</div>
+          <div class="calendar-date">26</div>
+          <div class="calendar-date">27</div>
+          <div class="calendar-date">28</div>
+        </div>
+        <div class="calendar-date-group-row">
+          <div class="calendar-date">29</div>
+          <div class="calendar-date">30</div>
+          <div class="calendar-date">31</div>
+          <div class="calendar-date">
+          </div>
+          <div class="calendar-date">
+          </div>
+          <div class="calendar-date">
+          </div>
+          <div class="calendar-date">
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-group">
+      <div class="contacts-body">
+        <div class="contact-body-item">Максим Сергеевич, мы рады что вы пользуетесь нашими услугами, вы можете посмотреть ваши записи к врачам или запросить звонок, если у Вас возникли вопросы</div>
+      </div>
+      <div class="callback-body">
+        <div class="callback-header">
+          <div class="callback-header-title">Заказать обратный звонок</div>
+          <div class="callback-header-sub-title">Наш сотрудник ответит вам в ближайшее время.</div>
+        </div>
+        <div class="submit-form">
+          <div class="submit-fields">
+            <div class="group-main-fields">
+                <div class="field">
+                  <div class="field-title">Имя</div>
+                  <input type="text" name="name" id="name-field" placeholder="Имя" class="callback-field">
+                </div>
+                <div class="field">
+                  <div class="field-title">Телефон *</div>
+                    <input type="text" name="phone" id="phone-field" placeholder="+7 (___) ___-__-__" class="callback-field">
+                  </div>
+                </div>
+                <div class="group-additional-fields">
+                  <div class="field-title">О проблеме</div>
+                  <textarea type="text" name="description" id="description-field" placeholder="О проблеме" class="additional-field"></textarea>
+                </div>
+            </div>
+          </div>
+          <div class="button-submit">Заказать звонок</div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
