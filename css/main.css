@@ -67,7 +67,7 @@ html {
   line-height: 1.2125;
   font-style: italic;
   color: #265a8a;
-  font-family: Inter, 'Source Sans Pro', serif;
+  font-family: Inter, 'Source Sans Pro', serif, serif;
   white-space: nowrap;
 }
 .header-item {
@@ -78,7 +78,7 @@ html {
   line-height: 1.2125;
   font-style: italic;
   color: #000000;
-  font-family: Inter, 'Source Sans Pro', serif;
+  font-family: Inter, 'Source Sans Pro', serif, serif;
   white-space: nowrap;
 }
 .first-header-item-selected {
@@ -94,7 +94,7 @@ html {
   line-height: 1.2125;
   font-style: italic;
   color: #eff2f6;
-  font-family: Inter, 'Source Sans Pro', serif;
+  font-family: Inter, 'Source Sans Pro', serif, serif;
   white-space: nowrap;
   background: linear-gradient(90deg, #29608F 0%, #2E6997 100%),
   linear-gradient(180deg, #67CFF4 0%, #2C6594 100%);
@@ -122,7 +122,7 @@ html {
   line-height: 1.2125;
   font-style: italic;
   color: #000000;
-  font-family: Inter, 'Source Sans Pro', serif;
+  font-family: Inter, 'Source Sans Pro', serif, serif;
   white-space: nowrap;
 }
 .logo-user {
@@ -204,7 +204,7 @@ html {
   font-weight: 700;
   line-height: 1.2152777778;
   color: #ffffff;
-  font-family: Inter, 'Source Sans Pro', serif;
+  font-family: Inter, 'Source Sans Pro', serif, serif;
 }
 .card-pluses-slogan-list {
   width: 100%;
@@ -242,7 +242,7 @@ html {
   font-weight: 700;
   line-height: 1.4400000572;
   color: #ffffff;
-  font-family: Inter, 'Source Sans Pro', serif;
+  font-family: Inter, 'Source Sans Pro', serif, serif;
   white-space: nowrap;
 }
 .card-pluses-item-text {
@@ -251,7 +251,7 @@ html {
   font-weight: 400;
   line-height: 1.3571416537;
   color: #ffffff;
-  font-family: Inter, 'Source Sans Pro', serif;
+  font-family: Inter, 'Source Sans Pro', serif, serif;
   white-space: nowrap;
 }
 .slogan-shield {
@@ -300,7 +300,7 @@ html {
   font-weight: 700;
   line-height: 0.6666666667;
   color: #000000;
-  font-family: Inter, 'Source Sans Pro', serif;
+  font-family: Inter, 'Source Sans Pro', serif, serif;
 }
 .group-body {
   width: 100%;
@@ -337,7 +337,7 @@ html {
   font-weight: 400;
   line-height: 1.7142857143;
   color: #000000;
-  font-family: Inter, 'Source Sans Pro', serif;
+  font-family: Inter, 'Source Sans Pro', serif, serif;
   flex-direction: column;
 }
 .point-text {
@@ -345,13 +345,13 @@ html {
   font-weight: 600;
   line-height: 1.7142857143;
   color: #000000;
-  font-family: Inter, 'Source Sans Pro', serif;
+  font-family: Inter, 'Source Sans Pro', serif, serif;
 }
 .sub-text {
   margin-left: 3%;
   margin-bottom: 1%;
   color: #000000;
-  font-family: Inter, 'Source Sans Pro', serif;
+  font-family: Inter, 'Source Sans Pro', serif, serif;
 }
 .table {
   width: 100%;
@@ -393,12 +393,12 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 30px;
   font-weight: 400;
   line-height: 1.2125;
   font-style: italic;
   color: #000000;
-  font-family: Inter, 'Source Sans Pro';
+  font-family: Inter, 'Source Sans Pro', serif, serif;
   white-space: nowrap;
 }
 .row {
@@ -426,10 +426,10 @@ html {
   overflow: hidden;
   position: relative;
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: 20px;
   line-height: 1.2125;
   color: #000000;
-  font-family: Inter, 'Source Sans Pro';
+  font-family: Inter, 'Source Sans Pro', serif;
 }
 .calendar {
   margin-bottom: 2%;
@@ -457,7 +457,7 @@ html {
   font-size: 18px;
   font-weight: 700;
   line-height: 1.3175;
-  font-family: Inter, 'Source Sans Pro', serif;
+  font-family: Inter, 'Source Sans Pro', serif, serif;
   text-transform: uppercase;
   color: #000000;
   border: solid 0.1rem #245787;
@@ -474,7 +474,7 @@ html {
   line-height: 1.3175;
   text-transform: uppercase;
   color: #000000;
-  font-family: Inter, 'Source Sans Pro', serif;
+  font-family: Inter, 'Source Sans Pro', serif, serif;
   white-space: nowrap;
   border: solid 0.1rem #245787;
   background-color: #64caef;
@@ -491,7 +491,7 @@ html {
   line-height: 1.3175;
   text-transform: uppercase;
   color: #000000;
-  font-family: Inter, 'Source Sans Pro', serif;
+  font-family: Inter, 'Source Sans Pro', serif, serif;
   white-space: nowrap;
   border: solid 0.1rem #245787;
   box-sizing: border-box;
@@ -525,7 +525,7 @@ html {
   font-weight: 700;
   line-height: 1.3175;
   color: #000000;
-  font-family: Inter, 'Source Sans Pro', serif;
+  font-family: Inter, 'Source Sans Pro', serif, serif;
   white-space: nowrap;
 }
 .calendar-month-next {
