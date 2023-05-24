@@ -39,7 +39,7 @@
   <div class="reception-patient-group">
     <div class="user-card-info">
       <div class="card-content">
-        <p class="card-title">Информация</p>
+        <p class="card-request-title">Информация</p>
         <div class="card-fields">
           <div class="card-field-group">
             <div class="user-card-field">ФИО Пациента</div>
@@ -64,7 +64,7 @@
         </div>
       </div>
       <div class="card-request">
-        <p class="card-title">Жалобы</p>
+        <div class="card-request-title">Жалобы</div>
         <table class="table">
           <tbody class="table">
           <tr class="row-header-request">
@@ -100,7 +100,7 @@
       </div>
     </div>
     <div class="card-tooth">
-      <p class="card-title">Информация о зубах</p>
+      <p class="card-request-title">Информация о зубах</p>
       <div class="row-group-tooth">
         <div class="column-group-tooth">
           <select class="selector-tooth">
@@ -469,10 +469,24 @@
       </div>
     </div>
     <div class="buttons">
-      <div class="button">Посмотреть снимки</div>
+      <div class="button" id="openToothPicture">Посмотреть снимки</div>
       <div class="button">Диагнозы</div>
       <div class="button">Выставить счёт</div>
     </div>
   </div>
+  <dialog class="tooth-pictures-dialog-blackout" id="toothPicture">
+    <div class="tooth-pictures-dialog-content">
+      <div class="tooth-pictures-dialog-title">
+        <div class="tooth-pictures-dialog-title-text">Снимки пациента</div>
+        <div class="tooth-pictures-dialog-close-div" id="toothPictureClose">
+          <img class="tooth-pictures-dialog-close" src="../img/point-plus.png"/>
+        </div>
+      </div>
+      <div class="tooth-pictures">
+        <img class="tooth-picture" src="../img/tooth-picture.png"/>
+      </div>
+    </div>
+  </dialog>
 </div>
+<script src="../js/doctor/receiption-patient.js"></script>
 </body>

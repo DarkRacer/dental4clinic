@@ -64,7 +64,7 @@
         </div>
       </div>
       <div class="user-card-buttons">
-        <div class="user-card-button">Снимки</div>
+        <div class="user-card-button" id="openToothPicture">Снимки</div>
         <div class="user-card-button-last">Ректировать профиль</div>
       </div>
     </div>
@@ -119,5 +119,19 @@
       </tbody>
     </table>
   </div>
+  <dialog class="tooth-pictures-dialog-blackout" id="toothPicture">
+    <div class="tooth-pictures-dialog-content">
+      <div class="tooth-pictures-dialog-title">
+        <div class="tooth-pictures-dialog-title-text">Снимки</div>
+        <div class="tooth-pictures-dialog-close-div" id="toothPictureClose">
+          <img class="tooth-pictures-dialog-close" src="../img/point-plus.png"/>
+        </div>
+      </div>
+      <div class="tooth-pictures">
+        <img class="tooth-picture" src="../img/tooth-picture.png"/>
+      </div>
+    </div>
+  </dialog>
 </div>
+<script src="../js/user/profile.js"></script>
 </body>
