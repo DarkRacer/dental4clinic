@@ -281,11 +281,11 @@
   background-color: rgba(0, 0, 0, 0.3600000143);
 }
 .tooth-pictures-dialog-content {
-  width: 94%;
-  min-height: 90%;
+  width: 96%;
+  min-height: 89%;
   position: relative;
-  margin-top: 3.5%;
-  margin-left: 3%;
+  margin-top: 4%;
+  margin-left: 2%;
   background-color: #e7f2f6;
   display: flex;
   flex-direction: column;
@@ -315,9 +315,9 @@
   vertical-align: top;
   transform: rotate(45deg);
 }
-.tooth-pictures-dialog-close {
+.tooth-pictures-dialog-close-div {
   position: fixed;
-  right: 6%;
+  right: 4%;
 }
 .tooth-pictures {
   margin-left: 2%;
