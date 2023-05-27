@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Записаться User (appointments/create)</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C600"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600"/>
+  <link rel="stylesheet" href="../css/user/recording.css"/>
+  <link rel="stylesheet" href="../css/main.css"/>
+</head>
+<body>
+<div class="user-appointments-create">
+  <div class="header-for-all">
+    <div class="header-div-left">
+      <div class="logo" onclick="location.assign('/');">
+        <img class="logo-img" src="../img/logo.png"/>
+        <p class="dental4clinic-logo">Dental4Clinic</p>
+      </div>
+      <p class="header-item">Мои записи</p>
+      <div class="second-header-item-selected">Записаться</div>
+      <p class="header-item">Оплата услуг</p>
+      <p class="header-item">Цены</p>
+      <p class="header-item">Врачи</p>
+      <div class="header-item">О нас</div>
+    </div>
+    <div class="header-div-right">
+      <div class="logo-user" onclick="window.location='/login.html';">
+        <img class="logo-user-image" src="../img/user-photo.png"/>
+      </div>
+      <div class="phone-number">
+        <img class="phone" src="../img/phone.png"/>
+        <p class="number">+7 473-222-22-22</p>
+      </div>
+    </div>
+  </div>
+  <div class="user-appointments-create-body">
+    <div class="form">
+      <div class="form-field-last-column">
+        <div class="form-field-title">Жалоба</div>
+        <textarea type="text" name="description" id="description-field" placeholder="О проблеме" class="form-field-input-textarea"></textarea>
+      </div>
+      <div class="form-field-group">
+        <div class="form-field">
+          <div class="form-field-title">Дата</div>
+          <input type="date" name="date" id="date-field" placeholder="Дата" class="form-field-input">
+        </div>
+        <div class="form-field-last-column">
+          <div class="form-field-title">Время</div>
+          <input type="time" name="datetime" id="datetime-field" placeholder="Время" class="form-field-input">
+        </div>
+      </div>
+    </div>
+    <div class="form">
+        <div class="form-field">
+          <div class="form-field-title">Поиск по врачу</div>
+          <input type="text" name="doctor" id="doctor-field" placeholder="Врач" class="form-field-input">
+        </div>
+        <div class="form-field-last-row">
+          <div class="form-field-title">Поиск по услуге</div>
+          <input type="text" name="service" id="service-field" placeholder="Услуга" class="form-field-input">
+        </div>
+    </div>
+    <table class="table">
+      <tbody class="table">
+      <tr class="row-header-recording">
+        <th class="cell-header-recording">
+          <div class="cell-header-content-recording">Врач</div>
+        </th>
+        <th class="cell-header-recording">
+          <div class="cell-header-content-recording">Оказываемые услуги</div>
+        </th>
+      </tr>
+      <tr class="row-recording">
+        <th class="cell-recording">
+        </th>
+        <th class="cell-recording">
+        </th>
+      </tr>
+      <tr class="row-recording">
+        <th class="cell-recording">
+        </th>
+        <th class="cell-recording">
+        </th>
+      </tr>
+      <tr class="row-recording">
+        <th class="cell-recording">
+        </th>
+        <th class="cell-recording">
+        </th>
+      </tr>
+      <tr class="row-recording">
+        <th class="cell-recording">
+        </th>
+        <th class="cell-recording">
+        </th>
+      </tr>
+      </tbody>
+    </table>
+    <div class="record-button">Записаться</div>
+  </div>
+</div>
+</body>
