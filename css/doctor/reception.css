@@ -96,3 +96,85 @@
   background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
   border-radius: 0.5rem;
 }
+.patient-without-calendar-dialog-blackout {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  border: none !important;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.3600000143);
+}
+.patient-without-calendar-dialog-content {
+  width: 96%;
+  min-height: 87%;
+  position: relative;
+  margin-top: 3.5%;
+  margin-left: 2%;
+  background-color: #e7f2f6;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+.patient-without-calendar-dialog-body-content {
+  width: 96%;
+  height: 100%;
+  position: relative;
+  margin-left: 2%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.patient-without-calendar-dialog-title {
+  width: 100%;
+  margin: 2%;
+  display: flex;
+  flex-direction: row;
+}
+.patient-without-calendar-dialog-title-text {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+}
+.patient-without-calendar-dialog-close {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  object-fit: cover;
+  vertical-align: top;
+  transform: rotate(45deg);
+}
+.patient-without-calendar-dialog-close-div {
+  position: fixed;
+  right: 4%;
+}
+.patient-without-calendar {
+  margin-left: 2%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.start-without-calendar-button {
+  margin-top: 2%;
+  width: 100%;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #ffffff;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
+  border-radius: 0.5rem;
+}

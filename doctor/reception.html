@@ -100,7 +100,7 @@
         </div>
       </div>
     </div>
-    <div class="accept-patient-without-calendar">Принять пациента не по расписанию</div>
+    <div class="accept-patient-without-calendar" id="openPatientWithoutCalendarDialog">Принять пациента не по расписанию</div>
     <div class="card">
       <div class="card-content-text">
         Ближайший пациент на приеме Иванов Иван Иванович 10 мая 2023 в 16:30
@@ -115,5 +115,82 @@
       </div>
     </div>
   </div>
+  <dialog class="patient-without-calendar-dialog-blackout" id="patientWithoutCalendarDialog">
+    <div class="patient-without-calendar-dialog-content">
+      <div class="patient-without-calendar-dialog-title">
+        <div class="patient-without-calendar-dialog-title-text">Приём пациента из списка</div>
+        <div class="patient-without-calendar-dialog-close-div" id="patientWithoutCalendarDialogClose">
+          <img class="patient-without-calendar-dialog-close" src="../img/point-plus.png"/>
+        </div>
+      </div>
+      <div class="patient-without-calendar-dialog-body-content">
+        <table class="table">
+          <tbody class="table">
+            <tr class="row-header">
+              <th class="cell-header">
+                <div class="cell-header-content">Пациент</div>
+              </th>
+              <th class="cell-header">
+                <div class="cell-header-content">Жалобы</div>
+              </th>
+              <th class="cell-header">
+                <div class="cell-header-content">Дата приема</div>
+              </th>
+            </tr>
+            <tr class="row">
+              <th class="cell">
+              </th>
+              <th class="cell">
+              </th>
+              <th class="cell">
+              </th>
+            </tr>
+            <tr class="row">
+              <th class="cell">
+              </th>
+              <th class="cell">
+              </th>
+              <th class="cell">
+              </th>
+            </tr>
+            <tr class="row">
+              <th class="cell">
+              </th>
+              <th class="cell">
+              </th>
+              <th class="cell">
+              </th>
+            </tr>
+            <tr class="row">
+              <th class="cell">
+              </th>
+              <th class="cell">
+              </th>
+              <th class="cell">
+              </th>
+            </tr>
+            <tr class="row">
+              <th class="cell">
+              </th>
+              <th class="cell">
+              </th>
+              <th class="cell">
+              </th>
+            </tr>
+            <tr class="row">
+              <th class="cell">
+              </th>
+              <th class="cell">
+              </th>
+              <th class="cell">
+              </th>
+            </tr>
+          </tbody>
+        </table>
+        <div class="start-without-calendar-button">Начать прием</div>
+      </div>
+    </div>
+  </dialog>
 </div>
+<script src="../js/doctor/reception.js"></script>
 </body>
