@@ -6,10 +6,10 @@ document.querySelector('#patientWithoutCalendarDialogClose').onclick = function(
   patientWithoutCalendarDialog.close();
 }
 
-// var diagnosisDialog = document.querySelector('#diagnosisDialog');
-// document.querySelector('#openDiagnosisDialog').onclick = function() {
-//   diagnosisDialog.show();
-// }
-// document.querySelector('#diagnosisDialogClose').onclick = function() {
-//   diagnosisDialog.close();
-// }
+var infoPatientDialog = document.querySelector('#infoPatientDialog');
+document.querySelector('#openInfoPatientDialog').onclick = function() {
+  infoPatientDialog.show();
+}
+document.querySelector('#infoPatientDialogClose').onclick = function() {
+  infoPatientDialog.close();
+}

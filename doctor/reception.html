@@ -110,7 +110,7 @@
         Жалобы пациента:
       </div>
       <div class="card-accept-buttons">
-        <div class="info-button">Посмотреть информацию о пациенте</div>
+        <div class="info-button" id="openInfoPatientDialog">Посмотреть информацию о пациенте</div>
         <div class="start-button">Начать прием</div>
       </div>
     </div>
@@ -188,6 +188,40 @@
           </tbody>
         </table>
         <div class="start-without-calendar-button">Начать прием</div>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="info-patient-dialog-blackout" id="infoPatientDialog">
+    <div class="info-patient-dialog-content">
+      <div class="info-patient-dialog-title">
+        <div class="info-patient-dialog-title-text">Информация о пациенте</div>
+        <div class="info-patient-dialog-close-div" id="infoPatientDialogClose">
+          <img class="info-patient-dialog-close" src="../img/point-plus.png"/>
+        </div>
+      </div>
+      <div class="info-patient-dialog-body-content">
+        <div class="card-fields">
+          <div class="card-field-group">
+            <div class="user-card-field">ФИО Пациента</div>
+            <div class="field-content">Щербаков Максим Сергеевич</div>
+          </div>
+          <div class="card-field-group">
+            <div class="user-card-field">Дата рождения</div>
+            <div class="field-content">26.08.2001</div>
+          </div>
+          <div class="card-field-group">
+            <div class="user-card-field">Телефон</div>
+            <div class="field-content">+79204292271</div>
+          </div>
+          <div class="card-field-group">
+            <div class="user-card-field">E-mail</div>
+            <div class="field-content">schtscherbakov@gmail.com</div>
+          </div>
+          <div class="card-field-group">
+            <div class="user-card-field">Аллергии</div>
+            <div class="field-content">Отсутствуют</div>
+          </div>
+        </div>
       </div>
     </div>
   </dialog>

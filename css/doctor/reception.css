@@ -135,7 +135,7 @@
   flex-direction: row;
 }
 .patient-without-calendar-dialog-title-text {
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 600;
   line-height: 1.2125;
   font-style: italic;
@@ -155,12 +155,6 @@
   position: fixed;
   right: 4%;
 }
-.patient-without-calendar {
-  margin-left: 2%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
 .start-without-calendar-button {
   margin-top: 2%;
   width: 100%;
@@ -177,4 +171,99 @@
   white-space: nowrap;
   background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
   border-radius: 0.5rem;
+}
+.info-patient-dialog-blackout {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  border: none !important;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.3600000143);
+}
+.info-patient-dialog-content {
+  width: 35%;
+  height: 40%;
+  position: relative;
+  padding: 2%;
+  margin-top: 20%;
+  margin-left: 33%;
+  background-color: #e7f2f6;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+.info-patient-dialog-body-content {
+  width: 96%;
+  height: 100%;
+  position: relative;
+  margin-left: 2%;
+  margin-top: 4%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.info-patient-dialog-title {
+  width: 100%;
+  margin: 2%;
+  display: flex;
+  flex-direction: row;
+}
+.info-patient-dialog-title-text {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+}
+.info-patient-dialog-close {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  object-fit: cover;
+  vertical-align: top;
+  transform: rotate(45deg);
+}
+.info-patient-dialog-close-div {
+  position: fixed;
+  right: 34%;
+}
+.card-fields {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.card-field-group {
+  width: 100%;
+  margin-bottom: 4.5%;
+}
+.user-card-field {
+  display: flex;
+  float: left;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+}
+.field-content {
+  text-align: right;
+  display: flex;
+  float: right;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
