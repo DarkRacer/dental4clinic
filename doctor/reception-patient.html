@@ -466,7 +466,7 @@
     <div class="buttons">
       <div class="button" id="openToothPicture">Посмотреть снимки</div>
       <div class="button" id="openDiagnosisDialog">Диагнозы</div>
-      <div class="button">Выставить счёт</div>
+      <div class="button" id="openPaymentsDialog">Выставить счёт</div>
     </div>
   </div>
   <dialog class="tooth-pictures-dialog-blackout" id="toothPicture">
@@ -482,7 +482,7 @@
       </div>
     </div>
   </dialog>
-  <dialog class="tooth-pictures-dialog-blackout" id="diagnosisDialog">
+  <dialog class="diagnosis-dialog-blackout" id="diagnosisDialog">
     <div class="diagnosis-dialog-content">
       <div class="diagnosis-dialog-title">
         <div class="diagnosis-dialog-title-text">Диагнозы пациента</div>
@@ -586,6 +586,86 @@
           </tbody>
         </table>
         <div class="button-diagnosis">Добавить диагноз</div>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="payments-dialog-blackout" id="paymentsDialog">
+    <div class="payments-dialog-content">
+      <div class="payments-dialog-title">
+        <div class="payments-dialog-title-text">Выставление счета</div>
+        <div class="payments-dialog-close-div" id="paymentsDialogClose">
+          <img class="payments-dialog-close" src="../img/point-plus.png"/>
+        </div>
+      </div>
+      <div class="payments-dialog-body">
+        <div class="doctor-services">Ваши услуги</div>
+        <table class="table">
+          <tbody class="table">
+            <tr class="row-header-payment">
+              <th class="cell-header-payment-fist">
+              </th>
+              <th class="cell-header-payment">
+                <div class="cell-header-content-payment">Услуга</div>
+              </th>
+              <th class="cell-header-payment">
+                <div class="cell-header-content-payment">Описание</div>
+              </th>
+              <th class="cell-header-payment">
+                <div class="cell-header-content-payment">Цена</div>
+              </th>
+            </tr>
+            <tr class="row-payment">
+              <th class="cell-payment-fist">
+                <input type="checkbox" id="first-row" name="first-row" class="checkbox-services">
+              </th>
+              <th class="cell-payment">
+                <div class="cell-content-payment">Установка пломбы</div>
+              </th>
+              <th class="cell-payment">
+                <div class="cell-content-payment">Установка пломбы на зуб</div>
+              </th>
+              <th class="cell-payment">
+                <div class="cell-content-payment">10000</div>
+              </th>
+            </tr>
+            <tr class="row-payment">
+              <th class="cell-payment-fist">
+                <input type="checkbox" id="second-row" name="second-row" class="checkbox-services">
+              </th>
+              <th class="cell-payment">
+              </th>
+              <th class="cell-payment">
+              </th>
+              <th class="cell-payment">
+              </th>
+            </tr>
+            <tr class="row-payment">
+              <th class="cell-payment-fist">
+                <input type="checkbox" id="third-row" name="third-row" class="checkbox-services">
+              </th>
+              <th class="cell-payment">
+              </th>
+              <th class="cell-payment">
+              </th>
+              <th class="cell-payment">
+              </th>
+            </tr>
+            <tr class="row-payment">
+              <th class="cell-payment-fist">
+                <input type="checkbox" id="fourth-row" name="fourth-row" class="checkbox-services">
+              </th>
+              <th class="cell-payment">
+              </th>
+              <th class="cell-payment">
+              </th>
+              <th class="cell-payment">
+              </th>
+            </tr>
+          </tbody>
+        </table>
+        <div class="services">Оказанные услуги: ...</div>
+        <div class="cost">Стоимость: ... Р</div>
+        <div class="payment">Выставить счет</div>
       </div>
     </div>
   </dialog>

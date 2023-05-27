@@ -553,3 +553,208 @@
   margin-left: 3%;
   height: 100%;
 }
+.payments-dialog-blackout {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  border: none !important;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.3600000143);
+}
+.payments-dialog-content {
+  width: 96%;
+  position: relative;
+  margin-top: 10%;
+  margin-left: 2%;
+  background-color: #e7f2f6;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+.payments-dialog-title {
+  width: 100%;
+  margin: 2%;
+  display: flex;
+  flex-direction: row;
+}
+.payments-dialog-title-text {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+}
+.payments-dialog-close {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  object-fit: cover;
+  vertical-align: top;
+  transform: rotate(45deg);
+}
+.payments-dialog-close-div {
+  position: fixed;
+  right: 4%;
+}
+.payments-dialog-body {
+  margin-left: 2%;
+  width: 96%;
+  position: relative;
+  background-color: #e7f2f6;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+.doctor-services {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0.5%;
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+}
+.services {
+  margin: 2% 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+}
+.cost {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 2%;
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+}
+.payment {
+  width: 100%;
+  height: 4rem;
+  margin-bottom: 2%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #ffffff;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
+  border-radius: 0.5rem;
+}
+.row-header-payment {
+  width: 100%;
+  height: 4.5rem;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.cell-header-payment-fist {
+  box-sizing: border-box;
+  padding-top: 0.8%;
+  width: 10%;
+  height: 100%;
+  border: solid 0.1rem #5b5b5b;
+  background-color: #eff2f6;
+  flex-shrink: 0;
+}
+.cell-header-payment {
+  box-sizing: border-box;
+  padding-top: 0.8%;
+  width: 30%;
+  height: 100%;
+  border: solid 0.1rem #5b5b5b;
+  background-color: #eff2f6;
+  flex-shrink: 0;
+}
+.cell-header-content-payment {
+  margin-bottom: 2%;
+  width: 100%;
+  height: 2.5rem;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+}
+.row-payment {
+  width: 100%;
+  height: 4.5rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.cell-payment-fist {
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 0.1rem #245787;
+  box-sizing: border-box;
+  background-color: #e7f2f6;
+  flex-shrink: 0;
+}
+.cell-payment {
+  width: 30%;
+  height: 100%;
+  border: solid 0.1rem #245787;
+  box-sizing: border-box;
+  background-color: #e7f2f6;
+  flex-shrink: 0;
+}
+.cell-content-payment {
+  margin-bottom: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
+}
+.checkbox-services {
+  width: 20px;
+  height: 20px;
+}

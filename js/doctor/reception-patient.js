@@ -13,3 +13,12 @@ document.querySelector('#openDiagnosisDialog').onclick = function() {
 document.querySelector('#diagnosisDialogClose').onclick = function() {
   diagnosisDialog.close();
 }
+
+
+var paymentsDialog = document.querySelector('#paymentsDialog');
+document.querySelector('#openPaymentsDialog').onclick = function() {
+  paymentsDialog.show();
+}
+document.querySelector('#paymentsDialogClose').onclick = function() {
+  paymentsDialog.close();
+}
