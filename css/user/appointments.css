@@ -108,6 +108,11 @@
   background-color: #ffffff;
   border-radius: 3rem;
   flex-shrink: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
 }
 .group-additional-fields {
   width: 45%;
@@ -147,4 +152,9 @@
   height: 85%;
   background-color: #ffffff;
   border-radius: 2rem;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
 }

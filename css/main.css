@@ -117,6 +117,24 @@ html {
   background: linear-gradient(90deg, #2E6897 0%, #32709E 100%),
   linear-gradient(180deg, #67CFF4 0%, #3B7FAC 100%);
 }
+.third-header-item-selected {
+  padding: 0 10px;
+  margin-right: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #eff2f6;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+  background: linear-gradient(90deg, #33719E 0%, #3879A6 100%),
+  linear-gradient(180deg, #67CFF4 0%, #306C9A 100%);
+}
 .about-header-item-selected {
   padding: 0 25px;
   margin-right: 20px;
