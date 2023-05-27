@@ -136,7 +136,7 @@ html {
   linear-gradient(180deg, #67CFF4 0%, #306C9A 100%);
 }
 .fourth-header-item-selected {
-  padding: 0 10px;
+  padding: 0 15px;
   margin-right: 20px;
   height: 100%;
   display: flex;
