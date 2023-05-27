@@ -48,7 +48,7 @@
   display: flex;
   align-items: center;
 }
-.selector {
+.selector-tooth {
   margin-bottom: 5%;
   box-sizing: border-box;
   padding: 5%;
@@ -61,7 +61,7 @@
   font-family: Inter, 'Source Sans Pro', serif;
   white-space: nowrap;
 }
-.selector-text {
+.selector-tooth-text {
   display: flex;
   font-size: 20px;
   font-weight: 500;
