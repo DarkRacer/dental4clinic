@@ -1,7 +1,15 @@
-var dialog = document.querySelector('#toothPicture');
+var toothPictureDialog = document.querySelector('#toothPicture');
 document.querySelector('#openToothPicture').onclick = function() {
-  dialog.show();
+  toothPictureDialog.show();
 }
 document.querySelector('#toothPictureClose').onclick = function() {
-  dialog.close();
+  toothPictureDialog.close();
+}
+
+var diagnosisDialog = document.querySelector('#diagnosisDialog');
+document.querySelector('#openDiagnosisDialog').onclick = function() {
+  diagnosisDialog.show();
+}
+document.querySelector('#diagnosisDialogClose').onclick = function() {
+  diagnosisDialog.close();
 }

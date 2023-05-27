@@ -470,7 +470,7 @@
     </div>
     <div class="buttons">
       <div class="button" id="openToothPicture">Посмотреть снимки</div>
-      <div class="button">Диагнозы</div>
+      <div class="button" id="openDiagnosisDialog">Диагнозы</div>
       <div class="button">Выставить счёт</div>
     </div>
   </div>
@@ -484,6 +484,106 @@
       </div>
       <div class="tooth-pictures">
         <img class="tooth-picture" src="../img/tooth-picture.png"/>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="tooth-pictures-dialog-blackout" id="diagnosisDialog">
+    <div class="diagnosis-dialog-content">
+      <div class="diagnosis-dialog-title">
+        <div class="diagnosis-dialog-title-text">Диагнозы пациента</div>
+        <div class="diagnosis-dialog-close-div" id="diagnosisDialogClose">
+          <img class="diagnosis-dialog-close" src="../img/point-plus.png"/>
+        </div>
+      </div>
+      <div class="diagnosis-content">
+        <div class="list-of-diagnosis-patient">Список диагнозов пациента</div>
+        <table class="table">
+          <tbody class="table">
+          <tr class="row-header-diagnosis-of-patient">
+            <th class="cell-header-diagnosis-of-patient">
+              <div class="cell-header-content-diagnosis-of-patient">Диагноз</div>
+            </th>
+            <th class="cell-header-diagnosis-of-patient">
+              <div class="cell-header-content-diagnosis-of-patient">Описание</div>
+            </th>
+            <th class="cell-header-diagnosis-of-patient">
+              <div class="cell-header-content-diagnosis-of-patient">Действительность</div>
+            </th>
+          </tr>
+          <tr class="row-diagnosis-of-patient">
+            <th class="cell-diagnosis-of-patient">
+            </th>
+            <th class="cell-diagnosis-of-patient">
+            </th>
+            <th class="cell-diagnosis-of-patient">
+            </th>
+          </tr>
+          <tr class="row-diagnosis-of-patient">
+            <th class="cell-diagnosis-of-patient">
+            </th>
+            <th class="cell-diagnosis-of-patient">
+            </th>
+            <th class="cell-diagnosis-of-patient">
+            </th>
+          </tr>
+          <tr class="row-diagnosis-of-patient">
+            <th class="cell-diagnosis-of-patient">
+            </th>
+            <th class="cell-diagnosis-of-patient">
+            </th>
+            <th class="cell-diagnosis-of-patient">
+            </th>
+          </tr>
+          <tr class="row-diagnosis-of-patient">
+            <th class="cell-diagnosis-of-patient">
+            </th>
+            <th class="cell-diagnosis-of-patient">
+            </th>
+            <th class="cell-diagnosis-of-patient">
+            </th>
+          </tr>
+          </tbody>
+        </table>
+        <div class="button-diagnosis">Вылечен</div>
+        <div class="list-of-diagnosis">Список диагнозов</div>
+        <table class="table">
+          <tbody class="table">
+          <tr class="row-header-diagnosis-from-doctor">
+            <th class="cell-header-diagnosis-from-doctor">
+              <div class="cell-header-content-diagnosis-from-doctor">Диагноз</div>
+            </th>
+            <th class="cell-header-diagnosis-from-doctor">
+              <div class="cell-header-content-diagnosis-from-doctor">Описание</div>
+            </th>
+          </tr>
+          <tr class="row-diagnosis-from-doctor">
+            <th class="cell-diagnosis-from-doctor">
+            </th>
+            <th class="cell-diagnosis-from-doctor">
+            </th>
+          </tr>
+          <tr class="row-diagnosis-from-doctor">
+            <th class="cell-diagnosis-from-doctor">
+            </th>
+            <th class="cell-diagnosis-from-doctor">
+            </th>
+          </tr>
+
+          <tr class="row-diagnosis-from-doctor">
+            <th class="cell-diagnosis-from-doctor">
+            </th>
+            <th class="cell-diagnosis-from-doctor">
+            </th>
+          </tr>
+          <tr class="row-diagnosis-from-doctor">
+            <th class="cell-diagnosis-from-doctor">
+            </th>
+            <th class="cell-diagnosis-from-doctor">
+            </th>
+          </tr>
+          </tbody>
+        </table>
+        <div class="button-diagnosis">Добавить диагноз</div>
       </div>
     </div>
   </dialog>
