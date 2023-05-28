@@ -69,7 +69,7 @@
           Стоматолог-терапевт, Детский стоматолог
         </div>
       </div>
-      <div class="doctor-card">
+      <div class="doctor-card" id="openDoctorsDialog">
         <div class="doctor-avatar">
           <img class="doctor-image" src="../img/husainov.png">
         </div>
@@ -108,7 +108,7 @@
     <div class="doctors-dialog-content">
       <div class="doctors-dialog-title">
         <div class="doctors-dialog-title-text">Хусаинов Руслан Дмитриевич</div>
-        <div class="doctors-dialog-close-div" id="pricesDialogClose">
+        <div class="doctors-dialog-close-div" id="doctorsDialogClose">
           <img class="doctors-dialog-close" src="../img/point-plus.png"/>
         </div>
       </div>
@@ -143,9 +143,14 @@
         </div>
       </div>
       <div class="doctors-dialog-footer">
-        <div class="doctors-dialog-footer-button">Записаться</div>
+        <div class="doctors-dialog-footer-buttons">
+          <div class="doctors-dialog-footer-button" id="openDeleteDoctorDialog">Удалить</div>
+          <div class="doctors-dialog-footer-button" id="openEditDoctorDialog">Редактировать</div>
+          <div class="doctors-dialog-footer-button-service" id="openEditServicesDoctorDialog">Изменить оказываемые услуги</div>
+        </div>
       </div>
     </div>
   </dialog>
 </div>
+<script src="../js/director/doctors.js"></script>
 </body>
