@@ -1,0 +1,255 @@
+.doctors-page {
+   width: 100%;
+   overflow: hidden;
+   position: relative;
+   align-items: center;
+   display: flex;
+   flex-direction: column;
+   background-color: #ffffff;
+ }
+.doctors-body {
+  box-sizing: border-box;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.doctors-body-header {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  margin-bottom: 2%;
+  align-items: center;
+}
+.doctors-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  column-gap: 4%;
+  align-items: flex-start;
+  flex-direction: row;
+}
+.doctor-card {
+  width: 22%;
+  height: 100%;
+  margin-bottom: 2%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.doctor-name {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 2%;
+  display: flex;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3714285351;
+  color: #233567;
+  font-family: Inter, 'Source Sans Pro', serif;
+}
+.doctor-spec {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6000000238;
+  font-family: Inter, 'Source Sans Pro', serif;
+  color: #387ba8;
+
+}
+.doctor-avatar {
+  box-sizing: border-box;
+  padding-top: 0.813rem;
+  width: 100%;
+  height: 60%;
+  overflow: hidden;
+  background-color: #e7f2f6;
+  border-radius: 1.4rem;
+}
+.doctor-image {
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  object-fit: cover;
+  vertical-align: top;
+}
+.selector {
+  box-sizing: border-box;
+  padding: 5%;
+  height: 100%;
+  background-color: #e7f2f6;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  color: #233567;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+}
+.selector-text {
+  display: flex;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  color: #233567;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+}
+.doctors-dialog-blackout {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  border: none !important;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.3600000143);
+}
+.doctors-dialog-content {
+  width: 76%;
+  margin-top: 8%;
+  margin-left: 12%;
+  position: relative;
+  background-color: #e7f2f6;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+.doctors-dialog-body-content {
+  width: 96%;
+  height: 100%;
+  position: relative;
+  margin-left: 2%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.doctors-dialog-title {
+  width: 100%;
+  margin: 2%;
+  display: flex;
+  flex-direction: row;
+}
+.doctors-dialog-title-text {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+}
+.doctors-dialog-close {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  object-fit: cover;
+  vertical-align: top;
+  transform: rotate(45deg);
+}
+.doctors-dialog-close-div {
+  position: fixed;
+  right: 14%;
+}
+.doctors-dialog-content-description {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 2%;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 2.1428571429;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
+}
+.pluses-group {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.pluses-group-title {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 2%;
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.7777777778;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+}
+.plus-price-group {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.doctors-dialog-content-plus {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  object-fit: cover;
+  vertical-align: top;
+}
+.doctors-dialog-content-text {
+  width: 100%;
+  height: 100%;
+  margin-left: 1%;
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.7777777778;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
+}
+.doctors-dialog-footer {
+  width: 96%;
+  height: 100%;
+  position: relative;
+  margin-left: 2%;
+  margin-bottom: 2%;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: end;
+}
+.doctors-dialog-footer-button {
+  width: 20%;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2125;
+  color: #e7f2f6;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+  background: linear-gradient(134.44deg, #a8def0 0%, #245787 162.14%);
+  border-radius: 0.5rem;
+}
+.doctor-create {
+  width: 95%;
+  height: 4rem;
+  margin-left: 5%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2125;
+  color: #e7f2f6;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
+  border-radius: 50px;
+}
