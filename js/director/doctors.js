@@ -13,7 +13,20 @@ document.querySelector('#openCreateDoctorDialog').onclick = function() {
 document.querySelector('#createDoctorDialogClose').onclick = function() {
   createDoctorDialog.close();
 }
-
 document.querySelector('#createDoctorDialogSave').onclick = function() {
   createDoctorDialog.close();
 }
+
+var editDoctorDialog = document.querySelector('#editDoctorDialog');
+document.querySelector('#openEditDoctorDialog').onclick = function() {
+  doctorsDialog.close();
+  editDoctorDialog.show();
+}
+document.querySelector('#editDoctorDialogClose').onclick = function() {
+  doctorsDialog.show();
+  editDoctorDialog.close();
+}
+document.querySelector('#editDoctorDialogSave').onclick = function() {
+  editDoctorDialog.close();
+}
+

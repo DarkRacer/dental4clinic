@@ -213,7 +213,83 @@
         <div class="doctors-dialog-footer-buttons">
           <div class="doctors-dialog-footer-button" id="openDeleteDoctorDialog">Удалить</div>
           <div class="doctors-dialog-footer-button" id="openEditDoctorDialog">Редактировать</div>
-          <div class="doctors-dialog-footer-button-service" id="openEditServicesDoctorDialog">Изменить оказываемые услуги</div>
+          <div class="doctors-dialog-footer-button-service" id="openServicesDoctorDialog">Изменить оказываемые услуги</div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="create-doctor-dialog-blackout" id="editDoctorDialog" >
+    <div class="create-doctor-dialog-content">
+      <div class="create-doctor-dialog-title">
+        <div class="create-doctor-dialog-title-text">Изменить информацию о враче</div>
+        <div class="create-doctor-dialog-close-div" id="editDoctorDialogClose">
+          <img class="create-doctor-dialog-close" src="../img/point-plus.png"/>
+        </div>
+      </div>
+      <div class="create-doctor-dialog-body-content">
+        <div class="form">
+          <div class="required-fields">
+            <div class="required-field">
+              <div class="required-field-title">Имя</div>
+              <input type="text" id="nameEdit" name="name" placeholder="Имя" value="Руслан" class="required-field-input">
+            </div>
+            <div class="required-field">
+              <div class="required-field-title">Фамилия</div>
+              <input type="text" id="surnameEdit" name="surname" placeholder="Фамилия" value="Хусаинов" class="required-field-input">
+            </div>
+            <div class="required-field">
+              <div class="required-field-title">Отчество</div>
+              <input type="text" id="patronymicEdit" name="patronymic" placeholder="Отчество" value="Дмитриевич" class="required-field-input">
+            </div>
+          </div>
+          <div class="required-fields">
+            <div class="required-field">
+              <div class="required-field-title">Специализация</div>
+              <label class="label-for-selector">
+                <select class="selector" id="specEdit">
+                  <option class="selector-text">Не выбрано</option>
+                  <option class="selector-text">Детский стоматолог</option>
+                  <option class="selector-text">Специалист по гигиене зубов</option>
+                  <option class="selector-text">Стоматолог-ортодонт</option>
+                  <option class="selector-text">Стоматолог-ортопед</option>
+                  <option class="selector-text">Стоматолог-пародонтолог</option>
+                  <option class="selector-text" selected>Стоматолог-терапевт</option>
+                  <option class="selector-text">Стоматолог-хирург</option>
+                  <option class="selector-text">Хирург-имплантолог</option>
+                  <option class="selector-text">Хирург-пародонтолог</option>
+                  <option class="selector-text">Челюстно-лицевой хирург</option>
+                  <option class="selector-text">Эндодонтист</option>
+                </select>
+              </label>
+            </div>
+            <div class="photo-field">
+              <div class="photo-field-title">Фотография</div>
+              <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photoEdit" class="photo-field-input">
+            </div>
+            <div class="required-field">
+              <div class="services-doctor-button" id="openEditServicesDoctorDialog">Выбрать оказываемые услуги</div>
+            </div>
+          </div>
+          <div class="additional-fields">
+            <div class="additional-field">
+              <div class="additional-field-title">Описание</div>
+              <textarea type="text" id="descriptionEdit" name="description" placeholder="Описание" class="additional-field-input">
+Руслан Дмитриевич — молодой и перспективный специалист, главная цель которого — здоровые и счастливые улыбки. Доктор максимально ответственно и внимательно относится к каждому пациенту и находит индивидуальный подход к его клиническому случаю.
+Отличается добрым отношением к пациентам, но в то же время очень требовательный к себе и своей работе. Постоянно стремится совершенствовать свои умения и увеличивать объем знаний, обучаясь у Российских и зарубежных специалистов. Владеет современными методами лечения заболеваний зубочелюстной системы.
+              </textarea>
+            </div>
+            <div class="additional-field">
+              <div class="additional-field-title">Проффесиональные навыки</div>
+              <textarea type="text" id="plusesEdit" name="pluses" placeholder="Проффесиональные навыки" class="additional-field-input">
+Составление индивидуального плана лечения, основываясь на данных осмотра и компьютерной томографии.
+Лечение кариеса и его осложнений.
+Восстановление разрушенных зубов с применением титановых или стекловолоконных штифтов или культевых вкладок.
+Современная обработка корневых каналов с применением ручных и механических никель-титановых инструментов ProТaper
+Современные методы пломбирования корневых каналов.
+              </textarea>
+            </div>
+          </div>
+          <div class="save-button" id="editDoctorDialogSave">Создать</div>
         </div>
       </div>
     </div>
