@@ -289,7 +289,7 @@
       <div class="prices-dialog-footer">
         <div class="prices-dialog-footer-price">161 000 ₽</div>
         <div class="prices-dialog-footer-buttons">
-          <div class="prices-dialog-footer-button">Удалить</div>
+          <div class="prices-dialog-footer-button" id="openDeletePriceDialog">Удалить</div>
           <div class="prices-dialog-footer-button" id="openEditPriceDialog">Редактировать</div>
         </div>
       </div>
@@ -337,6 +337,20 @@
           </div>
           <div class="save-button" id="editPriceDialogSave">Сохранить</div>
         </div>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="delete-dialog-blackout" id="deletePriceDialog" open>
+    <div class="delete-dialog-content">
+      <div class="delete-dialog-title">
+        <div class="delete-dialog-title-text">Удаление услуги</div>
+      </div>
+      <div class="delete-dialog-body-content">
+        <div class="delete-dialog-content-description">Вы уверены что хотите удалить услугу? Это действие отменить невозможно</div>
+      </div>
+      <div class="delete-dialog-footer">
+        <div class="delete-dialog-footer-button" id="deletePriceDialogClose">Удалить</div>
+        <div class="delete-dialog-footer-button" id="backButtonDeletePriceDialogClose">Отмена</div>
       </div>
     </div>
   </dialog>

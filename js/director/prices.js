@@ -28,3 +28,16 @@ document.querySelector('#editPriceDialogClose').onclick = function() {
 document.querySelector('#editPriceDialogSave').onclick = function() {
   editPriceDialog.close();
 }
+
+var deletePriceDialog = document.querySelector('#deletePriceDialog');
+document.querySelector('#openDeletePriceDialog').onclick = function() {
+  pricesDialog.close();
+  deletePriceDialog.show();
+}
+document.querySelector('#deletePriceDialogClose').onclick = function() {
+  deletePriceDialog.close();
+}
+document.querySelector('#backButtonDeletePriceDialogClose').onclick = function() {
+  deletePriceDialog.close();
+  pricesDialog.show();
+}
