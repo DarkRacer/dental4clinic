@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Назначить запись Admin</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C600"/>
+  <link rel="stylesheet" href="../css/admin/appointments-create.css"/>
+  <link rel="stylesheet" href="../css/main.css"/>
+</head>
+<body>
+<div class="appointments-create-page">
+  <div class="header-for-all">
+    <div class="header-div-left">
+      <div class="logo" onclick="location.assign('/');">
+        <img class="logo-img" src="../img/logo.png"/>
+        <p class="dental4clinic-logo">Dental4Clinic</p>
+      </div>
+      <p class="header-item">Создать пользователя</p>
+      <p class="second-header-item-selected">Назначить запись</p>
+      <p class="header-item">График записей</p>
+      <p class="header-item">Цены</p>
+      <p class="header-item">Врачи</p>
+      <div class="header-item">Оплаты</div>
+    </div>
+    <div class="header-div-right">
+      <div class="logo-user" onclick="window.location='/login.html';">
+        <img class="logo-user-image" src="../img/user-photo.png"/>
+      </div>
+      <div class="phone-number">
+        <img class="phone" src="../img/phone.png"/>
+        <p class="number">+7 473-222-22-22</p>
+      </div>
+    </div>
+  </div>
+  <div class="appointments-create-body">
+    <div class="form">
+      <div class="form-field-last-column">
+        <div class="form-field">
+          <div class="select-button" id="openRequestsDialog">Выбрать заявку</div>
+        </div>
+        <div class="form-field-last-column">
+          <div class="form-field-title">Пациент</div>
+          <input type="text" name="patient" id="patient-field" placeholder="Пациент" class="form-field-input">
+        </div>
+      </div>
+      <div class="form-field-group">
+        <div class="form-field">
+          <div class="form-field-title">Дата</div>
+          <input type="date" name="date" id="date-field" placeholder="Дата" class="form-field-input">
+        </div>
+        <div class="form-field-last-column">
+          <div class="form-field-title">Время</div>
+          <input type="time" name="datetime" id="datetime-field" placeholder="Время" class="form-field-input">
+        </div>
+      </div>
+    </div>
+    <div class="form">
+      <div class="form-field">
+        <div class="form-field-title">Поиск по врачу</div>
+        <input type="text" name="doctor" id="doctor-field" placeholder="Врач" class="form-field-input">
+      </div>
+      <div class="form-field-last-row">
+        <div class="form-field-title">Поиск по услуге</div>
+        <input type="text" name="service" id="service-field" placeholder="Услуга" class="form-field-input">
+      </div>
+    </div>
+    <table class="table">
+      <tbody class="table">
+      <tr class="row-header-recording">
+        <th class="cell-header-recording">
+          <div class="cell-header-content-recording">Врач</div>
+        </th>
+        <th class="cell-header-recording">
+          <div class="cell-header-content-recording">Оказываемые услуги</div>
+        </th>
+      </tr>
+      <tr class="row-recording">
+        <th class="cell-recording">
+        </th>
+        <th class="cell-recording">
+        </th>
+      </tr>
+      <tr class="row-recording">
+        <th class="cell-recording">
+        </th>
+        <th class="cell-recording">
+        </th>
+      </tr>
+      <tr class="row-recording">
+        <th class="cell-recording">
+        </th>
+        <th class="cell-recording">
+        </th>
+      </tr>
+      <tr class="row-recording">
+        <th class="cell-recording">
+        </th>
+        <th class="cell-recording">
+        </th>
+      </tr>
+      </tbody>
+    </table>
+    <div class="record-button">Записать</div>
+  </div>
+  <dialog class="request-dialog-blackout" id="requestsDialog">
+    <div class="request-dialog-content">
+      <div class="request-dialog-title">
+        <div class="request-dialog-title-text">Назначить запись</div>
+        <div class="request-dialog-close-div" id="requestsDialogClose">
+          <img class="request-dialog-close" src="../img/point-plus.png"/>
+        </div>
+      </div>
+      <div class="request-dialog-body-content">
+        <table class="table">
+          <tbody class="table">
+          <tr class="row-header-request">
+            <th class="cell-header">
+              <div class="cell-header-content">Имя</div>
+            </th>
+            <th class="cell-header">
+              <div class="cell-header-content">Телефон</div>
+            </th>
+            <th class="cell-header">
+              <div class="cell-header-content">Проблема</div>
+            </th>
+          </tr>
+          <tr class="row-request">
+            <th class="cell">
+            </th>
+            <th class="cell">
+            </th>
+            <th class="cell">
+            </th>
+          </tr>
+          <tr class="row-request">
+            <th class="cell">
+            </th>
+            <th class="cell">
+            </th>
+            <th class="cell">
+            </th>
+          </tr>
+          <tr class="row-request">
+            <th class="cell">
+            </th>
+            <th class="cell">
+            </th>
+            <th class="cell">
+            </th>
+          </tr>
+          <tr class="row-request">
+            <th class="cell">
+            </th>
+            <th class="cell">
+            </th>
+            <th class="cell">
+            </th>
+          </tr>
+          <tr class="row-request">
+            <th class="cell">
+            </th>
+            <th class="cell">
+            </th>
+            <th class="cell">
+            </th>
+          </tr>
+          <tr class="row-request">
+            <th class="cell">
+            </th>
+            <th class="cell">
+            </th>
+            <th class="cell">
+            </th>
+          </tr>
+          </tbody>
+        </table>
+        <div class="select-request-button">Записать</div>
+      </div>
+    </div>
+  </dialog>
+</div>
+<script src="../js/admin/appointments-create.js"></script>
+</body>
