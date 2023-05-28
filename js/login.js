@@ -1,6 +1,10 @@
-import {PostUrl} from "./service/service";
-import {SelectFunctionalByRole} from "./main";
-
+const url ='https://localhost:8000/';
+var token = GetCookie("access_token")
+const headers = {
+  "Host": "localhost:8000",
+  "Origin": "https://localhost:8000",
+  "Accept": "*/*"
+}
 const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
 
@@ -25,5 +29,41 @@ loginButton.addEventListener("click", (e) => {
     .catch((error) => {
       console.error('Error:', error);
     });
-
 })
+function GetCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+function GetUrl(getUrl) {
+  console.log("get " + getUrl);
+  return fetch(url+getUrl, {
+    method: 'GET',
+    headers: headers
+  })
+    .then(response => response.json())
+}
+
+function PostUrl(postUrl, body) {
+  console.log("Post " + postUrl);
+  return fetch(url+postUrl, {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(body)
+  })
+    .then(response => response.json())
+}
+function SelectFunctionalByRole(role) {
+  if (role === "USER") {
+    location.assign('/user/home')
+  } else if (role === "DOCTOR") {
+    location.assign('/doctor/home')
+  } else if (role === "ADMIN") {
+    location.assign('/admin/home')
+  } else if (role === "DIRECTOR") {
+    location.assign('/director/home')
+  } else {
+    location.assign('/unauthorized/home')
+  }
+}

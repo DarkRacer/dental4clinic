@@ -20,14 +20,14 @@ export function LoadPage() {
 
 export function SelectFunctionalByRole(role) {
   if (role === "USER") {
-    location.assign('/user/user.html')
+    location.assign('/user/home')
   } else if (role === "DOCTOR") {
-    location.assign('/doctor/doctor.html')
+    location.assign('/doctor/home')
   } else if (role === "ADMIN") {
-    location.assign('/admin/admin.html')
+    location.assign('/admin/home')
   } else if (role === "DIRECTOR") {
-    location.assign('/director/director.html')
+    location.assign('/director/home')
   } else {
-    location.assign('/unauthorized/unauthorized.html')
+    location.assign('/unauthorized/home')
   }
 }
