@@ -20,8 +20,6 @@ loginButton.addEventListener("click", (e) => {
     password: password
   }
   PostUrl("login", loginBody).then(data => {
-    console.log('Success:', data);
-    debugger
     document.cookie =`access_token=${data['access_token']}`
     document.cookie =`id=${data['id']}`
     SelectFunctionalByRole(data['role'])
@@ -38,7 +36,7 @@ function GetCookie(name) {
 
 function GetUrl(getUrl) {
   console.log("get " + getUrl);
-  return fetch(url+getUrl, {
+  return fetch(url + getUrl, {
     method: 'GET',
     headers: headers
   })
@@ -47,7 +45,7 @@ function GetUrl(getUrl) {
 
 function PostUrl(postUrl, body) {
   console.log("Post " + postUrl);
-  return fetch(url+postUrl, {
+  return fetch(url + postUrl, {
     method: 'POST',
     headers: headers,
     body: JSON.stringify(body)

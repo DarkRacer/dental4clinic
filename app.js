@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const router = express.Router();
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 app.use('/', express.static(__dirname));
 
@@ -179,6 +180,9 @@ router.get('/unauthorized/clinic/info',function(req,res){
 });
 router.get('/unauthorized/css/unauthorized/about.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/unauthorized/about.css'));
+});
+router.get('/unauthorized/js/unauthorized/appointments-create.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/unauthorized/appointments-create.js'));
 });
 
 
