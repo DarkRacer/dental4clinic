@@ -5,15 +5,14 @@
   <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <title>Registration</title>
+  <title>Регистрация</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C600"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600"/>
   <link rel="stylesheet" href="./css/registration.css"/>
   <link rel="stylesheet" href="./css/main.css"/>
-  <script defer src="./js/registration.js"></script>
 </head>
 <body>
-<div class="registration">
+<div class="profile-edit-page">
   <div class="header-for-all">
     <div class="header-div-left">
       <div class="logo" onclick="location.assign('/');">
@@ -35,52 +34,62 @@
       </div>
     </div>
   </div>
-  <div class="auto-group-9ep7-9f3">
-    <div class="item--4n1">Имя</div>
-    <div class="item--mAd">Фамилия</div>
-    <div class="item--TJM">Отчество</div>
-  </div>
-  <div class="auto-group-j5ur-ACm">
-    <form id="registration-form">
-      <label for="name-field">
-        <input class="rectangle-19-5ad" type="text" name="name" id="name-field" placeholder="Имя" required>
-      </label>
-      <label for="surname-field">
-        <input class="rectangle-21-njw" type="text" name="surname" id="surname-field" placeholder="Фамилия" required>
-      </label>
-      <label for="secondName-field">
-        <input class="rectangle-23-71X" type="text" name="secondName" id="secondName-field" placeholder="Отчество" required>
-      </label>
-      <div class="item--wWM">Дата рождения</div>
-      <label for="birthday-field">
-        <input class="rectangle-24-1sb" type="date" name="birthday" id="birthday-field" placeholder="Дата рождения" required>
-      </label>
-      <div class="item--r13">Адрес проживания</div>
-      <label for="address-field">
-        <textarea class="rectangle-28-8aq" type="text" name="address" id="address-field" placeholder="Адрес проживания"></textarea>
-      </label>
-      <div class="item--uG9">Аллергии</div>
-      <label for="allergies-field">
-        <textarea class="rectangle-29-uV7" type="text" name="allergies" id="allergies-field" placeholder="Аллергии"></textarea>
-      </label>
-      <div class="item--K33">Логин</div>
-      <label for="login-field">
-        <input class="rectangle-30-QRs" type="text" name="login" id="login-field" placeholder="Логин" required>
-      </label>
-      <div class="item--Ypu">Пароль</div>
-      <label for="password-field">
-        <input class="rectangle-31-azZ" type="password" name="password" id="password-field" placeholder="Пароль" required>
-      </label>
-      <div class="item--MGZ">Телефон</div>
-      <label for="phone-field">
-        <input class="rectangle-26-Rdo" type="text" name="phone" id="phone-field" placeholder="Телефон" required>
-      </label>
-      <div class="e-mail-9iD">E-mail</div>
-      <label for="email-field">
-        <input class="rectangle-27-dUy" type="email" name="email" id="email-field" placeholder="E-mail">
-      </label>
-    <div class="item--FmF" type="submit" id="registration-form-submit">Регистрация</div>
-    </form>
+  <div class="profile-edit-body">
+    <div class="form">
+      <div class="required-fields">
+        <div class="required-field">
+          <div class="required-field-title">Имя</div>
+          <input type="text" id="name" name="name" placeholder="Имя" class="required-field-input">
+        </div>
+        <div class="required-field">
+          <div class="required-field-title">Фамилия</div>
+          <input type="text" id="surname" name="surname" placeholder="Фамилия" class="required-field-input">
+        </div>
+        <div class="required-field">
+          <div class="required-field-title">Отчество</div>
+          <input type="text" id="patronymic" name="patronymic" placeholder="Отчество" class="required-field-input">
+        </div>
+      </div>
+      <div class="required-fields">
+        <div class="required-field">
+          <div class="required-field-title">Дата рождения</div>
+          <input type="date" id="dateOfBirthday" name="dateOfBirthday" placeholder="Дата рождения" class="required-field-input">
+        </div>
+        <div class="required-field">
+          <div class="required-field-title">Телефон</div>
+          <input type="text" id="phone" name="phone" placeholder="+7 (___) ___-__-__" class="required-field-input">
+        </div>
+        <div class="required-field">
+          <div class="required-field-title">E-mail</div>
+          <input type="email" id="email" name="email" placeholder="E-mail" class="required-field-input">
+        </div>
+      </div>
+      <div class="additional-fields">
+        <div class="additional-field">
+          <div class="additional-field-title">Адрес проживания</div>
+          <textarea type="text" id="address" name="address" placeholder="Адрес проживания" class="additional-field-input"></textarea>
+        </div>
+        <div class="additional-field">
+          <div class="additional-field-title">Адрес проживания</div>
+          <textarea type="text" id="allergies" name="allergies" placeholder="Аллергии" class="additional-field-input"></textarea>
+        </div>
+      </div>
+      <div class="photo-field">
+        <div class="photo-field-title">Фотография</div>
+        <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photo" class="photo-field-input">
+      </div>
+      <div class="additional-fields">
+        <div class="required-field">
+          <div class="required-field-title">Логин</div>
+          <input type="text" id="login" name="login" placeholder="Логин" class="required-login-field-input">
+        </div>
+        <div class="required-field">
+          <div class="required-field-title">Пароль</div>
+          <input type="password" id="password" name="password" placeholder="Пароль" class="required-login-field-input">
+        </div>
+      </div>
+      <div class="save-button">Регистрация</div>
+    </div>
   </div>
 </div>
 </body>
