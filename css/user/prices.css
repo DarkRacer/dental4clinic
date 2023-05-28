@@ -58,7 +58,7 @@
   border: solid 0.1rem #e7f2f6;
   box-sizing: border-box;
 }
-.prices-group-content-item-selected {
+.prices-group-content-item:hover {
   padding: 1% 0;
   width: 100%;
   height: 100%;
