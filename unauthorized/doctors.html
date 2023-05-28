@@ -16,17 +16,17 @@
 <div class="doctors-page">
   <div class="header-for-all">
     <div class="header-div-left">
-      <div class="logo" onclick="location.assign('/');">
+      <div class="logo" onclick="location.assign('/unauthorized/home');">
         <img class="logo-img" src="../img/logo.png"/>
         <p class="dental4clinic-logo">Dental4Clinic</p>
       </div>
-      <p class="header-item">Записаться</p>
-      <p class="header-item">Цены</p>
-      <p class="third-header-item-selected">Врачи</p>
-      <div class="header-item">О нас</div>
+      <p class="header-item" onclick="location.assign('/unauthorized/appointments/create');">Записаться</p>
+      <p class="header-item" onclick="location.assign('/unauthorized/prices');">Цены</p>
+      <p class="third-header-item-selected" onclick="location.assign('/unauthorized/doctors');">Врачи</p>
+      <div class="header-item" onclick="location.assign('/unauthorized/clinic/info');">О нас</div>
     </div>
     <div class="header-div-right">
-      <div class="logo-user" onclick="window.location='/login.html';">
+      <div class="logo-user" onclick="window.location='/login';">
         <img class="logo-user-image" src="../img/user-logo.png"/>
       </div>
       <div class="phone-number">
@@ -66,7 +66,7 @@
           Стоматолог-терапевт, Детский стоматолог
         </div>
       </div>
-      <div class="doctor-card">
+      <div class="doctor-card" id="openDoctorsDialog">
         <div class="doctor-avatar">
           <img class="doctor-image" src="../img/husainov.png">
         </div>
@@ -105,7 +105,7 @@
     <div class="doctors-dialog-content">
       <div class="doctors-dialog-title">
         <div class="doctors-dialog-title-text">Хусаинов Руслан Дмитриевич</div>
-        <div class="doctors-dialog-close-div" id="pricesDialogClose">
+        <div class="doctors-dialog-close-div" id="doctorsDialogClose">
           <img class="doctors-dialog-close" src="../img/point-plus.png"/>
         </div>
       </div>
@@ -140,9 +140,10 @@
         </div>
       </div>
       <div class="doctors-dialog-footer">
-        <div class="doctors-dialog-footer-button">Записаться</div>
+        <div class="doctors-dialog-footer-button" onclick="location.assign('/unauthorized/appointments/create');">Записаться</div>
       </div>
     </div>
   </dialog>
 </div>
+<script src="../js/unauthorized/doctors.js"></script>
 </body>
