@@ -100,31 +100,43 @@ router.get('/profile/img/phone.png',function(req,res){
 });
 
 
+router.get('/doctor/img/logo.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/logo.png'));
+});
+router.get('/doctor/img/user-photo.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/user-photo.png'));
+});
+router.get('/doctor/img/phone.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/phone.png'));
+});
+router.get('/doctor/img/point-plus.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/point-plus.png'));
+});
+router.get('/doctor/img/tooth-picture.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/tooth-picture.png'));
+});
+
+
 
 /* Routes for Unauthorized user */
 router.get('/unauthorized/home',function(req,res){
   res.sendFile(path.join(__dirname+'/unauthorized/unauthorized.html'));
 });
-
 router.get('/unauthorized/appointments/create',function(req,res){
   res.sendFile(path.join(__dirname+'/unauthorized/appointments-create.html'));
 });
 router.get('/unauthorized/css/unauthorized/appointments-create.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/unauthorized/appointments-create.css'));
 });
-
 router.get('/unauthorized/doctors',function(req,res){
   res.sendFile(path.join(__dirname+'/unauthorized/doctors.html'));
 });
-
 router.get('/unauthorized/prices',function(req,res){
   res.sendFile(path.join(__dirname+'/unauthorized/prices.html'));
 });
-
 router.get('/unauthorized/clinic/info',function(req,res){
   res.sendFile(path.join(__dirname+'/unauthorized/about.html'));
 });
-
 router.get('/unauthorized/css/unauthorized/about.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/unauthorized/about.css'));
 });
@@ -170,6 +182,37 @@ router.get('/profile/css/user/profile-edit.css',function(req,res){
 });
 router.get('/profile/css/main.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/main.css'));
+});
+
+
+
+/* Routes for Doctor */
+router.get('/doctor/home',function(req,res){
+  res.sendFile(path.join(__dirname+'/doctor/main-page.html'));
+});
+router.get('/doctor/reception',function(req,res){
+  res.sendFile(path.join(__dirname+'/doctor/reception.html'));
+});
+router.get('/doctor/reception/1',function(req,res){
+  res.sendFile(path.join(__dirname+'/doctor/reception-patient.html'));
+});
+router.get('/profile/css/doctor/profile-edit.css',function(req,res){
+  res.sendFile(path.join(__dirname+'/css/doctor/profile-edit.css'));
+});
+router.get('/profile/2',function(req,res){
+  res.sendFile(path.join(__dirname+'/doctor/profile.html'));
+});
+router.get('/profile/2/edit',function(req,res){
+  res.sendFile(path.join(__dirname+'/doctor/profile-edit.html'));
+});
+router.get('/doctor/css/doctor/reception-patient.css',function(req,res){
+  res.sendFile(path.join(__dirname+'/css/doctor/reception-patient.css'));
+});
+router.get('/doctor/css/main.css',function(req,res){
+  res.sendFile(path.join(__dirname+'/css/main.css'));
+});
+router.get('/doctor/js/doctor/reception-patient.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/doctor/reception-patient.js'));
 });
 
 app.use('/', router);

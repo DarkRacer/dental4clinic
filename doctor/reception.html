@@ -16,14 +16,14 @@
 <div class="reception-page">
   <div class="header-for-all">
     <div class="header-div-left">
-      <div class="logo" onclick="location.assign('/');">
+      <div class="logo" onclick="location.assign('/doctor/home');">
         <img class="logo-img" src="../img/logo.png"/>
         <p class="dental4clinic-logo">Dental4Clinic</p>
       </div>
-      <div class="first-header-item-selected">Приём пациентов</div>
+      <div class="first-header-item-selected" onclick="location.assign('/doctor/reception');">Приём пациентов</div>
     </div>
     <div class="header-div-right">
-      <div class="logo-user" onclick="window.location='/user/profile.html';">
+      <div class="logo-user" onclick="window.location='/profile/2';">
         <img class="logo-user-image" src="../img/user-photo.png"/>
       </div>
       <div class="phone-number">
@@ -111,7 +111,7 @@
       </div>
       <div class="card-accept-buttons">
         <div class="info-button" id="openInfoPatientDialog">Посмотреть информацию о пациенте</div>
-        <div class="start-button">Начать прием</div>
+        <div class="start-button" onclick="location.assign('/doctor/reception/1');">Начать прием</div>
       </div>
     </div>
   </div>
@@ -187,7 +187,7 @@
             </tr>
           </tbody>
         </table>
-        <div class="start-without-calendar-button">Начать прием</div>
+        <div class="start-without-calendar-button" onclick="location.assign('/doctor/reception/1');">Начать прием</div>
       </div>
     </div>
   </dialog>
