@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Оплаты</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400"/>
+  <link rel="stylesheet" href="../css/director/admins.css"/>
+  <link rel="stylesheet" href="../css/main.css"/>
+</head>
+<body>
+<div class="admins-page">
+  <div class="header-for-all">
+    <div class="header-div-left">
+      <div class="logo" onclick="location.assign('/');">
+        <img class="logo-img" src="../img/logo.png"/>
+        <p class="dental4clinic-logo">Dental4Clinic</p>
+      </div>
+      <p class="header-item">График записей</p>
+      <p class="header-item">Заявки</p>
+      <p class="header-item">Оплаты</p>
+      <p class="header-item">Цены</p>
+      <p class="header-item">Врачи</p>
+      <div class="sixth-header-item-selected">Администраторы</div>
+    </div>
+    <div class="header-div-right">
+      <div class="logo-user" onclick="window.location='/login.html';">
+        <img class="logo-user-image" src="../img/user-photo.png"/>
+      </div>
+      <div class="phone-number">
+        <img class="phone" src="../img/phone.png"/>
+        <p class="number">+7 473-222-22-22</p>
+      </div>
+    </div>
+  </div>
+  <div class="admins-body">
+    <table class="table">
+      <tbody class="table">
+      <tr class="row-header">
+        <th class="cell-header">
+          <div class="cell-header-content">Фамилия</div>
+        </th>
+        <th class="cell-header">
+          <div class="cell-header-content">Имя</div>
+        </th>
+        <th class="cell-header">
+          <div class="cell-header-content">Отчество</div>
+        </th>
+      </tr>
+      <tr class="row">
+        <th class="cell">
+          <div class="cell-content">Иванов</div>
+        </th>
+        <th class="cell">
+          <div class="cell-content">Иван</div>
+        </th>
+        <th class="cell">
+          <div class="cell-content">Иванович</div>
+        </th>
+      </tr>
+      <tr class="row">
+        <th class="cell">
+        </th>
+        <th class="cell">
+        </th>
+        <th class="cell">
+        </th>
+      </tr>
+      <tr class="row">
+        <th class="cell">
+        </th>
+        <th class="cell">
+        </th>
+        <th class="cell">
+        </th>
+      </tr>
+      <tr class="row">
+        <th class="cell">
+        </th>
+        <th class="cell">
+        </th>
+        <th class="cell">
+        </th>
+      </tr>
+      <tr class="row">
+        <th class="cell">
+        </th>
+        <th class="cell">
+        </th>
+        <th class="cell">
+        </th>
+      </tr>
+      <tr class="row">
+        <th class="cell">
+        </th>
+        <th class="cell">
+        </th>
+        <th class="cell">
+        </th>
+      </tr>
+      <tr class="row">
+        <th class="cell">
+        </th>
+        <th class="cell">
+        </th>
+        <th class="cell">
+        </th>
+      </tr>
+      <tr class="row">
+        <th class="cell">
+        </th>
+        <th class="cell">
+        </th>
+        <th class="cell">
+        </th>
+      </tr>
+      </tbody>
+    </table>
+    <div class="buttons">
+      <div class="admin-buttons-button">Создать</div>
+      <div class="admin-buttons-button">Редактировать</div>
+      <div class="admin-buttons-button" id="openDeleteDialog">Удалить</div>
+    </div>
+  </div>
+  <dialog class="delete-dialog-blackout" id="deleteDialog">
+    <div class="delete-dialog-content">
+      <div class="delete-dialog-title">
+        <div class="delete-dialog-title-text">Удаление администратора</div>
+      </div>
+      <div class="delete-dialog-body-content">
+        <div class="delete-dialog-content-description">Вы уверены что хотите удалить администратора? Это действие отменить невозможно</div>
+      </div>
+      <div class="delete-dialog-footer">
+        <div class="delete-dialog-footer-button" id="deleteDialogClose">Удалить</div>
+        <div class="delete-dialog-footer-button" id="backButtonDeleteDialogClose">Отмена</div>
+      </div>
+    </div>
+  </dialog>
+</div>
+<script src="../js/director/admins.js"></script>
+</body>
