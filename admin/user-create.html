@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Создать пользователя</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C600"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600"/>
+  <link rel="stylesheet" href="../css/admin/user-create.css"/>
+  <link rel="stylesheet" href="../css/main.css"/>
+</head>
+<body>
+<div class="user-create-profile">
+  <div class="header-for-all">
+    <div class="header-div-left">
+      <div class="logo" onclick="location.assign('/');">
+        <img class="logo-img" src="../img/logo.png"/>
+        <p class="dental4clinic-logo">Dental4Clinic</p>
+      </div>
+      <p class="first-header-item-selected">Создать пользователя</p>
+      <p class="header-item">Назначить запись</p>
+      <p class="header-item">График записей</p>
+      <p class="header-item">Цены</p>
+      <p class="header-item">Врачи</p>
+      <div class="header-item">Оплаты</div>
+    </div>
+    <div class="header-div-right">
+      <div class="logo-user" onclick="window.location='/login.html';">
+        <img class="logo-user-image" src="../img/user-photo.png"/>
+      </div>
+      <div class="phone-number">
+        <img class="phone" src="../img/phone.png"/>
+        <p class="number">+7 473-222-22-22</p>
+      </div>
+    </div>
+  </div>
+  <div class="user-create-body">
+    <div class="form">
+      <div class="required-fields">
+        <div class="required-field">
+          <div class="required-field-title">Имя</div>
+          <input type="text" id="name" name="name" placeholder="Имя" class="required-field-input">
+        </div>
+        <div class="required-field">
+          <div class="required-field-title">Фамилия</div>
+          <input type="text" id="surname" name="surname" placeholder="Фамилия" class="required-field-input">
+        </div>
+        <div class="required-field">
+          <div class="required-field-title">Отчество</div>
+          <input type="text" id="patronymic" name="patronymic" placeholder="Отчество" class="required-field-input">
+        </div>
+      </div>
+      <div class="required-fields">
+        <div class="required-field">
+          <div class="required-field-title">Дата рождения</div>
+          <input type="date" id="dateOfBirthday" name="dateOfBirthday" placeholder="Дата рождения" class="required-field-input">
+        </div>
+        <div class="required-field">
+          <div class="required-field-title">Телефон</div>
+          <input type="text" id="phone" name="phone" placeholder="+7 (___) ___-__-__" class="required-field-input">
+        </div>
+        <div class="required-field">
+          <div class="required-field-title">E-mail</div>
+          <input type="email" id="email" name="email" placeholder="E-mail" class="required-field-input">
+        </div>
+      </div>
+      <div class="additional-fields">
+        <div class="additional-field">
+          <div class="additional-field-title">Адрес проживания</div>
+          <textarea type="text" id="address" name="address" placeholder="Адрес проживания" class="additional-field-input"></textarea>
+        </div>
+        <div class="additional-field">
+          <div class="additional-field-title">Адрес проживания</div>
+          <textarea type="text" id="allergies" name="allergies" placeholder="Аллергии" class="additional-field-input"></textarea>
+        </div>
+      </div>
+      <div class="save-button">Создать</div>
+      <div class="notification" id="notificationSuccess">
+        <p class="notification-text" id="notificationSuccessText">
+          Пользователь успешно создан
+          <br/>
+          Логин:
+          <br/>
+          Пароль:
+          <br/>
+          Не забудьте напомнить поменять пароль!
+        </p>
+      </div>
+      <div class="notification" id="notificationFailed">
+        <p class="notification-text" id="notificationFailedText">
+          Пользователь не создан. Укажите имя!
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
