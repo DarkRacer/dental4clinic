@@ -16,19 +16,19 @@
 <div class="prices-page">
   <div class="header-for-all">
     <div class="header-div-left">
-      <div class="logo" onclick="location.assign('/');">
+      <div class="logo" onclick="location.assign('/user/home');">
         <img class="logo-img" src="../img/logo.png"/>
         <p class="dental4clinic-logo">Dental4Clinic</p>
       </div>
-      <p class="header-item">Мои записи</p>
-      <p class="header-item">Записаться</p>
-      <p class="header-item">Оплата услуг</p>
-      <div class="fourth-header-item-selected">Цены</div>
-      <p class="header-item">Врачи</p>
-      <div class="header-item">О нас</div>
+      <p class="header-item" onclick="location.assign('/user/appointments');">Мои записи</p>
+      <p class="header-item" onclick="location.assign('/user/appointments/create');">Записаться</p>
+      <p class="header-item" onclick="location.assign('/user/payments');">Оплата услуг</p>
+      <p class="fourth-header-item-selected" onclick="location.assign('/user/prices');">Цены</p>
+      <p class="header-item" onclick="location.assign('/user/doctors');">Врачи</p>
+      <div class="header-item" onclick="location.assign('/user/clinic/info');">О нас</div>
     </div>
     <div class="header-div-right">
-      <div class="logo-user" onclick="window.location='/login.html';">
+      <div class="logo-user" onclick="window.location='/profile/1';">
         <img class="logo-user-image" src="../img/user-photo.png"/>
       </div>
       <div class="phone-number">
@@ -51,7 +51,7 @@
             <div class="prices-group-content-item-name">Имплантация зубов с протезированием на имплантатах Astra Tech под ключ</div>
             <div class="prices-group-content-item-price">127 500 ₽</div>
           </div>
-          <div class="prices-group-content-item">
+          <div class="prices-group-content-item" id="openPricesDialog">
             <div class="prices-group-content-item-name">Имплантация зубов с протезированием на имплантатах Straumann под ключ</div>
             <div class="prices-group-content-item-price">161 000 ₽</div>
           </div>
@@ -206,7 +206,7 @@
     </div>
     <img class="go-to-top" src="../img/arrow.png"/>
   </div>
-  <dialog class="prices-dialog-blackout" id="pricesDialog" open>
+  <dialog class="prices-dialog-blackout" id="pricesDialog">
     <div class="prices-dialog-content">
       <div class="prices-dialog-title">
         <div class="prices-dialog-title-text">Имплантация зубов с протезированием на имплантатах Straumann под ключ</div>
@@ -248,14 +248,14 @@
             <img class="prices-dialog-content-plus" src="../img/point-plus.png"/>
             <div class="prices-dialog-content-text">Забота о пациенте(диспансерные осмотры каждые 6 месяцев).</div>
           </div>
-
         </div>
       </div>
       <div class="prices-dialog-footer">
         <div class="prices-dialog-footer-price">161 000 ₽</div>
-        <div class="prices-dialog-footer-button">Записаться</div>
+        <div class="prices-dialog-footer-button" onclick="location.assign('/user/appointments/create');">Записаться</div>
       </div>
     </div>
   </dialog>
 </div>
+<script src="../js/user/prices.js"></script>
 </body>

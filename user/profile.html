@@ -15,19 +15,19 @@
 <div class="user-profile-body">
   <div class="header-for-all">
     <div class="header-div-left">
-      <div class="logo" onclick="location.assign('/');">
+      <div class="logo" onclick="location.assign('/user/home');">
         <img class="logo-img" src="../img/logo.png"/>
         <p class="dental4clinic-logo">Dental4Clinic</p>
       </div>
-      <p class="header-item">Мои записи</p>
-      <p class="header-item">Записаться</p>
-      <p class="header-item">Оплата услуг</p>
-      <p class="header-item">Цены</p>
-      <p class="header-item">Врачи</p>
-      <div class="header-item">О нас</div>
+      <p class="header-item" onclick="location.assign('/user/appointments');">Мои записи</p>
+      <p class="header-item" onclick="location.assign('/user/appointments/create');">Записаться</p>
+      <p class="header-item" onclick="location.assign('/user/payments');">Оплата услуг</p>
+      <p class="header-item" onclick="location.assign('/user/prices');">Цены</p>
+      <p class="header-item" onclick="location.assign('/user/doctors');">Врачи</p>
+      <div class="header-item" onclick="location.assign('/user/clinic/info');">О нас</div>
     </div>
     <div class="header-div-right">
-      <div class="logo-user" onclick="window.location='/login.html';">
+      <div class="logo-user" onclick="window.location='/profile/1';">
         <img class="logo-user-image" src="../img/user-photo.png"/>
       </div>
       <div class="phone-number">
@@ -65,7 +65,7 @@
       </div>
       <div class="user-card-buttons">
         <div class="user-card-button" id="openToothPicture">Снимки</div>
-        <div class="user-card-button-last">Редактировать профиль</div>
+        <div class="user-card-button-last" onclick="location.assign('/profile/1/edit');">Редактировать профиль</div>
       </div>
     </div>
     <table class="table">
