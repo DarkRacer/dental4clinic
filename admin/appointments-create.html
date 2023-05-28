@@ -15,19 +15,19 @@
 <div class="appointments-create-page">
   <div class="header-for-all">
     <div class="header-div-left">
-      <div class="logo" onclick="location.assign('/');">
+      <div class="logo" onclick="location.assign('/admin/home');">
         <img class="logo-img" src="../img/logo.png"/>
         <p class="dental4clinic-logo">Dental4Clinic</p>
       </div>
-      <p class="header-item">Создать пользователя</p>
-      <p class="second-header-item-selected">Назначить запись</p>
-      <p class="header-item">График записей</p>
-      <p class="header-item">Цены</p>
-      <p class="header-item">Врачи</p>
-      <div class="header-item">Оплаты</div>
+      <p class="header-item" onclick="location.assign('/admin/user/create');">Создать пользователя</p>
+      <p class="second-header-item-selected" onclick="location.assign('/admin/appointments/create');">Назначить запись</p>
+      <p class="header-item" onclick="location.assign('/admin/record/list');">График записей</p>
+      <p class="header-item" onclick="location.assign('/admin/prices');">Цены</p>
+      <p class="header-item" onclick="location.assign('/admin/doctors');">Врачи</p>
+      <div class="header-item" onclick="location.assign('/admin/payments');">Оплаты</div>
     </div>
     <div class="header-div-right">
-      <div class="logo-user" onclick="window.location='/login.html';">
+      <div class="logo-user" onclick="location.assign('/profile/3');">
         <img class="logo-user-image" src="../img/user-photo.png"/>
       </div>
       <div class="phone-number">
@@ -104,7 +104,7 @@
       </tr>
       </tbody>
     </table>
-    <div class="record-button">Записать</div>
+    <div class="record-button" onclick="location.assign('/admin/record/list');">Записать</div>
   </div>
   <dialog class="request-dialog-blackout" id="requestsDialog">
     <div class="request-dialog-content">
@@ -178,7 +178,7 @@
           </tr>
           </tbody>
         </table>
-        <div class="select-request-button">Записать</div>
+        <div class="select-request-button" id="requestsSelectDialogClose">Записать</div>
       </div>
     </div>
   </dialog>

@@ -5,3 +5,6 @@ document.querySelector('#openRequestsDialog').onclick = function() {
 document.querySelector('#requestsDialogClose').onclick = function() {
   requestsDialog.close();
 }
+document.querySelector('#requestsSelectDialogClose').onclick = function() {
+  requestsDialog.close();
+}

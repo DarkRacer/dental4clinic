@@ -117,6 +117,20 @@ router.get('/doctor/img/tooth-picture.png',function(req,res){
 });
 
 
+router.get('/admin/img/logo.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/logo.png'));
+});
+router.get('/admin/img/user-photo.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/user-photo.png'));
+});
+router.get('/admin/img/phone.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/phone.png'));
+});
+router.get('/admin/img/point-plus.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/point-plus.png'));
+});
+
+
 
 /* Routes for Unauthorized user */
 router.get('/unauthorized/home',function(req,res){
@@ -213,6 +227,55 @@ router.get('/doctor/css/main.css',function(req,res){
 });
 router.get('/doctor/js/doctor/reception-patient.js',function(req,res){
   res.sendFile(path.join(__dirname+'/js/doctor/reception-patient.js'));
+});
+
+
+
+/* Routes for Admin */
+router.get('/admin/home',function(req,res){
+  res.sendFile(path.join(__dirname+'/admin/main-page.html'));
+});
+router.get('/admin/appointments/create',function(req,res){
+  res.sendFile(path.join(__dirname+'/admin/appointments-create.html'));
+});
+router.get('/admin/css/admin/appointments-create.css',function(req,res){
+  res.sendFile(path.join(__dirname+'/css/admin/appointments-create.css'));
+});
+router.get('/admin/doctors',function(req,res){
+  res.sendFile(path.join(__dirname+'/admin/doctors.html'));
+});
+router.get('/admin/prices',function(req,res){
+  res.sendFile(path.join(__dirname+'/admin/prices.html'));
+});
+router.get('/profile/3',function(req,res){
+  res.sendFile(path.join(__dirname+'/admin/profile.html'));
+});
+router.get('/profile/3/edit',function(req,res){
+  res.sendFile(path.join(__dirname+'/admin/profile-edit.html'));
+});
+router.get('/admin/payments',function(req,res){
+  res.sendFile(path.join(__dirname+'/admin/payments.html'));
+});
+router.get('/profile/css/admin/profile-edit.css',function(req,res){
+  res.sendFile(path.join(__dirname+'/css/admin/profile-edit.css'));
+});
+router.get('/admin/record/list',function(req,res){
+  res.sendFile(path.join(__dirname+'/admin/record-list.html'));
+});
+router.get('/admin/css/admin/record-list.css',function(req,res){
+  res.sendFile(path.join(__dirname+'/css/admin/record-list.css'));
+});
+router.get('/admin/user/create',function(req,res){
+  res.sendFile(path.join(__dirname+'/admin/user-create.html'));
+});
+router.get('/admin/css/admin/user-create.css',function(req,res){
+  res.sendFile(path.join(__dirname+'/css/admin/user-create.css'));
+});
+router.get('/admin/css/main.css',function(req,res){
+  res.sendFile(path.join(__dirname+'/css/main.css'));
+});
+router.get('/admin/js/admin/appointments-create.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/admin/appointments-create.js'));
 });
 
 app.use('/', router);
