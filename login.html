@@ -35,18 +35,22 @@
       </div>
     </div>
   </div>
-  <div class="contacts">
-    <form id="login-form">
-    <p class="title">Вход</p>
-    <div class="login">Логин</div>
-    <input type="text" name="login" id="login-field" placeholder="Login" class="login-field">
-    <div class="password">Пароль</div>
-    <label>
-      <input type="password" name="password" id="password-field" placeholder="Password"  class="password-field">
-    </label>
+  <form id="login-form" class="login-card">
+    <p class="card-title">Вход</p>
+    <div class="form">
+      <div class="form-field-last-column">
+        <div class="form-field">
+          <div class="form-field-title">Логин</div>
+          <input type="text" name="login" id="login-field" placeholder="Логин" class="form-field-input">
+        </div>
+        <div class="form-field">
+          <div class="form-field-title">Пароль</div>
+          <input type="password" name="password" id="password-field" placeholder="Пароль" class="form-field-input">
+        </div>
+      </div>
+    </div>
     <div class="submit-button" type="submit" id="login-form-submit">Войти</div>
     <div class="registration" onclick="window.location='/registration.html';">Регистрация</div>
-    </form>
-  </div>
+  </form>
 </div>
 </body>
