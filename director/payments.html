@@ -178,8 +178,23 @@
     <div class="buttons">
       <div class="paid">Оплачено</div>
       <div class="no-paid">Не оплачено</div>
-      <div class="delete-payment">Удалить</div>
+      <div class="delete-payment" id="openDeleteDialog">Удалить</div>
     </div>
   </div>
+  <dialog class="delete-dialog-blackout" id="deleteDialog" open>
+    <div class="delete-dialog-content">
+      <div class="delete-dialog-title">
+        <div class="delete-dialog-title-text">Удаление</div>
+      </div>
+      <div class="delete-dialog-body-content">
+        <div class="delete-dialog-content-description">Вы уверены что хотите удалить администратора? Это действие отменить невозможно</div>
+      </div>
+      <div class="delete-dialog-footer">
+        <div class="delete-dialog-footer-button" id="deleteDialogClose">Удалить</div>
+        <div class="delete-dialog-footer-button" id="backButtonDeleteDialogClose">Отмена</div>
+      </div>
+    </div>
+  </dialog>
 </div>
+<script src="../js/director/payments.js"></script>
 </body>
