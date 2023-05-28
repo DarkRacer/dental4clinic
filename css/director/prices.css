@@ -426,9 +426,9 @@
   font-weight: 400;
   line-height: 1.2125;
   font-style: italic;
+  overflow: hidden;
   color: #000000;
   font-family: Inter, 'Source Sans Pro', serif;
-  white-space: nowrap;
   background-color: #e7f2f6;
   border: 1px solid;
   border-radius: 50px;

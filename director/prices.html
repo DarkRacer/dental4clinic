@@ -51,7 +51,7 @@
             <div class="prices-group-content-item-name">Имплантация зубов с протезированием на имплантатах Astra Tech под ключ</div>
             <div class="prices-group-content-item-price">127 500 ₽</div>
           </div>
-          <div class="prices-group-content-item">
+          <div class="prices-group-content-item" id="openPricesDialog">
             <div class="prices-group-content-item-name">Имплантация зубов с протезированием на имплантатах Straumann под ключ</div>
             <div class="prices-group-content-item-price">161 000 ₽</div>
           </div>
@@ -236,7 +236,7 @@
               <textarea type="text" id="pluses" name="pluses" placeholder="Что входит в стоимость" class="additional-field-input"></textarea>
             </div>
           </div>
-          <div class="save-button">Создать</div>
+          <div class="save-button" id="createPriceDialogSave">Создать</div>
         </div>
       </div>
     </div>
@@ -290,7 +290,52 @@
         <div class="prices-dialog-footer-price">161 000 ₽</div>
         <div class="prices-dialog-footer-buttons">
           <div class="prices-dialog-footer-button">Удалить</div>
-          <div class="prices-dialog-footer-button">Редактировать</div>
+          <div class="prices-dialog-footer-button" id="openEditPriceDialog">Редактировать</div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="create-price-dialog-blackout" id="editPriceDialog" >
+    <div class="create-price-dialog-content">
+      <div class="create-price-dialog-title">
+        <div class="create-price-dialog-title-text">Изменить информацию о услуге</div>
+        <div class="create-price-dialog-close-div" id="editPriceDialogClose">
+          <img class="create-price-dialog-close" src="../img/point-plus.png"/>
+        </div>
+      </div>
+      <div class="create-price-dialog-body-content">
+        <div class="form">
+          <div class="required-fields">
+            <div class="required-field">
+              <div class="required-field-title">Название услуги</div>
+              <input type="text" id="nameEdit" name="name" placeholder="Название услуги" value="Имплантация зубов с протезированием на имплантатах Straumann под ключ" class="required-field-input">
+            </div>
+            <div class="required-field">
+              <div class="required-field-title">Стоимость</div>
+              <input type="text" id="costEdit" name="cost" placeholder="Стоимость (Р.)" value="161 000" class="required-field-input">
+            </div>
+          </div>
+          <div class="additional-fields">
+            <div class="additional-field">
+              <div class="additional-field-title">Описание</div>
+              <textarea type="text" id="descriptionEdit" name="description" placeholder="Описание" class="additional-field-input">
+Импланты Straumann изготовлены из патентованного сплава титана-циркония (Roxolid©, Straumann), который по надежности превосходит чистый титан и отлично приживается.
+Пожизненная гарантия на имплантат от производителя.
+              </textarea>
+            </div>
+            <div class="additional-field">
+              <div class="additional-field-title">Что входит в стоимость</div>
+              <textarea type="text" id="plusesEdit" name="pluses" placeholder="Что входит в стоимость" class="additional-field-input">
+Пожизненная гарантия на имплант.
+Операция без страха и боли(качественная анестезия).
+Временные пластинки и коронки для максимального комфорта.
+Индивидуальный абатмент(лучшая эстетика по сравнению со стандартными).
+Натуральный вид зуба(коронка из современных материалов).
+Забота о пациенте(диспансерные осмотры каждые 6 месяцев).
+              </textarea>
+            </div>
+          </div>
+          <div class="save-button" id="editPriceDialogSave">Сохранить</div>
         </div>
       </div>
     </div>
