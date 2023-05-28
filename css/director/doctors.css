@@ -499,4 +499,94 @@
   background: linear-gradient(134.44deg, #a8def0 0%, #245787 162.14%);
   border-radius: 5px;
 }
-
+.delete-dialog-blackout {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  border: none !important;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.3600000143);
+}
+.delete-dialog-content {
+  width: 60%;
+  margin-top: 23.5%;
+  margin-left: 21.5%;
+  position: relative;
+  background-color: #e7f2f6;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+.delete-dialog-body-content {
+  width: 96%;
+  height: 100%;
+  position: relative;
+  margin-left: 2%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.delete-dialog-title {
+  width: 100%;
+  margin: 2%;
+  display: flex;
+  flex-direction: row;
+}
+.delete-dialog-title-text {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+}
+.delete-dialog-content-description {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 2%;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 2.1428571429;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro', serif;
+}
+.delete-dialog-content-plus {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  object-fit: cover;
+  vertical-align: top;
+}
+.delete-dialog-footer {
+  width: 96%;
+  height: 50px;
+  position: relative;
+  margin-bottom: 2%;
+  margin-left: 2%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10%;
+}
+.delete-dialog-footer-button {
+  width: 45%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2125;
+  color: #e7f2f6;
+  font-family: Inter, 'Source Sans Pro', serif;
+  white-space: nowrap;
+  background: linear-gradient(134.44deg, #a8def0 0%, #245787 162.14%);
+  border-radius: 0.5rem;
+}

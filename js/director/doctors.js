@@ -23,10 +23,24 @@ document.querySelector('#openEditDoctorDialog').onclick = function() {
   editDoctorDialog.show();
 }
 document.querySelector('#editDoctorDialogClose').onclick = function() {
-  doctorsDialog.show();
   editDoctorDialog.close();
+  doctorsDialog.show();
 }
 document.querySelector('#editDoctorDialogSave').onclick = function() {
   editDoctorDialog.close();
 }
+
+var deleteDoctorDialog = document.querySelector('#deleteDoctorDialog');
+document.querySelector('#openDeleteDoctorDialog').onclick = function() {
+  doctorsDialog.close();
+  deleteDoctorDialog.show();
+}
+document.querySelector('#backButtonDeleteDoctorDialogClose').onclick = function() {
+  deleteDoctorDialog.close();
+  doctorsDialog.show();
+}
+document.querySelector('#deleteDoctorDialogClose').onclick = function() {
+  deleteDoctorDialog.close();
+}
+
 
