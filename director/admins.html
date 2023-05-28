@@ -121,7 +121,7 @@
     </table>
     <div class="buttons">
       <div class="admin-buttons-button" id="openCreateAdminDialog">Создать</div>
-      <div class="admin-buttons-button">Редактировать</div>
+      <div class="admin-buttons-button" id="openEditAdminDialog">Редактировать</div>
       <div class="admin-buttons-button" id="openDeleteDialog">Удалить</div>
     </div>
   </div>
@@ -154,6 +154,39 @@
             </div>
           </div>
           <div class="save-button" id="createAdminDialogSave">Создать</div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="create-admin-dialog-blackout" id="editAdminDialog" >
+    <div class="create-admin-dialog-content">
+      <div class="create-admin-dialog-title">
+        <div class="create-admin-dialog-title-text">Изменить информацию об администраторе</div>
+        <div class="create-admin-dialog-close-div" id="editAdminDialogClose">
+          <img class="create-admin-dialog-close" src="../img/point-plus.png"/>
+        </div>
+      </div>
+      <div class="create-admin-dialog-body-content">
+        <div class="form">
+          <div class="required-fields">
+            <div class="required-field">
+              <div class="required-field-title">Имя</div>
+              <input type="text" id="nameEdit" name="name" placeholder="Имя" value="Иван" class="required-field-input">
+            </div>
+            <div class="required-field">
+              <div class="required-field-title">Фамилия</div>
+              <input type="text" id="surnameEdit" name="surname" placeholder="Фамилия" value="Иванов" class="required-field-input">
+            </div>
+            <div class="required-field">
+              <div class="required-field-title">Отчество</div>
+              <input type="text" id="patronymicEdit" name="patronymic" placeholder="Отчество" value="Иванович" class="required-field-input">
+            </div>
+            <div class="photo-field">
+              <div class="photo-field-title">Фотография</div>
+              <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photoEdit" class="photo-field-input">
+            </div>
+          </div>
+          <div class="save-button" id="editAdminDialogSave">Сохранить</div>
         </div>
       </div>
     </div>
