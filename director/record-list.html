@@ -16,19 +16,19 @@
 <div class="record-list-page">
   <div class="header-for-all">
     <div class="header-div-left">
-      <div class="logo" onclick="location.assign('/');">
+      <div class="logo" onclick="location.assign('/director/home');">
         <img class="logo-img" src="../img/logo.png"/>
         <p class="dental4clinic-logo">Dental4Clinic</p>
       </div>
-      <p class="first-header-item-selected">График записей</p>
-      <p class="header-item">Заявки</p>
-      <p class="header-item">Оплаты</p>
-      <p class="header-item">Цены</p>
-      <p class="header-item">Врачи</p>
-      <div class="header-item">Администраторы</div>
+      <p class="first-header-item-selected" onclick="location.assign('/director/record/list');">График записей</p>
+      <p class="header-item" onclick="location.assign('/director/requests');">Заявки</p>
+      <p class="header-item" onclick="location.assign('/director/payments');">Оплаты</p>
+      <p class="header-item" onclick="location.assign('/director/prices');">Цены</p>
+      <p class="header-item" onclick="location.assign('/director/doctors');">Врачи</p>
+      <div class="header-item" onclick="location.assign('/director/admins');">Администраторы</div>
     </div>
     <div class="header-div-right">
-      <div class="logo-user" onclick="window.location='/login.html';">
+      <div class="logo-user" onclick="location.assign('/profile/4');">
         <img class="logo-user-image" src="../img/user-photo.png"/>
       </div>
       <div class="phone-number">

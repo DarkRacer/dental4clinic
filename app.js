@@ -98,6 +98,9 @@ router.get('/profile/img/user-photo.png',function(req,res){
 router.get('/profile/img/phone.png',function(req,res){
   res.sendFile(path.join(__dirname+'/img/phone.png'));
 });
+router.get('/user/img/arrow.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/arrow.png'));
+});
 
 
 router.get('/doctor/img/logo.png',function(req,res){
@@ -115,6 +118,9 @@ router.get('/doctor/img/point-plus.png',function(req,res){
 router.get('/doctor/img/tooth-picture.png',function(req,res){
   res.sendFile(path.join(__dirname+'/img/tooth-picture.png'));
 });
+router.get('/doctor/img/arrow.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/arrow.png'));
+});
 
 
 router.get('/admin/img/logo.png',function(req,res){
@@ -128,6 +134,26 @@ router.get('/admin/img/phone.png',function(req,res){
 });
 router.get('/admin/img/point-plus.png',function(req,res){
   res.sendFile(path.join(__dirname+'/img/point-plus.png'));
+});
+router.get('/admin/img/arrow.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/arrow.png'));
+});
+
+
+router.get('/director/img/logo.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/logo.png'));
+});
+router.get('/director/img/user-photo.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/user-photo.png'));
+});
+router.get('/director/img/phone.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/phone.png'));
+});
+router.get('/director/img/point-plus.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/point-plus.png'));
+});
+router.get('/director/img/arrow.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/arrow.png'));
 });
 
 
@@ -276,6 +302,49 @@ router.get('/admin/css/main.css',function(req,res){
 });
 router.get('/admin/js/admin/appointments-create.js',function(req,res){
   res.sendFile(path.join(__dirname+'/js/admin/appointments-create.js'));
+});
+
+
+
+/* Routes for Director */
+router.get('/director/home',function(req,res){
+  res.sendFile(path.join(__dirname+'/director/main-page.html'));
+});
+router.get('/director/payments',function(req,res){
+  res.sendFile(path.join(__dirname+'/director/payments.html'));
+});
+router.get('/director/doctors',function(req,res){
+  res.sendFile(path.join(__dirname+'/director/doctors.html'));
+});
+router.get('/director/admins',function(req,res){
+  res.sendFile(path.join(__dirname+'/director/admins.html'));
+});
+router.get('/director/prices',function(req,res){
+  res.sendFile(path.join(__dirname+'/director/prices.html'));
+});
+router.get('/director/payments',function(req,res){
+  res.sendFile(path.join(__dirname+'/director/payments.html'));
+});
+router.get('/director/requests',function(req,res){
+  res.sendFile(path.join(__dirname+'/director/requests.html'));
+});
+router.get('/director/css/main.css',function(req,res){
+  res.sendFile(path.join(__dirname+'/css/main.css'));
+});
+router.get('/director/record/list',function(req,res){
+  res.sendFile(path.join(__dirname+'/director/record-list.html'));
+});
+router.get('/director/css/director/record-list.css',function(req,res){
+  res.sendFile(path.join(__dirname+'/css/director/record-list.css'));
+});
+router.get('/profile/4',function(req,res){
+  res.sendFile(path.join(__dirname+'/director/profile.html'));
+});
+router.get('/profile/4/edit',function(req,res){
+  res.sendFile(path.join(__dirname+'/director/profile-edit.html'));
+});
+router.get('/profile/css/director/profile-edit.css',function(req,res){
+  res.sendFile(path.join(__dirname+'/css/director/profile-edit.css'));
 });
 
 app.use('/', router);
