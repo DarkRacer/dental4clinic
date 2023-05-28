@@ -120,11 +120,44 @@
       </tbody>
     </table>
     <div class="buttons">
-      <div class="admin-buttons-button">Создать</div>
+      <div class="admin-buttons-button" id="openCreateAdminDialog">Создать</div>
       <div class="admin-buttons-button">Редактировать</div>
       <div class="admin-buttons-button" id="openDeleteDialog">Удалить</div>
     </div>
   </div>
+  <dialog class="create-admin-dialog-blackout" id="createAdminDialog" >
+    <div class="create-admin-dialog-content">
+      <div class="create-admin-dialog-title">
+        <div class="create-admin-dialog-title-text">Добавить администратора</div>
+        <div class="create-admin-dialog-close-div" id="createAdminDialogClose">
+          <img class="create-admin-dialog-close" src="../img/point-plus.png"/>
+        </div>
+      </div>
+      <div class="create-admin-dialog-body-content">
+        <div class="form">
+          <div class="required-fields">
+            <div class="required-field">
+              <div class="required-field-title">Имя</div>
+              <input type="text" id="name" name="name" placeholder="Имя" class="required-field-input">
+            </div>
+            <div class="required-field">
+              <div class="required-field-title">Фамилия</div>
+              <input type="text" id="surname" name="surname" placeholder="Фамилия" class="required-field-input">
+            </div>
+            <div class="required-field">
+              <div class="required-field-title">Отчество</div>
+              <input type="text" id="patronymic" name="patronymic" placeholder="Отчество" class="required-field-input">
+            </div>
+            <div class="photo-field">
+              <div class="photo-field-title">Фотография</div>
+              <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photo" class="photo-field-input">
+            </div>
+          </div>
+          <div class="save-button" id="createAdminDialogSave">Создать</div>
+        </div>
+      </div>
+    </div>
+  </dialog>
   <dialog class="delete-dialog-blackout" id="deleteDialog">
     <div class="delete-dialog-content">
       <div class="delete-dialog-title">
