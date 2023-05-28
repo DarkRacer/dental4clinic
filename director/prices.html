@@ -39,7 +39,7 @@
   </div>
   <div class="prices-body">
     <div class="prices-content">
-      <div class="prices-body-create">Создать услугу</div>
+      <div class="prices-body-create" id="openCreatePriceDialog">Создать услугу</div>
       <div class="prices-group">
         <div class="prices-group-title">Имплантация зубов</div>
         <div class="prices-group-content">
@@ -206,7 +206,42 @@
     </div>
     <img class="go-to-top" src="../img/arrow.png"/>
   </div>
-  <dialog class="prices-dialog-blackout" id="pricesDialog" open>
+  <dialog class="create-price-dialog-blackout" id="createPriceDialog" >
+    <div class="create-price-dialog-content">
+      <div class="create-price-dialog-title">
+        <div class="create-price-dialog-title-text">Создать услугу</div>
+        <div class="create-price-dialog-close-div" id="createPriceDialogClose">
+          <img class="create-price-dialog-close" src="../img/point-plus.png"/>
+        </div>
+      </div>
+      <div class="create-price-dialog-body-content">
+        <div class="form">
+          <div class="required-fields">
+            <div class="required-field">
+              <div class="required-field-title">Название услуги</div>
+              <input type="text" id="name" name="name" placeholder="Название услуги" class="required-field-input">
+            </div>
+            <div class="required-field">
+              <div class="required-field-title">Стоимость</div>
+              <input type="text" id="cost" name="cost" placeholder="Стоимость (Р.)" class="required-field-input">
+            </div>
+          </div>
+          <div class="additional-fields">
+            <div class="additional-field">
+              <div class="additional-field-title">Описание</div>
+              <textarea type="text" id="description" name="description" placeholder="Описание" class="additional-field-input"></textarea>
+            </div>
+            <div class="additional-field">
+              <div class="additional-field-title">Что входит в стоимость</div>
+              <textarea type="text" id="pluses" name="pluses" placeholder="Что входит в стоимость" class="additional-field-input"></textarea>
+            </div>
+          </div>
+          <div class="save-button">Создать</div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="prices-dialog-blackout" id="pricesDialog" >
     <div class="prices-dialog-content">
       <div class="prices-dialog-title">
         <div class="prices-dialog-title-text">Имплантация зубов с протезированием на имплантатах Straumann под ключ</div>
@@ -261,4 +296,5 @@
     </div>
   </dialog>
 </div>
+<script src="../js/director/prices.js"></script>
 </body>
