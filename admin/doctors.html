@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Врачи</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans%3A400"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C500%2C600"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C600"/>
+  <link rel="stylesheet" href="../css/admin/doctors.css"/>
+  <link rel="stylesheet" href="../css/main.css"/>
+</head>
+<body>
+<div class="doctors-page">
+  <div class="header-for-all">
+    <div class="header-div-left">
+      <div class="logo" onclick="location.assign('/');">
+        <img class="logo-img" src="../img/logo.png"/>
+        <p class="dental4clinic-logo">Dental4Clinic</p>
+      </div>
+      <p class="header-item">Создать пользователя</p>
+      <p class="header-item">Назначить запись</p>
+      <p class="header-item">График записей</p>
+      <p class="header-item">Цены</p>
+      <div class="fifth-header-item-selected">Врачи</div>
+      <div class="header-item">Оплаты</div>
+    </div>
+    <div class="header-div-right">
+      <div class="logo-user" onclick="window.location='/login.html';">
+        <img class="logo-user-image" src="../img/user-photo.png"/>
+      </div>
+      <div class="phone-number">
+        <img class="phone" src="../img/phone.png"/>
+        <p class="number">+7 473-222-22-22</p>
+      </div>
+    </div>
+  </div>
+  <div class="doctors-body">
+    <div class="doctors-body-header">
+      <label>
+        <select class="selector">
+          <option class="selector-text" selected>Все...</option>
+          <option class="selector-text">Детский стоматолог</option>
+          <option class="selector-text">Специалист по гигиене зубов</option>
+          <option class="selector-text">Стоматолог-ортодонт</option>
+          <option class="selector-text">Стоматолог-ортопед</option>
+          <option class="selector-text">Стоматолог-пародонтолог</option>
+          <option class="selector-text">Стоматолог-терапевт</option>
+          <option class="selector-text">Стоматолог-хирург</option>
+          <option class="selector-text">Хирург-имплантолог</option>
+          <option class="selector-text">Хирург-пародонтолог</option>
+          <option class="selector-text">Челюстно-лицевой хирург</option>
+          <option class="selector-text">Эндодонтист</option>
+        </select>
+      </label>
+    </div>
+    <div class="doctors-content">
+      <div class="doctor-card">
+        <div class="doctor-avatar">
+          <img class="doctor-image" src="../img/filimonenko.png">
+        </div>
+        <div class="doctor-name">
+          Филимоненко Светлана Сергеевна
+        </div>
+        <div class="doctor-spec">
+          Стоматолог-терапевт, Детский стоматолог
+        </div>
+      </div>
+      <div class="doctor-card">
+        <div class="doctor-avatar">
+          <img class="doctor-image" src="../img/husainov.png">
+        </div>
+        <div class="doctor-name">
+          Хусаинов Руслан Дмитриевич
+        </div>
+        <div class="doctor-spec">Стоматолог-терапевт</div>
+      </div>
+      <div class="doctor-card">
+        <div class="doctor-avatar">
+          <img class="doctor-image" src="../img/cukanova.png">
+        </div>
+        <div class="doctor-name">
+          Цуканова Юлия
+          <br/>
+          Игоревна
+        </div>
+        <div class="doctor-spec">
+          Стоматолог-терапевт, Детский
+          <br/>
+          стоматолог
+        </div>
+      </div>
+      <div class="doctor-card">
+        <div class="doctor-avatar">
+          <img class="doctor-image" src="../img/chumichyova.png">
+        </div>
+        <div class="doctor-name">
+          Чумичёва Анастасия Александровна
+        </div>
+        <div class="doctor-spec">Стоматолог-ортопед</div>
+      </div>
+    </div>
+  </div>
+  <dialog class="doctors-dialog-blackout" id="doctorsDialog" open>
+    <div class="doctors-dialog-content">
+      <div class="doctors-dialog-title">
+        <div class="doctors-dialog-title-text">Хусаинов Руслан Дмитриевич</div>
+        <div class="doctors-dialog-close-div" id="pricesDialogClose">
+          <img class="doctors-dialog-close" src="../img/point-plus.png"/>
+        </div>
+      </div>
+      <div class="doctors-dialog-body-content">
+        <div class="doctors-dialog-content-description">
+          Руслан Дмитриевич — молодой и перспективный специалист, главная цель которого — здоровые и счастливые улыбки. Доктор максимально ответственно и внимательно относится к каждому пациенту и находит индивидуальный подход к его клиническому случаю.</br>
+          Отличается добрым отношением к пациентам, но в то же время очень требовательный к себе и своей работе. Постоянно стремится совершенствовать свои умения и увеличивать объем знаний, обучаясь у Российских и зарубежных специалистов. Владеет современными методами лечения заболеваний зубочелюстной системы.</br>
+          Будучи студентом работал ассистентом со стоматологами всех специальностей, усваивая их опыт и навыки работы.
+        </div>
+        <div class="pluses-group">
+          <div class="pluses-group-title">Руслан Дмитриевич владеет следующими профессиональными навыками:</div>
+          <div class="plus-price-group">
+            <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
+            <div class="doctors-dialog-content-text">Составление индивидуального плана лечения, основываясь на данных осмотра и компьютерной томографии</div>
+          </div>
+          <div class="plus-price-group">
+            <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
+            <div class="doctors-dialog-content-text">Лечение кариеса и его осложнений</div>
+          </div>
+          <div class="plus-price-group">
+            <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
+            <div class="doctors-dialog-content-text">Восстановление разрушенных зубов с применением титановых или стекловолоконных штифтов или культевых вкладок</div>
+          </div>
+          <div class="plus-price-group">
+            <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
+            <div class="doctors-dialog-content-text">Современная обработка корневых каналов с применением ручных и механических никель-титановых инструментов ProТaper</div>
+          </div>
+          <div class="plus-price-group">
+            <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
+            <div class="doctors-dialog-content-text">Современные методы пломбирования корневых каналов.</div>
+          </div>
+        </div>
+      </div>
+      <div class="doctors-dialog-footer">
+        <div class="doctors-dialog-footer-button">Записаться</div>
+      </div>
+    </div>
+  </dialog>
+</div>
+</body>
