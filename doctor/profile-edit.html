@@ -8,7 +8,7 @@
   <title>Редактировать профиль</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C600"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600"/>
-  <link rel="stylesheet" href="../css/user/profile-edit.css"/>
+  <link rel="stylesheet" href="../css/doctor/profile-edit.css"/>
   <link rel="stylesheet" href="../css/main.css"/>
 </head>
 <body>
@@ -19,15 +19,10 @@
         <img class="logo-img" src="../img/logo.png"/>
         <p class="dental4clinic-logo">Dental4Clinic</p>
       </div>
-      <p class="header-item">Мои записи</p>
-      <p class="header-item">Записаться</p>
-      <p class="header-item">Оплата услуг</p>
-      <p class="header-item">Цены</p>
-      <p class="header-item">Врачи</p>
-      <div class="header-item">О нас</div>
+      <div class="header-item">Приём пациентов</div>
     </div>
     <div class="header-div-right">
-      <div class="logo-user" onclick="window.location='/login.html';">
+      <div class="logo-user" onclick="window.location='/user/profile.html';">
         <img class="logo-user-image" src="../img/user-photo.png"/>
       </div>
       <div class="phone-number">
@@ -52,36 +47,13 @@
           <input type="text" id="patronymic" name="patronymic" placeholder="Отчество" value="Сергеевич" class="required-field-input">
         </div>
       </div>
-      <div class="required-fields">
-        <div class="required-field">
-          <div class="required-field-title">Дата рождения</div>
-          <input type="date" id="dateOfBirthday" name="dateOfBirthday" placeholder="Дата рождения" value="2001-08-26" class="required-field-input">
-        </div>
-        <div class="required-field">
-          <div class="required-field-title">Телефон</div>
-          <input type="text" id="phone" name="phone" placeholder="+7 (___) ___-__-__" value="+79204292271" class="required-field-input">
-        </div>
-        <div class="required-field">
-          <div class="required-field-title">E-mail</div>
-          <input type="email" id="email" name="email" placeholder="E-mail" value="schtscherbakov@gmail.com" class="required-field-input">
-        </div>
-      </div>
-      <div class="additional-fields">
-        <div class="additional-field">
-          <div class="additional-field-title">Адрес проживания</div>
-          <textarea type="text" id="address" name="address" placeholder="Адрес проживания" class="additional-field-input">г. Воронеж, Московский проспект, 14</textarea>
-        </div>
-        <div class="additional-field">
-          <div class="additional-field-title">Адрес проживания</div>
-          <textarea type="text" id="allergies" name="allergies" placeholder="Аллергии" class="additional-field-input">Отсутствуют</textarea>
-        </div>
-      </div>
       <div class="photo-field">
         <div class="photo-field-title">Фотография</div>
         <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photo" class="photo-field-input">
       </div>
-      <div class="save-button">Сохранить</div>
-      </div>
+    </div>
+    <div class="save-button">Сохранить</div>
+  </div>
   </div>
 </div>
 </body>

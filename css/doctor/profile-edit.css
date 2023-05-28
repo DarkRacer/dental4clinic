@@ -1,12 +1,12 @@
 .profile-edit-page {
-   width: 100%;
-   overflow: hidden;
-   position: relative;
-   align-items: center;
-   display: flex;
-   flex-direction: column;
-   background-color: #ffffff;
- }
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
 .profile-edit-body {
   width: 90%;
   height: 100%;
@@ -17,7 +17,7 @@
 }
 .save-button {
   width: 100%;
-  height: 5rem;
+  height: 4rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -83,7 +83,7 @@
   width: 45%;
   height: 100%;
   display: flex;
-  margin-bottom: 3%;
+  margin-bottom: 4%;
   flex-direction: column;
 }
 .photo-field-title {
