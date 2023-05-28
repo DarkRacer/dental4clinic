@@ -104,6 +104,73 @@
       </div>
     </div>
   </div>
+  <dialog class="create-doctor-dialog-blackout" id="createDoctorDialog" >
+    <div class="create-doctor-dialog-content">
+      <div class="create-doctor-dialog-title">
+        <div class="create-doctor-dialog-title-text">Добавить врача</div>
+        <div class="create-doctor-dialog-close-div" id="createDoctorDialogClose">
+          <img class="create-doctor-dialog-close" src="../img/point-plus.png"/>
+        </div>
+      </div>
+      <div class="create-doctor-dialog-body-content">
+        <div class="form">
+          <div class="required-fields">
+            <div class="required-field">
+              <div class="required-field-title">Имя</div>
+              <input type="text" id="name" name="name" placeholder="Имя" class="required-field-input">
+            </div>
+            <div class="required-field">
+              <div class="required-field-title">Фамилия</div>
+              <input type="text" id="surname" name="surname" placeholder="Фамилия" class="required-field-input">
+            </div>
+            <div class="required-field">
+              <div class="required-field-title">Отчество</div>
+              <input type="text" id="patronymic" name="patronymic" placeholder="Отчество" class="required-field-input">
+            </div>
+          </div>
+          <div class="required-fields">
+            <div class="required-field">
+              <div class="required-field-title">Специализация</div>
+              <label class="label-for-selector">
+                <select class="selector" id="spec">
+                  <option class="selector-text" selected>Не выбрано</option>
+                  <option class="selector-text">Детский стоматолог</option>
+                  <option class="selector-text">Специалист по гигиене зубов</option>
+                  <option class="selector-text">Стоматолог-ортодонт</option>
+                  <option class="selector-text">Стоматолог-ортопед</option>
+                  <option class="selector-text">Стоматолог-пародонтолог</option>
+                  <option class="selector-text">Стоматолог-терапевт</option>
+                  <option class="selector-text">Стоматолог-хирург</option>
+                  <option class="selector-text">Хирург-имплантолог</option>
+                  <option class="selector-text">Хирург-пародонтолог</option>
+                  <option class="selector-text">Челюстно-лицевой хирург</option>
+                  <option class="selector-text">Эндодонтист</option>
+                </select>
+              </label>
+            </div>
+            <div class="photo-field">
+              <div class="photo-field-title">Фотография</div>
+              <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photo" class="photo-field-input">
+            </div>
+            <div class="required-field">
+              <div class="services-doctor-button" id="openCreateServicesDoctorDialog">Выбрать оказываемые услуги</div>
+            </div>
+          </div>
+          <div class="additional-fields">
+            <div class="additional-field">
+              <div class="additional-field-title">Описание</div>
+              <textarea type="text" id="description" name="description" placeholder="Описание" class="additional-field-input"></textarea>
+            </div>
+            <div class="additional-field">
+              <div class="additional-field-title">Проффесиональные навыки</div>
+              <textarea type="text" id="pluses" name="pluses" placeholder="Проффесиональные навыки" class="additional-field-input"></textarea>
+            </div>
+          </div>
+          <div class="save-button" id="createDoctorDialogSave">Создать</div>
+        </div>
+      </div>
+    </div>
+  </dialog>
   <dialog class="doctors-dialog-blackout" id="doctorsDialog">
     <div class="doctors-dialog-content">
       <div class="doctors-dialog-title">
