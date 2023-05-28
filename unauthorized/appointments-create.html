@@ -5,49 +5,56 @@
   <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <title>Назначить запись</title>
+  <title>Записаться</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C600"/>
-  <link rel="stylesheet" href="../css/admin/appointments-create.css"/>
+  <link rel="stylesheet" href="../css/unauthorized/appointments-create.css"/>
   <link rel="stylesheet" href="../css/main.css"/>
 </head>
 <body>
 <div class="appointments-create-page">
   <div class="header-for-all">
-    <div class="header-div-left">
-      <div class="logo" onclick="location.assign('/');">
-        <img class="logo-img" src="../img/logo.png"/>
-        <p class="dental4clinic-logo">Dental4Clinic</p>
-      </div>
-      <p class="header-item">Создать пользователя</p>
-      <p class="second-header-item-selected">Назначить запись</p>
-      <p class="header-item">График записей</p>
-      <p class="header-item">Цены</p>
-      <p class="header-item">Врачи</p>
-      <div class="header-item">Оплаты</div>
+  <div class="header-div-left">
+    <div class="logo" onclick="location.assign('/');">
+      <img class="logo-img" src="../img/logo.png"/>
+      <p class="dental4clinic-logo">Dental4Clinic</p>
     </div>
-    <div class="header-div-right">
-      <div class="logo-user" onclick="window.location='/login.html';">
-        <img class="logo-user-image" src="../img/user-photo.png"/>
-      </div>
-      <div class="phone-number">
-        <img class="phone" src="../img/phone.png"/>
-        <p class="number">+7 473-222-22-22</p>
-      </div>
+    <p class="first-header-item-selected">Записаться</p>
+    <p class="header-item">Цены</p>
+    <p class="header-item">Врачи</p>
+    <div class="header-item">О нас</div>
+  </div>
+  <div class="header-div-right">
+    <div class="logo-user" onclick="window.location='/login.html';">
+      <img class="logo-user-image" src="../img/user-logo.png"/>
+    </div>
+    <div class="phone-number">
+      <img class="phone" src="../img/phone.png"/>
+      <p class="number">+7 473-222-22-22</p>
     </div>
   </div>
+</div>
   <div class="appointments-create-body">
     <div class="form">
       <div class="form-field-last-column">
         <div class="form-field">
-          <div class="select-button" id="openRequestsDialog">Выбрать заявку</div>
+          <div class="form-field-title">Имя</div>
+          <input type="text" name="name" id="name-field" placeholder="Имя" class="form-field-input">
+        </div>
+        <div class="form-field">
+          <div class="form-field-title">Жалоба</div>
+          <input type="text" name="description" id="description-field" placeholder="Жалоба" class="form-field-input">
         </div>
         <div class="form-field-last-column">
-          <div class="form-field-title">Пациент</div>
-          <input type="text" name="patient" id="patient-field" placeholder="Пациент" class="form-field-input">
+          <div class="form-field-title">Телефон</div>
+          <input type="text" name="phone" id="phone-field" placeholder="+7 (___) ___-__-__" class="form-field-input">
         </div>
       </div>
       <div class="form-field-group">
+        <div class="form-field">
+          <div class="form-field-title">Фамилия</div>
+          <input type="text" name="surname" id="surname-field" placeholder="Фамилия" class="form-field-input">
+        </div>
         <div class="form-field">
           <div class="form-field-title">Дата</div>
           <input type="date" name="date" id="date-field" placeholder="Дата" class="form-field-input">
@@ -58,7 +65,7 @@
         </div>
       </div>
     </div>
-    <div class="form">
+    <div class="second-form">
       <div class="form-field">
         <div class="form-field-title">Поиск по врачу</div>
         <input type="text" name="doctor" id="doctor-field" placeholder="Врач" class="form-field-input">
@@ -76,12 +83,6 @@
         </th>
         <th class="cell-header-recording">
           <div class="cell-header-content-recording">Оказываемые услуги</div>
-        </th>
-      </tr>
-      <tr class="row-recording">
-        <th class="cell-recording">
-        </th>
-        <th class="cell-recording">
         </th>
       </tr>
       <tr class="row-recording">
