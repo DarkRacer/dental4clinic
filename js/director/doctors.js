@@ -43,4 +43,18 @@ document.querySelector('#deleteDoctorDialogClose').onclick = function() {
   deleteDoctorDialog.close();
 }
 
+var servicesDoctorDialog = document.querySelector('#servicesDoctorDialog');
+document.querySelector('#openCreateServicesDoctorDialog').onclick = function() {
+  servicesDoctorDialog.show();
+}
+document.querySelector('#openEditServicesDoctorDialog').onclick = function() {
+  servicesDoctorDialog.show();
+}
+document.querySelector('#openServicesDoctorDialog').onclick = function() {
+  servicesDoctorDialog.show();
+}
+document.querySelector('#servicesDoctorDialogClose').onclick = function() {
+  servicesDoctorDialog.close();
+}
+
 
