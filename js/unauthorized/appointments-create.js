@@ -208,9 +208,6 @@ recordButton.addEventListener("click", (e) => {
 })
 
 
-
-
-
 function GetCookie(name) {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
