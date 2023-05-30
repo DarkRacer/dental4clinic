@@ -45,6 +45,10 @@ document.querySelector('#backButtonDeletePriceDialogClose').onclick = function()
 let goToTop = document.getElementById("goToTop");
 window.onscroll = function() {scrollFunction()};
 
+goToTop.addEventListener("click", (e) => {
+  topFunction();
+})
+
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     goToTop.style.display = "block";
