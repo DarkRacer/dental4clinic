@@ -6,24 +6,27 @@ const headers = {
   "Accept": "*/*"
 }
 
-
 getPrices()
 
+let goToTop = document.getElementById("goToTop");
+let pricesDialogTitle = document.getElementById("pricesDialogTitle");
+let pricesDialogDescription = document.getElementById("pricesDialogDescription");
+let pricesDialogPluses = document.getElementById("pricesDialogPluses");
+let pricesDialogPrice = document.getElementById("pricesDialogPrice");
+let pricesContent = document.getElementById("pricesContent");
 var pricesDialog = document.querySelector('#pricesDialog');
-// document.querySelector('#openPricesDialog').onclick = function() {
-//   pricesDialog.show();
-// }
+
+
 document.querySelector('#pricesDialogClose').onclick = function() {
   pricesDialog.close();
 }
 
-
-let goToTop = document.getElementById("goToTop");
-window.onscroll = function() {scrollFunction()};
-
 goToTop.addEventListener("click", (e) => {
   topFunction();
 })
+
+window.onscroll = function() {scrollFunction()};
+
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     goToTop.style.display = "block";
@@ -31,18 +34,10 @@ function scrollFunction() {
     goToTop.style.display = "none";
   }
 }
-
-function openDialog(serviceId) {
-  console.log(serviceId)
-}
-
 function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
-
-
-let pricesContent = document.getElementById("pricesContent");
 
 function getPrices() {
   GetUrl('prices').then(data => {
@@ -71,10 +66,32 @@ function getPrices() {
 
     pricesContent.innerHTML=result;
   }).catch(error => {
-    console.log(error)
+    console.error(error)
   })
 }
 
+function openDialog(serviceId) {
+  GetUrl(`price/${serviceId}`).then(data => {
+    pricesDialogTitle.innerText = data.name;
+    pricesDialogDescription.innerText = data.description;
+    pricesDialogPrice.innerText = data.price + " ₽";
+
+    let plusesHtml = `
+          <div class="pluses-group-title">Что входит в стоимость</div>
+    `;
+
+    data.pluses.split(".").forEach(plus => {
+      plusesHtml += `
+          <div class="plus-price-group">
+            <img class="prices-dialog-content-plus" src="../img/point-plus.png"/>
+            <div class="prices-dialog-content-text">${plus}</div>
+          </div>
+      `;
+    });
+    pricesDialogPluses.innerHTML = plusesHtml;
+  }).catch(error => console.error(error));
+  pricesDialog.show();
+}
 
 function GetCookie(name) {
   const value = `; ${document.cookie}`;
@@ -83,7 +100,6 @@ function GetCookie(name) {
 }
 
 function GetUrl(getUrl) {
-  console.log("get " + getUrl);
   return fetch(url + getUrl, {
     method: 'GET',
     headers: headers
@@ -92,7 +108,6 @@ function GetUrl(getUrl) {
 }
 
 function PostUrl(postUrl, body) {
-  console.log("get " + postUrl);
   return fetch(url + postUrl, {
     method: 'POST',
     headers: headers,

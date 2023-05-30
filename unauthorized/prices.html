@@ -36,7 +36,7 @@
     </div>
   </div>
   <div class="prices-body">
-    <div class="prices-body-notification" onclick="openDialog('1')">Познакомьтесь с ценами на самые популярные услуги в центре «Dental4Clinic». Не пропустите специальные предложения и акции!</div>
+    <div class="prices-body-notification">Познакомьтесь с ценами на самые популярные услуги в центре «Dental4Clinic». Не пропустите специальные предложения и акции!</div>
     <div class="prices-content" id="pricesContent">
     </div>
     <img class="go-to-top" onclick="topFunction()" id="goToTop" src="../img/arrow.png"/>
@@ -44,50 +44,18 @@
   <dialog class="prices-dialog-blackout" id="pricesDialog">
     <div class="prices-dialog-content">
       <div class="prices-dialog-title">
-        <div class="prices-dialog-title-text">Имплантация зубов с протезированием на имплантатах Straumann под ключ</div>
+        <div class="prices-dialog-title-text" id="pricesDialogTitle"></div>
         <div class="prices-dialog-close-div" id="pricesDialogClose">
           <img class="prices-dialog-close" src="../img/point-plus.png"/>
         </div>
       </div>
       <div class="prices-dialog-body-content">
-        <div class="prices-dialog-content-description">
-          Импланты Straumann изготовлены из патентованного сплава титана-циркония (Roxolid©, Straumann), который по надежности превосходит чистый титан и отлично приживается.
-          <br/>
-
-          <br/>
-          Пожизненная гарантия на имплантат от производителя.
-        </div>
-        <div class="pluses-group">
-          <div class="pluses-group-title">Что входит в стоимость</div>
-          <div class="plus-price-group">
-            <img class="prices-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="prices-dialog-content-text">Пожизненная гарантия на имплант.</div>
-          </div>
-          <div class="plus-price-group">
-            <img class="prices-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="prices-dialog-content-text">Операция без страха и боли(качественная анестезия).</div>
-          </div>
-          <div class="plus-price-group">
-            <img class="prices-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="prices-dialog-content-text">Временные пластинки и коронки для максимального комфорта.</div>
-          </div>
-          <div class="plus-price-group">
-            <img class="prices-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="prices-dialog-content-text">Индивидуальный абатмент(лучшая эстетика по сравнению со стандартными).</div>
-          </div>
-          <div class="plus-price-group">
-            <img class="prices-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="prices-dialog-content-text">Натуральный вид зуба(коронка из современных материалов).</div>
-          </div>
-          <div class="plus-price-group">
-            <img class="prices-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="prices-dialog-content-text">Забота о пациенте(диспансерные осмотры каждые 6 месяцев).</div>
-          </div>
-
+        <div class="prices-dialog-content-description" id="pricesDialogDescription"></div>
+        <div class="pluses-group" id="pricesDialogPluses">
         </div>
       </div>
       <div class="prices-dialog-footer">
-        <div class="prices-dialog-footer-price">161 000 ₽</div>
+        <div class="prices-dialog-footer-price" id="pricesDialogPrice"></div>
         <div class="prices-dialog-footer-button" onclick="location.assign('/unauthorized/appointments/create');">Записаться</div>
       </div>
     </div>
