@@ -35,61 +35,62 @@
     </div>
   </div>
   <div class="profile-edit-body">
-    <div class="form">
+    <form class="form" id="registration-form">
       <div class="required-fields">
         <div class="required-field">
           <div class="required-field-title">Имя</div>
-          <input type="text" id="name" name="name" placeholder="Имя" class="required-field-input">
+          <input type="text" id="name-field" name="name" placeholder="Имя" class="required-field-input">
         </div>
         <div class="required-field">
           <div class="required-field-title">Фамилия</div>
-          <input type="text" id="surname" name="surname" placeholder="Фамилия" class="required-field-input">
+          <input type="text" id="surname-field" name="surname" placeholder="Фамилия" class="required-field-input">
         </div>
         <div class="required-field">
           <div class="required-field-title">Отчество</div>
-          <input type="text" id="patronymic" name="patronymic" placeholder="Отчество" class="required-field-input">
+          <input type="text" id="patronymic-field" name="patronymic" placeholder="Отчество" class="required-field-input">
         </div>
       </div>
       <div class="required-fields">
         <div class="required-field">
           <div class="required-field-title">Дата рождения</div>
-          <input type="date" id="dateOfBirthday" name="dateOfBirthday" placeholder="Дата рождения" class="required-field-input">
+          <input type="date" id="dateOfBirthday-field" name="dateOfBirthday" placeholder="Дата рождения" class="required-field-input">
         </div>
         <div class="required-field">
           <div class="required-field-title">Телефон</div>
-          <input type="text" id="phone" name="phone" placeholder="+7 (___) ___-__-__" class="required-field-input">
+          <input type="text" id="phone-field" name="phone" placeholder="+7 (___) ___-__-__" class="required-field-input">
         </div>
         <div class="required-field">
           <div class="required-field-title">E-mail</div>
-          <input type="email" id="email" name="email" placeholder="E-mail" class="required-field-input">
+          <input type="email" id="email-field" name="email" placeholder="E-mail" class="required-field-input">
         </div>
       </div>
       <div class="additional-fields">
         <div class="additional-field">
           <div class="additional-field-title">Адрес проживания</div>
-          <textarea type="text" id="address" name="address" placeholder="Адрес проживания" class="additional-field-input"></textarea>
+          <textarea type="text" id="address-field" name="address" placeholder="Адрес проживания" class="additional-field-input"></textarea>
         </div>
         <div class="additional-field">
           <div class="additional-field-title">Адрес проживания</div>
-          <textarea type="text" id="allergies" name="allergies" placeholder="Аллергии" class="additional-field-input"></textarea>
+          <textarea type="text" id="allergies-field" name="allergies" placeholder="Аллергии" class="additional-field-input"></textarea>
         </div>
       </div>
       <div class="photo-field">
         <div class="photo-field-title">Фотография</div>
-        <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photo" class="photo-field-input">
+        <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photo-field" class="photo-field-input" onchange="imageUploaded()">
       </div>
       <div class="additional-fields">
         <div class="required-field">
           <div class="required-field-title">Логин</div>
-          <input type="text" id="login" name="login" placeholder="Логин" class="required-login-field-input">
+          <input type="text" id="login-field" name="login" placeholder="Логин" class="required-login-field-input">
         </div>
         <div class="required-field">
           <div class="required-field-title">Пароль</div>
-          <input type="password" id="password" name="password" placeholder="Пароль" class="required-login-field-input">
+          <input type="password" id="password-field" name="password" placeholder="Пароль" class="required-login-field-input">
         </div>
       </div>
-      <div class="save-button" onclick="location.assign('/user/home');">Регистрация</div>
-    </div>
+      <div class="save-button" id="save-button">Регистрация</div>
+    </form>
   </div>
 </div>
+<script src="./js/registration.js"></script>
 </body>
