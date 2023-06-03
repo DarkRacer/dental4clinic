@@ -197,6 +197,9 @@ router.get('/user/appointments/create',function(req,res){
 router.get('/user/css/user/appointments-create.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/user/appointments-create.css'));
 });
+router.get('/user/js/user/appointments-create.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/user/appointments-create.js'));
+});
 router.get('/user/doctors',function(req,res){
   res.sendFile(path.join(__dirname+'/user/doctors.html'));
 });

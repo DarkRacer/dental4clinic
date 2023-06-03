@@ -5,9 +5,12 @@ const headers = {
   "Origin": "https://localhost:8000",
   "Accept": "*/*"
 }
+var userId = '';
+
 if (token) {
   GetUrl('role')
     .then(data => {
+      userId = data.id;
       SelectFunctionalByRole(data['role'])
     })
     .catch((error) => {

@@ -5,6 +5,7 @@ const headers = {
   "Origin": "https://localhost:8000",
   "Accept": "*/*"
 }
+var userId = 1;
 
 const doctorField = document.getElementById("doctor-field");
 const serviceField = document.getElementById("service-field");
@@ -15,6 +16,8 @@ const secondDoctor = document.getElementById("second-doctor");
 const secondServices = document.getElementById("second-services");
 const thirdDoctor = document.getElementById("third-doctor");
 const thirdServices = document.getElementById("third-services");
+const fourthDoctor = document.getElementById("fourth-doctor");
+const fourthServices = document.getElementById("fourth-services");
 
 const firstRow = document.getElementById("first-row");
 const firstRowCell1 = document.getElementById("first-row-cell-1");
@@ -27,6 +30,10 @@ const secondRowCell2 = document.getElementById("second-row-cell-2");
 const thirdRow = document.getElementById("third-row");
 const thirdRowCell1 = document.getElementById("third-row-cell-1");
 const thirdRowCell2 = document.getElementById("third-row-cell-2");
+
+const fourthRow = document.getElementById("fourth-row");
+const fourthRowCell1 = document.getElementById("fourth-row-cell-1");
+const fourthRowCell2 = document.getElementById("fourth-row-cell-2");
 
 const appointmentForm = document.getElementById("appointment-form");
 const recordButton = document.getElementById("record-button");
@@ -94,6 +101,14 @@ function updateDoctorTable() {
     thirdDoctor.textContent = ''
     thirdServices.textContent = ''
   }
+
+  if (filteredDoctorsTableValue[3]) {
+    fourthDoctor.textContent = filteredDoctorsTableValue[3].doctor
+    fourthServices.textContent = filteredDoctorsTableValue[3].services
+  } else {
+    fourthDoctor.textContent = ''
+    fourthServices.textContent = ''
+  }
 }
 
 firstRow.addEventListener("click", (e) => {
@@ -112,6 +127,11 @@ firstRow.addEventListener("click", (e) => {
     thirdRowCell1.classList.add("cell-recording")
     thirdRowCell2.classList.remove("cell-recording-selected")
     thirdRowCell2.classList.add("cell-recording")
+
+    fourthRowCell1.classList.remove("cell-recording-selected")
+    fourthRowCell1.classList.add("cell-recording")
+    fourthRowCell2.classList.remove("cell-recording-selected")
+    fourthRowCell2.classList.add("cell-recording")
 
     selectedRow = 0;
   } else {
@@ -140,6 +160,11 @@ secondRow.addEventListener("click", (e) => {
     thirdRowCell2.classList.remove("cell-recording-selected")
     thirdRowCell2.classList.add("cell-recording")
 
+    fourthRowCell1.classList.remove("cell-recording-selected")
+    fourthRowCell1.classList.add("cell-recording")
+    fourthRowCell2.classList.remove("cell-recording-selected")
+    fourthRowCell2.classList.add("cell-recording")
+
     selectedRow = 1;
   } else {
     secondRowCell1.classList.remove("cell-recording-selected")
@@ -167,6 +192,11 @@ thirdRow.addEventListener("click", (e) => {
     secondRowCell2.classList.remove("cell-recording-selected")
     secondRowCell2.classList.add("cell-recording")
 
+    fourthRowCell1.classList.remove("cell-recording-selected")
+    fourthRowCell1.classList.add("cell-recording")
+    fourthRowCell2.classList.remove("cell-recording-selected")
+    fourthRowCell2.classList.add("cell-recording")
+
     selectedRow = 2;
   } else {
     thirdRowCell1.classList.remove("cell-recording-selected")
@@ -177,29 +207,57 @@ thirdRow.addEventListener("click", (e) => {
   }
 })
 
+fourthRow.addEventListener("click", (e) => {
+  if (selectedRow !== 2) {
+    fourthRowCell1.classList.remove("cell-recording")
+    fourthRowCell1.classList.add("cell-recording-selected")
+    fourthRowCell2.classList.remove("cell-recording")
+    fourthRowCell2.classList.add("cell-recording-selected")
+
+    firstRowCell1.classList.remove("cell-recording-selected")
+    firstRowCell1.classList.add("cell-recording")
+    firstRowCell2.classList.remove("cell-recording-selected")
+    firstRowCell2.classList.add("cell-recording")
+
+    secondRowCell1.classList.remove("cell-recording-selected")
+    secondRowCell1.classList.add("cell-recording")
+    secondRowCell2.classList.remove("cell-recording-selected")
+    secondRowCell2.classList.add("cell-recording")
+
+    thirdRowCell1.classList.remove("cell-recording-selected")
+    thirdRowCell1.classList.add("cell-recording")
+    thirdRowCell2.classList.remove("cell-recording-selected")
+    thirdRowCell2.classList.add("cell-recording")
+
+    selectedRow = 3;
+  } else {
+    fourthRowCell1.classList.remove("cell-recording-selected")
+    fourthRowCell1.classList.add("cell-recording")
+    fourthRowCell2.classList.remove("cell-recording-selected")
+    fourthRowCell2.classList.add("cell-recording")
+    selectedRow = -1;
+  }
+})
+
 recordButton.addEventListener("click", (e) => {
   e.preventDefault();
-  const name = appointmentForm.name.value;
-  const description = appointmentForm.description.value;
-  const phone = appointmentForm.phone.value;
-  const surname = appointmentForm.surname.value;
+  // const description = appointmentForm.description.value;
   const date = appointmentForm.date.value;
   const datetime = appointmentForm.datetime.value;
 
   if (selectedRow >= 0) {
     const appointmentBody = {
-      name: name,
-      description: description,
-      phone: phone,
-      surname: surname,
+      id: userId,
+      // description: description,
       date: date,
       datetime: datetime,
       doctorId: filteredDoctorsTableValue[selectedRow][`doctor-id`]
     }
     console.log(appointmentBody)
 
-    PostUrl("appointments/create/unauthorized", appointmentBody).then(data => {
+    PostUrl("appointments/create/user", appointmentBody).then(data => {
       console.log("Success")
+      location.assign('/user/appointments');
     })
       .catch((error) => {
         console.error('Error:', error);
@@ -230,5 +288,5 @@ function PostUrl(postUrl, body) {
     headers: headers,
     body: JSON.stringify(body)
   })
-    .then(response => response.json())
+    .then(response => response)
 }
