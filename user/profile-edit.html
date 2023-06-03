@@ -37,51 +37,52 @@
     </div>
   </div>
   <div class="profile-edit-body">
-    <div class="form">
+    <form class="form" id="edit-form">
       <div class="required-fields">
         <div class="required-field">
           <div class="required-field-title">Имя</div>
-          <input type="text" id="name" name="name" placeholder="Имя" value="Максим" class="required-field-input">
+          <input type="text" id="name" name="name" placeholder="Имя" class="required-field-input">
         </div>
         <div class="required-field">
           <div class="required-field-title">Фамилия</div>
-          <input type="text" id="surname" name="surname" placeholder="Фамилия" value="Щербаков" class="required-field-input">
+          <input type="text" id="surname" name="surname" placeholder="Фамилия" class="required-field-input">
         </div>
         <div class="required-field">
           <div class="required-field-title">Отчество</div>
-          <input type="text" id="patronymic" name="patronymic" placeholder="Отчество" value="Сергеевич" class="required-field-input">
+          <input type="text" id="patronymic" name="patronymic" placeholder="Отчество" class="required-field-input">
         </div>
       </div>
       <div class="required-fields">
         <div class="required-field">
           <div class="required-field-title">Дата рождения</div>
-          <input type="date" id="dateOfBirthday" name="dateOfBirthday" placeholder="Дата рождения" value="2001-08-26" class="required-field-input">
+          <input type="date" id="dateOfBirthday" name="dateOfBirthday" placeholder="Дата рождения" class="required-field-input">
         </div>
         <div class="required-field">
           <div class="required-field-title">Телефон</div>
-          <input type="text" id="phone" name="phone" placeholder="+7 (___) ___-__-__" value="+79204292271" class="required-field-input">
+          <input type="text" id="phone" name="phone" placeholder="+7 (___) ___-__-__" class="required-field-input">
         </div>
         <div class="required-field">
           <div class="required-field-title">E-mail</div>
-          <input type="email" id="email" name="email" placeholder="E-mail" value="schtscherbakov@gmail.com" class="required-field-input">
+          <input type="email" id="email" name="email" placeholder="E-mail" class="required-field-input">
         </div>
       </div>
       <div class="additional-fields">
         <div class="additional-field">
           <div class="additional-field-title">Адрес проживания</div>
-          <textarea type="text" id="address" name="address" placeholder="Адрес проживания" class="additional-field-input">г. Воронеж, Московский проспект, 14</textarea>
+          <textarea type="text" id="address" name="address" placeholder="Адрес проживания" class="additional-field-input"></textarea>
         </div>
         <div class="additional-field">
-          <div class="additional-field-title">Адрес проживания</div>
-          <textarea type="text" id="allergies" name="allergies" placeholder="Аллергии" class="additional-field-input">Отсутствуют</textarea>
+          <div class="additional-field-title">Аллергии</div>
+          <textarea type="text" id="allergies" name="allergies" placeholder="Аллергии" class="additional-field-input"></textarea>
         </div>
       </div>
       <div class="photo-field">
         <div class="photo-field-title">Фотография</div>
-        <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photo" class="photo-field-input">
+        <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photo" class="photo-field-input" onchange="imageUploaded()">
       </div>
-      <div class="save-button" onclick="location.assign('/profile/1');">Сохранить</div>
-      </div>
+      <div class="save-button" id="save-button">Сохранить</div>
+      </form>
   </div>
 </div>
+<script src="../js/user/profile-edit.js"></script>
 </body>

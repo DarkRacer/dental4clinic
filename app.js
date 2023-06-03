@@ -227,6 +227,9 @@ router.get('/user/css/user/about.css',function(req,res){
 router.get('/profile/css/user/profile-edit.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/user/profile-edit.css'));
 });
+router.get('/profile/js/user/profile-edit.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/user/profile-edit.js'));
+});
 router.get('/profile/css/main.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/main.css'));
 });

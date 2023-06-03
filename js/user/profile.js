@@ -49,7 +49,7 @@ function getUserInfo() {
   let query = window.location.href.split('/');
   let userId = query[query.length - 1]
   GetUrl(`user/${userId}`).then(data => {
-    nameField.innerText = data.name;
+    nameField.innerText = data['full-name'];
     photoField.src = data.photo;
     dateOfBirthdayField.innerText = data.dateOfBirthday
     phoneField.innerText = data.phone
