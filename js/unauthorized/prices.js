@@ -106,12 +106,3 @@ function GetUrl(getUrl) {
   })
     .then(response => response.json())
 }
-
-function PostUrl(postUrl, body) {
-  return fetch(url + postUrl, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(body)
-  })
-    .then(response => response.json())
-}

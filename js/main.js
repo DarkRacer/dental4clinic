@@ -1,6 +1,10 @@
 const url ='https://localhost:8000/';
 var token = GetCookie("access_token")
-
+const headers = {
+  "Host": "localhost:8000",
+  "Origin": "https://localhost:8000",
+  "Accept": "*/*"
+}
 if (token) {
   GetUrl('role')
     .then(data => {
@@ -37,7 +41,7 @@ function GetUrl(getUrl) {
   console.log("get " + getUrl);
   return fetch(url + getUrl, {
     method: 'GET',
-    headers: {'Authorization': `Bearer ${token}`}
+    headers: headers
   })
     .then(response => response.json())
 }
@@ -46,7 +50,7 @@ function PostUrl(postUrl, body) {
   console.log("get " + postUrl);
   return fetch(url + postUrl, {
     method: 'POST',
-    headers: {'Authorization': `Bearer ${token}`},
+    headers: headers,
     body: JSON.stringify(body)
   })
     .then(response => response.json())
