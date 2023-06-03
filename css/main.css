@@ -535,6 +535,14 @@ html {
   background-color: #e7f2f6;
   flex-shrink: 0;
 }
+.cell-selected {
+  width: 34%;
+  height: 100%;
+  border: solid 0.1rem #245787;
+  box-sizing: border-box;
+  background-color: #64caef;
+  flex-shrink: 0;
+}
 .cell-content {
   margin-bottom: 2%;
   display: flex;
