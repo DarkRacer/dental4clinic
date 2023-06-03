@@ -19,6 +19,10 @@ var pricesDialog = document.querySelector('#pricesDialog');
 
 document.querySelector('#pricesDialogClose').onclick = function() {
   pricesDialog.close();
+  pricesDialogTitle.innerText = ''
+  pricesDialogDescription.innerText = 'Упс. Что-то пошло не так...';
+  pricesDialogPluses.innerHTML = ``;
+  pricesDialogPrice.innerText = ``;
 }
 
 goToTop.addEventListener("click", (e) => {
