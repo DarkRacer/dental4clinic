@@ -41,11 +41,11 @@
   <div class="appointments-content-group">
     <div class="calendar">
       <div class="calendar-month-year">
-        <img class="calendar-month-before" src="../img/arrow.png"/>
-        <div class="calendar-month-year-content">Май 2023</div>
-        <img class="calendar-month-next" src="../img/arrow.png"/>
+        <img class="calendar-month-before" src="../img/arrow.png" id="monthBefore"/>
+        <div class="calendar-month-year-content" id="calendarTitle">       </div>
+        <img class="calendar-month-next" src="../img/arrow.png" id="monthNext"/>
       </div>
-      <div class="calendar-date-group">
+      <div class="calendar-date-group" id="calendarDateGroup">
         <div class="calendar-date-group-row">
           <div class="week-day">Понедельник</div>
           <div class="week-day">Вторник</div>
@@ -55,67 +55,19 @@
           <div class="week-day">Суббота</div>
           <div class="week-day">Воскресенье</div>
         </div>
-        <div class="calendar-date-group-row">
-          <div class="calendar-date">1</div>
-          <div class="calendar-date">2</div>
-          <div class="calendar-date">3</div>
-          <div class="calendar-date">4</div>
-          <div class="date-selected">5</div>
-          <div class="calendar-date">6</div>
-          <div class="calendar-date">7</div>
-        </div>
-        <div class="calendar-date-group-row">
-          <div class="date-selected">8</div>
-          <div class="calendar-date">9</div>
-          <div class="date-selected">10</div>
-          <div class="calendar-date">11</div>
-          <div class="calendar-date">12</div>
-          <div class="calendar-date">13</div>
-          <div class="calendar-date">14</div>
-        </div>
-        <div class="calendar-date-group-row">
-          <div class="calendar-date">15</div>
-          <div class="calendar-date">16</div>
-          <div class="calendar-date">17</div>
-          <div class="calendar-date">18</div>
-          <div class="calendar-date">19</div>
-          <div class="calendar-date">20</div>
-          <div class="calendar-date">21</div>
-        </div>
-        <div class="calendar-date-group-row">
-          <div class="calendar-date">22</div>
-          <div class="calendar-date">23</div>
-          <div class="calendar-date">24</div>
-          <div class="calendar-date">25</div>
-          <div class="calendar-date">26</div>
-          <div class="calendar-date">27</div>
-          <div class="calendar-date">28</div>
-        </div>
-        <div class="calendar-date-group-row">
-          <div class="calendar-date">29</div>
-          <div class="calendar-date">30</div>
-          <div class="calendar-date">31</div>
-          <div class="calendar-date">
-          </div>
-          <div class="calendar-date">
-          </div>
-          <div class="calendar-date">
-          </div>
-          <div class="calendar-date">
-        </div>
-        </div>
+
       </div>
     </div>
     <div class="content-group">
       <div class="contacts-body">
-        <div class="contact-body-item">Максим Сергеевич, мы рады что вы пользуетесь нашими услугами, вы можете посмотреть ваши записи к врачам или запросить звонок, если у Вас возникли вопросы</div>
+        <div class="contact-body-item" id="contactBodyInfo"></div>
       </div>
       <div class="callback-body">
         <div class="callback-header">
           <div class="callback-header-title">Заказать обратный звонок</div>
           <div class="callback-header-sub-title">Наш сотрудник ответит вам в ближайшее время.</div>
         </div>
-        <div class="submit-form">
+        <form class="submit-form" id="submitForm">
           <div class="submit-fields">
             <div class="group-main-fields">
                 <div class="field">
@@ -132,11 +84,12 @@
                   <textarea type="text" name="description" id="description-field" placeholder="О проблеме" class="additional-field"></textarea>
                 </div>
             </div>
-          </div>
-          <div class="button-submit">Заказать звонок</div>
+          </form>
+          <div class="button-submit" id="submitButton">Заказать звонок</div>
       </div>
       </div>
     </div>
   </div>
 </div>
+<script src="../js/user/appointments.js"></script>
 </body>
