@@ -37,7 +37,7 @@
     </div>
   </div>
   <div class="appointments-create-body">
-    <div class="form">
+    <form class="form" id="appointment-form">
       <div class="form-field-last-column">
         <div class="form-field">
           <div class="select-button" id="openRequestsDialog">Выбрать заявку</div>
@@ -57,7 +57,7 @@
           <input type="time" name="datetime" id="datetime-field" placeholder="Время" class="form-field-input">
         </div>
       </div>
-    </div>
+    </form>
     <div class="form">
       <div class="form-field">
         <div class="form-field-title">Поиск по врачу</div>
@@ -78,33 +78,41 @@
           <div class="cell-header-content-recording">Оказываемые услуги</div>
         </th>
       </tr>
-      <tr class="row-recording">
-        <th class="cell-recording">
+      <tr class="row-recording" id="first-row">
+        <th class="cell-recording" id="first-row-cell-1">
+          <div class="cell-content-recording" id="first-doctor"></div>
         </th>
-        <th class="cell-recording">
-        </th>
-      </tr>
-      <tr class="row-recording">
-        <th class="cell-recording">
-        </th>
-        <th class="cell-recording">
+        <th class="cell-recording" id="first-row-cell-2">
+          <div class="cell-content-recording" id="first-services"></div>
         </th>
       </tr>
-      <tr class="row-recording">
-        <th class="cell-recording">
+      <tr class="row-recording" id="second-row">
+        <th class="cell-recording" id="second-row-cell-1">
+          <div class="cell-content-recording" id="second-doctor"></div>
         </th>
-        <th class="cell-recording">
+        <th class="cell-recording" id="second-row-cell-2">
+          <div class="cell-content-recording" id="second-services"></div>
         </th>
       </tr>
-      <tr class="row-recording">
-        <th class="cell-recording">
+      <tr class="row-recording" id="third-row">
+        <th class="cell-recording" id="third-row-cell-1">
+          <div class="cell-content-recording" id="third-doctor"></div>
         </th>
-        <th class="cell-recording">
+        <th class="cell-recording" id="third-row-cell-2">
+          <div class="cell-content-recording" id="third-services"></div>
+        </th>
+      </tr>
+      <tr class="row-recording" id="fourth-row">
+        <th class="cell-recording" id="fourth-row-cell-1">
+          <div class="cell-content-recording" id="fourth-doctor"></div>
+        </th>
+        <th class="cell-recording" id="fourth-row-cell-2">
+          <div class="cell-content-recording" id="fourth-services"></div>
         </th>
       </tr>
       </tbody>
     </table>
-    <div class="record-button" onclick="location.assign('/admin/record/list');">Записать</div>
+    <div class="record-button" id="record-button">Записать</div>
   </div>
   <dialog class="request-dialog-blackout" id="requestsDialog">
     <div class="request-dialog-content">
@@ -128,52 +136,70 @@
               <div class="cell-header-content">Проблема</div>
             </th>
           </tr>
-          <tr class="row-request">
-            <th class="cell">
+          <tr class="row-request" id="first-row-request">
+            <th class="cell" id="first-row-request-cell-1">
+              <div class="cell-content" id="first-name"></div>
             </th>
-            <th class="cell">
+            <th class="cell" id="first-row-request-cell-2">
+              <div class="cell-content" id="first-phone"></div>
             </th>
-            <th class="cell">
-            </th>
-          </tr>
-          <tr class="row-request">
-            <th class="cell">
-            </th>
-            <th class="cell">
-            </th>
-            <th class="cell">
+            <th class="cell" id="first-row-request-cell-3">
+              <div class="cell-content" id="first-description"></div>
             </th>
           </tr>
-          <tr class="row-request">
-            <th class="cell">
+          <tr class="row-request" id="second-row-request">
+            <th class="cell" id="second-row-request-cell-1">
+              <div class="cell-content" id="second-name"></div>
             </th>
-            <th class="cell">
+            <th class="cell" id="second-row-request-cell-2">
+              <div class="cell-content" id="second-phone"></div>
             </th>
-            <th class="cell">
-            </th>
-          </tr>
-          <tr class="row-request">
-            <th class="cell">
-            </th>
-            <th class="cell">
-            </th>
-            <th class="cell">
+            <th class="cell" id="second-row-request-cell-3">
+              <div class="cell-content" id="second-description"></div>
             </th>
           </tr>
-          <tr class="row-request">
-            <th class="cell">
+          <tr class="row-request" id="third-row-request">
+            <th class="cell" id="third-row-request-cell-1">
+              <div class="cell-content" id="third-name"></div>
             </th>
-            <th class="cell">
+            <th class="cell" id="third-row-request-cell-2">
+              <div class="cell-content" id="third-phone"></div>
             </th>
-            <th class="cell">
+            <th class="cell" id="third-row-request-cell-3">
+              <div class="cell-content" id="third-description"></div>
             </th>
           </tr>
-          <tr class="row-request">
-            <th class="cell">
+          <tr class="row-request" id="fourth-row-request">
+            <th class="cell" id="fourth-row-request-cell-1">
+              <div class="cell-content" id="fourth-name"></div>
             </th>
-            <th class="cell">
+            <th class="cell" id="fourth-row-request-cell-2">
+              <div class="cell-content" id="fourth-phone"></div>
             </th>
-            <th class="cell">
+            <th class="cell" id="fourth-row-request-cell-3">
+              <div class="cell-content" id="fourth-description"></div>
+            </th>
+          </tr>
+          <tr class="row-request" id="fifth-row-request">
+            <th class="cell" id="fifth-row-request-cell-1">
+              <div class="cell-content" id="fifth-name"></div>
+            </th>
+            <th class="cell" id="fifth-row-request-cell-2">
+              <div class="cell-content" id="fifth-phone"></div>
+            </th>
+            <th class="cell" id="fifth-row-request-cell-3">
+              <div class="cell-content" id="fifth-description"></div>
+            </th>
+          </tr>
+          <tr class="row-request" id="sixth-row-request">
+            <th class="cell" id="sixth-row-request-cell-1">
+              <div class="cell-content" id="sixth-name"></div>
+            </th>
+            <th class="cell" id="sixth-row-request-cell-2">
+              <div class="cell-content" id="sixth-phone"></div>
+            </th>
+            <th class="cell" id="sixth-row-request-cell-3">
+              <div class="cell-content" id="sixth-description"></div>
             </th>
           </tr>
           </tbody>

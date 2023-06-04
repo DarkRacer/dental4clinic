@@ -112,7 +112,7 @@ function updateDoctorTable() {
 }
 
 firstRow.addEventListener("click", (e) => {
-  if (selectedRow !== 1) {
+  if (selectedRow !== 0) {
     firstRowCell1.classList.remove("cell-recording")
     firstRowCell1.classList.add("cell-recording-selected")
     firstRowCell2.classList.remove("cell-recording")
@@ -144,7 +144,7 @@ firstRow.addEventListener("click", (e) => {
 })
 
 secondRow.addEventListener("click", (e) => {
-  if (selectedRow !== 2) {
+  if (selectedRow !== 1) {
     secondRowCell1.classList.remove("cell-recording")
     secondRowCell1.classList.add("cell-recording-selected")
     secondRowCell2.classList.remove("cell-recording")
@@ -208,7 +208,7 @@ thirdRow.addEventListener("click", (e) => {
 })
 
 fourthRow.addEventListener("click", (e) => {
-  if (selectedRow !== 2) {
+  if (selectedRow !== 3) {
     fourthRowCell1.classList.remove("cell-recording")
     fourthRowCell1.classList.add("cell-recording-selected")
     fourthRowCell2.classList.remove("cell-recording")
@@ -241,14 +241,14 @@ fourthRow.addEventListener("click", (e) => {
 
 recordButton.addEventListener("click", (e) => {
   e.preventDefault();
-  // const description = appointmentForm.description.value;
+  const description = appointmentForm.description.value;
   const date = appointmentForm.date.value;
   const datetime = appointmentForm.datetime.value;
 
   if (selectedRow >= 0) {
     const appointmentBody = {
       id: userId,
-      // description: description,
+      description: description,
       date: date,
       datetime: datetime,
       doctorId: filteredDoctorsTableValue[selectedRow][`doctor-id`]
