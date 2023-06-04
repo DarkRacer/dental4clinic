@@ -63,10 +63,10 @@ document.querySelector('#editPriceDialogClose').onclick = function() {
 }
 document.querySelector('#editPriceDialogSave').onclick = function() {
   const editPriceBody = {
-    name: createForm.name.value,
-    cost: createForm.cost.value,
-    description: createForm.description.value,
-    pluses: createForm.pluses.value
+    name: editForm.nameEdit.value,
+    cost: editForm.costEdit.value,
+    description: editForm.descriptionEdit.value,
+    pluses: editForm.plusesEdit.value
   }
   PostUrl('price/edit', editPriceBody).then((data) => {
     cretePriceContent(data);
