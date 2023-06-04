@@ -261,6 +261,9 @@ router.get('/doctor/css/doctor/reception-patient.css',function(req,res){
 router.get('/doctor/css/main.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/main.css'));
 });
+router.get('/profile/js/doctor/profile-edit.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/doctor/profile-edit.js'));
+});
 router.get('/doctor/js/doctor/reception-patient.js',function(req,res){
   res.sendFile(path.join(__dirname+'/js/doctor/reception-patient.js'));
 });
