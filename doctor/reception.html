@@ -35,11 +35,11 @@
   <div class="reception-body">
     <div class="calendar">
       <div class="calendar-month-year">
-        <img class="calendar-month-before" src="../img/arrow.png"/>
-        <div class="calendar-month-year-content">Май 2023</div>
-        <img class="calendar-month-next" src="../img/arrow.png"/>
+        <img class="calendar-month-before" src="../img/arrow.png" id="monthBefore"/>
+        <div class="calendar-month-year-content" id="calendarTitle">       </div>
+        <img class="calendar-month-next" src="../img/arrow.png" id="monthNext"/>
       </div>
-      <div class="calendar-date-group">
+      <div class="calendar-date-group" id="calendarDateGroup">
         <div class="calendar-date-group-row">
           <div class="week-day">Понедельник</div>
           <div class="week-day">Вторник</div>
@@ -49,69 +49,15 @@
           <div class="week-day">Суббота</div>
           <div class="week-day">Воскресенье</div>
         </div>
-        <div class="calendar-date-group-row">
-          <div class="calendar-date">1</div>
-          <div class="calendar-date">2</div>
-          <div class="calendar-date">3</div>
-          <div class="calendar-date">4</div>
-          <div class="date-selected">5</div>
-          <div class="calendar-date">6</div>
-          <div class="calendar-date">7</div>
-        </div>
-        <div class="calendar-date-group-row">
-          <div class="date-selected">8</div>
-          <div class="calendar-date">9</div>
-          <div class="date-selected">10</div>
-          <div class="calendar-date">11</div>
-          <div class="calendar-date">12</div>
-          <div class="calendar-date">13</div>
-          <div class="calendar-date">14</div>
-        </div>
-        <div class="calendar-date-group-row">
-          <div class="calendar-date">15</div>
-          <div class="calendar-date">16</div>
-          <div class="calendar-date">17</div>
-          <div class="calendar-date">18</div>
-          <div class="calendar-date">19</div>
-          <div class="calendar-date">20</div>
-          <div class="calendar-date">21</div>
-        </div>
-        <div class="calendar-date-group-row">
-          <div class="calendar-date">22</div>
-          <div class="calendar-date">23</div>
-          <div class="calendar-date">24</div>
-          <div class="calendar-date">25</div>
-          <div class="calendar-date">26</div>
-          <div class="calendar-date">27</div>
-          <div class="calendar-date">28</div>
-        </div>
-        <div class="calendar-date-group-row">
-          <div class="calendar-date">29</div>
-          <div class="calendar-date">30</div>
-          <div class="calendar-date">31</div>
-          <div class="calendar-date">
-          </div>
-          <div class="calendar-date">
-          </div>
-          <div class="calendar-date">
-          </div>
-          <div class="calendar-date">
-          </div>
-        </div>
       </div>
     </div>
     <div class="accept-patient-without-calendar" id="openPatientWithoutCalendarDialog">Принять пациента не по расписанию</div>
     <div class="card">
-      <div class="card-content-text">
-        Ближайший пациент на приеме Иванов Иван Иванович 10 мая 2023 в 16:30
-        <br/>
-
-        <br/>
-        Жалобы пациента:
-      </div>
+      <div class="card-content-text" id="infoCard"></div>
+      <div class="card-content-text" id="infoCardDescription"></div>
       <div class="card-accept-buttons">
         <div class="info-button" id="openInfoPatientDialog">Посмотреть информацию о пациенте</div>
-        <div class="start-button" onclick="location.assign('/doctor/reception/1');">Начать прием</div>
+        <div class="start-button" id="startButton">Начать прием</div>
       </div>
     </div>
   </div>
@@ -137,57 +83,75 @@
                 <div class="cell-header-content">Дата приема</div>
               </th>
             </tr>
-            <tr class="row">
-              <th class="cell">
+            <tr class="row" id="first-row">
+              <th class="cell" id="first-row-cell-1">
+                <div class="cell-content" id="first-patient"></div>
               </th>
-              <th class="cell">
+              <th class="cell" id="first-row-cell-2">
+                <div class="cell-content" id="first-description"></div>
               </th>
-              <th class="cell">
-              </th>
-            </tr>
-            <tr class="row">
-              <th class="cell">
-              </th>
-              <th class="cell">
-              </th>
-              <th class="cell">
+              <th class="cell" id="first-row-cell-3">
+                <div class="cell-content" id="first-date"></div>
               </th>
             </tr>
-            <tr class="row">
-              <th class="cell">
+            <tr class="row" id="second-row">
+              <th class="cell" id="second-row-cell-1">
+                <div class="cell-content" id="second-patient"></div>
               </th>
-              <th class="cell">
+              <th class="cell" id="second-row-cell-2">
+                <div class="cell-content" id="second-description"></div>
               </th>
-              <th class="cell">
-              </th>
-            </tr>
-            <tr class="row">
-              <th class="cell">
-              </th>
-              <th class="cell">
-              </th>
-              <th class="cell">
+              <th class="cell" id="second-row-cell-3">
+                <div class="cell-content" id="second-date"></div>
               </th>
             </tr>
-            <tr class="row">
-              <th class="cell">
+            <tr class="row" id="third-row">
+              <th class="cell" id="third-row-cell-1">
+                <div class="cell-content" id="third-patient"></div>
               </th>
-              <th class="cell">
+              <th class="cell" id="third-row-cell-2">
+                <div class="cell-content" id="third-description"></div>
               </th>
-              <th class="cell">
+              <th class="cell" id="third-row-cell-3">
+                <div class="cell-content" id="third-date"></div>
               </th>
             </tr>
-            <tr class="row">
-              <th class="cell">
+            <tr class="row" id="fourth-row">
+              <th class="cell" id="fourth-row-cell-1">
+                <div class="cell-content" id="fourth-patient"></div>
               </th>
-              <th class="cell">
+              <th class="cell" id="fourth-row-cell-2">
+                <div class="cell-content" id="fourth-description"></div>
               </th>
-              <th class="cell">
+              <th class="cell" id="fourth-row-cell-3">
+                <div class="cell-content" id="fourth-date"></div>
+              </th>
+            </tr>
+            <tr class="row" id="fifth-row">
+              <th class="cell" id="fifth-row-cell-1">
+                <div class="cell-content" id="fifth-patient"></div>
+              </th>
+              <th class="cell" id="fifth-row-cell-2">
+                <div class="cell-content" id="fifth-description"></div>
+              </th>
+              <th class="cell" id="fifth-row-cell-3">
+                <div class="cell-content" id="fifth-date"></div>
+              </th>
+            </tr>
+            <tr class="row" id="sixth-row">
+              <th class="cell" id="sixth-row-cell-1">
+                <div class="cell-content" id="sixth-patient"></div>
+              </th>
+              <th class="cell" id="sixth-row-cell-2">
+                <div class="cell-content" id="sixth-description"></div>
+              </th>
+              <th class="cell" id="sixth-row-cell-3">
+                <div class="cell-content" id="sixth-date"></div>
               </th>
             </tr>
           </tbody>
         </table>
-        <div class="start-without-calendar-button" onclick="location.assign('/doctor/reception/1');">Начать прием</div>
+        <div class="start-without-calendar-button" id="startWithoutCalendarButton">Начать прием</div>
       </div>
     </div>
   </dialog>
@@ -203,23 +167,23 @@
         <div class="card-fields">
           <div class="card-field-group">
             <div class="user-card-field">ФИО Пациента</div>
-            <div class="field-content">Щербаков Максим Сергеевич</div>
+            <div class="field-content" id="name"></div>
           </div>
           <div class="card-field-group">
             <div class="user-card-field">Дата рождения</div>
-            <div class="field-content">26.08.2001</div>
+            <div class="field-content" id="dateOfBirthday"></div>
           </div>
           <div class="card-field-group">
             <div class="user-card-field">Телефон</div>
-            <div class="field-content">+79204292271</div>
+            <div class="field-content" id="phone"></div>
           </div>
           <div class="card-field-group">
             <div class="user-card-field">E-mail</div>
-            <div class="field-content">schtscherbakov@gmail.com</div>
+            <div class="field-content" id="e-mail"></div>
           </div>
           <div class="card-field-group">
             <div class="user-card-field">Аллергии</div>
-            <div class="field-content">Отсутствуют</div>
+            <div class="field-content" id="allergies"></div>
           </div>
         </div>
       </div>

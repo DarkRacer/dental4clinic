@@ -32,28 +32,29 @@
     </div>
   </div>
   <div class="profile-edit-body">
-    <div class="form">
+    <form class="form" id="edit-form">
       <div class="required-fields">
         <div class="required-field">
           <div class="required-field-title">Имя</div>
-          <input type="text" id="name" name="name" placeholder="Имя" value="Максим" class="required-field-input">
+          <input type="text" id="name" name="name-field" placeholder="Имя" class="required-field-input">
         </div>
         <div class="required-field">
           <div class="required-field-title">Фамилия</div>
-          <input type="text" id="surname" name="surname" placeholder="Фамилия" value="Щербаков" class="required-field-input">
+          <input type="text" id="surname" name="surname-field" placeholder="Фамилия" class="required-field-input">
         </div>
         <div class="required-field">
           <div class="required-field-title">Отчество</div>
-          <input type="text" id="patronymic" name="patronymic" placeholder="Отчество" value="Сергеевич" class="required-field-input">
+          <input type="text" id="patronymic" name="patronymic-field" placeholder="Отчество" class="required-field-input">
         </div>
       </div>
       <div class="photo-field">
         <div class="photo-field-title">Фотография</div>
-        <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photo" class="photo-field-input">
+        <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photo-field" class="photo-field-input" onchange="imageUploaded()">
       </div>
-    </div>
-    <div class="save-button" onclick="window.location='/profile/2';">Сохранить</div>
+    </form>
+    <div class="save-button" id="save-button">Сохранить</div>
   </div>
   </div>
 </div>
+<script src="../js/doctor/profile-edit.js"></script>
 </body>

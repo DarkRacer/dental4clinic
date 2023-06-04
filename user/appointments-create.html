@@ -37,7 +37,7 @@
     </div>
   </div>
   <div class="user-appointments-create-body">
-    <div class="form">
+    <form class="form" id="appointment-form">
       <div class="form-field-last-column">
         <div class="form-field-title">Жалоба</div>
         <textarea type="text" name="description" id="description-field" placeholder="О проблеме" class="form-field-input-textarea"></textarea>
@@ -52,7 +52,7 @@
           <input type="time" name="datetime" id="datetime-field" placeholder="Время" class="form-field-input">
         </div>
       </div>
-    </div>
+    </form>
     <div class="form">
         <div class="form-field">
           <div class="form-field-title">Поиск по врачу</div>
@@ -73,33 +73,42 @@
           <div class="cell-header-content-recording">Оказываемые услуги</div>
         </th>
       </tr>
-      <tr class="row-recording">
-        <th class="cell-recording">
+      <tr class="row-recording" id="first-row">
+        <th class="cell-recording" id="first-row-cell-1">
+          <div class="cell-content-recording" id="first-doctor"></div>
         </th>
-        <th class="cell-recording">
-        </th>
-      </tr>
-      <tr class="row-recording">
-        <th class="cell-recording">
-        </th>
-        <th class="cell-recording">
+        <th class="cell-recording" id="first-row-cell-2">
+          <div class="cell-content-recording" id="first-services"></div>
         </th>
       </tr>
-      <tr class="row-recording">
-        <th class="cell-recording">
+      <tr class="row-recording" id="second-row">
+        <th class="cell-recording" id="second-row-cell-1">
+          <div class="cell-content-recording" id="second-doctor"></div>
         </th>
-        <th class="cell-recording">
+        <th class="cell-recording" id="second-row-cell-2">
+          <div class="cell-content-recording" id="second-services"></div>
         </th>
       </tr>
-      <tr class="row-recording">
-        <th class="cell-recording">
+      <tr class="row-recording" id="third-row">
+        <th class="cell-recording" id="third-row-cell-1">
+          <div class="cell-content-recording" id="third-doctor"></div>
         </th>
-        <th class="cell-recording">
+        <th class="cell-recording" id="third-row-cell-2">
+          <div class="cell-content-recording" id="third-services"></div>
+        </th>
+      </tr>
+      <tr class="row-recording" id="fourth-row">
+        <th class="cell-recording" id="fourth-row-cell-1">
+          <div class="cell-content-recording" id="fourth-doctor"></div>
+        </th>
+        <th class="cell-recording" id="fourth-row-cell-2">
+          <div class="cell-content-recording" id="fourth-services"></div>
         </th>
       </tr>
       </tbody>
     </table>
-    <div class="record-button" onclick="location.assign('/user/appointments');">Записаться</div>
+    <div class="record-button" id="record-button">Записаться</div>
   </div>
 </div>
+<script src="../js/user/appointments-create.js"></script>
 </body>

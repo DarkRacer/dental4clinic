@@ -535,6 +535,14 @@ html {
   background-color: #e7f2f6;
   flex-shrink: 0;
 }
+.cell-selected {
+  width: 34%;
+  height: 100%;
+  border: solid 0.1rem #245787;
+  box-sizing: border-box;
+  background-color: #64caef;
+  flex-shrink: 0;
+}
 .cell-content {
   margin-bottom: 2%;
   display: flex;
@@ -654,4 +662,21 @@ html {
   vertical-align: top;
   flex-shrink: 0;
 }
-
+.go-to-top {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transform: rotate(270deg);
+  object-fit: cover;
+  vertical-align: top;
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  border: none;
+  outline: none;
+  background-color: #e7f2f6;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 18px;
+}

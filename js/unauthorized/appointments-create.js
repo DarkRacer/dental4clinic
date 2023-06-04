@@ -97,7 +97,7 @@ function updateDoctorTable() {
 }
 
 firstRow.addEventListener("click", (e) => {
-  if (selectedRow !== 1) {
+  if (selectedRow !== 0) {
     firstRowCell1.classList.remove("cell-recording")
     firstRowCell1.classList.add("cell-recording-selected")
     firstRowCell2.classList.remove("cell-recording")
@@ -113,18 +113,18 @@ firstRow.addEventListener("click", (e) => {
     thirdRowCell2.classList.remove("cell-recording-selected")
     thirdRowCell2.classList.add("cell-recording")
 
-    selectedRow = 1;
+    selectedRow = 0;
   } else {
     firstRowCell1.classList.remove("cell-recording-selected")
     firstRowCell1.classList.add("cell-recording")
     firstRowCell2.classList.remove("cell-recording-selected")
     firstRowCell2.classList.add("cell-recording")
-    selectedRow = 0;
+    selectedRow = -1;
   }
 })
 
 secondRow.addEventListener("click", (e) => {
-  if (selectedRow !== 2) {
+  if (selectedRow !== 1) {
     secondRowCell1.classList.remove("cell-recording")
     secondRowCell1.classList.add("cell-recording-selected")
     secondRowCell2.classList.remove("cell-recording")
@@ -140,13 +140,13 @@ secondRow.addEventListener("click", (e) => {
     thirdRowCell2.classList.remove("cell-recording-selected")
     thirdRowCell2.classList.add("cell-recording")
 
-    selectedRow = 2;
+    selectedRow = 1;
   } else {
     secondRowCell1.classList.remove("cell-recording-selected")
     secondRowCell1.classList.add("cell-recording")
     secondRowCell2.classList.remove("cell-recording-selected")
     secondRowCell2.classList.add("cell-recording")
-    selectedRow = 0;
+    selectedRow = -1;
   }
 })
 
@@ -167,13 +167,13 @@ thirdRow.addEventListener("click", (e) => {
     secondRowCell2.classList.remove("cell-recording-selected")
     secondRowCell2.classList.add("cell-recording")
 
-    selectedRow = 3;
+    selectedRow = 2;
   } else {
     thirdRowCell1.classList.remove("cell-recording-selected")
     thirdRowCell1.classList.add("cell-recording")
     thirdRowCell2.classList.remove("cell-recording-selected")
     thirdRowCell2.classList.add("cell-recording")
-    selectedRow = 0;
+    selectedRow = -1;
   }
 })
 
@@ -186,7 +186,7 @@ recordButton.addEventListener("click", (e) => {
   const date = appointmentForm.date.value;
   const datetime = appointmentForm.datetime.value;
 
-  if (selectedRow) {
+  if (selectedRow >= 0) {
     const appointmentBody = {
       name: name,
       description: description,

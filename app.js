@@ -197,6 +197,9 @@ router.get('/user/appointments/create',function(req,res){
 router.get('/user/css/user/appointments-create.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/user/appointments-create.css'));
 });
+router.get('/user/js/user/appointments-create.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/user/appointments-create.js'));
+});
 router.get('/user/doctors',function(req,res){
   res.sendFile(path.join(__dirname+'/user/doctors.html'));
 });
@@ -223,6 +226,9 @@ router.get('/user/css/user/about.css',function(req,res){
 });
 router.get('/profile/css/user/profile-edit.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/user/profile-edit.css'));
+});
+router.get('/profile/js/user/profile-edit.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/user/profile-edit.js'));
 });
 router.get('/profile/css/main.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/main.css'));
@@ -254,6 +260,9 @@ router.get('/doctor/css/doctor/reception-patient.css',function(req,res){
 });
 router.get('/doctor/css/main.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/main.css'));
+});
+router.get('/profile/js/doctor/profile-edit.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/doctor/profile-edit.js'));
 });
 router.get('/doctor/js/doctor/reception-patient.js',function(req,res){
   res.sendFile(path.join(__dirname+'/js/doctor/reception-patient.js'));
@@ -304,6 +313,15 @@ router.get('/admin/css/admin/user-create.css',function(req,res){
 router.get('/admin/css/main.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/main.css'));
 });
+router.get('/admin/js/admin/user-create.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/admin/user-create.js'));
+});
+router.get('/profile/js/admin/profile-edit.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/admin/profile-edit.js'));
+});
+router.get('/admin/js/admin/record-list.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/admin/record-list.js'));
+});
 router.get('/admin/js/admin/appointments-create.js',function(req,res){
   res.sendFile(path.join(__dirname+'/js/admin/appointments-create.js'));
 });
@@ -341,6 +359,9 @@ router.get('/director/record/list',function(req,res){
 router.get('/director/css/director/record-list.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/director/record-list.css'));
 });
+router.get('/director/js/director/record-list.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/director/record-list.js'));
+});
 router.get('/profile/4',function(req,res){
   res.sendFile(path.join(__dirname+'/director/profile.html'));
 });
@@ -349,6 +370,9 @@ router.get('/profile/4/edit',function(req,res){
 });
 router.get('/profile/css/director/profile-edit.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/director/profile-edit.css'));
+});
+router.get('/profile/js/director/profile-edit.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/director/profile-edit.js'));
 });
 
 app.use('/', router);

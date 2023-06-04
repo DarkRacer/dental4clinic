@@ -18,32 +18,7 @@ const contactBodyInfo = document.getElementById("contactBodyInfo");
 const submitForm = document.getElementById("submitForm");
 const submitButton = document.getElementById("submitButton");
 let calendarDateGroupChild = [];
-let calendarDateAppointments = [
-  {
-    "id": 1,
-    "userId": 1,
-    "doctor-name": "Иванов Иван Иванович",
-    "date": "2023-06-15",
-    "datetime": "10:00",
-    "service-name": "Удаление кариеса"
-  },
-  {
-    "id": 2,
-    "userId": 1,
-    "doctor-name": "Иванов Иван Иванович",
-    "date": "2023-06-20",
-    "datetime": "16:00",
-    "service-name": "Осмотр"
-  },
-  {
-    "id": 3,
-    "userId": 1,
-    "doctor-name": "Петров Петр Иванович",
-    "date": "2023-06-20",
-    "datetime": "20:00",
-    "service-name": "Чистка зубов"
-  }
-];
+let calendarDateAppointments = [];
 
 monthBefore.addEventListener("click", (e) => {
   currentDiffMonth--;
@@ -69,7 +44,27 @@ submitButton.addEventListener("click", (e) => {
   PostUrl('request/create', requestBody).then(() => alert("Заявка отправлена")).catch((error) => alert("Заявка не отправлена"))
 });
 
-createCalendar(date.getMonth(), date.getFullYear());
+getAppointments()
+getUserInfo()
+
+function getAppointments() {
+  GetUrl(`appointments/user/${userId}`).then((data) => {
+    calendarDateAppointments = data;
+    createCalendar(date.getMonth(), date.getFullYear());
+  }).catch((error) => {
+    console.error(error)
+    createCalendar(date.getMonth(), date.getFullYear())
+  })
+}
+
+function getUserInfo() {
+  GetUrl(`user/${userId}`).then(data => {
+    contactBodyInfo.innerText = data.name + ", мы рады что вы пользуетесь нашими услугами, вы можете посмотреть ваши записи к врачам или запросить звонок, если у Вас возникли вопросы"
+  }).catch(error => {
+    contactBodyInfo.innerText = "Mы рады что вы пользуетесь нашими услугами, вы можете посмотреть ваши записи к врачам или запросить звонок, если у Вас возникли вопросы"
+    console.error(error)
+  });
+}
 
 function getInfoByDate({date, appointments}, month, year) {
   contactBodyInfo.innerText = `${date} ${monthName[month]} ${year} :

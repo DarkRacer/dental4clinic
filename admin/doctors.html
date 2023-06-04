@@ -37,10 +37,10 @@
       </div>
     </div>
   </div>
-  <div class="doctors-body">
+  <div class="doctors-body" id="doctors-body">
     <div class="doctors-body-header">
-      <label>
-        <select class="selector">
+      <form id="doctors-form">
+        <select class="selector" name="selector">
           <option class="selector-text" selected>Все...</option>
           <option class="selector-text">Детский стоматолог</option>
           <option class="selector-text">Специалист по гигиене зубов</option>
@@ -54,95 +54,24 @@
           <option class="selector-text">Челюстно-лицевой хирург</option>
           <option class="selector-text">Эндодонтист</option>
         </select>
-      </label>
+      </form>
     </div>
-    <div class="doctors-content">
-      <div class="doctor-card">
-        <div class="doctor-avatar">
-          <img class="doctor-image" src="../img/filimonenko.png">
-        </div>
-        <div class="doctor-name">
-          Филимоненко Светлана Сергеевна
-        </div>
-        <div class="doctor-spec">
-          Стоматолог-терапевт, Детский стоматолог
-        </div>
-      </div>
-      <div class="doctor-card" id="openDoctorsDialog">
-        <div class="doctor-avatar">
-          <img class="doctor-image" src="../img/husainov.png">
-        </div>
-        <div class="doctor-name">
-          Хусаинов Руслан Дмитриевич
-        </div>
-        <div class="doctor-spec">Стоматолог-терапевт</div>
-      </div>
-      <div class="doctor-card">
-        <div class="doctor-avatar">
-          <img class="doctor-image" src="../img/cukanova.png">
-        </div>
-        <div class="doctor-name">
-          Цуканова Юлия
-          <br/>
-          Игоревна
-        </div>
-        <div class="doctor-spec">
-          Стоматолог-терапевт, Детский
-          <br/>
-          стоматолог
-        </div>
-      </div>
-      <div class="doctor-card">
-        <div class="doctor-avatar">
-          <img class="doctor-image" src="../img/chumichyova.png">
-        </div>
-        <div class="doctor-name">
-          Чумичёва Анастасия Александровна
-        </div>
-        <div class="doctor-spec">Стоматолог-ортопед</div>
-      </div>
-    </div>
+    <img class="go-to-top" onclick="topFunction()" id="goToTop" src="../img/arrow.png"/>
   </div>
   <dialog class="doctors-dialog-blackout" id="doctorsDialog">
     <div class="doctors-dialog-content">
       <div class="doctors-dialog-title">
-        <div class="doctors-dialog-title-text">Хусаинов Руслан Дмитриевич</div>
+        <div class="doctors-dialog-title-text" id="doctors-dialog-title"></div>
         <div class="doctors-dialog-close-div" id="doctorsDialogClose">
           <img class="doctors-dialog-close" src="../img/point-plus.png"/>
         </div>
       </div>
       <div class="doctors-dialog-body-content">
-        <div class="doctors-dialog-content-description">
-          Руслан Дмитриевич — молодой и перспективный специалист, главная цель которого — здоровые и счастливые улыбки. Доктор максимально ответственно и внимательно относится к каждому пациенту и находит индивидуальный подход к его клиническому случаю.</br>
-          Отличается добрым отношением к пациентам, но в то же время очень требовательный к себе и своей работе. Постоянно стремится совершенствовать свои умения и увеличивать объем знаний, обучаясь у Российских и зарубежных специалистов. Владеет современными методами лечения заболеваний зубочелюстной системы.</br>
-          Будучи студентом работал ассистентом со стоматологами всех специальностей, усваивая их опыт и навыки работы.
-        </div>
-        <div class="pluses-group">
-          <div class="pluses-group-title">Руслан Дмитриевич владеет следующими профессиональными навыками:</div>
-          <div class="plus-price-group">
-            <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="doctors-dialog-content-text">Составление индивидуального плана лечения, основываясь на данных осмотра и компьютерной томографии</div>
-          </div>
-          <div class="plus-price-group">
-            <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="doctors-dialog-content-text">Лечение кариеса и его осложнений</div>
-          </div>
-          <div class="plus-price-group">
-            <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="doctors-dialog-content-text">Восстановление разрушенных зубов с применением титановых или стекловолоконных штифтов или культевых вкладок</div>
-          </div>
-          <div class="plus-price-group">
-            <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="doctors-dialog-content-text">Современная обработка корневых каналов с применением ручных и механических никель-титановых инструментов ProТaper</div>
-          </div>
-          <div class="plus-price-group">
-            <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="doctors-dialog-content-text">Современные методы пломбирования корневых каналов.</div>
-          </div>
-        </div>
+        <div class="doctors-dialog-content-description" id="doctors-dialog-description"></div>
+        <div class="pluses-group" id="doctors-dialog-pluses"></div>
       </div>
       <div class="doctors-dialog-footer">
-        <div class="doctors-dialog-footer-button" onclick="location.assign('/admin/appointments/create');">Записать</div>
+        <div class="doctors-dialog-footer-button" onclick="location.assign('/unauthorized/appointments/create');">Записаться</div>
       </div>
     </div>
   </dialog>

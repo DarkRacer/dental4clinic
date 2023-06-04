@@ -55,12 +55,11 @@
           <div class="week-day">Суббота</div>
           <div class="week-day">Воскресенье</div>
         </div>
-
       </div>
     </div>
     <div class="content-group">
       <div class="contacts-body">
-        <div class="contact-body-item" id="contactBodyInfo">Максим Сергеевич, мы рады что вы пользуетесь нашими услугами, вы можете посмотреть ваши записи к врачам или запросить звонок, если у Вас возникли вопросы</div>
+        <div class="contact-body-item" id="contactBodyInfo"></div>
       </div>
       <div class="callback-body">
         <div class="callback-header">
@@ -70,26 +69,27 @@
         <form class="submit-form" id="submitForm">
           <div class="submit-fields">
             <div class="group-main-fields">
-              <div class="field">
-                <div class="field-title">Имя</div>
-                <input type="text" name="name" id="name-field" placeholder="Имя" class="callback-field">
-              </div>
-              <div class="field">
-                <div class="field-title">Телефон *</div>
-                <input type="text" name="phone" id="phone-field" placeholder="+7 (___) ___-__-__" class="callback-field">
-              </div>
+                <div class="field">
+                  <div class="field-title">Имя</div>
+                  <input type="text" name="name" id="name-field" placeholder="Имя" class="callback-field">
+                </div>
+                <div class="field">
+                  <div class="field-title">Телефон *</div>
+                    <input type="text" name="phone" id="phone-field" placeholder="+7 (___) ___-__-__" class="callback-field">
+                  </div>
+                </div>
+                <div class="group-additional-fields">
+                  <div class="field-title">О проблеме</div>
+                  <textarea type="text" name="description" id="description-field" placeholder="О проблеме" class="additional-field"></textarea>
+                </div>
             </div>
-            <div class="group-additional-fields">
-              <div class="field-title">О проблеме</div>
-              <textarea type="text" name="description" id="description-field" placeholder="О проблеме" class="additional-field"></textarea>
-            </div>
-          </div>
-        </form>
-        <div class="button-submit" id="submitButton">Заказать звонок</div>
+          </form>
+          <div class="button-submit" id="submitButton">Заказать звонок</div>
+      </div>
       </div>
     </div>
   </div>
 </div>
-</div>
 <script src="../js/user/appointments.js"></script>
 </body>
+

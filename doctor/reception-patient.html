@@ -38,23 +38,23 @@
         <div class="card-fields">
           <div class="card-field-group">
             <div class="user-card-field">ФИО Пациента</div>
-            <div class="field-content">Щербаков Максим Сергеевич</div>
+            <div class="field-content" id="name"></div>
           </div>
           <div class="card-field-group">
             <div class="user-card-field">Дата рождения</div>
-            <div class="field-content">26.08.2001</div>
+            <div class="field-content" id="dateOfBirthday"></div>
           </div>
           <div class="card-field-group">
             <div class="user-card-field">Телефон</div>
-            <div class="field-content">+79204292271</div>
+            <div class="field-content" id="phone"></div>
           </div>
           <div class="card-field-group">
             <div class="user-card-field">E-mail</div>
-            <div class="field-content">schtscherbakov@gmail.com</div>
+            <div class="field-content" id="e-mail"></div>
           </div>
           <div class="card-field-group">
             <div class="user-card-field">Аллергии</div>
-            <div class="field-content">Отсутствуют</div>
+            <div class="field-content" id="allergies"></div>
           </div>
         </div>
       </div>
@@ -72,22 +72,26 @@
           </tr>
           <tr class="row-request">
             <th class="cell-request-first">
-              <div class="cell-content">04.04.2023</div>
+              <div class="cell-content" id="first-request-cell1"></div>
             </th>
             <th class="cell-request-second">
-              <div class="cell-content">Болит левый верхний зуб</div>
+              <div class="cell-content" id="first-request-cell2"></div>
             </th>
           </tr>
           <tr class="row-request">
             <th class="cell-request-first">
+              <div class="cell-content" id="second-request-cell1"></div>
             </th>
             <th class="cell-request-second">
+              <div class="cell-content" id="second-request-cell2"></div>
             </th>
           </tr>
           <tr class="row-request">
             <th class="cell-request-first">
+              <div class="cell-content" id="third-request-cell1"></div>
             </th>
             <th class="cell-request-second">
+              <div class="cell-content" id="third-request-cell2"></div>
             </th>
           </tr>
           </tbody>
@@ -98,7 +102,7 @@
       <p class="card-request-title">Информация о зубах</p>
       <div class="row-group-tooth">
         <div class="column-group-tooth">
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left8Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -111,7 +115,7 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">8</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left8Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -123,7 +127,7 @@
             <option class="selector-tooth-text">Pt</option>
             <option class="selector-tooth-text">R</option>
           </select>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right1Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -136,7 +140,7 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">1</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right1Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -150,7 +154,7 @@
           </select>
         </div>
         <div class="column-group-tooth">
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left7Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -163,7 +167,7 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">7</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left7Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -175,7 +179,7 @@
             <option class="selector-tooth-text">Pt</option>
             <option class="selector-tooth-text">R</option>
           </select>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right2Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -188,7 +192,7 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">2</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right2Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -202,7 +206,7 @@
           </select>
         </div>
         <div class="column-group-tooth">
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left6Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -215,7 +219,7 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">6</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left6Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -227,7 +231,7 @@
             <option class="selector-tooth-text">Pt</option>
             <option class="selector-tooth-text">R</option>
           </select>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right3Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -240,7 +244,7 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">3</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right3Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -254,7 +258,7 @@
           </select>
         </div>
         <div class="column-group-tooth">
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left5Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -267,7 +271,7 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">5</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left5Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -279,7 +283,7 @@
             <option class="selector-tooth-text">Pt</option>
             <option class="selector-tooth-text">R</option>
           </select>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right4Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -292,7 +296,7 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">4</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right4Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -306,7 +310,7 @@
           </select>
         </div>
         <div class="column-group-tooth">
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left4Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -318,8 +322,8 @@
             <option class="selector-tooth-text">Pt</option>
             <option class="selector-tooth-text">R</option>
           </select>
-          <div class="card-tooth-row-text-number">6</div>
-          <select class="selector-tooth">
+          <div class="card-tooth-row-text-number">4</div>
+          <select class="selector-tooth" id="left4Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -331,7 +335,34 @@
             <option class="selector-tooth-text">Pt</option>
             <option class="selector-tooth-text">R</option>
           </select>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right5Up">
+            <option class="selector-tooth-text" selected>-</option>
+            <option class="selector-tooth-text">I</option>
+            <option class="selector-tooth-text">II</option>
+            <option class="selector-tooth-text">III</option>
+            <option class="selector-tooth-text">A</option>
+            <option class="selector-tooth-text">O</option>
+            <option class="selector-tooth-text">P</option>
+            <option class="selector-tooth-text">C</option>
+            <option class="selector-tooth-text">Pt</option>
+            <option class="selector-tooth-text">R</option>
+          </select>
+          <div class="card-tooth-row-text-number">5</div>
+          <select class="selector-tooth" id="right5Down">
+            <option class="selector-tooth-text" selected>-</option>
+            <option class="selector-tooth-text">I</option>
+            <option class="selector-tooth-text">II</option>
+            <option class="selector-tooth-text">III</option>
+            <option class="selector-tooth-text">A</option>
+            <option class="selector-tooth-text">O</option>
+            <option class="selector-tooth-text">P</option>
+            <option class="selector-tooth-text">C</option>
+            <option class="selector-tooth-text">Pt</option>
+            <option class="selector-tooth-text">R</option>
+          </select>
+        </div>
+        <div class="column-group-tooth">
+          <select class="selector-tooth" id="left3Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -344,7 +375,32 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">3</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left3Down">
+            <option class="selector-tooth-text" selected>-</option>
+            <option class="selector-tooth-text">I</option>
+            <option class="selector-tooth-text">II</option>
+            <option class="selector-tooth-text">III</option>
+            <option class="selector-tooth-text">A</option>
+            <option class="selector-tooth-text">O</option>
+            <option class="selector-tooth-text">P</option>
+            <option class="selector-tooth-text">C</option>
+            <option class="selector-tooth-text">Pt</option>
+            <option class="selector-tooth-text">R</option>
+          </select>
+          <select class="selector-tooth" id="right6Up">
+            <option class="selector-tooth-text" selected>-</option>
+            <option class="selector-tooth-text">I</option>
+            <option class="selector-tooth-text">II</option>
+            <option class="selector-tooth-text">III</option>
+            <option class="selector-tooth-text">A</option>
+            <option class="selector-tooth-text">O</option>
+            <option class="selector-tooth-text">P</option>
+            <option class="selector-tooth-text">C</option>
+            <option class="selector-tooth-text">Pt</option>
+            <option class="selector-tooth-text">R</option>
+          </select>
+          <div class="card-tooth-row-text-number">6</div>
+          <select class="selector-tooth" id="right6Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -358,32 +414,7 @@
           </select>
         </div>
         <div class="column-group-tooth">
-          <select class="selector-tooth">
-            <option class="selector-tooth-text" selected>-</option>
-            <option class="selector-tooth-text">I</option>
-            <option class="selector-tooth-text">II</option>
-            <option class="selector-tooth-text">III</option>
-            <option class="selector-tooth-text">A</option>
-            <option class="selector-tooth-text">O</option>
-            <option class="selector-tooth-text">P</option>
-            <option class="selector-tooth-text">C</option>
-            <option class="selector-tooth-text">Pt</option>
-            <option class="selector-tooth-text">R</option>
-          </select>
-          <div class="card-tooth-row-text-number">7</div>
-          <select class="selector-tooth">
-            <option class="selector-tooth-text" selected>-</option>
-            <option class="selector-tooth-text">I</option>
-            <option class="selector-tooth-text">II</option>
-            <option class="selector-tooth-text">III</option>
-            <option class="selector-tooth-text">A</option>
-            <option class="selector-tooth-text">O</option>
-            <option class="selector-tooth-text">P</option>
-            <option class="selector-tooth-text">C</option>
-            <option class="selector-tooth-text">Pt</option>
-            <option class="selector-tooth-text">R</option>
-          </select>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left2Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -396,7 +427,32 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">2</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left2Down">
+            <option class="selector-tooth-text" selected>-</option>
+            <option class="selector-tooth-text">I</option>
+            <option class="selector-tooth-text">II</option>
+            <option class="selector-tooth-text">III</option>
+            <option class="selector-tooth-text">A</option>
+            <option class="selector-tooth-text">O</option>
+            <option class="selector-tooth-text">P</option>
+            <option class="selector-tooth-text">C</option>
+            <option class="selector-tooth-text">Pt</option>
+            <option class="selector-tooth-text">R</option>
+          </select>
+          <select class="selector-tooth" id="right7Up">
+            <option class="selector-tooth-text" selected>-</option>
+            <option class="selector-tooth-text">I</option>
+            <option class="selector-tooth-text">II</option>
+            <option class="selector-tooth-text">III</option>
+            <option class="selector-tooth-text">A</option>
+            <option class="selector-tooth-text">O</option>
+            <option class="selector-tooth-text">P</option>
+            <option class="selector-tooth-text">C</option>
+            <option class="selector-tooth-text">Pt</option>
+            <option class="selector-tooth-text">R</option>
+          </select>
+          <div class="card-tooth-row-text-number">7</div>
+          <select class="selector-tooth" id="right7Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -410,32 +466,7 @@
           </select>
         </div>
         <div class="column-group-tooth-last">
-          <select class="selector-tooth">
-            <option class="selector-tooth-text" selected>-</option>
-            <option class="selector-tooth-text">I</option>
-            <option class="selector-tooth-text">II</option>
-            <option class="selector-tooth-text">III</option>
-            <option class="selector-tooth-text">A</option>
-            <option class="selector-tooth-text">O</option>
-            <option class="selector-tooth-text">P</option>
-            <option class="selector-tooth-text">C</option>
-            <option class="selector-tooth-text">Pt</option>
-            <option class="selector-tooth-text">R</option>
-          </select>
-          <div class="card-tooth-row-text-number">8</div>
-          <select class="selector-tooth">
-            <option class="selector-tooth-text" selected>-</option>
-            <option class="selector-tooth-text">I</option>
-            <option class="selector-tooth-text">II</option>
-            <option class="selector-tooth-text">III</option>
-            <option class="selector-tooth-text">A</option>
-            <option class="selector-tooth-text">O</option>
-            <option class="selector-tooth-text">P</option>
-            <option class="selector-tooth-text">C</option>
-            <option class="selector-tooth-text">Pt</option>
-            <option class="selector-tooth-text">R</option>
-          </select>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left1Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -448,7 +479,32 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">1</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left1Down">
+            <option class="selector-tooth-text" selected>-</option>
+            <option class="selector-tooth-text">I</option>
+            <option class="selector-tooth-text">II</option>
+            <option class="selector-tooth-text">III</option>
+            <option class="selector-tooth-text">A</option>
+            <option class="selector-tooth-text">O</option>
+            <option class="selector-tooth-text">P</option>
+            <option class="selector-tooth-text">C</option>
+            <option class="selector-tooth-text">Pt</option>
+            <option class="selector-tooth-text">R</option>
+          </select>
+          <select class="selector-tooth" id="right8Up">
+            <option class="selector-tooth-text" selected>-</option>
+            <option class="selector-tooth-text">I</option>
+            <option class="selector-tooth-text">II</option>
+            <option class="selector-tooth-text">III</option>
+            <option class="selector-tooth-text">A</option>
+            <option class="selector-tooth-text">O</option>
+            <option class="selector-tooth-text">P</option>
+            <option class="selector-tooth-text">C</option>
+            <option class="selector-tooth-text">Pt</option>
+            <option class="selector-tooth-text">R</option>
+          </select>
+          <div class="card-tooth-row-text-number">8</div>
+          <select class="selector-tooth" id="right8Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -477,8 +533,7 @@
           <img class="tooth-pictures-dialog-close" src="../img/point-plus.png"/>
         </div>
       </div>
-      <div class="tooth-pictures">
-        <img class="tooth-picture" src="../img/tooth-picture.png"/>
+      <div class="tooth-pictures" id="toothPictures">
       </div>
     </div>
   </dialog>
@@ -505,44 +560,53 @@
               <div class="cell-header-content-diagnosis-of-patient">Действительность</div>
             </th>
           </tr>
-          <tr class="row-diagnosis-of-patient">
-            <th class="cell-diagnosis-of-patient">
-              <div class="cell-content-diagnosis-of-patient">Кариес</div>
+          <tr class="row-diagnosis-of-patient" id="firstRowDiagnosisOfPatient">
+            <th class="cell-diagnosis-of-patient" id="firstRowDiagnosisOfPatientCell1">
+              <div class="cell-content-diagnosis-of-patient" id="firstDiagnosisOfPatientDiagnose"></div>
             </th>
-            <th class="cell-diagnosis-of-patient">
-              <div class="cell-content-diagnosis-of-patient">Разрушительный процесс, протекающий в твердых тканях зубов</div>
+            <th class="cell-diagnosis-of-patient" id="firstRowDiagnosisOfPatientCell2">
+              <div class="cell-content-diagnosis-of-patient" id="firstDiagnosisOfPatientDescription"></div>
             </th>
-            <th class="cell-diagnosis-of-patient">
-              <div class="cell-content-diagnosis-of-patient">Вылечено</div>
-            </th>
-          </tr>
-          <tr class="row-diagnosis-of-patient">
-            <th class="cell-diagnosis-of-patient">
-            </th>
-            <th class="cell-diagnosis-of-patient">
-            </th>
-            <th class="cell-diagnosis-of-patient">
+            <th class="cell-diagnosis-of-patient" id="firstRowDiagnosisOfPatientCell3">
+              <div class="cell-content-diagnosis-of-patient" id="firstDiagnosisOfPatientStatus"></div>
             </th>
           </tr>
-          <tr class="row-diagnosis-of-patient">
-            <th class="cell-diagnosis-of-patient">
+          <tr class="row-diagnosis-of-patient" id="secondRowDiagnosisOfPatient">
+            <th class="cell-diagnosis-of-patient" id="secondRowDiagnosisOfPatientCell1">
+              <div class="cell-content-diagnosis-of-patient" id="secondDiagnosisOfPatientDiagnose"></div>
             </th>
-            <th class="cell-diagnosis-of-patient">
+            <th class="cell-diagnosis-of-patient" id="secondRowDiagnosisOfPatientCell2">
+              <div class="cell-content-diagnosis-of-patient" id="secondDiagnosisOfPatientDescription"></div>
             </th>
-            <th class="cell-diagnosis-of-patient">
+            <th class="cell-diagnosis-of-patient" id="secondRowDiagnosisOfPatientCell3">
+              <div class="cell-content-diagnosis-of-patient" id="secondDiagnosisOfPatientStatus"></div>
             </th>
           </tr>
-          <tr class="row-diagnosis-of-patient">
-            <th class="cell-diagnosis-of-patient">
+          <tr class="row-diagnosis-of-patient" id="thirdRowDiagnosisOfPatient">
+            <th class="cell-diagnosis-of-patient" id="thirdRowDiagnosisOfPatientCell1">
+              <div class="cell-content-diagnosis-of-patient" id="thirdDiagnosisOfPatientDiagnose"></div>
             </th>
-            <th class="cell-diagnosis-of-patient">
+            <th class="cell-diagnosis-of-patient" id="thirdRowDiagnosisOfPatientCell2">
+              <div class="cell-content-diagnosis-of-patient" id="thirdDiagnosisOfPatientDescription"></div>
             </th>
-            <th class="cell-diagnosis-of-patient">
+            <th class="cell-diagnosis-of-patient" id="thirdRowDiagnosisOfPatientCell3">
+              <div class="cell-content-diagnosis-of-patient" id="thirdDiagnosisOfPatientStatus"></div>
+            </th>
+          </tr>
+          <tr class="row-diagnosis-of-patient" id="fourthRowDiagnosisOfPatient">
+            <th class="cell-diagnosis-of-patient" id="fourthRowDiagnosisOfPatientCell1">
+              <div class="cell-content-diagnosis-of-patient" id="fourthDiagnosisOfPatientDiagnose"></div>
+            </th>
+            <th class="cell-diagnosis-of-patient" id="fourthRowDiagnosisOfPatientCell2">
+              <div class="cell-content-diagnosis-of-patient" id="fourthDiagnosisOfPatientDescription"></div>
+            </th>
+            <th class="cell-diagnosis-of-patient" id="fourthRowDiagnosisOfPatientCell3">
+              <div class="cell-content-diagnosis-of-patient" id="fourthDiagnosisOfPatientStatus"></div>
             </th>
           </tr>
           </tbody>
         </table>
-        <div class="button-diagnosis">Вылечен</div>
+        <div class="button-diagnosis" id="cured-button">Вылечен</div>
         <div class="list-of-diagnosis">Список диагнозов</div>
         <table class="table">
           <tbody class="table">
@@ -554,38 +618,41 @@
               <div class="cell-header-content-diagnosis-from-doctor">Описание</div>
             </th>
           </tr>
-          <tr class="row-diagnosis-from-doctor">
-            <th class="cell-diagnosis-from-doctor">
-              <div class="cell-content-diagnosis-from-doctor">Пульпит</div>
+          <tr class="row-diagnosis-from-doctor" id="firstRowDiagnosisFromDoctor">
+            <th class="cell-diagnosis-from-doctor" id="firstRowDiagnosisFromDoctorCell1">
+              <div class="cell-content-diagnosis-from-doctor" id="firstDiagnosisFromDoctorDiagnose"></div>
             </th>
-            <th class="cell-diagnosis-from-doctor">
-              <div class="cell-content-diagnosis-from-doctor">Воспаление внутренних тканей зуба (пульпы)</div>
-            </th>
-          </tr>
-          <tr class="row-diagnosis-from-doctor">
-            <th class="cell-diagnosis-from-doctor">
-              <div class="cell-content-diagnosis-from-doctor">Периодонтит</div>
-            </th>
-            <th class="cell-diagnosis-from-doctor">
-              <div class="cell-content-diagnosis-from-doctor">Острое либо хроническое воспаление периодонта, т. е. тканей, примыкающих к корню зуба</div>
+            <th class="cell-diagnosis-from-doctor" id="firstRowDiagnosisFromDoctorCell2">
+              <div class="cell-content-diagnosis-from-doctor" id="firstDiagnosisFromDoctorDescription"></div>
             </th>
           </tr>
-
-          <tr class="row-diagnosis-from-doctor">
-            <th class="cell-diagnosis-from-doctor">
+          <tr class="row-diagnosis-from-doctor" id="secondRowDiagnosisFromDoctor">
+            <th class="cell-diagnosis-from-doctor" id="secondRowDiagnosisFromDoctorCell1">
+              <div class="cell-content-diagnosis-from-doctor" id="secondDiagnosisFromDoctorDiagnose"></div>
             </th>
-            <th class="cell-diagnosis-from-doctor">
+            <th class="cell-diagnosis-from-doctor" id="secondRowDiagnosisFromDoctorCell2">
+              <div class="cell-content-diagnosis-from-doctor" id="secondDiagnosisFromDoctorDescription"></div>
             </th>
           </tr>
-          <tr class="row-diagnosis-from-doctor">
-            <th class="cell-diagnosis-from-doctor">
+          <tr class="row-diagnosis-from-doctor" id="thirdRowDiagnosisFromDoctor">
+            <th class="cell-diagnosis-from-doctor" id="thirdRowDiagnosisFromDoctorCell1">
+              <div class="cell-content-diagnosis-from-doctor" id="thirdDiagnosisFromDoctorDiagnose"></div>
             </th>
-            <th class="cell-diagnosis-from-doctor">
+            <th class="cell-diagnosis-from-doctor" id="thirdRowDiagnosisFromDoctorCell2">
+              <div class="cell-content-diagnosis-from-doctor" id="thirdDiagnosisFromDoctorDescription"></div>
+            </th>
+          </tr>
+          <tr class="row-diagnosis-from-doctor" id="fourthRowDiagnosisFromDoctor">
+            <th class="cell-diagnosis-from-doctor" id="fourthRowDiagnosisFromDoctorCell1">
+              <div class="cell-content-diagnosis-from-doctor" id="fourthDiagnosisFromDoctorDiagnose"></div>
+            </th>
+            <th class="cell-diagnosis-from-doctor" id="fourthRowDiagnosisFromDoctorCell2">
+              <div class="cell-content-diagnosis-from-doctor" id="fourthDiagnosisFromDoctorDescription"></div>
             </th>
           </tr>
           </tbody>
         </table>
-        <div class="button-diagnosis">Добавить диагноз</div>
+        <div class="button-diagnosis" id="add-diagnose-button">Добавить диагноз</div>
       </div>
     </div>
   </dialog>
@@ -597,7 +664,7 @@
           <img class="payments-dialog-close" src="../img/point-plus.png"/>
         </div>
       </div>
-      <div class="payments-dialog-body">
+      <form class="payments-dialog-body" id="paymentsForm">
         <div class="doctor-services">Ваши услуги</div>
         <table class="table">
           <tbody class="table">
@@ -616,57 +683,66 @@
             </tr>
             <tr class="row-payment">
               <th class="cell-payment-fist">
-                <input type="checkbox" id="first-row" name="first-row" class="checkbox-services">
+                <input type="checkbox" id="first" name="first-checkbox" class="checkbox-services">
               </th>
               <th class="cell-payment">
-                <div class="cell-content-payment">Установка пломбы</div>
+                <div class="cell-content-payment" id="firstRowService"></div>
               </th>
               <th class="cell-payment">
-                <div class="cell-content-payment">Установка пломбы на зуб</div>
+                <div class="cell-content-payment" id="firstRowDescription"></div>
               </th>
               <th class="cell-payment">
-                <div class="cell-content-payment">10000</div>
+                <div class="cell-content-payment" id="firstRowPrice"></div>
               </th>
             </tr>
             <tr class="row-payment">
               <th class="cell-payment-fist">
-                <input type="checkbox" id="second-row" name="second-row" class="checkbox-services">
+                <input type="checkbox" id="second" name="second-checkbox" class="checkbox-services">
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="secondRowService"></div>
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="secondRowDescription"></div>
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="secondRowPrice"></div>
               </th>
             </tr>
             <tr class="row-payment">
               <th class="cell-payment-fist">
-                <input type="checkbox" id="third-row" name="third-row" class="checkbox-services">
+                <input type="checkbox" id="third" name="third-checkbox" class="checkbox-services">
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="thirdRowService"></div>
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="thirdRowDescription"></div>
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="thirdRowPrice"></div>
               </th>
             </tr>
             <tr class="row-payment">
               <th class="cell-payment-fist">
-                <input type="checkbox" id="fourth-row" name="fourth-row" class="checkbox-services">
+                <input type="checkbox" id="fourth" name="fourth-checkbox" class="checkbox-services">
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="fourthRowService"></div>
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="fourthRowDescription"></div>
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="fourthRowPrice"></div>
               </th>
             </tr>
           </tbody>
         </table>
-        <div class="services">Оказанные услуги: ...</div>
-        <div class="cost">Стоимость: ... Р</div>
-        <div class="payment" onclick="location.assign('/doctor/reception');">Выставить счет</div>
-      </div>
+        <div class="services" id="services-done">Оказанные услуги: </div>
+        <div class="cost" id="cost">Стоимость: </div>
+        <div class="payment" id="paymentButton">Выставить счет</div>
+      </form>
     </div>
   </dialog>
 </div>

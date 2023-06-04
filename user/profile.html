@@ -39,27 +39,27 @@
   <div class="user-profile-body-content">
     <div class="user-card">
       <div class="user-card-content">
-        <img class="user-profile-photo" src="../img/user-photo.png"/>
+        <img class="user-profile-photo" id="photo" src="../img/default.jpg"/>
         <div class="card-fields">
           <div class="card-field-group">
             <div class="user-card-field">ФИО</div>
-            <div class="field-content">Щербаков Максим Сергеевич</div>
+            <div class="field-content" id="name"></div>
           </div>
           <div class="card-field-group">
             <div class="user-card-field">Дата рождения</div>
-            <div class="field-content">26.08.2001</div>
+            <div class="field-content" id="dateOfBirthday"></div>
           </div>
           <div class="card-field-group">
             <div class="user-card-field">Телефон</div>
-            <div class="field-content">+79204292271</div>
+            <div class="field-content" id="phone"></div>
           </div>
           <div class="card-field-group">
             <div class="user-card-field">E-mail</div>
-            <div class="field-content">schtscherbakov@gmail.com</div>
+            <div class="field-content" id="e-mail"></div>
           </div>
           <div class="card-field-group">
             <div class="user-card-field">Аллергии</div>
-            <div class="field-content">Отсутствуют</div>
+            <div class="field-content" id="allergies"></div>
           </div>
         </div>
       </div>
@@ -83,37 +83,46 @@
       </tr>
         <tr class="row">
           <th class="cell">
-            <div class="cell-content">Кариес</div>
+            <div class="cell-content" id="first-diagnosis-name"></div>
           </th>
           <th class="cell">
-            <div class="cell-content">Кариес на 5 зубе средней степени</div>
+            <div class="cell-content" id="first-diagnosis-description"></div>
           </th>
           <th class="cell">
-            <div class="cell-content">Вылечено</div>
-          </th>
-        </tr>
-        <tr class="row">
-          <th class="cell">
-          </th>
-          <th class="cell">
-          </th>
-          <th class="cell">
+            <div class="cell-content" id="first-diagnosis-actual"></div>
           </th>
         </tr>
         <tr class="row">
           <th class="cell">
+            <div class="cell-content" id="second-diagnosis-name"></div>
           </th>
           <th class="cell">
+            <div class="cell-content" id="second-diagnosis-description"></div>
           </th>
           <th class="cell">
+            <div class="cell-content" id="second-diagnosis-actual"></div>
           </th>
         </tr>
         <tr class="row">
           <th class="cell">
+            <div class="cell-content" id="third-diagnosis-name"></div>
           </th>
           <th class="cell">
+            <div class="cell-content" id="third-diagnosis-description"></div>
           </th>
           <th class="cell">
+            <div class="cell-content" id="third-diagnosis-actual"></div>
+          </th>
+        </tr>
+        <tr class="row">
+          <th class="cell">
+            <div class="cell-content" id="fourth-diagnosis-name"></div>
+          </th>
+          <th class="cell">
+            <div class="cell-content" id="fourth-diagnosis-description"></div>
+          </th>
+          <th class="cell">
+            <div class="cell-content" id="fourth-diagnosis-actual"></div>
           </th>
         </tr>
       </tbody>
@@ -127,8 +136,7 @@
           <img class="tooth-pictures-dialog-close" src="../img/point-plus.png"/>
         </div>
       </div>
-      <div class="tooth-pictures">
-        <img class="tooth-picture" src="../img/tooth-picture.png"/>
+      <div class="tooth-pictures" id="toothPictures">
       </div>
     </div>
   </dialog>

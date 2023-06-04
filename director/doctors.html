@@ -37,10 +37,10 @@
       </div>
     </div>
   </div>
-  <div class="doctors-body">
+  <div class="doctors-body" id="doctors-body">
     <div class="doctors-body-header">
-      <label>
-        <select class="selector">
+      <form id="doctors-form">
+        <select class="selector" name="selector">
           <option class="selector-text" selected>Все...</option>
           <option class="selector-text">Детский стоматолог</option>
           <option class="selector-text">Специалист по гигиене зубов</option>
@@ -54,55 +54,11 @@
           <option class="selector-text">Челюстно-лицевой хирург</option>
           <option class="selector-text">Эндодонтист</option>
         </select>
+      </form>
       </label>
       <div class="doctor-create" id="openCreateDoctorDialog">Добавить врача</div>
     </div>
-    <div class="doctors-content">
-      <div class="doctor-card">
-        <div class="doctor-avatar">
-          <img class="doctor-image" src="../img/filimonenko.png">
-        </div>
-        <div class="doctor-name">
-          Филимоненко Светлана Сергеевна
-        </div>
-        <div class="doctor-spec">
-          Стоматолог-терапевт, Детский стоматолог
-        </div>
-      </div>
-      <div class="doctor-card" id="openDoctorsDialog">
-        <div class="doctor-avatar">
-          <img class="doctor-image" src="../img/husainov.png">
-        </div>
-        <div class="doctor-name">
-          Хусаинов Руслан Дмитриевич
-        </div>
-        <div class="doctor-spec">Стоматолог-терапевт</div>
-      </div>
-      <div class="doctor-card">
-        <div class="doctor-avatar">
-          <img class="doctor-image" src="../img/cukanova.png">
-        </div>
-        <div class="doctor-name">
-          Цуканова Юлия
-          <br/>
-          Игоревна
-        </div>
-        <div class="doctor-spec">
-          Стоматолог-терапевт, Детский
-          <br/>
-          стоматолог
-        </div>
-      </div>
-      <div class="doctor-card">
-        <div class="doctor-avatar">
-          <img class="doctor-image" src="../img/chumichyova.png">
-        </div>
-        <div class="doctor-name">
-          Чумичёва Анастасия Александровна
-        </div>
-        <div class="doctor-spec">Стоматолог-ортопед</div>
-      </div>
-    </div>
+    <img class="go-to-top" onclick="topFunction()" id="goToTop" src="../img/arrow.png"/>
   </div>
   <dialog class="create-doctor-dialog-blackout" id="createDoctorDialog" >
     <div class="create-doctor-dialog-content">
@@ -113,7 +69,7 @@
         </div>
       </div>
       <div class="create-doctor-dialog-body-content">
-        <div class="form">
+        <form class="form" id="create-form">
           <div class="required-fields">
             <div class="required-field">
               <div class="required-field-title">Имя</div>
@@ -150,7 +106,7 @@
             </div>
             <div class="photo-field">
               <div class="photo-field-title">Фотография</div>
-              <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photo" class="photo-field-input">
+              <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photo" class="photo-field-input" onchange="imageUploaded()">
             </div>
             <div class="required-field">
               <div class="services-doctor-button" id="openCreateServicesDoctorDialog">Выбрать оказываемые услуги</div>
@@ -167,47 +123,21 @@
             </div>
           </div>
           <div class="save-button" id="createDoctorDialogSave">Создать</div>
-        </div>
+        </form>
       </div>
     </div>
   </dialog>
   <dialog class="doctors-dialog-blackout" id="doctorsDialog">
     <div class="doctors-dialog-content">
       <div class="doctors-dialog-title">
-        <div class="doctors-dialog-title-text">Хусаинов Руслан Дмитриевич</div>
+        <div class="doctors-dialog-title-text" id="doctors-dialog-title"></div>
         <div class="doctors-dialog-close-div" id="doctorsDialogClose">
           <img class="doctors-dialog-close" src="../img/point-plus.png"/>
         </div>
       </div>
       <div class="doctors-dialog-body-content">
-        <div class="doctors-dialog-content-description">
-          Руслан Дмитриевич — молодой и перспективный специалист, главная цель которого — здоровые и счастливые улыбки. Доктор максимально ответственно и внимательно относится к каждому пациенту и находит индивидуальный подход к его клиническому случаю.</br>
-          Отличается добрым отношением к пациентам, но в то же время очень требовательный к себе и своей работе. Постоянно стремится совершенствовать свои умения и увеличивать объем знаний, обучаясь у Российских и зарубежных специалистов. Владеет современными методами лечения заболеваний зубочелюстной системы.</br>
-          Будучи студентом работал ассистентом со стоматологами всех специальностей, усваивая их опыт и навыки работы.
-        </div>
-        <div class="pluses-group">
-          <div class="pluses-group-title">Руслан Дмитриевич владеет следующими профессиональными навыками:</div>
-          <div class="plus-price-group">
-            <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="doctors-dialog-content-text">Составление индивидуального плана лечения, основываясь на данных осмотра и компьютерной томографии</div>
-          </div>
-          <div class="plus-price-group">
-            <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="doctors-dialog-content-text">Лечение кариеса и его осложнений</div>
-          </div>
-          <div class="plus-price-group">
-            <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="doctors-dialog-content-text">Восстановление разрушенных зубов с применением титановых или стекловолоконных штифтов или культевых вкладок</div>
-          </div>
-          <div class="plus-price-group">
-            <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="doctors-dialog-content-text">Современная обработка корневых каналов с применением ручных и механических никель-титановых инструментов ProТaper</div>
-          </div>
-          <div class="plus-price-group">
-            <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="doctors-dialog-content-text">Современные методы пломбирования корневых каналов.</div>
-          </div>
-        </div>
+        <div class="doctors-dialog-content-description" id="doctors-dialog-description"></div>
+        <div class="pluses-group" id="doctors-dialog-pluses"></div>
       </div>
       <div class="doctors-dialog-footer">
         <div class="doctors-dialog-footer-buttons">
@@ -227,19 +157,19 @@
         </div>
       </div>
       <div class="create-doctor-dialog-body-content">
-        <div class="form">
+        <form class="form" id="edit-form">
           <div class="required-fields">
             <div class="required-field">
               <div class="required-field-title">Имя</div>
-              <input type="text" id="nameEdit" name="name" placeholder="Имя" value="Руслан" class="required-field-input">
+              <input type="text" id="nameEdit" name="name" placeholder="Имя" class="required-field-input">
             </div>
             <div class="required-field">
               <div class="required-field-title">Фамилия</div>
-              <input type="text" id="surnameEdit" name="surname" placeholder="Фамилия" value="Хусаинов" class="required-field-input">
+              <input type="text" id="surnameEdit" name="surname" placeholder="Фамилия" class="required-field-input">
             </div>
             <div class="required-field">
               <div class="required-field-title">Отчество</div>
-              <input type="text" id="patronymicEdit" name="patronymic" placeholder="Отчество" value="Дмитриевич" class="required-field-input">
+              <input type="text" id="patronymicEdit" name="patronymic" placeholder="Отчество" class="required-field-input">
             </div>
           </div>
           <div class="required-fields">
@@ -264,7 +194,7 @@
             </div>
             <div class="photo-field">
               <div class="photo-field-title">Фотография</div>
-              <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photoEdit" class="photo-field-input">
+              <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photoEdit" class="photo-field-input" onchange="imageUploaded()">
             </div>
             <div class="required-field">
               <div class="services-doctor-button" id="openEditServicesDoctorDialog">Выбрать оказываемые услуги</div>
@@ -273,24 +203,15 @@
           <div class="additional-fields">
             <div class="additional-field">
               <div class="additional-field-title">Описание</div>
-              <textarea type="text" id="descriptionEdit" name="description" placeholder="Описание" class="additional-field-input">
-Руслан Дмитриевич — молодой и перспективный специалист, главная цель которого — здоровые и счастливые улыбки. Доктор максимально ответственно и внимательно относится к каждому пациенту и находит индивидуальный подход к его клиническому случаю.
-Отличается добрым отношением к пациентам, но в то же время очень требовательный к себе и своей работе. Постоянно стремится совершенствовать свои умения и увеличивать объем знаний, обучаясь у Российских и зарубежных специалистов. Владеет современными методами лечения заболеваний зубочелюстной системы.
-              </textarea>
+              <textarea type="text" id="descriptionEdit" name="description" placeholder="Описание" class="additional-field-input"></textarea>
             </div>
             <div class="additional-field">
               <div class="additional-field-title">Проффесиональные навыки</div>
-              <textarea type="text" id="plusesEdit" name="pluses" placeholder="Проффесиональные навыки" class="additional-field-input">
-Составление индивидуального плана лечения, основываясь на данных осмотра и компьютерной томографии.
-Лечение кариеса и его осложнений.
-Восстановление разрушенных зубов с применением титановых или стекловолоконных штифтов или культевых вкладок.
-Современная обработка корневых каналов с применением ручных и механических никель-титановых инструментов ProТaper
-Современные методы пломбирования корневых каналов.
-              </textarea>
+              <textarea type="text" id="plusesEdit" name="pluses" placeholder="Проффесиональные навыки" class="additional-field-input"></textarea>
             </div>
           </div>
           <div class="save-button" id="editDoctorDialogSave">Создать</div>
-        </div>
+        </form>
       </div>
     </div>
   </dialog>
@@ -319,7 +240,7 @@
       <div class="services-content">
         <div class="doctor-info-services">
         <div class="doctor-info-services-title">Врач</div>
-        <div class="doctor-info-services-name">Хусаинов Руслан Дмитриевич</div>
+        <div class="doctor-info-services-name" id="doctorNameServices"></div>
         </div>
         <div class="list-of-services-patient">Список услуг врача</div>
         <table class="table">
@@ -335,41 +256,53 @@
               <div class="cell-header-content-services-of-patient">Цена</div>
             </th>
           </tr>
-          <tr class="row-services-of-patient">
-            <th class="cell-services-of-patient">
+          <tr class="row-services-of-patient" id="firstRowDoctor">
+            <th class="cell-services-of-patient" id="firstRowDoctorCell1">
+              <div class="cell-content-services-of-patient" id="firstRowDoctorName"></div>
             </th>
-            <th class="cell-services-of-patient">
+            <th class="cell-services-of-patient" id="firstRowDoctorCell2">
+              <div class="cell-content-services-of-patient" id="firstRowDoctorDescription"></div>
             </th>
-            <th class="cell-services-of-patient">
-            </th>
-          </tr>
-          <tr class="row-services-of-patient">
-            <th class="cell-services-of-patient">
-            </th>
-            <th class="cell-services-of-patient">
-            </th>
-            <th class="cell-services-of-patient">
+            <th class="cell-services-of-patient" id="firstRowDoctorCell3">
+              <div class="cell-content-services-of-patient" id="firstRowDoctorPrice"></div>
             </th>
           </tr>
-          <tr class="row-services-of-patient">
-            <th class="cell-services-of-patient">
+          <tr class="row-services-of-patient" id="secondRowDoctor">
+            <th class="cell-services-of-patient" id="secondRowDoctorCell1">
+              <div class="cell-content-services-of-patient" id="secondRowDoctorName"></div>
             </th>
-            <th class="cell-services-of-patient">
+            <th class="cell-services-of-patient" id="secondRowDoctorCell2">
+              <div class="cell-content-services-of-patient" id="secondRowDoctorDescription"></div>
             </th>
-            <th class="cell-services-of-patient">
+            <th class="cell-services-of-patient" id="secondRowDoctorCell3">
+              <div class="cell-content-services-of-patient" id="secondRowDoctorPrice"></div>
             </th>
           </tr>
-          <tr class="row-services-of-patient">
-            <th class="cell-services-of-patient">
+          <tr class="row-services-of-patient" id="thirdRowDoctor">
+            <th class="cell-services-of-patient" id="thirdRowDoctorCell1">
+              <div class="cell-content-services-of-patient" id="thirdRowDoctorName"></div>
             </th>
-            <th class="cell-services-of-patient">
+            <th class="cell-services-of-patient" id="thirdRowDoctorCell2">
+              <div class="cell-content-services-of-patient" id="thirdRowDoctorDescription"></div>
             </th>
-            <th class="cell-services-of-patient">
+            <th class="cell-services-of-patient" id="thirdRowDoctorCell3">
+              <div class="cell-content-services-of-patient" id="thirdRowDoctorPrice"></div>
+            </th>
+          </tr>
+          <tr class="row-services-of-patient" id="fourthRowDoctor">
+            <th class="cell-services-of-patient" id="fourthRowDoctorCell1">
+              <div class="cell-content-services-of-patient" id="fourthRowDoctorName"></div>
+            </th>
+            <th class="cell-services-of-patient" id="fourthRowDoctorCell2">
+              <div class="cell-content-services-of-patient" id="fourthRowDoctorDescription"></div>
+            </th>
+            <th class="cell-services-of-patient" id="fourthRowDoctorCell3">
+              <div class="cell-content-services-of-patient" id="fourthRowDoctorPrice"></div>
             </th>
           </tr>
           </tbody>
         </table>
-        <div class="button-services">Удалить оказываемую услугу</div>
+        <div class="button-services" id="deleteButton">Удалить оказываемую услугу</div>
         <div class="list-of-services">Список услуг</div>
         <table class="table">
           <tbody class="table">
@@ -384,41 +317,53 @@
               <div class="cell-header-content-services-of-patient">Цена</div>
             </th>
           </tr>
-          <tr class="row-services-of-patient">
-            <th class="cell-services-of-patient">
+          <tr class="row-services-of-patient" id="firstRowAll">
+            <th class="cell-services-of-patient" id="firstRowAllCell1">
+              <div class="cell-content-services-of-patient" id="firstRowAllName"></div>
             </th>
-            <th class="cell-services-of-patient">
+            <th class="cell-services-of-patient" id="firstRowAllCell2">
+              <div class="cell-content-services-of-patient" id="firstRowAllDescription"></div>
             </th>
-            <th class="cell-services-of-patient">
-            </th>
-          </tr>
-          <tr class="row-services-of-patient">
-            <th class="cell-services-of-patient">
-            </th>
-            <th class="cell-services-of-patient">
-            </th>
-            <th class="cell-services-of-patient">
+            <th class="cell-services-of-patient" id="firstRowAllCell3">
+              <div class="cell-content-services-of-patient" id="firstRowAllPrice"></div>
             </th>
           </tr>
-          <tr class="row-services-of-patient">
-            <th class="cell-services-of-patient">
+          <tr class="row-services-of-patient" id="secondRowAll">
+            <th class="cell-services-of-patient" id="secondRowAllCell1">
+              <div class="cell-content-services-of-patient" id="secondRowAllName"></div>
             </th>
-            <th class="cell-services-of-patient">
+            <th class="cell-services-of-patient" id="secondRowAllCell2">
+              <div class="cell-content-services-of-patient" id="secondRowAllDescription"></div>
             </th>
-            <th class="cell-services-of-patient">
+            <th class="cell-services-of-patient" id="secondRowAllCell3">
+              <div class="cell-content-services-of-patient" id="secondRowAllPrice"></div>
             </th>
           </tr>
-          <tr class="row-services-of-patient">
-            <th class="cell-services-of-patient">
+          <tr class="row-services-of-patient" id="thirdRowAll">
+            <th class="cell-services-of-patient" id="thirdRowAllCell1">
+              <div class="cell-content-services-of-patient" id="thirdRowAllName"></div>
             </th>
-            <th class="cell-services-of-patient">
+            <th class="cell-services-of-patient" id="thirdRowAllCell2">
+              <div class="cell-content-services-of-patient" id="thirdRowAllDescription"></div>
             </th>
-            <th class="cell-services-of-patient">
+            <th class="cell-services-of-patient" id="thirdRowAllCell3">
+              <div class="cell-content-services-of-patient" id="thirdRowAllPrice"></div>
+            </th>
+          </tr>
+          <tr class="row-services-of-patient" id="fourthRowAll">
+            <th class="cell-services-of-patient" id="fourthRowAllCell1">
+              <div class="cell-content-services-of-patient" id="fourthRowAllName"></div>
+            </th>
+            <th class="cell-services-of-patient" id="fourthRowAllCell2">
+              <div class="cell-content-services-of-patient" id="fourthRowAllDescription"></div>
+            </th>
+            <th class="cell-services-of-patient" id="fourthRowAllCell3">
+              <div class="cell-content-services-of-patient" id="fourthRowAllPrice"></div>
             </th>
           </tr>
           </tbody>
         </table>
-        <div class="button-services">Добавить оказываемую услугу</div>
+        <div class="button-services" id="addButton">Добавить оказываемую услугу</div>
       </div>
     </div>
   </dialog>
