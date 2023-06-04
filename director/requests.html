@@ -52,69 +52,97 @@
         <th class="cell-header-requests">
           <div class="cell-header-content">Статус</div>
       </tr>
-      <tr class="row-requests">
-        <th class="cell-requests">
-          <div class="cell-content">Иванов Иван</div>
+      <tr class="row-requests" id="firstRow">
+        <th class="cell-requests" id="firstRowCell1">
+          <div class="cell-content" id="firstName"></div>
         </th>
-        <th class="cell-requests">
-          <div class="cell-content">+79999999999</div>
+        <th class="cell-requests" id="firstRowCell2">
+          <div class="cell-content" id="firstPhone"></div>
         </th>
-        <th class="cell-requests">
-          <div class="cell-content">Болит зуб</div>
+        <th class="cell-requests" id="firstRowCell3">
+          <div class="cell-content" id="firstContent"></div>
         </th>
-        <th class="cell-requests">
-        </th>
-      </tr>
-      <tr class="row-requests">
-        <th class="cell-requests">
-          <div class="cell-content">Петров Петр</div>
-        </th>
-        <th class="cell-requests">
-          <div class="cell-content">+78888888888</div>
-        </th>
-        <th class="cell-requests">
-          <div class="cell-content">Установка брекетов</div>
-        </th>
-        <th class="cell-requests">
-          <div class="cell-content">Рассмотрено</div>
+        <th class="cell-requests" id="firstRowCell4">
+          <div class="cell-content" id="firstStatus"></div>
         </th>
       </tr>
-      <tr class="row-requests">
-        <th class="cell-requests">
+      <tr class="row-requests" id="secondRow">
+        <th class="cell-requests" id="secondRowCell1">
+          <div class="cell-content" id="secondName"></div>
         </th>
-        <th class="cell-requests">
+        <th class="cell-requests" id="secondRowCell2">
+          <div class="cell-content" id="secondPhone"></div>
         </th>
-        <th class="cell-requests">
+        <th class="cell-requests" id="secondRowCell3">
+          <div class="cell-content" id="secondContent"></div>
         </th>
-        <th class="cell-requests">
-        </th>
-      </tr>
-      <tr class="row-requests">
-        <th class="cell-requests">
-        </th>
-        <th class="cell-requests">
-        </th>
-        <th class="cell-requests">
-        </th>
-        <th class="cell-requests">
+        <th class="cell-requests" id="secondRowCell4">
+          <div class="cell-content" id="secondStatus"></div>
         </th>
       </tr>
-      <tr class="row-requests">
-        <th class="cell-requests">
+      <tr class="row-requests" id="thirdRow">
+        <th class="cell-requests" id="thirdRowCell1">
+          <div class="cell-content" id="thirdName"></div>
         </th>
-        <th class="cell-requests">
+        <th class="cell-requests" id="thirdRowCell2">
+          <div class="cell-content" id="thirdPhone"></div>
         </th>
-        <th class="cell-requests">
+        <th class="cell-requests" id="thirdRowCell3">
+          <div class="cell-content" id="thirdContent"></div>
         </th>
-        <th class="cell-requests">
+        <th class="cell-requests" id="thirdRowCell4">
+          <div class="cell-content" id="thirdStatus"></div>
+        </th>
+      </tr>
+      <tr class="row-requests" id="forthRow">
+        <th class="cell-requests" id="forthRowCell1">
+          <div class="cell-content" id="forthName"></div>
+        </th>
+        <th class="cell-requests" id="forthRowCell2">
+          <div class="cell-content" id="forthPhone"></div>
+        </th>
+        <th class="cell-requests" id="forthRowCell3">
+          <div class="cell-content" id="forthContent"></div>
+        </th>
+        <th class="cell-requests" id="forthRowCell4">
+          <div class="cell-content" id="forthStatus"></div>
+        </th>
+      </tr>
+      <tr class="row-requests" id="fifthRow">
+        <th class="cell-requests" id="fifthRowCell1">
+          <div class="cell-content" id="fifthName"></div>
+        </th>
+        <th class="cell-requests" id="fifthRowCell2">
+          <div class="cell-content" id="fifthPhone"></div>
+        </th>
+        <th class="cell-requests" id="fifthRowCell3">
+          <div class="cell-content" id="fifthContent"></div>
+        </th>
+        <th class="cell-requests" id="fifthRowCell4">
+          <div class="cell-content" id="fifthStatus"></div>
         </th>
       </tr>
       </tbody>
     </table>
     <div class="buttons">
-      <div class="checked">Рассмострено</div>
-      <div class="delete-request">Удалить</div>
+      <div class="checked" id="checked-button">Рассмострено</div>
+      <div class="delete-request" id="openDeleteDialog">Удалить</div>
     </div>
   </div>
+  <dialog class="delete-dialog-blackout" id="deleteDialog">
+    <div class="delete-dialog-content">
+      <div class="delete-dialog-title">
+        <div class="delete-dialog-title-text">Удаление заявки</div>
+      </div>
+      <div class="delete-dialog-body-content">
+        <div class="delete-dialog-content-description">Вы уверены что хотите удалить заявку? Это действие отменить невозможно</div>
+      </div>
+      <div class="delete-dialog-footer">
+        <div class="delete-dialog-footer-button" id="deleteDialogClose">Удалить</div>
+        <div class="delete-dialog-footer-button" id="backButtonDeleteDialogClose">Отмена</div>
+      </div>
+    </div>
+  </dialog>
 </div>
+<script src="../js/director/requests.js"></script>
 </body>
