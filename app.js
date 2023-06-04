@@ -359,6 +359,9 @@ router.get('/director/record/list',function(req,res){
 router.get('/director/css/director/record-list.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/director/record-list.css'));
 });
+router.get('/director/js/director/record-list.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/director/record-list.js'));
+});
 router.get('/profile/4',function(req,res){
   res.sendFile(path.join(__dirname+'/director/profile.html'));
 });
