@@ -50,71 +50,92 @@
           <div class="cell-header-content">Отчество</div>
         </th>
       </tr>
-      <tr class="row">
-        <th class="cell">
-          <div class="cell-content">Иванов</div>
+      <tr class="row" id="firstRowAll">
+        <th class="cell" id="firstRowAllCell1">
+          <div class="cell-content" id="firstRowAllName"></div>
         </th>
-        <th class="cell">
-          <div class="cell-content">Иван</div>
+        <th class="cell" id="firstRowAllCell2">
+          <div class="cell-content" id="firstRowAllSurname"></div>
         </th>
-        <th class="cell">
-          <div class="cell-content">Иванович</div>
-        </th>
-      </tr>
-      <tr class="row">
-        <th class="cell">
-        </th>
-        <th class="cell">
-        </th>
-        <th class="cell">
+        <th class="cell" id="firstRowAllCell3">
+          <div class="cell-content" id="firstRowAllPatronymic"></div>
         </th>
       </tr>
-      <tr class="row">
-        <th class="cell">
+      <tr class="row" id="secondRowAll">
+        <th class="cell" id="secondRowAllCell1">
+          <div class="cell-content" id="secondRowAllName"></div>
         </th>
-        <th class="cell">
+        <th class="cell" id="secondRowAllCell2">
+          <div class="cell-content" id="secondRowAllSurname"></div>
         </th>
-        <th class="cell">
-        </th>
-      </tr>
-      <tr class="row">
-        <th class="cell">
-        </th>
-        <th class="cell">
-        </th>
-        <th class="cell">
+        <th class="cell" id="secondRowAllCell3">
+          <div class="cell-content" id="secondRowAllPatronymic"></div>
         </th>
       </tr>
-      <tr class="row">
-        <th class="cell">
+      <tr class="row" id="thirdRowAll">
+        <th class="cell" id="thirdRowAllCell1">
+          <div class="cell-content" id="thirdRowAllName"></div>
         </th>
-        <th class="cell">
+        <th class="cell" id="thirdRowAllCell2">
+          <div class="cell-content" id="thirdRowAllSurname"></div>
         </th>
-        <th class="cell">
-        </th>
-      </tr>
-      <tr class="row">
-        <th class="cell">
-        </th>
-        <th class="cell">
-        </th>
-        <th class="cell">
+        <th class="cell" id="thirdRowAllCell3">
+          <div class="cell-content" id="thirdRowAllPatronymic"></div>
         </th>
       </tr>
-      <tr class="row">
-        <th class="cell">
+      <tr class="row" id="fourthRowAll">
+        <th class="cell" id="fourthRowAllCell1">
+          <div class="cell-content" id="fourthRowAllName"></div>
         </th>
-        <th class="cell">
+        <th class="cell" id="fourthRowAllCell2">
+          <div class="cell-content" id="fourthRowAllSurname"></div>
         </th>
-        <th class="cell">
+        <th class="cell" id="fourthRowAllCell3">
+          <div class="cell-content" id="fourthRowAllPatronymic"></div>
         </th>
       </tr>
-      <tr class="row">
-        <th class="cell">
+      <tr class="row" id="fifthRowAll">
+        <th class="cell" id="fifthRowAllCell1">
+          <div class="cell-content" id="fifthRowAllName"></div>
         </th>
-        <th class="cell">
+        <th class="cell" id="fifthRowAllCell2">
+          <div class="cell-content" id="fifthRowAllSurname"></div>
         </th>
-        <th class="cell">
+        <th class="cell" id="fifthRowAllCell3">
+          <div class="cell-content" id="fifthRowAllPatronymic"></div>
+        </th>
+      </tr>
+      <tr class="row" id="sixthRowAll">
+        <th class="cell" id="sixthRowAllCell1">
+          <div class="cell-content" id="sixthRowAllName"></div>
+        </th>
+        <th class="cell" id="sixthRowAllCell2">
+          <div class="cell-content" id="sixthRowAllSurname"></div>
+        </th>
+        <th class="cell" id="sixthRowAllCell3">
+          <div class="cell-content" id="sixthRowAllPatronymic"></div>
+        </th>
+      </tr>
+      <tr class="row" id="seventhRowAll">
+        <th class="cell" id="seventhRowAllCell1">
+          <div class="cell-content" id="seventhRowAllName"></div>
+        </th>
+        <th class="cell" id="seventhRowAllCell2">
+          <div class="cell-content" id="seventhRowAllSurname"></div>
+        </th>
+        <th class="cell" id="seventhRowAllCell3">
+          <div class="cell-content" id="seventhRowAllPatronymic"></div>
+        </th>
+      </tr>
+      <tr class="row" id="eighthRowAll">
+        <th class="cell" id="eighthRowAllCell1">
+          <div class="cell-content" id="eighthRowAllName"></div>
+        </th>
+        <th class="cell" id="eighthRowAllCell2">
+          <div class="cell-content" id="eighthRowAllSurname"></div>
+        </th>
+        <th class="cell" id="eighthRowAllCell3">
+          <div class="cell-content" id="eighthRowAllPatronymic"></div>
         </th>
       </tr>
       </tbody>
@@ -134,7 +155,7 @@
         </div>
       </div>
       <div class="create-admin-dialog-body-content">
-        <div class="form">
+        <form class="form" id="create-form">
           <div class="required-fields">
             <div class="required-field">
               <div class="required-field-title">Имя</div>
@@ -150,11 +171,11 @@
             </div>
             <div class="photo-field">
               <div class="photo-field-title">Фотография</div>
-              <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photo" class="photo-field-input">
+              <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photo" class="photo-field-input" onchange="imageUploaded()">
             </div>
           </div>
           <div class="save-button" id="createAdminDialogSave">Создать</div>
-        </div>
+        </form>
       </div>
     </div>
   </dialog>
@@ -167,27 +188,27 @@
         </div>
       </div>
       <div class="create-admin-dialog-body-content">
-        <div class="form">
+        <form class="form" id="edit-form">
           <div class="required-fields">
             <div class="required-field">
               <div class="required-field-title">Имя</div>
-              <input type="text" id="nameEdit" name="name" placeholder="Имя" value="Иван" class="required-field-input">
+              <input type="text" id="nameEdit" name="name" placeholder="Имя" class="required-field-input">
             </div>
             <div class="required-field">
               <div class="required-field-title">Фамилия</div>
-              <input type="text" id="surnameEdit" name="surname" placeholder="Фамилия" value="Иванов" class="required-field-input">
+              <input type="text" id="surnameEdit" name="surname" placeholder="Фамилия" class="required-field-input">
             </div>
             <div class="required-field">
               <div class="required-field-title">Отчество</div>
-              <input type="text" id="patronymicEdit" name="patronymic" placeholder="Отчество" value="Иванович" class="required-field-input">
+              <input type="text" id="patronymicEdit" name="patronymic" placeholder="Отчество" class="required-field-input">
             </div>
             <div class="photo-field">
               <div class="photo-field-title">Фотография</div>
-              <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photoEdit" class="photo-field-input">
+              <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photoEdit" class="photo-field-input" onchange="imageUploaded()">
             </div>
           </div>
           <div class="save-button" id="editAdminDialogSave">Сохранить</div>
-        </div>
+        </form>
       </div>
     </div>
   </dialog>

@@ -313,7 +313,7 @@ function updateDoctorServices() {
     thirdRowDoctorPrice.textContent = ''
   }
 
-  if (doctorServiceTableValue[1]) {
+  if (doctorServiceTableValue[3]) {
     fourthRowDoctorName.textContent = doctorServiceTableValue[3].service
     fourthRowDoctorDescription.textContent = doctorServiceTableValue[3].description
     fourthRowDoctorPrice.textContent = doctorServiceTableValue[3].price
@@ -355,7 +355,7 @@ function updateServices() {
     thirdRowAllPrice.textContent = ''
   }
 
-  if (servicesTableValue[1]) {
+  if (servicesTableValue[3]) {
     fourthRowAllName.textContent = servicesTableValue[3].service
     fourthRowAllDescription.textContent = servicesTableValue[3].description
     fourthRowAllPrice.textContent = servicesTableValue[3].price
