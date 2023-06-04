@@ -664,7 +664,7 @@
           <img class="payments-dialog-close" src="../img/point-plus.png"/>
         </div>
       </div>
-      <div class="payments-dialog-body">
+      <form class="payments-dialog-body" id="paymentsForm">
         <div class="doctor-services">Ваши услуги</div>
         <table class="table">
           <tbody class="table">
@@ -683,57 +683,66 @@
             </tr>
             <tr class="row-payment">
               <th class="cell-payment-fist">
-                <input type="checkbox" id="first-row" name="first-row" class="checkbox-services">
+                <input type="checkbox" id="first" name="first-checkbox" class="checkbox-services">
               </th>
               <th class="cell-payment">
-                <div class="cell-content-payment">Установка пломбы</div>
+                <div class="cell-content-payment" id="firstRowService"></div>
               </th>
               <th class="cell-payment">
-                <div class="cell-content-payment">Установка пломбы на зуб</div>
+                <div class="cell-content-payment" id="firstRowDescription"></div>
               </th>
               <th class="cell-payment">
-                <div class="cell-content-payment">10000</div>
+                <div class="cell-content-payment" id="firstRowPrice"></div>
               </th>
             </tr>
             <tr class="row-payment">
               <th class="cell-payment-fist">
-                <input type="checkbox" id="second-row" name="second-row" class="checkbox-services">
+                <input type="checkbox" id="second" name="second-checkbox" class="checkbox-services">
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="secondRowService"></div>
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="secondRowDescription"></div>
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="secondRowPrice"></div>
               </th>
             </tr>
             <tr class="row-payment">
               <th class="cell-payment-fist">
-                <input type="checkbox" id="third-row" name="third-row" class="checkbox-services">
+                <input type="checkbox" id="third" name="third-checkbox" class="checkbox-services">
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="thirdRowService"></div>
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="thirdRowDescription"></div>
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="thirdRowPrice"></div>
               </th>
             </tr>
             <tr class="row-payment">
               <th class="cell-payment-fist">
-                <input type="checkbox" id="fourth-row" name="fourth-row" class="checkbox-services">
+                <input type="checkbox" id="fourth" name="fourth-checkbox" class="checkbox-services">
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="fourthRowService"></div>
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="fourthRowDescription"></div>
               </th>
               <th class="cell-payment">
+                <div class="cell-content-payment" id="fourthRowPrice"></div>
               </th>
             </tr>
           </tbody>
         </table>
-        <div class="services">Оказанные услуги: ...</div>
-        <div class="cost">Стоимость: ... Р</div>
-        <div class="payment" onclick="location.assign('/doctor/reception');">Выставить счет</div>
-      </div>
+        <div class="services" id="services-done">Оказанные услуги: </div>
+        <div class="cost" id="cost">Стоимость: </div>
+        <div class="payment" id="paymentButton">Выставить счет</div>
+      </form>
     </div>
   </dialog>
 </div>

@@ -113,6 +113,34 @@ let addDiagnoseButton = document.getElementById("add-diagnose-button")
 let toothPictures = document.getElementById("toothPictures");
 
 
+let firstRowCheckBox = document.getElementById("first");
+let secondRowCheckBox = document.getElementById("second");
+let thirdRowCheckBox = document.getElementById("third");
+let fourthRowCheckBox = document.getElementById("fourth");
+let paymentsForm = document.getElementById("paymentsForm");
+
+let firstRowService = document.getElementById("firstRowService")
+let firstRowDescription = document.getElementById("firstRowDescription")
+let firstRowPrice = document.getElementById("firstRowPrice")
+
+let secondRowService = document.getElementById("secondRowService")
+let secondRowDescription = document.getElementById("secondRowDescription")
+let secondRowPrice = document.getElementById("secondRowPrice")
+
+let thirdRowService = document.getElementById("thirdRowService")
+let thirdRowDescription = document.getElementById("thirdRowDescription")
+let thirdRowPrice = document.getElementById("thirdRowPrice")
+
+let fourthRowService = document.getElementById("fourthRowService")
+let fourthRowDescription = document.getElementById("fourthRowDescription")
+let fourthRowPrice = document.getElementById("fourthRowPrice")
+
+
+let servicesDone = document.getElementById("services-done")
+let cost = document.getElementById("cost")
+let paymentButton = document.getElementById("paymentButton")
+
+
 let nameField = document.getElementById("name");
 let dateOfBirthdayField = document.getElementById("dateOfBirthday");
 let phoneField = document.getElementById("phone");
@@ -124,6 +152,8 @@ let selectedRowDiagnosisOfPatient = -1;
 let selectedRowDiagnosisFromDoctor = -1;
 let diagnosisTableValue = [];
 let diagnosisFromDoctorTableValue = [];
+let selectedPayments = [];
+let services = [];
 
 
 getAppointment()
@@ -161,6 +191,13 @@ function getRequests(patientId) {
     secondRequestCell2.innerText = data[1] ? data[1].description : '';
     thirdRequestCell1.innerText = data[2] ? data[2].date : '';
     thirdRequestCell2.innerText = data[2] ? data[2].description : '';
+  }).catch(error => console.error(error));
+}
+
+function getServices() {
+  GetUrl(`doctors/${userId}/services`).then(data => {
+    services = data;
+    updateServicesTable()
   }).catch(error => console.error(error));
 }
 
@@ -269,6 +306,48 @@ function updateDiagnosisFromDoctorTable() {
   } else {
     fourthDiagnosisFromDoctorDiagnose.textContent = ''
     fourthDiagnosisFromDoctorDescription.textContent = ''
+  }
+}
+
+function updateServicesTable() {
+  if (services[0]) {
+    firstRowService.textContent = services[0].service
+    firstRowDescription.textContent = services[0].description
+    firstRowPrice.textContent = services[0].price
+  } else {
+    firstRowService.textContent = ''
+    firstRowDescription.textContent = ''
+    firstRowPrice.textContent = ''
+  }
+
+  if (services[1]) {
+    secondRowService.textContent = services[1].service
+    secondRowDescription.textContent = services[1].description
+    secondRowPrice.textContent = services[1].price
+  } else {
+    secondRowService.textContent = ''
+    secondRowDescription.textContent = ''
+    secondRowPrice.textContent = ''
+  }
+
+  if (services[2]) {
+    thirdRowService.textContent = services[2].service
+    thirdRowDescription.textContent = services[2].description
+    thirdRowPrice.textContent = services[2].price
+  } else {
+    thirdRowService.textContent = ''
+    thirdRowDescription.textContent = ''
+    thirdRowPrice.textContent = ''
+  }
+
+  if (services[3]) {
+    fourthRowService.textContent = services[3].service
+    fourthRowDescription.textContent = services[3].description
+    fourthRowPrice.textContent = services[3].price
+  } else {
+    fourthRowService.textContent = ''
+    fourthRowDescription.textContent = ''
+    fourthRowPrice.textContent = ''
   }
 }
 
@@ -427,6 +506,7 @@ document.querySelector('#diagnosisDialogClose').onclick = function() {
 
 var paymentsDialog = document.querySelector('#paymentsDialog');
 document.querySelector('#openPaymentsDialog').onclick = function() {
+  getServices()
   paymentsDialog.show();
 }
 document.querySelector('#paymentsDialogClose').onclick = function() {
@@ -733,6 +813,58 @@ addDiagnoseButton.addEventListener("click", (e) => {
     .catch((error) =>  alert("Диагноз не добавлен"));
 })
 
+
+firstRowCheckBox.addEventListener("change", (e) => {
+  const index = selectedPayments.findIndex((selected) => selected === 0);
+  paymentsForm.first.checked ? selectedPayments.push(0) : selectedPayments.splice(index, 1);
+  updatePaymentInfo()
+})
+secondRowCheckBox.addEventListener("change", (e) => {
+  const index = selectedPayments.findIndex((selected) => selected === 1);
+  paymentsForm.second.checked ? selectedPayments.push(1) : selectedPayments.splice(index, 1);
+  updatePaymentInfo()
+})
+thirdRowCheckBox.addEventListener("change", (e) => {
+  const index = selectedPayments.findIndex((selected) => selected === 2);
+  paymentsForm.third.checked ? selectedPayments.push(2) : selectedPayments.splice(index, 1);
+  updatePaymentInfo()
+})
+fourthRowCheckBox.addEventListener("change", (e) => {
+  const index = selectedPayments.findIndex((selected) => selected === 3);
+  paymentsForm.fourth.checked ? selectedPayments.push(3) : selectedPayments.splice(index, 1);
+  updatePaymentInfo()
+})
+
+paymentButton.addEventListener("click", (e) => {
+  if (selectedPayments.length > 0) {
+    let resultServices = []
+    selectedPayments.forEach((selected) => {
+      resultServices.push(services[selected]);
+    });
+
+    const paymentBody = {
+      'user-id': dataAppointment['user-id'],
+      services: resultServices
+    }
+    PostUrl(`appointments/${dataAppointment.id}/finish`, paymentBody).then((data) => {
+      PostUrl(`user/tooth-card/${dataAppointment['user-id']}`, toothCard).then((data) => {
+        alert("Приём окончен");
+        location.assign('/doctor/reception');
+      }).catch((error) => console.log(error))
+    }).catch((error) => console.log(error))
+  }
+})
+
+function updatePaymentInfo() {
+  let summary = 0
+  servicesDone.innerText = "Оказанные услуги: "
+  cost.innerText = "Стоимость: "
+  selectedPayments.forEach((selected) => {
+    servicesDone.innerText += " " + services[selected].service + ", "
+    summary += services[selected].price
+  })
+  cost.innerText += " " + summary + " Р."
+}
 
 function updateToothCard() {
   left8Up.selectedIndex = toothCard.left8Up;
