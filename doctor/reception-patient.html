@@ -38,23 +38,23 @@
         <div class="card-fields">
           <div class="card-field-group">
             <div class="user-card-field">ФИО Пациента</div>
-            <div class="field-content">Щербаков Максим Сергеевич</div>
+            <div class="field-content" id="name"></div>
           </div>
           <div class="card-field-group">
             <div class="user-card-field">Дата рождения</div>
-            <div class="field-content">26.08.2001</div>
+            <div class="field-content" id="dateOfBirthday"></div>
           </div>
           <div class="card-field-group">
             <div class="user-card-field">Телефон</div>
-            <div class="field-content">+79204292271</div>
+            <div class="field-content" id="phone"></div>
           </div>
           <div class="card-field-group">
             <div class="user-card-field">E-mail</div>
-            <div class="field-content">schtscherbakov@gmail.com</div>
+            <div class="field-content" id="e-mail"></div>
           </div>
           <div class="card-field-group">
             <div class="user-card-field">Аллергии</div>
-            <div class="field-content">Отсутствуют</div>
+            <div class="field-content" id="allergies"></div>
           </div>
         </div>
       </div>
@@ -72,22 +72,26 @@
           </tr>
           <tr class="row-request">
             <th class="cell-request-first">
-              <div class="cell-content">04.04.2023</div>
+              <div class="cell-content" id="first-request-cell1"></div>
             </th>
             <th class="cell-request-second">
-              <div class="cell-content">Болит левый верхний зуб</div>
+              <div class="cell-content" id="first-request-cell2"></div>
             </th>
           </tr>
           <tr class="row-request">
             <th class="cell-request-first">
+              <div class="cell-content" id="second-request-cell1"></div>
             </th>
             <th class="cell-request-second">
+              <div class="cell-content" id="second-request-cell2"></div>
             </th>
           </tr>
           <tr class="row-request">
             <th class="cell-request-first">
+              <div class="cell-content" id="third-request-cell1"></div>
             </th>
             <th class="cell-request-second">
+              <div class="cell-content" id="third-request-cell2"></div>
             </th>
           </tr>
           </tbody>
@@ -98,7 +102,7 @@
       <p class="card-request-title">Информация о зубах</p>
       <div class="row-group-tooth">
         <div class="column-group-tooth">
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left8Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -111,7 +115,7 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">8</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left8Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -123,7 +127,7 @@
             <option class="selector-tooth-text">Pt</option>
             <option class="selector-tooth-text">R</option>
           </select>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right1Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -136,7 +140,7 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">1</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right1Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -150,7 +154,7 @@
           </select>
         </div>
         <div class="column-group-tooth">
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left7Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -163,7 +167,7 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">7</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left7Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -175,7 +179,7 @@
             <option class="selector-tooth-text">Pt</option>
             <option class="selector-tooth-text">R</option>
           </select>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right2Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -188,7 +192,7 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">2</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right2Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -202,7 +206,7 @@
           </select>
         </div>
         <div class="column-group-tooth">
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left6Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -215,7 +219,7 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">6</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left6Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -227,7 +231,7 @@
             <option class="selector-tooth-text">Pt</option>
             <option class="selector-tooth-text">R</option>
           </select>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right3Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -240,7 +244,7 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">3</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right3Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -254,7 +258,7 @@
           </select>
         </div>
         <div class="column-group-tooth">
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left5Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -267,7 +271,7 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">5</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left5Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -279,7 +283,7 @@
             <option class="selector-tooth-text">Pt</option>
             <option class="selector-tooth-text">R</option>
           </select>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right4Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -292,7 +296,7 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">4</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right4Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -306,7 +310,7 @@
           </select>
         </div>
         <div class="column-group-tooth">
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left4Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -318,8 +322,8 @@
             <option class="selector-tooth-text">Pt</option>
             <option class="selector-tooth-text">R</option>
           </select>
-          <div class="card-tooth-row-text-number">6</div>
-          <select class="selector-tooth">
+          <div class="card-tooth-row-text-number">4</div>
+          <select class="selector-tooth" id="left4Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -331,7 +335,34 @@
             <option class="selector-tooth-text">Pt</option>
             <option class="selector-tooth-text">R</option>
           </select>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="right5Up">
+            <option class="selector-tooth-text" selected>-</option>
+            <option class="selector-tooth-text">I</option>
+            <option class="selector-tooth-text">II</option>
+            <option class="selector-tooth-text">III</option>
+            <option class="selector-tooth-text">A</option>
+            <option class="selector-tooth-text">O</option>
+            <option class="selector-tooth-text">P</option>
+            <option class="selector-tooth-text">C</option>
+            <option class="selector-tooth-text">Pt</option>
+            <option class="selector-tooth-text">R</option>
+          </select>
+          <div class="card-tooth-row-text-number">5</div>
+          <select class="selector-tooth" id="right5Down">
+            <option class="selector-tooth-text" selected>-</option>
+            <option class="selector-tooth-text">I</option>
+            <option class="selector-tooth-text">II</option>
+            <option class="selector-tooth-text">III</option>
+            <option class="selector-tooth-text">A</option>
+            <option class="selector-tooth-text">O</option>
+            <option class="selector-tooth-text">P</option>
+            <option class="selector-tooth-text">C</option>
+            <option class="selector-tooth-text">Pt</option>
+            <option class="selector-tooth-text">R</option>
+          </select>
+        </div>
+        <div class="column-group-tooth">
+          <select class="selector-tooth" id="left3Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -344,7 +375,32 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">3</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left3Down">
+            <option class="selector-tooth-text" selected>-</option>
+            <option class="selector-tooth-text">I</option>
+            <option class="selector-tooth-text">II</option>
+            <option class="selector-tooth-text">III</option>
+            <option class="selector-tooth-text">A</option>
+            <option class="selector-tooth-text">O</option>
+            <option class="selector-tooth-text">P</option>
+            <option class="selector-tooth-text">C</option>
+            <option class="selector-tooth-text">Pt</option>
+            <option class="selector-tooth-text">R</option>
+          </select>
+          <select class="selector-tooth" id="right6Up">
+            <option class="selector-tooth-text" selected>-</option>
+            <option class="selector-tooth-text">I</option>
+            <option class="selector-tooth-text">II</option>
+            <option class="selector-tooth-text">III</option>
+            <option class="selector-tooth-text">A</option>
+            <option class="selector-tooth-text">O</option>
+            <option class="selector-tooth-text">P</option>
+            <option class="selector-tooth-text">C</option>
+            <option class="selector-tooth-text">Pt</option>
+            <option class="selector-tooth-text">R</option>
+          </select>
+          <div class="card-tooth-row-text-number">6</div>
+          <select class="selector-tooth" id="right6Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -358,32 +414,7 @@
           </select>
         </div>
         <div class="column-group-tooth">
-          <select class="selector-tooth">
-            <option class="selector-tooth-text" selected>-</option>
-            <option class="selector-tooth-text">I</option>
-            <option class="selector-tooth-text">II</option>
-            <option class="selector-tooth-text">III</option>
-            <option class="selector-tooth-text">A</option>
-            <option class="selector-tooth-text">O</option>
-            <option class="selector-tooth-text">P</option>
-            <option class="selector-tooth-text">C</option>
-            <option class="selector-tooth-text">Pt</option>
-            <option class="selector-tooth-text">R</option>
-          </select>
-          <div class="card-tooth-row-text-number">7</div>
-          <select class="selector-tooth">
-            <option class="selector-tooth-text" selected>-</option>
-            <option class="selector-tooth-text">I</option>
-            <option class="selector-tooth-text">II</option>
-            <option class="selector-tooth-text">III</option>
-            <option class="selector-tooth-text">A</option>
-            <option class="selector-tooth-text">O</option>
-            <option class="selector-tooth-text">P</option>
-            <option class="selector-tooth-text">C</option>
-            <option class="selector-tooth-text">Pt</option>
-            <option class="selector-tooth-text">R</option>
-          </select>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left2Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -396,7 +427,32 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">2</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left2Down">
+            <option class="selector-tooth-text" selected>-</option>
+            <option class="selector-tooth-text">I</option>
+            <option class="selector-tooth-text">II</option>
+            <option class="selector-tooth-text">III</option>
+            <option class="selector-tooth-text">A</option>
+            <option class="selector-tooth-text">O</option>
+            <option class="selector-tooth-text">P</option>
+            <option class="selector-tooth-text">C</option>
+            <option class="selector-tooth-text">Pt</option>
+            <option class="selector-tooth-text">R</option>
+          </select>
+          <select class="selector-tooth" id="right7Up">
+            <option class="selector-tooth-text" selected>-</option>
+            <option class="selector-tooth-text">I</option>
+            <option class="selector-tooth-text">II</option>
+            <option class="selector-tooth-text">III</option>
+            <option class="selector-tooth-text">A</option>
+            <option class="selector-tooth-text">O</option>
+            <option class="selector-tooth-text">P</option>
+            <option class="selector-tooth-text">C</option>
+            <option class="selector-tooth-text">Pt</option>
+            <option class="selector-tooth-text">R</option>
+          </select>
+          <div class="card-tooth-row-text-number">7</div>
+          <select class="selector-tooth" id="right7Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -410,32 +466,7 @@
           </select>
         </div>
         <div class="column-group-tooth-last">
-          <select class="selector-tooth">
-            <option class="selector-tooth-text" selected>-</option>
-            <option class="selector-tooth-text">I</option>
-            <option class="selector-tooth-text">II</option>
-            <option class="selector-tooth-text">III</option>
-            <option class="selector-tooth-text">A</option>
-            <option class="selector-tooth-text">O</option>
-            <option class="selector-tooth-text">P</option>
-            <option class="selector-tooth-text">C</option>
-            <option class="selector-tooth-text">Pt</option>
-            <option class="selector-tooth-text">R</option>
-          </select>
-          <div class="card-tooth-row-text-number">8</div>
-          <select class="selector-tooth">
-            <option class="selector-tooth-text" selected>-</option>
-            <option class="selector-tooth-text">I</option>
-            <option class="selector-tooth-text">II</option>
-            <option class="selector-tooth-text">III</option>
-            <option class="selector-tooth-text">A</option>
-            <option class="selector-tooth-text">O</option>
-            <option class="selector-tooth-text">P</option>
-            <option class="selector-tooth-text">C</option>
-            <option class="selector-tooth-text">Pt</option>
-            <option class="selector-tooth-text">R</option>
-          </select>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left1Up">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -448,7 +479,32 @@
             <option class="selector-tooth-text">R</option>
           </select>
           <div class="card-tooth-row-text-number">1</div>
-          <select class="selector-tooth">
+          <select class="selector-tooth" id="left1Down">
+            <option class="selector-tooth-text" selected>-</option>
+            <option class="selector-tooth-text">I</option>
+            <option class="selector-tooth-text">II</option>
+            <option class="selector-tooth-text">III</option>
+            <option class="selector-tooth-text">A</option>
+            <option class="selector-tooth-text">O</option>
+            <option class="selector-tooth-text">P</option>
+            <option class="selector-tooth-text">C</option>
+            <option class="selector-tooth-text">Pt</option>
+            <option class="selector-tooth-text">R</option>
+          </select>
+          <select class="selector-tooth" id="right8Up">
+            <option class="selector-tooth-text" selected>-</option>
+            <option class="selector-tooth-text">I</option>
+            <option class="selector-tooth-text">II</option>
+            <option class="selector-tooth-text">III</option>
+            <option class="selector-tooth-text">A</option>
+            <option class="selector-tooth-text">O</option>
+            <option class="selector-tooth-text">P</option>
+            <option class="selector-tooth-text">C</option>
+            <option class="selector-tooth-text">Pt</option>
+            <option class="selector-tooth-text">R</option>
+          </select>
+          <div class="card-tooth-row-text-number">8</div>
+          <select class="selector-tooth" id="right8Down">
             <option class="selector-tooth-text" selected>-</option>
             <option class="selector-tooth-text">I</option>
             <option class="selector-tooth-text">II</option>
@@ -477,8 +533,7 @@
           <img class="tooth-pictures-dialog-close" src="../img/point-plus.png"/>
         </div>
       </div>
-      <div class="tooth-pictures">
-        <img class="tooth-picture" src="../img/tooth-picture.png"/>
+      <div class="tooth-pictures" id="toothPictures">
       </div>
     </div>
   </dialog>

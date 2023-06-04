@@ -117,7 +117,6 @@ function createDoctorCard(doctorInfo) {
 
 function findDoctors() {
   var selectedOption = doctorSelector.options[doctorSelector.selectedIndex].value;
-  console.log(selectedOption);
   filteredDoctorsValue = [];
   doctorsValue
     .filter((doctorInfo) => doctorInfo.specialization.includes(selectedOption) || doctorSelector.selectedIndex === 0)
