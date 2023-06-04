@@ -371,6 +371,9 @@ router.get('/profile/4/edit',function(req,res){
 router.get('/profile/css/director/profile-edit.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/director/profile-edit.css'));
 });
+router.get('/profile/js/director/profile-edit.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/director/profile-edit.js'));
+});
 
 app.use('/', router);
 app.listen(process.env.port || 3000);
