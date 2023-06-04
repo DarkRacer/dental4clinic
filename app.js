@@ -313,6 +313,9 @@ router.get('/admin/css/admin/user-create.css',function(req,res){
 router.get('/admin/css/main.css',function(req,res){
   res.sendFile(path.join(__dirname+'/css/main.css'));
 });
+router.get('/admin/js/admin/user-create.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/admin/user-create.js'));
+});
 router.get('/admin/js/admin/appointments-create.js',function(req,res){
   res.sendFile(path.join(__dirname+'/js/admin/appointments-create.js'));
 });

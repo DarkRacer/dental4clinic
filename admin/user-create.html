@@ -37,7 +37,7 @@
     </div>
   </div>
   <div class="user-create-body">
-    <div class="form">
+    <form class="form" id="createForm">
       <div class="required-fields">
         <div class="required-field">
           <div class="required-field-title">Имя</div>
@@ -72,28 +72,19 @@
           <textarea type="text" id="address" name="address" placeholder="Адрес проживания" class="additional-field-input"></textarea>
         </div>
         <div class="additional-field">
-          <div class="additional-field-title">Адрес проживания</div>
+          <div class="additional-field-title">Аллергии</div>
           <textarea type="text" id="allergies" name="allergies" placeholder="Аллергии" class="additional-field-input"></textarea>
         </div>
       </div>
-      <div class="save-button">Создать</div>
-<!--      <div class="notification" id="notificationSuccess">-->
-<!--        <p class="notification-text" id="notificationSuccessText">-->
-<!--          Пользователь успешно создан-->
-<!--          <br/>-->
-<!--          Логин:-->
-<!--          <br/>-->
-<!--          Пароль:-->
-<!--          <br/>-->
-<!--          Не забудьте напомнить поменять пароль!-->
-<!--        </p>-->
-<!--      </div>-->
-<!--      <div class="notification" id="notificationFailed">-->
-<!--        <p class="notification-text" id="notificationFailedText">-->
-<!--          Пользователь не создан. Укажите имя!-->
-<!--        </p>-->
-<!--      </div>-->
-    </div>
+      <div class="save-button" id="save-button">Создать</div>
+      <div class="notification" id="notificationSuccess">
+        <p class="notification-text" id="notificationSuccessText"></p>
+      </div>
+      <div class="notification" id="notificationFailed">
+        <p class="notification-text" id="notificationFailedText"></p>
+      </div>
+    </form>
   </div>
 </div>
+<script src="../js/admin/user-create.js"></script>
 </body>
