@@ -319,6 +319,9 @@ router.get('/admin/js/admin/user-create.js',function(req,res){
 router.get('/profile/js/admin/profile-edit.js',function(req,res){
   res.sendFile(path.join(__dirname+'/js/admin/profile-edit.js'));
 });
+router.get('/admin/js/admin/record-list.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/admin/record-list.js'));
+});
 router.get('/admin/js/admin/appointments-create.js',function(req,res){
   res.sendFile(path.join(__dirname+'/js/admin/appointments-create.js'));
 });

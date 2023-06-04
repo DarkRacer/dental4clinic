@@ -38,7 +38,7 @@
     </div>
   </div>
   <div class="record-list-body">
-    <div class="form">
+    <form class="form" id="find-form">
       <div class="form-field">
         <div class="form-field-title">Поиск по врачу</div>
         <input type="text" name="doctor" id="doctor-field" placeholder="Врач" class="form-field-input">
@@ -47,75 +47,27 @@
         <div class="form-field-title">Поиск по пациентам</div>
         <input type="text" name="patient" id="patient-field" placeholder="Пациент" class="form-field-input">
       </div>
-    </div>
-    <div class="find-button">Поиск</div>
+    </form>
+    <div class="find-button" id="find-button">Поиск</div>
     <div class="calendar">
       <div class="calendar-month-year">
-        <img class="calendar-month-before" src="../img/arrow.png"/>
-        <div class="calendar-month-year-content">Май 2023</div>
-        <img class="calendar-month-next" src="../img/arrow.png"/>
+        <img class="calendar-month-before" src="../img/arrow.png" id="monthBefore"/>
+        <div class="calendar-month-year-content" id="calendarTitle">       </div>
+        <img class="calendar-month-next" src="../img/arrow.png" id="monthNext"/>
       </div>
-      <div class="calendar-date-group">
+      <div class="calendar-date-group" id="calendarDateGroup">
         <div class="calendar-date-group-row">
-          <div class="week-day-record">Понедельник</div>
-          <div class="week-day-record">Вторник</div>
-          <div class="week-day-record">Среда</div>
-          <div class="week-day-record">Четверг</div>
-          <div class="week-day-record">пятница</div>
-          <div class="week-day-record">Суббота</div>
-          <div class="week-day-record">Воскресенье</div>
-        </div>
-        <div class="calendar-date-group-row">
-          <div class="calendar-date-record">1</div>
-          <div class="calendar-date-record">2</div>
-          <div class="calendar-date-record">3</div>
-          <div class="calendar-date-record">4</div>
-          <div class="date-selected-record">5</div>
-          <div class="calendar-date-record">6</div>
-          <div class="calendar-date-record">7</div>
-        </div>
-        <div class="calendar-date-group-row">
-          <div class="date-selected-record">8</div>
-          <div class="calendar-date-record">9</div>
-          <div class="date-selected-record">10</div>
-          <div class="calendar-date-record">11</div>
-          <div class="calendar-date-record">12</div>
-          <div class="calendar-date-record">13</div>
-          <div class="calendar-date-record">14</div>
-        </div>
-        <div class="calendar-date-group-row">
-          <div class="calendar-date-record">15</div>
-          <div class="calendar-date-record">16</div>
-          <div class="calendar-date-record">17</div>
-          <div class="calendar-date-record">18</div>
-          <div class="calendar-date-record">19</div>
-          <div class="calendar-date-record">20</div>
-          <div class="calendar-date-record">21</div>
-        </div>
-        <div class="calendar-date-group-row">
-          <div class="calendar-date-record">22</div>
-          <div class="calendar-date-record">23</div>
-          <div class="calendar-date-record">24</div>
-          <div class="calendar-date-record">25</div>
-          <div class="calendar-date-record">26</div>
-          <div class="calendar-date-record">27</div>
-          <div class="calendar-date-record">28</div>
-        </div>
-        <div class="calendar-date-group-row">
-          <div class="calendar-date-record">29</div>
-          <div class="calendar-date-record">30</div>
-          <div class="calendar-date-record">31</div>
-          <div class="calendar-date-record">
-          </div>
-          <div class="calendar-date-record">
-          </div>
-          <div class="calendar-date-record">
-          </div>
-          <div class="calendar-date-record">
-          </div>
+          <div class="week-day">Понедельник</div>
+          <div class="week-day">Вторник</div>
+          <div class="week-day">Среда</div>
+          <div class="week-day">Четверг</div>
+          <div class="week-day">пятница</div>
+          <div class="week-day">Суббота</div>
+          <div class="week-day">Воскресенье</div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script src="../js/admin/record-list.js"></script>
 </body>
