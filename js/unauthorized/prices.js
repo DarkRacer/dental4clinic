@@ -1,9 +1,10 @@
-const url ='https://localhost:8000/';
+const url = 'https://cc66-46-164-217-97.ngrok-free.app/';
 var token = GetCookie("access_token")
 const headers = {
-  "Host": "localhost:8000",
-  "Origin": "https://localhost:8000",
-  "Accept": "*/*"
+  "Host":  'cc66-46-164-217-97.ngrok-free.app',
+  "Origin":  'https://cc66-46-164-217-97.ngrok-free.app/',
+  "Accept": "*/*",
+  'ngrok-skip-browser-warning':true
 }
 
 getPrices()
@@ -49,30 +50,41 @@ function topFunction() {
 
 function getPrices() {
   GetUrl('prices').then(data => {
-    let result = ``;
-
     data.forEach(priceGroup =>  {
-      let groupHtml = `
-        <div class="prices-group">
-            <div class="prices-group-title">${priceGroup.group}</div>
-            <div class="prices-group-content">
-      `;
+      var resultPriceGroup = document.createElement('div');
+      resultPriceGroup.classList.add("prices-group");
+
+      var priceGroupTitle = document.createElement('div');
+      priceGroupTitle.classList.add("prices-group-title");
+      priceGroupTitle.innerText = priceGroup.group;
+
+      var priceGroupContent = document.createElement('div');
+      priceGroupContent.classList.add("prices-group-content");
+
+      resultPriceGroup.appendChild(priceGroupTitle);
 
       priceGroup.services.forEach(service => {
-                groupHtml+= `
-                    <div class="prices-group-content-item" id="body-service" onclick="openDialog(${service['service-id']})">
-                      <div class="prices-group-content-item-name">${service.name}</div>
-                      <div class="prices-group-content-item-price">${service.price} ₽</div>
-                    </div>`;
-          })
-      groupHtml+= `
-                </div>
-      </div>
-      `;
-      result += groupHtml;
-    });
+        var priceGroupContentItem = document.createElement('div');
+        priceGroupContentItem.classList.add("prices-group-content-item");
+        priceGroupContentItem.addEventListener("click", (e) => {openDialog(service['service-id'])})
 
-    pricesContent.innerHTML=result;
+        var priceGroupContentItemName = document.createElement('div');
+        priceGroupContentItemName.classList.add("prices-group-content-item-name");
+        priceGroupContentItemName.innerText = service.name;
+
+        var priceGroupContentItemPrice = document.createElement('div');
+        priceGroupContentItemPrice.classList.add("prices-group-content-item-price");
+        priceGroupContentItemPrice.innerText = service.price + ' ₽';
+
+        priceGroupContentItem.appendChild(priceGroupContentItemName);
+        priceGroupContentItem.appendChild(priceGroupContentItemPrice);
+
+        priceGroupContent.appendChild(priceGroupContentItem);
+      });
+
+      resultPriceGroup.appendChild(priceGroupContent);
+      pricesContent.appendChild(resultPriceGroup);
+    });
   }).catch(error => {
     console.error(error)
   })

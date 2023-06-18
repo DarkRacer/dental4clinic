@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  front:
+    container_name: Dental4Clinic
+    image: dental4clinic:latest
+    build: ./
+    ports:
+      - "4200:80"

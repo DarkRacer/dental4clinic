@@ -165,12 +165,12 @@
 }
 .prices-dialog-title-text {
   font-size: 32px;
+  width: 90%;
   font-weight: 600;
   line-height: 1.2125;
   font-style: italic;
   color: #000000;
   font-family: Inter, 'Source Sans Pro', serif;
-  white-space: nowrap;
 }
 .prices-dialog-close {
   width: 40px;

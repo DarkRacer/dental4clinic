@@ -1,9 +1,10 @@
-const url ='https://localhost:8000/';
+const url = 'https://cc66-46-164-217-97.ngrok-free.app/';
 var token = GetCookie("access_token")
 const headers = {
-  "Host": "localhost:8000",
-  "Origin": "https://localhost:8000",
-  "Accept": "*/*"
+  "Host":  'cc66-46-164-217-97.ngrok-free.app',
+  "Origin":  'https://cc66-46-164-217-97.ngrok-free.app/',
+  "Accept": "*/*",
+  'ngrok-skip-browser-warning':true
 }
 
 const firstDate = document.getElementById("first-date");

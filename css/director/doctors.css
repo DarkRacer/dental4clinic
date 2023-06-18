@@ -139,8 +139,8 @@
   line-height: 1.2125;
   font-style: italic;
   color: #000000;
+  width: 90%;
   font-family: Inter, 'Source Sans Pro', serif;
-  white-space: nowrap;
 }
 .doctors-dialog-close {
   width: 40px;

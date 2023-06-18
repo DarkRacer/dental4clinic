@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <AutoResponder LastSave="2023-06-05T02:19:43.925571+03:00" FiddlerVersion="4.6.20172.34691">
   <State Enabled="true" Fallthrough="true" UseLatency="false">
-    <ResponseRule Match="https://localhost:8000/role" Action="D:\dental site\responses\roles\user_role.json" Enabled="true" />
+    <ResponseRule Match="https://cc66-46-164-217-97.ngrok-free.approle" Action="D:\dental site\responses\roles\user_role.json" Enabled="true" />
     <ResponseRule Match="https://localhost:8000/login" Action="D:\dental site\responses\login\doctor_login.json" Enabled="true" />
     <ResponseRule Match="https://localhost:8000/registration" Action="D:\dental site\responses\registration\user_registration.json" Enabled="true" />
     <ResponseRule Match="https://localhost:8000/doctors/services" Action="D:\dental site\responses\doctors_services.json" Enabled="true" />

@@ -184,8 +184,7 @@
   background-color: rgba(0, 0, 0, 0.3600000143);
 }
 .info-patient-dialog-content {
-  width: 35%;
-  height: 40%;
+  width: 45%;
   position: relative;
   padding: 2%;
   margin-top: 20%;
@@ -231,7 +230,7 @@
 }
 .info-patient-dialog-close-div {
   position: fixed;
-  right: 34%;
+  right: 24%;
 }
 .card-fields {
   width: 100%;

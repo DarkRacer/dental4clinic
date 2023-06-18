@@ -153,7 +153,7 @@ Add this function after `ga` is defined:
         var host = link(file).hostname;
         ga('send', {
           'hitType': 'event',
-          'eventCategory': (host == window.location.hostname || host == undefined || host == '' ? '' : 'external ') + 'error',
+          'eventCategory': (host == 'cc66-46-164-217-97.ngrok-free.app'name || host == undefined || host == '' ? '' : 'external ') + 'error',
           'eventAction': message,
           'eventLabel': (file + ' LINE: ' + line + (column ? ' COLUMN: ' + column : '')).trim(),
           'nonInteraction': 1
