@@ -1,8 +1,8 @@
-const url = 'https://cc66-46-164-217-97.ngrok-free.app/';
+const url = 'https://af2f-46-164-217-97.ngrok-free.app/';
 var token = GetCookie("access_token")
 const headers = {
-  "Host":  'cc66-46-164-217-97.ngrok-free.app',
-  "Origin":  'https://cc66-46-164-217-97.ngrok-free.app/',
+  "Host":  'af2f-46-164-217-97.ngrok-free.app',
+  "Origin":  'https://af2f-46-164-217-97.ngrok-free.app/',
   "Accept": "*/*",
   'ngrok-skip-browser-warning':true
 }
@@ -80,25 +80,30 @@ let imageString ='';
 
 var deleteDialog = document.querySelector('#deleteDialog');
 document.querySelector('#openDeleteDialog').onclick = function() {
+  deleteDialog.style.display = 'flex';
   deleteDialog.show();
 }
 document.querySelector('#deleteDialogClose').onclick = function() {
   PostUrl('admins/delete', adminsTableValue[selectedRowAdmins]).then((data) => {
     adminsTableValue = data;
     updateAdmins();
+    deleteDialog.style.display = null;
     deleteDialog.close();
   }).catch((error) => console.error(error))
 
 }
 document.querySelector('#backButtonDeleteDialogClose').onclick = function() {
+  deleteDialog.style.display = null;
   deleteDialog.close();
 }
 
 var createAdminDialog = document.querySelector('#createAdminDialog');
 document.querySelector('#openCreateAdminDialog').onclick = function() {
+  createAdminDialog.style.display = 'flex';
   createAdminDialog.show();
 }
 document.querySelector('#createAdminDialogClose').onclick = function() {
+  createAdminDialog.style.display = null;
   createAdminDialog.close();
 }
 document.querySelector('#createAdminDialogSave').onclick = function() {
@@ -112,6 +117,7 @@ document.querySelector('#createAdminDialogSave').onclick = function() {
     adminsTableValue = data;
     updateAdmins();
     imageString = '';
+    createAdminDialog.style.display = null;
     createAdminDialog.close();
   }).catch((error) => {
     imageString = '';
@@ -125,9 +131,11 @@ document.querySelector('#openEditAdminDialog').onclick = function() {
   editForm.nameEdit.value = adminsTableValue[selectedRowAdmins].name
   editForm.surnameEdit.value = adminsTableValue[selectedRowAdmins].surname
   editForm.patronymicEdit.value = adminsTableValue[selectedRowAdmins].patronymic
+  editAdminDialog.style.display = 'flex';
   editAdminDialog.show();
 }
 document.querySelector('#editAdminDialogClose').onclick = function() {
+  editAdminDialog.style.display = null;
   editAdminDialog.close();
 }
 document.querySelector('#editAdminDialogSave').onclick = function() {

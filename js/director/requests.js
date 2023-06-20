@@ -1,8 +1,8 @@
-const url = 'https://cc66-46-164-217-97.ngrok-free.app/';
+const url = 'https://af2f-46-164-217-97.ngrok-free.app/';
 var token = GetCookie("access_token")
 const headers = {
-  "Host":  'cc66-46-164-217-97.ngrok-free.app',
-  "Origin":  'https://cc66-46-164-217-97.ngrok-free.app/',
+  "Host":  'af2f-46-164-217-97.ngrok-free.app',
+  "Origin":  'https://af2f-46-164-217-97.ngrok-free.app/',
   "Accept": "*/*",
   'ngrok-skip-browser-warning':true
 }
@@ -71,6 +71,7 @@ GetUrl('requests').then((data) => {
 
 var deleteDialog = document.querySelector('#deleteDialog');
 document.querySelector('#openDeleteDialog').onclick = function() {
+  deleteDialog.style.display = 'flex';
   deleteDialog.show();
 }
 document.querySelector('#deleteDialogClose').onclick = function() {
@@ -78,9 +79,11 @@ document.querySelector('#deleteDialogClose').onclick = function() {
     requestsTableValue = data
     updateRequestsTable()
   }).catch((error) => console.error(error))
+  deleteDialog.style.display = null;
   deleteDialog.close();
 }
 document.querySelector('#backButtonDeleteDialogClose').onclick = function() {
+  deleteDialog.style.display = null;
   deleteDialog.close();
 }
 

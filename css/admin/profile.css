@@ -1,10 +1,10 @@
-
 .user-profile-body {
   width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
+  padding-bottom: 2%;
 }
 .user-profile-body-content {
   box-sizing: border-box;

@@ -1,8 +1,8 @@
-const url = 'https://cc66-46-164-217-97.ngrok-free.app/';
+const url = 'https://af2f-46-164-217-97.ngrok-free.app/';
 var token = GetCookie("access_token")
 const headers = {
-  "Host":  'cc66-46-164-217-97.ngrok-free.app',
-  "Origin":  'https://cc66-46-164-217-97.ngrok-free.app/',
+  "Host":  'af2f-46-164-217-97.ngrok-free.app',
+  "Origin":  'https://af2f-46-164-217-97.ngrok-free.app/',
   "Accept": "*/*",
   'ngrok-skip-browser-warning':true
 }
@@ -101,23 +101,28 @@ getAppointments()
 var patientWithoutCalendarDialog = document.querySelector('#patientWithoutCalendarDialog');
 document.querySelector('#openPatientWithoutCalendarDialog').onclick = function() {
   updateAppointmentsTable();
+  patientWithoutCalendarDialog.style.display = 'flex';
   patientWithoutCalendarDialog.show();
 }
 document.querySelector('#patientWithoutCalendarDialogClose').onclick = function() {
+  patientWithoutCalendarDialog.style.display = null;
   patientWithoutCalendarDialog.close();
 }
 
 var infoPatientDialog = document.querySelector('#infoPatientDialog');
 document.querySelector('#openInfoPatientDialog').onclick = function() {
   getUserInfo(nextAppointment['user-id'])
+  infoPatientDialog.style.display = 'flex';
   infoPatientDialog.show();
 }
 document.querySelector('#infoPatientDialogClose').onclick = function() {
+  infoPatientDialog.style.display = null;
   infoPatientDialog.close();
 }
 
 startWithoutCalendarButton.addEventListener("click", (e) => {
   if (selectedRow === -1) {
+    patientWithoutCalendarDialog.style.display = null;
     patientWithoutCalendarDialog.close();
   } else {
     location.assign(`/doctor/reception/${dataAppointments[selectedRow].id}`);

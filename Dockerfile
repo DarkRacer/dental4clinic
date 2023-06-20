@@ -17,3 +17,4 @@ RUN npm run build
 FROM nginx:alpine
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=node /dental4clinic/dist /usr/share/nginx/html
+COPY --from=node /dental4clinic/img /usr/share/nginx/html/img

@@ -1,8 +1,8 @@
-const url = 'https://cc66-46-164-217-97.ngrok-free.app/';
+const url = 'https://af2f-46-164-217-97.ngrok-free.app/';
 var token = GetCookie("access_token")
 const headers = {
-  "Host":  'cc66-46-164-217-97.ngrok-free.app',
-  "Origin":  'https://cc66-46-164-217-97.ngrok-free.app/',
+  "Host":  'af2f-46-164-217-97.ngrok-free.app',
+  "Origin":  'https://af2f-46-164-217-97.ngrok-free.app/',
   "Accept": "*/*",
   'ngrok-skip-browser-warning':true
 }
@@ -19,6 +19,7 @@ var pricesDialog = document.querySelector('#pricesDialog');
 
 
 document.querySelector('#pricesDialogClose').onclick = function() {
+  pricesDialog.style.display = null;
   pricesDialog.close();
   pricesDialogTitle.innerText = ''
   pricesDialogDescription.innerText = 'Упс. Что-то пошло не так...';
@@ -110,6 +111,7 @@ function openDialog(serviceId) {
     });
     pricesDialogPluses.innerHTML = plusesHtml;
   }).catch(error => console.error(error));
+  pricesDialog.style.display = 'flex';
   pricesDialog.show();
 }
 

@@ -1,8 +1,8 @@
-const url = 'https://cc66-46-164-217-97.ngrok-free.app/';
+const url = 'https://af2f-46-164-217-97.ngrok-free.app/';
 var token = GetCookie("access_token")
 const headers = {
-  "Host":  'cc66-46-164-217-97.ngrok-free.app',
-  "Origin":  'https://cc66-46-164-217-97.ngrok-free.app/',
+  "Host":  'af2f-46-164-217-97.ngrok-free.app',
+  "Origin":  'https://af2f-46-164-217-97.ngrok-free.app/',
   "Accept": "*/*",
   'ngrok-skip-browser-warning':true
 }
@@ -110,14 +110,17 @@ let request = {};
 
 var requestsDialog = document.querySelector('#requestsDialog');
 document.querySelector('#openRequestsDialog').onclick = function() {
+  requestsDialog.style.display = 'flex';
   requestsDialog.show();
 }
 document.querySelector('#requestsDialogClose').onclick = function() {
+  requestsDialog.style.display = null;
   requestsDialog.close();
 }
 document.querySelector('#requestsSelectDialogClose').onclick = function() {
   request = requestsTableValue[selectedRowRequest]
   appointmentForm.patient.value = request.name
+  requestsDialog.style.display = null;
   requestsDialog.close();
 }
 

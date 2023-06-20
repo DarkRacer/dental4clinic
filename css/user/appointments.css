@@ -5,6 +5,7 @@
    display: flex;
    flex-direction: column;
    background-color: #ffffff;
+  padding-bottom: 2%;
  }
 .appointments-content-group {
   box-sizing: border-box;
@@ -25,7 +26,7 @@
   margin-right: 2%;
   width: 40%;
   box-sizing: border-box;
-  padding: 1% 1% 14% 1%;
+  padding: 1% 1% 15% 1%;
   height: 100%;
   box-shadow: 0 0.4rem 3rem rgba(0, 0, 0, 0.25);
   border: 1px solid;

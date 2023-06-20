@@ -6,6 +6,7 @@
    display: flex;
    flex-direction: column;
    background-color: #ffffff;
+  padding-bottom: 2%;
  }
 .about-group {
   box-sizing: border-box;
@@ -26,7 +27,6 @@
 .about-content-description {
   margin-right: 2%;
   width: 60%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   border-radius: 24px;
@@ -69,7 +69,6 @@
   box-sizing: border-box;
   padding: 2%;
   width: 38%;
-  height: 100%;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -77,6 +76,7 @@
   box-shadow: 0 0.4rem 3rem rgba(0, 0, 0, 0.25);
   background-color: #e7f2f6;
   border-radius: 24px;
+  justify-content: space-between;
 }
 .about-content-contacts-item {
   margin-bottom: 6%;

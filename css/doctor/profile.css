@@ -1,10 +1,10 @@
-
 .user-profile-body {
   width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
+  padding-bottom: 2%;
 }
 .user-profile-body-content {
   box-sizing: border-box;
@@ -118,12 +118,13 @@
 .doctor-info {
   width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  flex-direction: row;
 }
 .doctor-info-content-first {
   padding: 2%;
-  width: 60%;
+  width: 43.5%;
   min-height: 350px;
   display: flex;
   flex-direction: column;
@@ -134,8 +135,7 @@
 }
 .doctor-info-content-second {
   padding: 2%;
-  width: 30%;
-  margin-left: 5%;
+  width: 43.5%;
   min-height: 350px;
   display: flex;
   flex-direction: column;

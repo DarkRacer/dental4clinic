@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
+  padding-bottom: 2%;
 }
 .profile-edit-body {
   width: 90%;
@@ -60,7 +61,6 @@
   font-style: italic;
   color: #000000;
   font-family: Inter, 'Source Sans Pro', serif;
-  white-space: nowrap;
 }
 .required-field-input {
   box-sizing: border-box;
@@ -96,7 +96,6 @@
   font-style: italic;
   color: #000000;
   font-family: Inter, 'Source Sans Pro', serif;
-  white-space: nowrap;
 }
 .photo-field-input {
   box-sizing: border-box;
@@ -138,7 +137,6 @@
   font-style: italic;
   color: #000000;
   font-family: Inter, 'Source Sans Pro', serif;
-  white-space: nowrap;
 }
 .additional-field-input {
   box-sizing: border-box;
