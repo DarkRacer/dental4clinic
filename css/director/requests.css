@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
+  padding-bottom: 2%;
 }
 .requests-body {
   box-sizing: border-box;
@@ -101,23 +102,30 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
-  overflow: hidden;
   position: fixed;
   top: 0;
-  border: none !important;
+  border: none!important;
+  align-items: center;
+  justify-content: center;
   padding: 0;
   background-color: rgba(0, 0, 0, 0.3600000143);
 }
 .delete-dialog-content {
   width: 60%;
-  margin-top: 23.5%;
-  margin-left: 21.5%;
   position: relative;
   background-color: #e7f2f6;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   border-radius: 50px;
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.delete-dialog-content::-webkit-scrollbar {
+  display: none;
 }
 .delete-dialog-body-content {
   width: 96%;
@@ -133,6 +141,7 @@
   margin: 2%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 .delete-dialog-title-text {
   font-size: 28px;
@@ -141,7 +150,6 @@
   font-style: italic;
   color: #000000;
   font-family: Inter, 'Source Sans Pro', serif;
-  white-space: nowrap;
 }
 .delete-dialog-content-description {
   width: 100%;

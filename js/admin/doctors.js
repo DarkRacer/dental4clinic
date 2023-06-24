@@ -1,9 +1,10 @@
-const url ='https://localhost:8000/';
+const url = 'https://af2f-46-164-217-97.ngrok-free.app/';
 var token = GetCookie("access_token")
 const headers = {
-  "Host": "localhost:8000",
-  "Origin": "https://localhost:8000",
-  "Accept": "*/*"
+  "Host":  'af2f-46-164-217-97.ngrok-free.app',
+  "Origin":  'https://af2f-46-164-217-97.ngrok-free.app/',
+  "Accept": "*/*",
+  'ngrok-skip-browser-warning':true
 }
 
 let doctorsForm = document.getElementById("doctors-form");
@@ -18,6 +19,7 @@ getDoctors();
 
 var doctorsDialog = document.querySelector('#doctorsDialog');
 document.querySelector('#doctorsDialogClose').onclick = function() {
+  doctorsDialog.style.display = null;
   doctorsDialog.close();
   doctorsDialogTitle.innerText = ''
   doctorsDialogDescription.innerText = 'Упс. Что-то пошло не так...';
@@ -143,6 +145,7 @@ function openDialog(doctorId) {
     });
     doctorsDialogPluses.innerHTML = plusesHtml;
   }).catch(error => console.error(error));
+  doctorsDialog.style.display = 'flex';
   doctorsDialog.show();
 }
 

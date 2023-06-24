@@ -1,9 +1,10 @@
-const url ='https://localhost:8000/';
+const url = 'https://af2f-46-164-217-97.ngrok-free.app/';
 var token = GetCookie("access_token")
 const headers = {
-  "Host": "localhost:8000",
-  "Origin": "https://localhost:8000",
-  "Accept": "*/*"
+  "Host":  'af2f-46-164-217-97.ngrok-free.app',
+  "Origin":  'https://af2f-46-164-217-97.ngrok-free.app/',
+  "Accept": "*/*",
+  'ngrok-skip-browser-warning':true
 }
 var userId = 2;
 
@@ -216,7 +217,6 @@ function getToothPictures(patientId) {
       img.src = picture.data;
       toothPictures.appendChild(img);
     })
-    updateDiagnosisTable()
   }).catch(error => console.error(error));
 }
 function getUserDiagnosis(patientId) {
@@ -487,9 +487,11 @@ function actualDiagnosisMapper(isActual) {
 var toothPictureDialog = document.querySelector('#toothPicture');
 document.querySelector('#openToothPicture').onclick = function() {
   getToothPictures(dataAppointment['user-id'])
+  toothPictureDialog.style.display = 'flex';
   toothPictureDialog.show();
 }
 document.querySelector('#toothPictureClose').onclick = function() {
+  toothPictureDialog.style.display = null;
   toothPictureDialog.close();
 }
 
@@ -497,9 +499,11 @@ var diagnosisDialog = document.querySelector('#diagnosisDialog');
 document.querySelector('#openDiagnosisDialog').onclick = function() {
   getUserDiagnosis(dataAppointment['user-id'])
   getDiagnosis()
+  diagnosisDialog.style.display = 'flex';
   diagnosisDialog.show();
 }
 document.querySelector('#diagnosisDialogClose').onclick = function() {
+  diagnosisDialog.style.display = null;
   diagnosisDialog.close();
 }
 
@@ -507,9 +511,11 @@ document.querySelector('#diagnosisDialogClose').onclick = function() {
 var paymentsDialog = document.querySelector('#paymentsDialog');
 document.querySelector('#openPaymentsDialog').onclick = function() {
   getServices()
+  paymentsDialog.style.display = 'flex';
   paymentsDialog.show();
 }
 document.querySelector('#paymentsDialogClose').onclick = function() {
+  paymentsDialog.style.display = null;
   paymentsDialog.close();
 }
 left8Up.addEventListener("change", (e) => {

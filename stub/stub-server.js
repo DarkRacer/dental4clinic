@@ -1,0 +1,194 @@
+const express = require('express');
+var cors = require('cors')
+const app = express();
+const path = require('path');
+const router = express.Router();
+
+app.use('/', express.static(__dirname));
+app.use(cors({
+  origin: '*'
+}));
+
+
+router.get('/role',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/roles/user_role.json'));
+});
+router.post('/login',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/login/doctor_login.json'));
+});
+router.post('/registration',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/registration/user_registration.json'));
+});
+router.get('/doctors/services',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/doctors_services.json'));
+});
+router.post('/appointments/create/unauthorized',function(req,res){
+  res.status(204).send();
+});
+router.get('/prices',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/prices/prices.json'));
+});
+router.get('/price/1',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/prices/price.json'));
+});
+router.get('/user/1',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/user/1.json'));
+});
+router.get('/user/diagnosis/1',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/user/diagnosis/diagnosis_1.json'));
+});
+router.get('/doctors',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/doctors/doctors.json'));
+});
+router.get('/doctor/2',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/doctors/doctor.json'));
+});
+router.post('/appointments/create/user',function(req,res){
+  res.status(204).send();
+});
+router.get('/appointments/user/1',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/appointments/user/1.json'));
+});
+router.post('/request/create',function(req,res){
+  res.status(204).send();
+});
+router.get('/payments/user/1',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/payments/user_1.json'));
+});
+router.post('/user/edit/1',function(req,res){
+  res.status(204).send();
+});
+router.get('/appointments/doctor/2',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/appointments/doctor/2.json'));
+});
+router.get('/user/3',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/user/3.json'));
+});
+router.get('/appointments/1',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/appointments/1.json'));
+});
+router.get('/user/tooth-card/3',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/user/tooth-card/3.json'));
+});
+router.get('/user/requests/3',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/user/requests/3.json'));
+});
+router.get('/user/tooth/3',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/user/tooth/tooths_3.json'));
+});
+router.get('/user/doctor/2',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/doctor/2.json'));
+});
+router.post('/user/edit/2',function(req,res){
+  res.status(204).send();
+});
+router.get('/diagnosis',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/diagnosis/diagnosis_1.json'));
+});
+router.get('/user/diagnosis/3',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/user/diagnosis/diagnosis_1.json'));
+});
+router.post('/user/diagnosis/create',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/user/diagnosis/diagnosis_created.json'));
+});
+router.post('/user/diagnosis/update',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/user/diagnosis/diagnosis_updated.json'));
+});
+router.get('/doctors/2/services',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/doctors/doctors_services.json'));
+});
+router.post('/appointments/1/finish',function(req,res){
+  res.status(204).send();
+});
+router.post('/user/tooth-card/3/update',function(req,res){
+  res.status(204).send();
+});
+router.get('/user/registration',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/admin/user_registration.json'));
+});
+router.get('/user/admin/3',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/admin/3.json'));
+});
+router.post('/user/admin/3',function(req,res){
+  res.status(204).send();
+});
+router.post('/appointments/create/admin',function(req,res){
+  res.status(204).send();
+});
+router.get('/requests',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/requests/requests.json'));
+});
+router.get('/appointments/admin',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/appointments/admin/appointments.json'));
+});
+router.post('/payments/update',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/payments/payments_updated.json'));
+});
+router.get('/payments/all',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/payments/payments.json'));
+});
+router.get('/appointments/director',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/appointments/admin/appointments.json'));
+});
+router.post('/requests/update',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/requests/requests_updated.json'));
+});
+router.post('/requests/delete',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/requests/requests_deleted.json'));
+});
+router.post('/payments/delete',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/payments/payments_deleted.json'));
+});
+router.post('/price/create',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/prices/prices_created.json'));
+});
+router.post('/price/edit',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/prices/prices_updated.json'));
+});
+router.post('/price/delete',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/prices/prices_deleted.json'));
+});
+router.post('/doctor/create',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/doctors/doctors_created.json'));
+});
+router.post('/doctor/edit',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/doctors/doctors_updated.json'));
+});
+router.post('/doctor/delete',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/doctors/doctors_deleted.json'));
+});
+router.get('/services/doctor/1',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/services/doctor_services.json'));
+});
+router.get('/services/all',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/services/services.json'));
+});
+router.post('/services/doctor/delete/1',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/services/doctor_services_deleted.json'));
+});
+router.post('/services/doctor/add/1',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/services/doctor_services_added.json'));
+});
+router.get('/admins/all',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/admin/admins.json'));
+});
+router.post('/admins/create',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/admin/admins_added.json'));
+});
+router.post('/admins/edit',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/admin/admins_updated.json'));
+});
+router.post('/admins/delete',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/admin/admins_deleted.json'));
+});
+router.get('/user/director/4',function(req,res){
+  res.sendFile(path.join(__dirname+'/responses/director/4.json'));
+});
+router.post('/user/edit/4',function(req,res){
+  res.status(204).send();
+});
+
+app.use('/', router);
+app.listen(8888);
+
+console.log('Stub Server Running at Port 8888');

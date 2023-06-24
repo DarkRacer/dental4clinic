@@ -1,9 +1,10 @@
-const url ='https://localhost:8000/';
+const url = 'https://af2f-46-164-217-97.ngrok-free.app/';
 var token = GetCookie("access_token")
 const headers = {
-  "Host": "localhost:8000",
-  "Origin": "https://localhost:8000",
-  "Accept": "*/*"
+  "Host":  'af2f-46-164-217-97.ngrok-free.app',
+  "Origin":  'https://af2f-46-164-217-97.ngrok-free.app/',
+  "Accept": "*/*",
+  'ngrok-skip-browser-warning':true
 }
 
 var doctorId = 1;
@@ -94,6 +95,7 @@ getDoctors();
 
 var doctorsDialog = document.querySelector('#doctorsDialog');
 document.querySelector('#doctorsDialogClose').onclick = function() {
+  doctorsDialog.style.display = null;
   doctorsDialog.close();
   doctorsDialogTitle.innerText = ''
   doctorsDialogDescription.innerText = 'Упс. Что-то пошло не так...';
@@ -140,9 +142,11 @@ function getDoctors() {
 
 var createDoctorDialog = document.querySelector('#createDoctorDialog');
 document.querySelector('#openCreateDoctorDialog').onclick = function() {
+  createDoctorDialog.style.display = 'flex';
   createDoctorDialog.show();
 }
 document.querySelector('#createDoctorDialogClose').onclick = function() {
+  createDoctorDialog.style.display = null;
   createDoctorDialog.close();
 }
 document.querySelector('#createDoctorDialogSave').onclick = function() {
@@ -160,6 +164,7 @@ document.querySelector('#createDoctorDialogSave').onclick = function() {
     filteredDoctorsValue = doctorsValue;
     updateDoctors();
     imageString = '';
+    createDoctorDialog.style.display = null;
     createDoctorDialog.close();
   }).catch((error) => {
     imageString = '';
@@ -169,16 +174,20 @@ document.querySelector('#createDoctorDialogSave').onclick = function() {
 
 var editDoctorDialog = document.querySelector('#editDoctorDialog');
 document.querySelector('#openEditDoctorDialog').onclick = function() {
+  doctorsDialog.style.display = null;
   doctorsDialog.close();
   editForm.nameEdit.value = currentDoctor['part-name']
   editForm.surnameEdit.value = currentDoctor.surname
   editForm.patronymicEdit.value = currentDoctor.patronymic
   editForm.descriptionEdit.value = currentDoctor.description
   editForm.plusesEdit.value = currentDoctor.pluses
+  editDoctorDialog.style.display = 'flex';
   editDoctorDialog.show();
 }
 document.querySelector('#editDoctorDialogClose').onclick = function() {
+  editDoctorDialog.style.display = null;
   editDoctorDialog.close();
+  doctorsDialog.style.display = 'flex';
   doctorsDialog.show();
 }
 document.querySelector('#editDoctorDialogSave').onclick = function() {
@@ -196,6 +205,7 @@ document.querySelector('#editDoctorDialogSave').onclick = function() {
     filteredDoctorsValue = doctorsValue;
     updateDoctors();
     imageString = '';
+    editDoctorDialog.style.display = null;
     editDoctorDialog.close();
   }).catch((error) => {
     imageString = '';
@@ -206,11 +216,15 @@ document.querySelector('#editDoctorDialogSave').onclick = function() {
 
 var deleteDoctorDialog = document.querySelector('#deleteDoctorDialog');
 document.querySelector('#openDeleteDoctorDialog').onclick = function() {
+  doctorsDialog.style.display = null;
   doctorsDialog.close();
+  deleteDoctorDialog.style.display = 'flex';
   deleteDoctorDialog.show();
 }
 document.querySelector('#backButtonDeleteDoctorDialogClose').onclick = function() {
+  deleteDoctorDialog.style.display = null;
   deleteDoctorDialog.close();
+  doctorsDialog.style.display = 'flex';
   doctorsDialog.show();
 }
 document.querySelector('#deleteDoctorDialogClose').onclick = function() {
@@ -218,6 +232,7 @@ document.querySelector('#deleteDoctorDialogClose').onclick = function() {
     doctorsValue = data;
     filteredDoctorsValue = doctorsValue;
     updateDoctors();
+    deleteDoctorDialog.style.display = null;
     deleteDoctorDialog.close();
   }).catch((error) => console.error(error))
 }
@@ -227,21 +242,25 @@ document.querySelector('#openCreateServicesDoctorDialog').onclick = function() {
   doctorNameServices.innerText = `${createForm.surname.value} ${createForm.name.value} ${createForm.patronymic.value}`
   getServicesForDoctor()
   getServices()
+  servicesDoctorDialog.style.display = 'flex';
   servicesDoctorDialog.show();
 }
 document.querySelector('#openEditServicesDoctorDialog').onclick = function() {
   doctorNameServices.innerText = `${editForm.surnameEdit.value} ${editForm.nameEdit.value} ${editForm.patronymicEdit.value}`
   getServicesForDoctor()
   getServices()
+  servicesDoctorDialog.style.display = 'flex';
   servicesDoctorDialog.show();
 }
 document.querySelector('#openServicesDoctorDialog').onclick = function() {
   doctorNameServices.innerText = `${currentDoctor.name}`
   getServicesForDoctor()
   getServices()
+  servicesDoctorDialog.style.display = 'flex';
   servicesDoctorDialog.show();
 }
 document.querySelector('#servicesDoctorDialogClose').onclick = function() {
+  servicesDoctorDialog.style.display = null;
   servicesDoctorDialog.close();
 }
 
@@ -454,6 +473,7 @@ function openDialog(doctorId) {
     });
     doctorsDialogPluses.innerHTML = plusesHtml;
   }).catch(error => console.error(error));
+  doctorsDialog.style.display = 'flex';
   doctorsDialog.show();
 }
 

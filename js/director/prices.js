@@ -1,9 +1,10 @@
-const url ='https://localhost:8000/';
+const url = 'https://af2f-46-164-217-97.ngrok-free.app/';
 var token = GetCookie("access_token")
 const headers = {
-  "Host": "localhost:8000",
-  "Origin": "https://localhost:8000",
-  "Accept": "*/*"
+  "Host":  'af2f-46-164-217-97.ngrok-free.app',
+  "Origin":  'https://af2f-46-164-217-97.ngrok-free.app/',
+  "Accept": "*/*",
+  'ngrok-skip-browser-warning':true
 }
 
 let goToTop = document.getElementById("goToTop");
@@ -23,9 +24,11 @@ getPrices()
 
 var createPriceDialog = document.querySelector('#createPriceDialog');
 document.querySelector('#openCreatePriceDialog').onclick = function() {
+  createPriceDialog.style.display = 'flex';
   createPriceDialog.show();
 }
 document.querySelector('#createPriceDialogClose').onclick = function() {
+  createPriceDialog.style.display = null;
   createPriceDialog.close();
 }
 document.querySelector('#createPriceDialogSave').onclick = function() {
@@ -37,11 +40,13 @@ document.querySelector('#createPriceDialogSave').onclick = function() {
   }
   PostUrl('price/create', createPriceBody).then((data) => {
     cretePriceContent(data);
+    createPriceDialog.style.display = null;
     createPriceDialog.close();
   }).catch((error) => console.error(error))
 }
 
 document.querySelector('#pricesDialogClose').onclick = function() {
+  pricesDialog.style.display = null;
   pricesDialog.close();
   pricesDialogTitle.innerText = ''
   pricesDialogDescription.innerText = 'Упс. Что-то пошло не так...';
@@ -51,14 +56,17 @@ document.querySelector('#pricesDialogClose').onclick = function() {
 
 var editPriceDialog = document.querySelector('#editPriceDialog');
 document.querySelector('#openEditPriceDialog').onclick = function() {
+  pricesDialog.style.display = null;
   pricesDialog.close();
   editForm.nameEdit.value = currentPrice.name
   editForm.costEdit.value = currentPrice.price
   editForm.descriptionEdit.value = currentPrice.description
   editForm.plusesEdit.value = currentPrice.pluses
+  editPriceDialog.style.display = 'flex';
   editPriceDialog.show();
 }
 document.querySelector('#editPriceDialogClose').onclick = function() {
+  editPriceDialog.style.display = null;
   editPriceDialog.close();
 }
 document.querySelector('#editPriceDialogSave').onclick = function() {
@@ -70,30 +78,39 @@ document.querySelector('#editPriceDialogSave').onclick = function() {
   }
   PostUrl('price/edit', editPriceBody).then((data) => {
     cretePriceContent(data);
+    createPriceDialog.style.display = null;
     createPriceDialog.close();
   }).catch((error) => console.error(error))
+  editPriceDialog.style.display = null;
   editPriceDialog.close();
 }
 
 var deletePriceDialog = document.querySelector('#deletePriceDialog');
 document.querySelector('#openDeletePriceDialog').onclick = function() {
+  pricesDialog.style.display = null;
   pricesDialog.close();
+  deletePriceDialog.style.display = 'flex';
   deletePriceDialog.show();
 }
 document.querySelector('#deletePriceDialogClose').onclick = function() {
   PostUrl('price/delete', currentPrice).then((data) => {
     cretePriceContent(data);
+    createPriceDialog.style.display = null;
     createPriceDialog.close();
   }).catch((error) => console.error(error))
+  deletePriceDialog.style.display = null;
   deletePriceDialog.close();
 }
 document.querySelector('#backButtonDeletePriceDialogClose').onclick = function() {
+  deletePriceDialog.style.display = null;
   deletePriceDialog.close();
+  pricesDialog.style.display = 'flex';
   pricesDialog.show();
 }
 
 
 document.querySelector('#pricesDialogClose').onclick = function() {
+  pricesDialog.style.display = null;
   pricesDialog.close();
   pricesDialogTitle.innerText = ''
   pricesDialogDescription.innerText = 'Упс. Что-то пошло не так...';
@@ -132,30 +149,44 @@ function getPrices() {
 }
 
 function cretePriceContent(data) {
-  let result = ``;
-
+  while (pricesContent.firstChild) {
+    pricesContent.removeChild(pricesContent.lastChild);
+  }
   data.forEach(priceGroup =>  {
-    let groupHtml = `
-        <div class="prices-group">
-            <div class="prices-group-title">${priceGroup.group}</div>
-            <div class="prices-group-content">
-      `;
+    var resultPriceGroup = document.createElement('div');
+    resultPriceGroup.classList.add("prices-group");
+
+    var priceGroupTitle = document.createElement('div');
+    priceGroupTitle.classList.add("prices-group-title");
+    priceGroupTitle.innerText = priceGroup.group;
+
+    var priceGroupContent = document.createElement('div');
+    priceGroupContent.classList.add("prices-group-content");
+
+    resultPriceGroup.appendChild(priceGroupTitle);
 
     priceGroup.services.forEach(service => {
-      groupHtml+= `
-                    <div class="prices-group-content-item" id="body-service" onclick="openDialog(${service['service-id']})">
-                      <div class="prices-group-content-item-name">${service.name}</div>
-                      <div class="prices-group-content-item-price">${service.price} ₽</div>
-                    </div>`;
-    })
-    groupHtml+= `
-                </div>
-      </div>
-      `;
-    result += groupHtml;
-  });
+      var priceGroupContentItem = document.createElement('div');
+      priceGroupContentItem.classList.add("prices-group-content-item");
+      priceGroupContentItem.addEventListener("click", (e) => {openDialog(service['service-id'])})
 
-  pricesContent.innerHTML =result;
+      var priceGroupContentItemName = document.createElement('div');
+      priceGroupContentItemName.classList.add("prices-group-content-item-name");
+      priceGroupContentItemName.innerText = service.name;
+
+      var priceGroupContentItemPrice = document.createElement('div');
+      priceGroupContentItemPrice.classList.add("prices-group-content-item-price");
+      priceGroupContentItemPrice.innerText = service.price + ' ₽';
+
+      priceGroupContentItem.appendChild(priceGroupContentItemName);
+      priceGroupContentItem.appendChild(priceGroupContentItemPrice);
+
+      priceGroupContent.appendChild(priceGroupContentItem);
+    });
+
+    resultPriceGroup.appendChild(priceGroupContent);
+    pricesContent.appendChild(resultPriceGroup);
+  });
 }
 
 function openDialog(serviceId) {
@@ -179,6 +210,7 @@ function openDialog(serviceId) {
     });
     pricesDialogPluses.innerHTML = plusesHtml;
   }).catch(error => console.error(error));
+  pricesDialog.style.display = 'flex';
   pricesDialog.show();
 }
 
