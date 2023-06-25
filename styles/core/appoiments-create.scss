@@ -1,0 +1,139 @@
+@import './base/text';
+@import './base/defaults';
+@import './components/dialog';
+@import './components/buttons';
+@import '../core/components/inputs';
+@import '../core/components/table';
+
+.appointments-create-page {
+  @extend %default-page;
+}
+.appointments-create-body {
+  @extend %default-body-on-page;
+}
+.record-button {
+  width: 30%;
+  height: 5rem;
+  margin-top: $default-margin;
+  @extend %button;
+}
+.select-button {
+  height: 5rem;
+  margin-top: 4%;
+  @extend %button;
+}
+.form {
+  width: 100%;
+  margin-bottom: 2%;
+  display: flex;
+  flex-direction: row;
+}
+.second-form {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.form-field {
+  width: 100%;
+  margin-bottom: $default-margin;
+  @extend %default-flex;
+}
+.form-field-last-row {
+  width: 100%;
+  margin-left: 5%;
+  margin-bottom: $default-margin;
+  @extend %default-flex;
+}
+.form-field-last-column {
+  width: 100%;
+  @extend %default-flex;
+}
+.form-field-title {
+  width: 100%;
+  margin-bottom: 1%;
+  @extend %title-text;
+}
+.form-field-input-textarea {
+  @extend %textarea;
+}
+.form-field-group {
+  margin-left: 5%;
+  width: 100%;
+  @extend %default-flex;
+}
+.form-field-input {
+  padding: 3% 4%;
+  @extend %input;
+}
+.row-header-recording {
+  height: 5rem;
+  @extend %table-row;
+}
+.cell-header-recording {
+  width: 50%;
+  @extend %table-cell-header;
+}
+.cell-header-content-recording {
+  @extend %table-cell-content-header;
+}
+.row-recording {
+  height: 4.5rem;
+  @extend %table-row;
+}
+.cell-recording {
+  width: 50%;
+  @extend %table-cell-body;
+}
+.cell-recording-selected {
+  width: 50%;
+  @extend %table-cell-selected;
+}
+.cell-content-recording {
+  @extend %table-cell-content;
+}
+.request-dialog-blackout {
+  @extend %dialog-blackout;
+}
+.request-dialog-content {
+  width: 70%;
+  min-height: 60%;
+  border-radius: $default-radius;
+  @extend %dialog-content;
+}
+.request-dialog-content::-webkit-scrollbar {
+  display: none;
+}
+.request-dialog-body-content {
+  width: 90%;
+  height: 100%;
+  position: relative;
+  margin-left: 5%;
+  box-sizing: border-box;
+  @extend %default-flex;
+}
+.request-dialog-title {
+  @extend %dialog-title;
+}
+.request-dialog-title-text {
+  @extend %dialog-title-text;
+}
+.request-dialog-close {
+  @extend %dialog-close;
+}
+.request-dialog-close-div {
+  @extend %dialog-close-div;
+}
+.select-request-button {
+  margin: 2% 0 4% 0;
+  height: 4.5rem;
+  border-radius: 0.5rem;
+  @extend %button;
+}
+.row-header-request {
+  height: 5.5rem;
+  @extend %table-row;
+}
+.row-request {
+  height: 5.5rem;
+  @extend %table-row;
+}

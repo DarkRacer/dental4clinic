@@ -1,0 +1,109 @@
+@import '../core/base/text';
+@import '../core/base/defaults';
+@import '../core/components/dialog';
+@import '../core/components/buttons';
+@import '../core/components/inputs';
+@import '../core/components/table';
+
+.requests-page {
+  @extend %default-page;
+}
+.requests-body {
+  @extend %default-body-on-page;
+}
+.checked {
+  width: 45%;
+  height: 100%;
+  @extend %button;
+}
+.delete-request {
+  width: 45%;
+  height: 100%;
+  @extend %button;
+}
+.row-header-requests {
+  height: 7.5rem;
+  @extend %table-row;
+}
+.cell-header-requests {
+  width: 25%;
+  @extend %table-cell-header;
+}
+.row-requests {
+  height: 7rem;
+  @extend %table-row;
+}
+.cell-requests {
+  width: 25%;
+  @extend %table-cell-body;
+}
+.cell-requests-selected {
+  width: 25%;
+  @extend %table-cell-selected;
+}
+.buttons {
+  width: 100%;
+  height: 60px;
+  margin-top: $default-margin;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10%;
+}
+.delete-dialog-blackout {
+  @extend %dialog-blackout;
+}
+.delete-dialog-content {
+  width: 60%;
+  min-height: 10%;
+  border-radius: $default-radius;
+  @extend %dialog-content;
+}
+.delete-dialog-content::-webkit-scrollbar {
+  display: none;
+}
+.delete-dialog-body-content {
+  width: 96%;
+  height: 100%;
+  position: relative;
+  margin-left: $default-margin;
+  box-sizing: border-box;
+  @extend %default-flex;
+}
+.delete-dialog-title {
+  @extend %dialog-title;
+}
+.delete-dialog-title-text {
+  @extend %dialog-title-text;
+}
+.delete-dialog-content-description {
+  width: 100%;
+  height: 100%;
+  margin-bottom: $default-margin;
+  line-height: 2.1428571429;
+  @extend %text;
+}
+.delete-dialog-content-plus {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  @extend %default-img;
+}
+.delete-dialog-footer {
+  width: 96%;
+  height: 50px;
+  position: relative;
+  margin-bottom: $default-margin;
+  margin-left: $default-margin;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10%;
+}
+.delete-dialog-footer-button {
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(134.44deg, #a8def0 0%, #245787 162.14%);
+  border-radius: 0.5rem;
+  @extend %button;
+}
