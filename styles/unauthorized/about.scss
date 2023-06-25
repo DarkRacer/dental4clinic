@@ -1,0 +1,120 @@
+@import '../core/base/text';
+
+.about-body {
+   width: 100%;
+   overflow: hidden;
+   position: relative;
+   align-items: center;
+   @extend %default-flex;
+   background-color: #ffffff;
+  padding-bottom: 2%;
+ }
+.about-group {
+  box-sizing: border-box;
+  padding: 0 2%;
+  width: 100%;
+  align-items: center;
+  @extend %default-flex;
+}
+.about-content {
+  margin-bottom: 2%;
+  width: 100%;
+  height: 50%;
+  position: relative;
+  @extend %default-flex;
+}
+.about-content-description {
+  margin-right: 2%;
+  width: 60%;
+  @extend %default-flex;
+  border-radius: 24px;
+}
+.about-content-title {
+  margin-bottom: 2%;
+  width: 100%;
+  text-align: center;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 1.2125;
+  color: #245787;
+  font-family: $font-stack;
+  white-space: nowrap;
+}
+.about-content-group {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.about-content-description-card {
+  box-sizing: border-box;
+  border: $default-border;
+  padding: 2%;
+  width: 100%;
+  height: 100%;
+  box-shadow: $default-shadow;
+  background-color: $default-background;
+  border-radius: 24px;
+}
+.about-content-description-card-text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: $font-stack;
+}
+.about-content-contacts {
+  box-sizing: border-box;
+  padding: 2%;
+  width: 38%;
+  align-items: center;
+  @extend %default-flex;
+  border: $default-border;
+  box-shadow: $default-shadow;
+  background-color: $default-background;
+  border-radius: 24px;
+  justify-content: space-between;
+}
+.about-content-contacts-item {
+  margin-bottom: 6%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+.about-content-contacts-image {
+  width: 40px;
+  height: 40px;
+  @extend %default-img;
+}
+.about-content-contacts-text {
+  margin-left: 4%;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: $font-stack;
+}
+.about-content-contacts-links {
+  margin-bottom: 0.5%;
+  width: 100%;
+  display: flex;
+  column-gap: 4%;
+  align-items: center;
+  justify-content: center;
+}
+.about-content-contacts-link-image {
+  width: 50px;
+  height: 50px;
+  @extend %default-img;
+}
+.card-title {
+  margin-bottom: 2%;
+  @extend %card-title-text;
+}
+.about-content-map{
+  width: 100%;
+  height: 400px;
+  border: $default-border;
+  box-shadow: $default-shadow;
+}

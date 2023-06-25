@@ -1,0 +1,238 @@
+@import '../core/base/text';
+
+.doctors-page {
+   width: 100%;
+   overflow: hidden;
+   position: relative;
+   align-items: center;
+   @extend %default-flex;
+   background-color: #ffffff;
+   padding-bottom: 2%;
+ }
+.doctors-body {
+  box-sizing: border-box;
+  width: 70%;
+  @extend %default-flex;
+}
+.doctors-body-header {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  margin-bottom: $default-margin;
+  align-items: center;
+}
+.doctors-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  column-gap: 4%;
+  align-items: flex-start;
+  flex-direction: row;
+}
+.doctor-card {
+  width: 22%;
+  height: 100%;
+  margin-bottom: $default-margin;
+  position: relative;
+  @extend %default-flex;
+  align-items: center;
+}
+.doctor-name {
+  width: 100%;
+  height: 100%;
+  margin-bottom: $default-margin;
+  display: flex;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3714285351;
+  color: #233567;
+  font-family: $font-stack;
+}
+.doctor-spec {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6000000238;
+  font-family: $font-stack;
+  color: #387ba8;
+
+}
+.doctor-avatar {
+  box-sizing: border-box;
+  padding-top: 0.813rem;
+  width: 100%;
+  height: 60%;
+  overflow: hidden;
+  background-color: $default-background;
+  border-radius: 1.4rem;
+}
+.doctor-image {
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  @extend %default-img;
+}
+.selector {
+  box-sizing: border-box;
+  padding: 5%;
+  height: 100%;
+  background-color: $default-background;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  color: #233567;
+  font-family: $font-stack;
+  white-space: nowrap;
+}
+.selector-text {
+  display: flex;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  color: #233567;
+  font-family: $font-stack;
+  white-space: nowrap;
+}
+.doctors-dialog-blackout {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  border: none!important;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.3600000143);
+}
+.doctors-dialog-content {
+  width: 76%;
+  position: relative;
+  background-color: $default-background;
+  @extend %default-flex;
+  box-sizing: border-box;
+  border-radius: $default-radius;
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.doctors-dialog-content::-webkit-scrollbar {
+  display: none;
+}
+.doctors-dialog-body-content {
+  width: 96%;
+  height: 100%;
+  position: relative;
+  margin-left: $default-margin;
+  @extend %default-flex;
+  box-sizing: border-box;
+}
+.doctors-dialog-title {
+  width: 100%;
+  margin: $default-margin;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.doctors-dialog-title-text {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #000000;
+  width: 90%;
+  font-family: $font-stack;
+}
+.doctors-dialog-close {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  @extend %default-img;
+  @include transform(rotate(30deg));
+}
+.doctors-dialog-close-div {
+  padding-right: 4%;
+}
+.doctors-dialog-content-description {
+  width: 100%;
+  height: 100%;
+  margin-bottom: $default-margin;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 2.1428571429;
+  color: #000000;
+  font-family: $font-stack;
+}
+.pluses-group {
+  width: 100%;
+  height: 100%;
+  @extend %default-flex;
+}
+.pluses-group-title {
+  width: 100%;
+  height: 100%;
+  margin-bottom: $default-margin;
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.7777777778;
+  color: #000000;
+  font-family: $font-stack;
+}
+.plus-price-group {
+  width: 100%;
+  height: 100%;
+  margin-bottom: $default-margin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.doctors-dialog-content-plus {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  @extend %default-img;
+}
+.doctors-dialog-content-text {
+  width: 100%;
+  height: 100%;
+  margin-left: 1%;
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.7777777778;
+  color: #000000;
+  font-family: $font-stack;
+}
+.doctors-dialog-footer {
+  width: 96%;
+  height: 100%;
+  position: relative;
+  margin-left: $default-margin;
+  margin-bottom: $default-margin;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: end;
+}
+.doctors-dialog-footer-button {
+  width: 20%;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2125;
+  color: #e7f2f6;
+  font-family: $font-stack;
+  white-space: nowrap;
+  background: linear-gradient(134.44deg, #a8def0 0%, #245787 162.14%);
+  border-radius: 0.5rem;
+}

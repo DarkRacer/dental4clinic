@@ -1,0 +1,70 @@
+@import '../base/defaults';
+@import '../base/text';
+
+%table {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  border: $default-border;
+  box-sizing: border-box;
+  background-color: $default-background;
+  border-radius: 0.4rem;
+  flex-shrink: 0;
+  @extend %default-flex;
+}
+
+%table-row {
+  height: 6rem;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+%table-cell {
+  box-sizing: border-box;
+  width: 34%;
+  height: 100%;
+  border: $default-border;
+  background-color: $default-background;
+}
+
+%table-cell-header {
+  @extend %table-cell;
+  background-color: $default-background-header-component;
+}
+
+%table-cell-body {
+  @extend %table-cell;
+  border: solid 1px #245787;
+}
+
+%table-cell-selected {
+  @extend %table-cell;
+  border: solid 1px #245787;
+  background-color: #64caef;
+}
+
+%table-cell-content {
+  margin-bottom: $default-margin;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @extend %text;
+}
+
+%table-cell-content-header {
+  @extend %table-cell-content;
+  align-items: normal;
+  padding-top: $default-padding;
+  font-size: 24px;
+  font-style: italic;
+  white-space: nowrap;
+}
+

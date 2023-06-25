@@ -1,0 +1,121 @@
+@import '../core/base/text';
+
+.record-list-page {
+   width: 100%;
+   overflow: hidden;
+   position: relative;
+   align-items: center;
+   @extend %default-flex;
+   background-color: #ffffff;
+   padding-bottom: 2%;
+ }
+.record-list-body {
+  box-sizing: border-box;
+  width: 96%;
+  align-items: center;
+  @extend %default-flex;
+}
+.form {
+  width: 100%;
+  margin-bottom: $default-margin;
+  display: flex;
+  flex-direction: row;
+}
+.form-field {
+  width: 100%;
+  @extend %default-flex;
+}
+.form-field-input {
+  box-sizing: border-box;
+  padding: 3% 4%;
+  width: 100%;
+  border: $default-border;
+  background-color: $default-background;
+  border-radius: 3rem;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: $font-stack;
+}
+.form-field-title {
+  width: 100%;
+  margin-bottom: 1%;
+  display: flex;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3625;
+  color: #232323;
+  font-style: italic;
+  font-family: $font-stack;
+}
+.form-field-last-row {
+  width: 100%;
+  margin-left: 5%;
+  @extend %default-flex;
+}
+.find-button {
+   width: 100%;
+   height: 5rem;
+   margin-bottom: $default-margin;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 24px;
+   font-weight: 400;
+   line-height: 1.2125;
+   color: #e7f2f6;
+   font-family: $font-stack;
+   white-space: nowrap;
+   background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
+   border-radius: $default-radius;
+ }
+.calendar-date-record {
+  width: 14.5%;
+  height: 105px;
+  padding: 0.5% 0 0 0.5%;
+  position: relative;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3175;
+  font-family: $font-stack;
+  text-transform: uppercase;
+  color: #000000;
+  border: solid 0.1rem #245787;
+  background-color: $default-background;
+}
+.date-selected-record {
+  box-sizing: border-box;
+  width: 14.5%;
+  height: 105px;
+  padding: 0.5% 0 0 0.5%;
+  display: flex;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3175;
+  text-transform: uppercase;
+  color: #000000;
+  font-family: $font-stack;
+  border: solid 0.1rem #245787;
+  background-color: #64caef;
+}
+.week-day-record {
+  width: 14.5%;
+  height: 12%;
+  padding: 1% 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3175;
+  text-transform: uppercase;
+  color: #000000;
+  font-family: $font-stack;
+  white-space: nowrap;
+  border: solid 0.1rem #245787;
+  box-sizing: border-box;
+  background-color: $default-background-header-component;
+}

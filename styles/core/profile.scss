@@ -1,0 +1,149 @@
+@import 'base/text';
+@import 'components/buttons';
+@import "components/inputs";
+
+.profile-edit-page {
+  @extend %default-page;
+}
+.profile-edit-body {
+  width: 94%;
+  @extend %default-body-on-page;
+}
+.user-profile-body {
+  @extend %default-page;
+}
+.user-profile-body-content {
+  @extend %default-body-on-page;
+}
+.user-card {
+  margin: 0 0 2% 0;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+.user-card-content {
+  margin-right: 5%;
+  box-sizing: border-box;
+  width: 55%;
+  padding: 2%;
+  height: 100%;
+  display: flex;
+  border: $default-border;
+  align-items: center;
+  background-color: $default-background;
+  border-radius: 80px;
+}
+.user-profile-photo {
+  margin-right: 12%;
+  width: 35%;
+  height: 35%;
+  border-radius: 100%;
+  @extend %default-img;
+}
+.card-fields {
+  margin: 4% 0 4% 0;
+  width: 50%;
+  align-items: center;
+  @extend %default-flex;
+}
+.card-field-group {
+  width: 100%;
+  margin-bottom: 4%;
+}
+.user-card-field {
+  display: flex;
+  float: left;
+  font-style: italic;
+  @extend %text;
+}
+.field-content {
+  text-align: right;
+  display: flex;
+  float: right;
+  @extend %title-text;
+}
+.user-card-buttons {
+  margin-top: 4%;
+  width: 40%;
+  align-items: center;
+  justify-content: center;
+  @extend %default-flex;
+}
+.user-card-button {
+  margin-bottom: 8%;
+  height: 6rem;
+  @extend %button;
+}
+.user-card-button-last {
+  height: 6rem;
+  @extend %button;
+}
+.save-button {
+  @extend %button;
+}
+.form {
+  width: 100%;
+  height: 100%;
+  @extend %default-flex;
+}
+.required-fields {
+  width: 100%;
+  margin-bottom: $default-margin;
+  display: flex;
+  flex-direction: row;
+  column-gap: 5%;
+}
+.required-field {
+  width: 100%;
+  height: 100%;
+  @extend %default-flex;
+}
+.required-field-title {
+  display: flex;
+  margin-bottom: 1%;
+  align-items: center;
+  @extend %title-text;
+}
+.required-field-input {
+  padding: 4%;
+  @extend %input;
+}
+.photo-field {
+  width: 45%;
+  height: 100%;
+  margin-bottom: $default-margin;
+  @extend %default-flex;
+}
+.photo-field-title {
+  display: flex;
+  margin-bottom: 1%;
+  align-items: center;
+  @extend %title-text;
+}
+.photo-field-input {
+  padding: 2%;
+  @extend %input;
+}
+.additional-fields {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10%;
+  margin-bottom: $default-margin;
+}
+.additional-field {
+  width: 100%;
+  height: 100%;
+  @extend %default-flex;
+}
+.additional-field-title {
+  display: flex;
+  margin-bottom: 1%;
+  align-items: center;
+  @extend %title-text;
+}
+.additional-field-input {
+  padding: 4% 4% 30% 4%;
+  overflow: hidden;
+  @extend %input;
+}

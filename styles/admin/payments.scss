@@ -1,0 +1,125 @@
+@import '../core/base/text';
+
+.payments-page {
+   width: 100%;
+   overflow: hidden;
+   position: relative;
+   align-items: center;
+   @extend %default-flex;
+   background-color: #ffffff;
+   padding-bottom: 2%;
+}
+.payments-body {
+  box-sizing: border-box;
+  width: 96%;
+  align-items: center;
+  @extend %default-flex;
+  flex-shrink: 0;
+}
+.paid {
+  width: 30%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2125;
+  color: #e7f2f6;
+  font-family: $font-stack;
+  white-space: nowrap;
+  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
+  border-radius: 5rem;
+}
+.no-paid {
+  width: 30%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2125;
+  color: #e7f2f6;
+  font-family: $font-stack;
+  white-space: nowrap;
+  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
+  border-radius: 5rem;
+  flex-shrink: 0;
+}
+.row-header-payments {
+  width: 100%;
+  height: 7rem;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.cell-header-payments {
+  box-sizing: border-box;
+  padding-top: 0.8%;
+  width: 17%;
+  height: 100%;
+  border: solid 0.1rem #5b5b5b;
+  background-color: $default-background-header-component;
+  flex-shrink: 0;
+}
+.cell-header-payments-last {
+  box-sizing: border-box;
+  padding-top: 0.8%;
+  width: 16%;
+  height: 100%;
+  border: solid 0.1rem #5b5b5b;
+  background-color: $default-background-header-component;
+  flex-shrink: 0;
+}
+.row-payments {
+  width: 100%;
+  height: 6.5rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.cell-payments {
+  width: 17%;
+  height: 100%;
+  border: solid 0.1rem #245787;
+  box-sizing: border-box;
+  background-color: $default-background;
+  flex-shrink: 0;
+}
+.cell-payments-selected {
+  width: 17%;
+  height: 100%;
+  border: solid 0.1rem #245787;
+  box-sizing: border-box;
+  background-color: #64caef;
+  flex-shrink: 0;
+}
+.cell-payments-last {
+  width: 16%;
+  height: 100%;
+  border: solid 0.1rem #245787;
+  box-sizing: border-box;
+  background-color: $default-background;
+  flex-shrink: 0;
+}
+.cell-payments-last-selected {
+  width: 16%;
+  height: 100%;
+  border: solid 0.1rem #245787;
+  box-sizing: border-box;
+  background-color: #64caef;
+  flex-shrink: 0;
+}
+.buttons {
+  width: 100%;
+  height: 60px;
+  margin-top: $default-margin;
+  display: flex;
+  flex-direction: row;
+  column-gap: 40%;
+}

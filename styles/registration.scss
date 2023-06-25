@@ -1,0 +1,6 @@
+@import 'core/profile';
+
+.required-login-field-input {
+  padding: 3%;
+  @extend %input;
+}

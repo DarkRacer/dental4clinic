@@ -1,0 +1,37 @@
+@import '../core/profile';
+@import '../core/components/dialog';
+
+.tooth-pictures-dialog-blackout {
+  @extend %dialog-blackout;
+}
+.tooth-pictures-dialog-content {
+  @extend %dialog-content;
+}
+.tooth-pictures-dialog-content::-webkit-scrollbar {
+  display: none;
+}
+.tooth-pictures-dialog-title {
+  @extend %dialog-title;
+}
+.tooth-pictures-dialog-title-text {
+  @extend %dialog-title-text;
+}
+.tooth-pictures-dialog-close-div {
+  padding-right: 4%;
+}
+.tooth-pictures-dialog-close {
+  @extend %dialog-close;
+}
+.tooth-pictures {
+  margin-left: $default-margin;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.tooth-picture {
+  max-width: 400px;
+  max-height: 250px;
+  @extend %default-img;
+  margin-bottom: $default-margin;
+  margin-right: $default-margin;
+}

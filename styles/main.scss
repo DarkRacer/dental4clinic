@@ -1,0 +1,505 @@
+@import 'core/base/text';
+@import 'core/components/table';
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+html {
+  font-size:100%;
+}
+.main-page {
+  @extend %default-page;
+}
+.header-for-all {
+  margin-bottom: $default-margin;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  background-color: $default-background-header-component;
+}
+.header-div-left {
+  width: 100%;
+  height: 70px;
+  float: left;
+  display: flex;
+  align-items: center;
+  background-color: $default-background-header-component;
+}
+.header-div-right {
+  width: 100%;
+  height: 70px;
+  float: right;
+  display: flex;
+  align-items: center;
+  background-color: $default-background-header-component;
+  flex-direction: row-reverse;
+}
+.logo {
+  margin: 0 30px 7px 0;
+  width: 76px;
+  height: 61px;
+  position: relative;
+  @extend %default-flex;
+}
+.logo-img {
+  width: 73px;
+  height: 53px;
+  position: relative;
+  margin-left: 1%;
+  @extend %default-img;
+}
+.dental4clinic-logo {
+  width: 76px;
+  height: 15px;
+  margin-top: -5%;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2125;
+  font-style: italic;
+  color: #265a8a;
+  font-family: $font-stack;
+  white-space: nowrap;
+}
+.header-item {
+  margin: 1px 30px 0 0;
+  cursor: pointer;
+  color: #000000;
+  @extend %header-text;
+}
+.first-header-item-selected {
+  padding: 0 10px;
+  margin-right: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $default-background-header-component;
+  background: linear-gradient(90deg, #29608F 0%, #2E6997 100%),
+  linear-gradient(180deg, #67CFF4 0%, #2C6594 100%);
+  @extend %header-text;
+}
+.second-header-item-selected {
+  padding: 0 10px;
+  margin-right: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $default-background-header-component;
+  background: linear-gradient(90deg, #2E6897 0%, #32709E 100%),
+  linear-gradient(180deg, #67CFF4 0%, #3B7FAC 100%);
+  @extend %header-text;
+}
+.third-header-item-selected {
+  padding: 0 10px;
+  margin-right: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $default-background-header-component;
+  background: linear-gradient(90deg, #33719E 0%, #3879A6 100%),
+  linear-gradient(180deg, #67CFF4 0%, #306C9A 100%);
+  @extend %header-text;
+}
+.fourth-header-item-selected {
+  padding: 0 15px;
+  margin-right: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $default-background-header-component;
+  background: linear-gradient(90deg, #3779A6 0%, #3A7EAB 100%),
+  linear-gradient(180deg, #67CFF4 0%, #3B7FAC 100%);
+  @extend %header-text;
+}
+.fifth-header-item-selected {
+  padding: 0 15px;
+  margin-right: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $default-background-header-component;
+  background: linear-gradient(90deg, #3A7FAB 0%, #3E85B0 100%),
+  linear-gradient(180deg, #67CFF4 0%, #3B7FAC 100%);
+  @extend %header-text;
+}
+.sixth-header-item-selected {
+  padding: 0 15px;
+  margin-right: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $default-background-header-component;
+  background: linear-gradient(90deg, #3D84B0 0%, #418AB6 100%),
+  linear-gradient(180deg, #67CFF4 0%, #3B7FAC 100%);
+  @extend %header-text;
+}
+.about-header-item-selected {
+  padding: 0 25px;
+  margin-right: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $default-background-header-component;
+  background: linear-gradient(90deg, #3D84B0 0%, #418AB6 100%),
+  linear-gradient(180deg, #67CFF4 0%, #3B7FAC 100%);
+  @extend %header-text;
+}
+.phone-number {
+  margin-right: 25px;
+  box-sizing: border-box;
+  padding: 15px;
+  height: calc(100% - 41px);
+  display: flex;
+  align-items: center;
+  background: linear-gradient(134.44deg, #a8def0 0%, #245787 162.14%);
+  border-radius: $default-radius;
+}
+.phone {
+  margin-right: 9px;
+  width: 17px;
+  height: 19px;
+  @extend %default-img;
+}
+.number {
+  @extend %header-text;;
+}
+.logo-user {
+  width: 54px;
+  height: 54px;
+}
+.logo-user-image {
+  width: 54px;
+  height: 54px;
+}
+.logo-user-image {
+  width: 54px;
+  height: 54px;
+  border-radius: 5rem;
+}
+.content-main-page {
+  width: 80%;
+  align-items: center;
+  @extend %default-flex;
+}
+.card-pluses {
+  margin-bottom: $default-margin;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.card-title {
+  margin: $default-margin;
+  @extend %card-title-text;
+}
+.card-pluses-image {
+  width: 100%;
+  height: 100%;
+  margin-left: 49%;
+  overflow: hidden;
+}
+.card-pluses-cover-slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 46px;
+}
+.pseudo {}
+.main-page-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  @extend %default-img;
+}
+.card-pluses-cover-inner {
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  margin-top: 1%;
+  width: 57%;
+  height: 95%;
+  overflow: hidden;
+  border-radius: 42px;
+}
+.card-pluses-cover-background {
+  box-sizing: border-box;
+  padding: 5% 10% 3% 5%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../img/vector.png);
+  justify-content: space-between;
+  @extend %default-flex;
+}
+.card-pluses-cover-header {
+  max-width: 356px;
+  display: flex;
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 1.2152777778;
+  color: #ffffff;
+  font-family: $font-stack;
+}
+.card-pluses-slogan-list {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.card-pluses-slogan-item {
+  margin-right: 5%;
+  width: 40%;
+  height: 100%;
+}
+.card-pluses-slogan-item-group {
+  display: flex;
+  align-items: center;
+}
+.slogan-modern {
+  margin-right: 10%;
+  @extend %default-slogan;
+}
+.first-line {
+  margin-top: 1px;
+  width: 30%;
+  margin-left: 20%;
+  height: 10px;
+  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
+  border-radius: 20px;
+}
+.card-pluses-item-sub-header {
+  margin-bottom: 0.53px;
+  display: flex;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4400000572;
+  color: #ffffff;
+  font-family: $font-stack;
+  white-space: nowrap;
+}
+.card-pluses-item-text {
+  display: flex;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.3571416537;
+  color: #ffffff;
+  font-family: $font-stack;
+  white-space: nowrap;
+}
+.slogan-shield {
+  margin-right: 10%;
+  @extend %default-slogan;
+}
+.second-line {
+  margin-top: 1px;
+  width: 30%;
+  margin-left: 20%;
+  height: 10px;
+  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
+  border-radius: 20px;
+}
+.card-pluses-slogan-last-item {
+  width: 40%;
+  @extend %default-flex;
+}
+.slogan-thumbs {
+  @extend %default-slogan;
+}
+.plus-group {
+  box-sizing: border-box;
+  padding: 2% 0 2% 2%;
+  width: 100%;
+  margin-bottom: $default-margin;
+  background-color: $default-background;
+  border-radius: 46px;
+  @extend %default-flex;
+}
+.group-header {
+  margin: 1% 0 2% 0;
+  display: flex;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 0.6666666667;
+  color: #000000;
+  font-family: $font-stack;
+}
+.group-body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.group-points {
+  margin: 15px 4px 40px 0;
+  height: calc(100% - 55px);
+  align-items: center;
+  @extend %default-flex;
+}
+.point-plus {
+  margin-right: 1%;
+  margin-top: 0.7%;
+  width: 17px;
+  height: 17px;
+  @extend %default-img;
+}
+.plus {
+  @extend %default-flex;
+}
+.plus-point {
+  display: flex;
+  flex-direction: row;
+}
+.group-plus-text {
+  max-width: 1044px;
+  line-height: 1.7142857143;
+  @extend %text;
+  @extend %default-flex;
+}
+.point-text {
+  font-weight: 600;
+  line-height: 2;
+}
+.sub-text {
+  margin-left: 3%;
+  margin-bottom: 1%;
+}
+.table {
+  @extend %table;
+}
+.row-header {
+  @extend %table-row;
+}
+.cell-header {
+  @extend %table-cell-header;
+}
+.cell-header-content {
+  @extend %table-cell-content-header;
+}
+.row {
+  @extend %table-row;
+}
+.cell {
+  @extend %table-cell-body;
+}
+.cell-selected {
+  @extend %table-cell-selected;
+}
+.cell-content {
+  @extend %table-cell-content;
+}
+.calendar {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  border: $default-border;
+  box-shadow: $default-shadow;
+  margin-bottom: $default-margin;
+}
+.calendar-date-group {
+  @extend %default-flex;
+}
+.calendar-date-group-row {
+  display: flex;
+  flex-direction: row;
+}
+.calendar-date {
+  width: 14.5%;
+  height: 80px;
+  padding: 0.5% 0 0 0.5%;
+  position: relative;
+  box-sizing: border-box;
+  border: solid 0.1rem #245787;
+  background-color: $default-background;
+  @extend %calendar-text;
+}
+.date-selected {
+  box-sizing: border-box;
+  width: 14.5%;
+  height: 80px;
+  padding: 0.5% 0 0 0.5%;
+  display: flex;
+  border: solid 0.1rem #245787;
+  background-color: #64caef;
+  @extend %calendar-text;
+}
+.week-day {
+  width: 14.5%;
+  height: 10%;
+  padding: 0.5% 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: solid 0.1rem #245787;
+  background-color: $default-background-header-component;
+  @extend %calendar-text;
+}
+.calendar-month-year {
+  box-sizing: border-box;
+  padding: 1%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: solid 0.1rem;
+  background-color: $default-background-header-component;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.calendar-month-before {
+  width: 40px;
+  height: 40px;
+  @extend %default-img;
+  @include transform(rotate(180deg))
+}
+.calendar-month-year-content {
+  width: 600px;
+  margin: 0 36%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  text-transform: none;
+  @extend %calendar-text;
+}
+.calendar-month-next {
+  width: 40px;
+  height: 40px;
+  @extend %default-img;
+}
+.go-to-top {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 18px;
+  background-color: $default-background;
+  @extend %default-img;
+  @include transform(rotate(270deg));
+}

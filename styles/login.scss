@@ -1,0 +1,70 @@
+@import 'core/base/text';
+@import 'core/components/inputs';
+
+.login-body {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  align-items: center;
+  background-color: #ffffff;
+  padding-bottom: 2%;
+  @extend %default-flex;
+}
+.submit-button {
+  width: 100%;
+  height: 4rem;
+  margin: $default-margin;
+  display: flex;
+  background: linear-gradient(180deg, #245787 0%, #67cff4 100%);
+  border-radius: 80px;
+  @extend %button-text;
+}
+.registration {
+  width: 100%;
+  height: 4rem;
+  margin: $default-margin;
+  display: flex;
+  background: linear-gradient(134.44deg, #a8def0 0%, #245787 162.14%);
+  border-radius: 80px;
+  @extend %button-text;
+}
+.login-card {
+  margin-top: 10%;
+  box-sizing: border-box;
+  padding: 2%;
+  width: 30%;
+  height: 100%;
+  align-items: center;
+  border: $default-border;
+  box-shadow: $default-shadow;
+  background-color: $default-background;
+  border-radius: 24px;
+  @extend %default-flex;
+}
+.form {
+  width: 100%;
+  margin-bottom: $default-margin;
+  display: flex;
+  flex-direction: row;
+}
+.form-field {
+  width: 100%;
+  margin-bottom: $default-margin;
+  @extend %default-flex;
+}
+.form-field-input {
+  padding: 4%;
+  border-radius: 3rem;
+  @extend %input;
+}
+.form-field-title {
+  width: 100%;
+  margin-bottom: 1%;
+  display: flex;
+  @extend %title-text;
+}
+.form-field-last-column {
+  width: 100%;
+  @extend %default-flex;
+}

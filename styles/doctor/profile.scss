@@ -1,0 +1,22 @@
+@import '../core/profile';
+
+.doctor-info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.doctor-info-content {
+  padding: 2%;
+  width: 43.5%;
+  min-height: 350px;
+  align-items: center;
+  border: $default-border;
+  border-radius: 80px;
+  background-color: $default-background;
+  @extend %default-flex;
+}
+.doctor-info-content-text {
+  @extend %text;
+}
