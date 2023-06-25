@@ -429,7 +429,7 @@ html {
   padding: 0.5% 0 0 0.5%;
   position: relative;
   box-sizing: border-box;
-  border: solid 0.1rem #245787;
+  border: $default-border #245787;
   background-color: $default-background;
   @extend %calendar-text;
 }
@@ -439,7 +439,7 @@ html {
   height: 80px;
   padding: 0.5% 0 0 0.5%;
   display: flex;
-  border: solid 0.1rem #245787;
+  border: $default-border #245787;
   background-color: #64caef;
   @extend %calendar-text;
 }
@@ -451,7 +451,7 @@ html {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  border: solid 0.1rem #245787;
+  border: $default-border #245787;
   background-color: $default-background-header-component;
   @extend %calendar-text;
 }

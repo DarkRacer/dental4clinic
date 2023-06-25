@@ -31,7 +31,7 @@
 .tooth-picture {
   max-width: 400px;
   max-height: 250px;
-  @extend %default-img;
   margin-bottom: $default-margin;
   margin-right: $default-margin;
+  @extend %default-img;
 }

@@ -8,6 +8,7 @@ COPY . .
 
 RUN npm i parcel
 RUN npm install
+RUN npm rebuild node-sass
 RUN npm run build
 
 

@@ -43,12 +43,10 @@ $font-stack: Inter, 'Source Sans Pro', serif;
   font-family: $font-stack;
   white-space: nowrap;
 }
-
 %dialog-title-text {
   @extend %title-text;
-  font-size: 26px;
+  font-size: 30px;
 }
-
 %calendar-text {
   font-size: 18px;
   font-weight: 700;
@@ -56,5 +54,31 @@ $font-stack: Inter, 'Source Sans Pro', serif;
   font-family: $font-stack;
   text-transform: uppercase;
   color: #000000;
+  white-space: nowrap;
+}
+%prices-text {
+  @extend %title-text;
+  line-height: 1.6;
+  font-style: normal;
+}
+%pluses-group-text {
+  @extend %title-text;
+  line-height: 1.7777777778;
+  font-style: normal;
+}
+%selector-text {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  color: #233567;
+  font-family: $font-stack;
+  white-space: nowrap;
+}
+%card-tooth-row-text {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  color: #000000;
+  font-family: $font-stack;
   white-space: nowrap;
 }

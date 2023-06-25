@@ -38,12 +38,12 @@
 
 %table-cell-body {
   @extend %table-cell;
-  border: solid 1px #245787;
+  border: $default-border #245787;
 }
 
 %table-cell-selected {
   @extend %table-cell;
-  border: solid 1px #245787;
+  border: $default-border #245787;
   background-color: #64caef;
 }
 

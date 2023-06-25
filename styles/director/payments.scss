@@ -1,135 +1,9 @@
-@import '../core/base/text';
+@import '../core/payments';
 
-.payments-page {
-   width: 100%;
-   overflow: hidden;
-   position: relative;
-   align-items: center;
-   @extend %default-flex;
-   background-color: #ffffff;
-  padding-bottom: 2%;
-}
-.payments-body {
-  box-sizing: border-box;
-  width: 96%;
-  align-items: center;
-  @extend %default-flex;
-  flex-shrink: 0;
-}
-.paid {
-  width: 30%;
-  height: 100%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #e7f2f6;
-  font-family: $font-stack;
-  white-space: nowrap;
-  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
-  border-radius: 5rem;
-}
 .delete-payment {
   width: 30%;
   height: 100%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #e7f2f6;
-  font-family: $font-stack;
-  white-space: nowrap;
-  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
-  border-radius: 5rem;
-}
-.no-paid {
-  width: 30%;
-  height: 100%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #e7f2f6;
-  font-family: $font-stack;
-  white-space: nowrap;
-  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
-  border-radius: 5rem;
-  flex-shrink: 0;
-}
-.row-header-payments {
-  width: 100%;
-  height: 7rem;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-.cell-header-payments {
-  box-sizing: border-box;
-  padding-top: 0.8%;
-  width: 17%;
-  height: 100%;
-  border: solid 0.1rem #5b5b5b;
-  background-color: $default-background-header-component;
-  flex-shrink: 0;
-}
-.cell-header-payments-last {
-  box-sizing: border-box;
-  padding-top: 0.8%;
-  width: 16%;
-  height: 100%;
-  border: solid 0.1rem #5b5b5b;
-  background-color: $default-background-header-component;
-  flex-shrink: 0;
-}
-.row-payments {
-  width: 100%;
-  height: 6.5rem;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-.cell-payments {
-  width: 17%;
-  height: 100%;
-  border: solid 0.1rem #245787;
-  box-sizing: border-box;
-  background-color: $default-background;
-  flex-shrink: 0;
-}
-.cell-payments-selected {
-  width: 17%;
-  height: 100%;
-  border: solid 0.1rem #245787;
-  box-sizing: border-box;
-  background-color: #64caef;
-  flex-shrink: 0;
-}
-.cell-payments-last {
-  width: 16%;
-  height: 100%;
-  border: solid 0.1rem #245787;
-  box-sizing: border-box;
-  background-color: $default-background;
-  flex-shrink: 0;
-}
-.cell-payments-last-selected {
-  width: 16%;
-  height: 100%;
-  border: solid 0.1rem #245787;
-  box-sizing: border-box;
-  background-color: #64caef;
-  flex-shrink: 0;
+  @extend %button;
 }
 .buttons {
   width: 100%;
@@ -140,29 +14,13 @@
   column-gap: 5%;
 }
 .delete-dialog-blackout {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  position: fixed;
-  top: 0;
-  border: none!important;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background-color: rgba(0, 0, 0, 0.3600000143);
+  @extend %dialog-blackout;
 }
 .delete-dialog-content {
   width: 60%;
-  position: relative;
-  background-color: $default-background;
-  @extend %default-flex;
-  box-sizing: border-box;
+  min-height: 10%;
   border-radius: $default-radius;
-  max-height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  @extend %dialog-content;
 }
 .delete-dialog-content::-webkit-scrollbar {
   display: none;
@@ -172,33 +30,21 @@
   height: 100%;
   position: relative;
   margin-left: 2%;
-  @extend %default-flex;
   box-sizing: border-box;
+  @extend %default-flex;
 }
 .delete-dialog-title {
-  width: 100%;
-  margin: 2%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @extend %dialog-title;
 }
 .delete-dialog-title-text {
-  font-size: 28px;
-  font-weight: 600;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %dialog-title-text;
 }
 .delete-dialog-content-description {
   width: 100%;
   height: 100%;
-  margin-bottom: 2%;
-  font-size: 16px;
-  font-weight: 400;
+  margin-bottom: $default-margin;
   line-height: 2.1428571429;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %text;
 }
 .delete-dialog-content-plus {
   width: 20px;
@@ -210,8 +56,8 @@
   width: 96%;
   height: 50px;
   position: relative;
-  margin-bottom: 2%;
-  margin-left: 2%;
+  margin-bottom: $default-margin;
+  margin-left: $default-margin;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -221,16 +67,7 @@
 .delete-dialog-footer-button {
   width: 45%;
   height: 100%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #e7f2f6;
-  font-family: $font-stack;
-  white-space: nowrap;
   background: linear-gradient(134.44deg, #a8def0 0%, #245787 162.14%);
   border-radius: 0.5rem;
+  @extend %button;
 }

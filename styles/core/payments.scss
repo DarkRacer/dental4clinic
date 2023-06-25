@@ -1,0 +1,56 @@
+@import './base/text';
+@import './base/defaults';
+@import './components/dialog';
+@import './components/buttons';
+@import './components/table';
+@import '../core/components/inputs';
+
+.payments-page {
+  @extend %default-page;
+}
+.payments-body {
+  @extend %default-body-on-page;
+}
+.paid {
+  width: 30%;
+  height: 100%;
+  @extend %button;
+}
+.no-paid {
+  width: 30%;
+  height: 100%;
+  @extend %button
+}
+.row-header-payments {
+  height: 7rem;
+  @extend %table-row;
+}
+.cell-header-payments {
+  width: 17%;
+  @extend %table-cell-header;
+}
+.cell-header-payments-last {
+  width: 16%;
+  @extend %table-cell-header;
+}
+.row-payments {
+  height: 6.5rem;
+  @extend %table-row;
+}
+.cell-payments {
+  width: 17%;
+  @extend %table-cell-body;
+}
+.cell-payments-selected {
+  width: 17%;
+  @extend %table-cell-selected;
+}
+.cell-payments-last {
+  width: 16%;
+  @extend %table-cell-body;
+}
+.cell-payments-last-selected {
+  width: 16%;
+  @extend %table-cell-selected;
+}
+

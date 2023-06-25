@@ -1,58 +1,38 @@
 @import '../core/base/text';
+@import '../core/base/defaults';
+@import '../core/components/dialog';
+@import '../core/components/buttons';
+@import '../core/components/table';
+@import '../core/components/inputs';
 
 .reception-page {
-   width: 100%;
-   overflow: hidden;
-   position: relative;
-   align-items: center;
-   background-color: #ffffff;
-   padding-bottom: 2%;
-   @extend %default-flex;
+  @extend %default-page;
 }
 .reception-body {
-  box-sizing: border-box;
-  width: 96%;
-  align-items: center;
-  @extend %default-flex;
+  @extend %default-body-on-page;
 }
 .accept-patient-without-calendar {
-  margin-bottom: 2%;
-  width: 100%;
+  margin-bottom: $default-margin;
   height: 4.5rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #ffffff;
-  font-family: $font-stack;
-  white-space: nowrap;
-  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
   border-radius: 0.5rem;
+  font-style: italic;
+  @extend %button;
 }
 .card {
   box-sizing: border-box;
-  padding: 2%;
+  padding: $default-padding;
   width: 100%;
-  @extend %default-flex;
   border: $default-border;
   box-shadow: $default-shadow;
   background-color: $default-background;
   border-radius: 0.5rem;
+  @extend %default-flex;
 }
 .card-content-text {
-  margin-bottom: 2%;
+  margin-bottom: $default-margin;
   width: 100%;
-  display: flex;
-  font-size: 16px;
-  font-weight: 400;
   line-height: 2.1428571429;
-  color: #000000;
-  font-family: $font-stack;
-  flex-shrink: 0;
+  @extend %text;
 }
 .card-accept-buttons {
   width: 100%;
@@ -63,63 +43,25 @@
   column-gap: 10%;
 }
 .info-button {
-  width: 100%;
   height: 100%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #ffffff;
-  font-family: $font-stack;
-  white-space: nowrap;
-  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
   border-radius: 0.5rem;
+  font-style: italic;
+  @extend %button;
 }
 .start-button {
-  width: 100%;
   height: 100%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #ffffff;
-  font-family: $font-stack;
-  white-space: nowrap;
-  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
   border-radius: 0.5rem;
+  font-style: italic;
+  @extend %button;
 }
 .patient-without-calendar-dialog-blackout {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  position: fixed;
-  top: 0;
-  border: none!important;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background-color: rgba(0, 0, 0, 0.3600000143);
+  @extend %dialog-blackout;
 }
 .patient-without-calendar-dialog-content {
   width: 96%;
-  position: relative;
-  background-color: $default-background;
-  @extend %default-flex;
-  box-sizing: border-box;
+  min-height: 10%;
   border-radius: $default-radius;
-  max-height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  @extend %dialog-content;
 }
 .patient-without-calendar-dialog-content::-webkit-scrollbar {
   display: none;
@@ -128,77 +70,38 @@
   width: 96%;
   height: 100%;
   position: relative;
-  margin-left: 2%;
-  @extend %default-flex;
+  margin-left: $default-margin;
   box-sizing: border-box;
+  @extend %default-flex;
 }
 .patient-without-calendar-dialog-title {
-  width: 100%;
-  margin: 2%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @extend %dialog-title;
 }
 .patient-without-calendar-dialog-title-text {
-  font-size: 30px;
-  font-weight: 600;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %dialog-title-text;
 }
 .patient-without-calendar-dialog-close {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  @extend %default-img;
-  transform: rotate(45deg);
+  @extend %dialog-close;
 }
 .patient-without-calendar-dialog-close-div {
-  padding-right: 4%;
+  @extend %dialog-close-div;
 }
 .start-without-calendar-button {
-  margin: 2% 0;
-  width: 100%;
+  margin: $default-margin 0;
   height: 4.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #ffffff;
-  font-family: $font-stack;
-  white-space: nowrap;
-  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
   border-radius: 0.5rem;
+  font-style: italic;
+  @extend %button;
 }
 .info-patient-dialog-blackout {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  position: fixed;
-  top: 0;
-  border: none!important;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background-color: rgba(0, 0, 0, 0.3600000143);
+  @extend %dialog-blackout;
 }
 .info-patient-dialog-content {
   width: 45%;
-  position: relative;
-  padding: 2%;
-  background-color: $default-background;
-  @extend %default-flex;
-  box-sizing: border-box;
+  padding: $default-padding;
+  min-height: 10%;
   border-radius: $default-radius;
-  max-height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  @extend %dialog-content;
 }
 .info-patient-dialog-content::-webkit-scrollbar {
   display: none;
@@ -207,35 +110,22 @@
   width: 96%;
   height: 100%;
   position: relative;
-  margin-left: 2%;
+  margin-left: $default-margin;
   margin-top: 4%;
-  @extend %default-flex;
   box-sizing: border-box;
+  @extend %default-flex;
 }
 .info-patient-dialog-title {
-  width: 100%;
-  margin: 2%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @extend %dialog-title;
 }
 .info-patient-dialog-title-text {
-  font-size: 30px;
-  font-weight: 600;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %dialog-title-text;
 }
 .info-patient-dialog-close {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  @extend %default-img;
-  transform: rotate(45deg);
+  @extend %dialog-close;
 }
 .info-patient-dialog-close-div {
-  padding-right: 4%;
+  @extend %dialog-close-div;
 }
 .card-fields {
   width: 100%;
@@ -249,24 +139,14 @@
 .user-card-field {
   display: flex;
   float: left;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
-  white-space: nowrap;
+  font-size: 20px;
+  @extend %text;
 }
 .field-content {
   text-align: right;
   display: flex;
   float: right;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
-  white-space: nowrap;
-  flex-shrink: 0;
+  @extend %text;
 }

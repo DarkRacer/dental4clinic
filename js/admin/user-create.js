@@ -9,13 +9,10 @@ const headers = {
 
 let createForm = document.getElementById("createForm");
 let saveButton = document.getElementById("save-button");
-let notificationSuccess = document.getElementById("notificationSuccess");
-let notificationSuccessText = document.getElementById("notificationSuccessText");
-let notificationFailed = document.getElementById("notificationFailed");
-let notificationFailedText = document.getElementById("notificationFailedText");
+let notification = document.getElementById("notification");
+let notificationText = document.getElementById("notificationText");
 
-notificationSuccess.style.visibility = 'hidden';
-notificationFailed.style.visibility = 'hidden';
+notification.style.visibility = 'hidden';
 
 saveButton.addEventListener("click", (e) => {
   e.preventDefault();
@@ -32,9 +29,8 @@ saveButton.addEventListener("click", (e) => {
   }
 
   PostUrl("user/registration", registrationBody).then(data => {
-    notificationFailed.style.visibility = 'hidden';
-    notificationSuccess.style.visibility = 'visible';
-    notificationSuccessText.innerText = `
+    notification.style.visibility = 'visible';
+    notificationText.innerText = `
           Пользователь успешно создан
           Логин: ${data.login}
           Пароль: ${data.password}
@@ -42,9 +38,8 @@ saveButton.addEventListener("click", (e) => {
     `
   })
     .catch((error) => {
-      notificationSuccess.style.visibility = 'hidden';
-      notificationFailed.style.visibility = 'visible';
-      notificationFailedText.innerText = `Пользователь не создан`
+      notification.style.visibility = 'visible';
+      notificationText.innerText = `Пользователь не создан`
     });
 
 })

@@ -1,0 +1,76 @@
+@import './base/text';
+@import './base/defaults';
+@import './components/dialog';
+@import './components/buttons';
+@import '../core/components/inputs';
+@import '../core/components/table';
+
+.record-list-page {
+  @extend %default-page;
+}
+.record-list-body {
+  @extend %default-body-on-page;
+}
+.form {
+  width: 100%;
+  margin-bottom: $default-margin;
+  display: flex;
+  flex-direction: row;
+}
+.form-field {
+  width: 100%;
+  @extend %default-flex;
+}
+.form-field-input {
+  padding: 3% 4%;
+  border-radius: 3rem;
+  @extend %input;
+}
+.form-field-title {
+  width: 100%;
+  margin-bottom: 1%;
+  @extend %title-text;
+}
+.form-field-last-row {
+  width: 100%;
+  margin-left: 5%;
+  @extend %default-flex;
+}
+.find-button {
+  height: 5rem;
+  margin-bottom: $default-margin;
+  border-radius: $default-radius;
+  @extend %button;
+}
+.calendar-date-record {
+  width: 14.5%;
+  height: 105px;
+  padding: 0.5% 0 0 0.5%;
+  position: relative;
+  box-sizing: border-box;
+  border: $default-border #245787;
+  background-color: $default-background;
+  @extend %calendar-text;
+}
+.date-selected-record {
+  box-sizing: border-box;
+  width: 14.5%;
+  height: 105px;
+  padding: 0.5% 0 0 0.5%;
+  display: flex;
+  border: $default-border #245787;
+  background-color: #64caef;
+  @extend %calendar-text;
+}
+.week-day-record {
+  width: 14.5%;
+  height: 12%;
+  padding: 1% 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: $default-border #245787;
+  box-sizing: border-box;
+  background-color: $default-background-header-component;
+  @extend %calendar-text;
+}

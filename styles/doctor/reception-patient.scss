@@ -1,51 +1,37 @@
 @import '../core/base/text';
+@import '../core/base/defaults';
+@import '../core/components/dialog';
+@import '../core/components/buttons';
+@import '../core/components/table';
 
 .reception-patient {
-   width: 100%;
-   overflow: hidden;
-   position: relative;
-   align-items: center;
-   @extend %default-flex;
-   background-color: #ffffff;
-   padding-bottom: 2%;
- }
+  @extend %default-page;
+}
+.reception-patient-group {
+  @extend %default-body-on-page;
+}
 .card-request {
-  padding: 2%;
   width: 58%;
-  height: 100%;
   align-items: center;
-  @extend %default-flex;
-  box-shadow: $default-shadow;
-  background-color: $default-background;
   border-radius: 24px;
   flex-shrink: 0;
   border: $default-border;
-}
-.reception-patient-group {
-  box-sizing: border-box;
-  padding: 0 2%;
-  width: 100%;
-  align-items: center;
+  padding: $default-padding;
+  box-shadow: $default-shadow;
+  background-color: $default-background;
   @extend %default-flex;
 }
 .card-tooth {
-  margin-bottom: $default-margin;
   box-sizing: border-box;
-  padding: 2%;
   width: 100%;
   align-items: center;
   @extend %default-flex;
-  box-shadow: $default-shadow;
-  background-color: $default-background;
   border-radius: 24px;
   border: $default-border;
-}
-.card-tooth-row-selectors {
-  margin-bottom: 1.4rem;
-  width: 100%;
-  height: 5rem;
-  display: flex;
-  align-items: center;
+  padding: $default-padding;
+  box-shadow: $default-shadow;
+  margin-bottom: $default-margin;
+  background-color: $default-background;
 }
 .selector-tooth {
   margin-bottom: 5%;
@@ -53,21 +39,11 @@
   padding: 5%;
   height: 100%;
   background-color: $default-background;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1;
-  color: #233567;
-  font-family: $font-stack;
-  white-space: nowrap;
+  @extend %selector-text;
 }
 .selector-tooth-text {
   display: flex;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1;
-  color: #233567;
-  font-family: $font-stack;
-  white-space: nowrap;
+  @extend %selector-text;
 }
 .card-tooth-row-text {
   margin-bottom: 1%;
@@ -87,24 +63,14 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1;
-  color: #000000;
-  font-family: $font-stack;
-  white-space: nowrap;
+  @extend %card-tooth-row-text;
 }
 .card-tooth-row-text-number-last {
   display: flex;
   width: 8%;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1;
-  color: #000000;
-  font-family: $font-stack;
-  white-space: nowrap;
+  @extend %card-tooth-row-text;
 }
 .buttons {
   width: 100%;
@@ -116,45 +82,25 @@
 .button {
   width: 20%;
   height: 100%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #ffffff;
-  font-family: $font-stack;
-  white-space: nowrap;
-  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
   border-radius: 0.5rem;
+  @extend %button;
 }
 .user-card-info {
-  margin: 0 0 2% 0;
+  margin: 0 0 $default-margin 0;
   width: 100%;
   display: flex;
-  align-items: flex-start;
+  justify-content: space-between;
 }
 .card-content {
-  margin-right: 4%;
   box-sizing: border-box;
-  padding: 2%;
+  padding: $default-padding;
   width: 35%;
-  height: 100%;
   border: $default-border;
   box-shadow: $default-shadow;
   background-color: $default-background;
   border-radius: 40px;
   align-items: center;
   @extend %default-flex;
-}
-.user-profile-photo {
-  margin-right: 12%;
-  width: 35%;
-  height: 35%;
-  @extend %default-img;
-  border-radius: 100%;
 }
 .card-fields {
   margin: 4% 0 6% 0;
@@ -169,13 +115,8 @@
 .user-card-field {
   display: flex;
   float: left;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
-  white-space: nowrap;
+  font-size: 20px;
+  @extend %text;
 }
 .field-content {
   text-align: right;
@@ -183,60 +124,35 @@
   float: right;
   font-size: 24px;
   font-weight: 600;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
-  white-space: nowrap;
-  flex-shrink: 0;
+  @extend %text;
 }
 .cell-header-request-first {
-  box-sizing: border-box;
-  padding-top: 0.8%;
   width: 30%;
-  height: 100%;
-  border: solid 0.1rem #5b5b5b;
-  background-color: $default-background-header-component;
-  flex-shrink: 0;
+  @extend %table-cell-header;
 }
 .cell-header-request-second {
-  box-sizing: border-box;
-  padding-top: 0.8%;
   width: 70%;
-  height: 100%;
-  border: solid 0.1rem #5b5b5b;
-  background-color: $default-background-header-component;
-  flex-shrink: 0;
+  @extend %table-cell-header;
 }
 .cell-request-first {
   width:  30%;
-  height: 100%;
-  border: solid 0.1rem #245787;
-  box-sizing: border-box;
-  background-color: $default-background;
+  @extend %table-cell-body;
 }
 .cell-request-second {
   width:  70%;
-  height: 100%;
-  border: solid 0.1rem #245787;
-  box-sizing: border-box;
-  background-color: $default-background;
+  @extend %table-cell-body;
+}
+.cell-header-content-request {
+  padding-top: 10px;
+  @extend %table-cell-content-header;
 }
 .row-header-request {
-  width: 100%;
   height: 72px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+  @extend %table-row;
 }
 .row-request {
-  width: 100%;
   height: 70px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
+  @extend %table-row;
 }
 .column-group-tooth {
   width: 100%;
@@ -253,62 +169,31 @@
   flex-direction: row;
 }
 .card-request-title {
-  margin: 0 0 2%;
+  margin: 0 0 $default-margin;
   @extend %card-title-text;
 }
 .tooth-pictures-dialog-blackout {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  position: fixed;
-  top: 0;
-  border: none!important;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background-color: rgba(0, 0, 0, 0.3600000143);
+  @extend %dialog-blackout;
 }
 .tooth-pictures-dialog-content {
   width: 96%;
   min-height: 89%;
-  position: relative;
-  background-color: $default-background;
-  @extend %default-flex;
-  box-sizing: border-box;
-  border-radius: 80px;
-  max-height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  @extend %dialog-content;
 }
 .tooth-pictures-dialog-content::-webkit-scrollbar {
   display: none;
 }
 .tooth-pictures-dialog-title {
-  width: 100%;
-  margin: $default-margin;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @extend %dialog-title;
 }
 .tooth-pictures-dialog-title-text {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %dialog-title-text;
 }
 .tooth-pictures-dialog-close {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  @extend %default-img;
-  transform: rotate(45deg);
+  @extend %dialog-close;
 }
 .tooth-pictures-dialog-close-div {
-  padding-right: 4%;
+  @extend %dialog-close-div;
 }
 .tooth-pictures {
   margin-left: $default-margin;
@@ -324,239 +209,91 @@
   @extend %default-img;
 }
 .diagnosis-dialog-blackout {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  position: fixed;
-  top: 0;
-  border: none!important;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background-color: rgba(0, 0, 0, 0.3600000143);
+  @extend %dialog-blackout;
 }
 .diagnosis-dialog-content {
   width: 96%;
-  min-height: 90%;
-  position: relative;
-  background-color: $default-background;
-  @extend %default-flex;
-  box-sizing: border-box;
-  border-radius: 80px;
-  max-height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  min-height: 10%;
+  @extend %dialog-content;
 }
 .diagnosis-dialog-content::-webkit-scrollbar {
   display: none;
 }
 .diagnosis-dialog-title {
-  width: 100%;
-  margin: 2%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @extend %dialog-title;
 }
 .diagnosis-dialog-title-text {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %dialog-title-text;
 }
 .diagnosis-dialog-close {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  @extend %default-img;
-  transform: rotate(45deg);
+  @extend %dialog-close;
 }
 .diagnosis-dialog-close-div {
-  padding-right: 4%;
+  @extend %dialog-close-div;
 }
 .button-diagnosis {
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1% 0;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #ffffff;
-  font-family: $font-stack;
-  white-space: nowrap;
-  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
+  margin: 2% 0;
   border-radius: 0.5rem;
+  @extend %button;
 }
 .list-of-diagnosis {
   display: flex;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
   font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
-  white-space: nowrap;
+  @extend %text;
 }
 .list-of-diagnosis-patient {
   display: flex;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
   font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
-  white-space: nowrap;
+  @extend %text;
 }
 .row-header-diagnosis-of-patient {
-  width: 100%;
   height: 4rem;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+  @extend %table-row;
 }
 .cell-header-diagnosis-of-patient {
-  box-sizing: border-box;
-  padding-top: 0.8%;
-  width: 34%;
-  height: 100%;
-  border: solid 0.1rem #5b5b5b;
-  background-color: $default-background-header-component;
-  flex-shrink: 0;
+  @extend %table-cell-header;
 }
 .cell-header-content-diagnosis-of-patient {
-  margin-bottom: 2%;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
-  white-space: nowrap;
+  @extend %table-cell-content-header;
 }
 .row-diagnosis-of-patient {
-  width: 100%;
   height: 4rem;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
+  @extend %table-row;
 }
 .cell-diagnosis-of-patient {
-  width: 34%;
-  height: 100%;
-  border: solid 0.1rem #245787;
-  box-sizing: border-box;
-  background-color: $default-background;
-  flex-shrink: 0;
+  @extend %table-cell-body;
 }
 .cell-diagnosis-of-patient-selected {
-  width: 34%;
-  height: 100%;
-  border: solid 0.1rem #245787;
-  box-sizing: border-box;
-  background-color: #64caef;
-  flex-shrink: 0;
+  @extend %table-cell-selected
 }
 .cell-content-diagnosis-of-patient {
-  margin-bottom: 2%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %table-cell-content;
 }
 .row-header-diagnosis-from-doctor {
-  width: 100%;
   height: 4rem;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+  @extend %table-row;
 }
 .cell-header-diagnosis-from-doctor {
-  box-sizing: border-box;
-  padding-top: 0.8%;
   width: 50%;
-  height: 100%;
-  border: solid 0.1rem #5b5b5b;
-  background-color: $default-background-header-component;
-  flex-shrink: 0;
+  @extend %table-cell-header;
 }
 .cell-header-content-diagnosis-from-doctor {
-  margin-bottom: 2%;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
-  white-space: nowrap;
+  @extend %table-cell-content-header;
 }
 .row-diagnosis-from-doctor {
-  width: 100%;
   height: 4rem;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
+  @extend %table-row;
 }
 .cell-diagnosis-from-doctor {
   width: 50%;
-  height: 100%;
-  border: solid 0.1rem #245787;
-  box-sizing: border-box;
-  background-color: $default-background;
-  flex-shrink: 0;
+  @extend %table-cell-body;
 }
 .cell-diagnosis-from-doctor-selected {
   width: 50%;
-  height: 100%;
-  border: solid 0.1rem #245787;
-  box-sizing: border-box;
-  background-color: #64caef;
-  flex-shrink: 0;
+  @extend %table-cell-selected
 }
 .cell-content-diagnosis-from-doctor {
-  margin-bottom: 2%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %table-cell-content;
 }
 .diagnosis-content {
   width: 94%;
@@ -564,208 +301,102 @@
   height: 100%;
 }
 .payments-dialog-blackout {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  position: fixed;
-  top: 0;
-  border: none!important;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background-color: rgba(0, 0, 0, 0.3600000143);
+  @extend %dialog-blackout;
 }
 .payments-dialog-content {
-  width: 96%;
-  position: relative;
-  background-color: $default-background;
-  @extend %default-flex;
-  box-sizing: border-box;
+  min-height: 10%;
   border-radius: $default-radius;
-  max-height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  @extend %dialog-content;
 }
 .payments-dialog-content::-webkit-scrollbar {
   display: none;
 }
 .payments-dialog-title {
-  width: 100%;
-  margin: 2%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @extend %dialog-title;
 }
 .payments-dialog-title-text {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %dialog-title-text;
 }
 .payments-dialog-close {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  @extend %default-img;
-  transform: rotate(45deg);
+  @extend %dialog-close;
 }
 .payments-dialog-close-div {
-  padding-right: 4%;
+  @extend %dialog-close-div;
 }
 .payments-dialog-body {
-  margin-left: 2%;
+  margin-left: $default-margin;
   width: 96%;
   position: relative;
-  background-color: $default-background;
-  @extend %default-flex;
   box-sizing: border-box;
   border-radius: $default-radius;
+  background-color: $default-background;
+  @extend %default-flex;
 }
 .doctor-services {
   width: 100%;
   height: 100%;
   margin-bottom: 0.5%;
   display: flex;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
   font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
   white-space: nowrap;
+  @extend %text;
 }
 .services {
-  margin: 2% 0;
+  margin: $default-margin 0;
   width: 100%;
   height: 100%;
   display: flex;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
   font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
   white-space: nowrap;
+  @extend %text;
 }
 .cost {
   width: 100%;
   height: 100%;
-  margin-bottom: 2%;
+  margin-bottom: $default-margin;
   display: flex;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
   font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
   white-space: nowrap;
+  @extend %text;
 }
 .payment {
-  width: 100%;
-  height: 4rem;
   margin-bottom: 2%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #ffffff;
-  font-family: $font-stack;
-  white-space: nowrap;
-  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
   border-radius: 0.5rem;
+  @extend %button;
 }
 .row-header-payment {
-  width: 100%;
   height: 4.5rem;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+  @extend %table-row;
 }
 .cell-header-payment-fist {
-  box-sizing: border-box;
-  padding-top: 0.8%;
   width: 10%;
-  height: 100%;
-  border: solid 0.1rem #5b5b5b;
-  background-color: $default-background-header-component;
-  flex-shrink: 0;
+  @extend %table-cell-header;
 }
 .cell-header-payment {
-  box-sizing: border-box;
-  padding-top: 0.8%;
   width: 30%;
-  height: 100%;
-  border: solid 0.1rem #5b5b5b;
-  background-color: $default-background-header-component;
-  flex-shrink: 0;
+  @extend %table-cell-header;
 }
 .cell-header-content-payment {
-  margin-bottom: 2%;
+  margin-bottom: $default-margin;
   width: 100%;
   height: 2.5rem;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
-  white-space: nowrap;
+  @extend %table-cell-content-header;
 }
 .row-payment {
-  width: 100%;
   height: 4.5rem;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
+  @extend %table-row;
 }
 .cell-payment-fist {
   width: 10%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: solid 0.1rem #245787;
-  box-sizing: border-box;
-  background-color: $default-background;
-  flex-shrink: 0;
+  @extend %table-cell-body;
 }
 .cell-payment {
   width: 30%;
-  height: 100%;
-  border: solid 0.1rem #245787;
-  box-sizing: border-box;
-  background-color: $default-background;
-  flex-shrink: 0;
+  @extend %table-cell-body;
 }
 .cell-content-payment {
-  margin-bottom: 2%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: $font-stack;
+  margin-bottom: $default-margin;
+  @extend %table-cell-content;
 }
 .checkbox-services {
   width: 20px;

@@ -1,227 +1,5 @@
-@import '../core/base/text';
-@import '../core/components/buttons';
+@import '../core/doctors';
 
-.doctors-page {
-   width: 100%;
-   overflow: hidden;
-   position: relative;
-   align-items: center;
-   @extend %default-flex;
-   background-color: #ffffff;
-   padding-bottom: 2%;
- }
-.doctors-body {
-  box-sizing: border-box;
-  width: 70%;
-  @extend %default-flex;
-}
-.doctors-body-header {
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
-  margin-bottom: $default-margin;
-  align-items: center;
-}
-.doctors-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  column-gap: 4%;
-  align-items: flex-start;
-  flex-direction: row;
-}
-.doctor-card {
-  width: 22%;
-  height: 100%;
-  margin-bottom: $default-margin;
-  position: relative;
-  @extend %default-flex;
-  align-items: center;
-}
-.doctor-name {
-  width: 100%;
-  height: 100%;
-  margin-bottom: $default-margin;
-  display: flex;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.3714285351;
-  color: #233567;
-  font-family: $font-stack;
-}
-.doctor-spec {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.6000000238;
-  font-family: $font-stack;
-  color: #387ba8;
-
-}
-.doctor-avatar {
-  box-sizing: border-box;
-  padding-top: 0.813rem;
-  width: 100%;
-  height: 60%;
-  overflow: hidden;
-  background-color: $default-background;
-  border-radius: 1.4rem;
-}
-.doctor-image {
-  width: 100%;
-  position: relative;
-  cursor: pointer;
-  @extend %default-img;
-}
-.selector {
-  box-sizing: border-box;
-  padding: 5%;
-  height: 100%;
-  background-color: $default-background;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1;
-  color: #233567;
-  font-family: $font-stack;
-  white-space: nowrap;
-}
-.selector-text {
-  display: flex;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1;
-  color: #233567;
-  font-family: $font-stack;
-  white-space: nowrap;
-}
-.doctors-dialog-blackout {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  position: fixed;
-  top: 0;
-  border: none!important;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background-color: rgba(0, 0, 0, 0.3600000143);
-}
-.doctors-dialog-content {
-  width: 76%;
-  position: relative;
-  background-color: $default-background;
-  @extend %default-flex;
-  box-sizing: border-box;
-  border-radius: $default-radius;
-  max-height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.doctors-dialog-content::-webkit-scrollbar {
-  display: none;
-}
-.doctors-dialog-body-content {
-  width: 96%;
-  height: 100%;
-  position: relative;
-  margin-left: $default-margin;
-  @extend %default-flex;
-  box-sizing: border-box;
-}
-.doctors-dialog-title {
-  width: 100%;
-  margin: $default-margin;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.doctors-dialog-title-text {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  width: 90%;
-  font-family: $font-stack;
-}
-.doctors-dialog-close {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  @extend %default-img;
-  @include transform(rotate(30deg))
-}
-.doctors-dialog-close-div {
-  padding-right: 4%;
-}
-.doctors-dialog-content-description {
-  width: 100%;
-  height: 100%;
-  margin-bottom: $default-margin;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 2.1428571429;
-  color: #000000;
-  font-family: $font-stack;
-}
-.pluses-group {
-  width: 100%;
-  height: 100%;
-  @extend %default-flex;
-}
-.pluses-group-title {
-  width: 100%;
-  height: 100%;
-  margin-bottom: $default-margin;
-  display: flex;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.7777777778;
-  color: #000000;
-  font-family: $font-stack;
-  white-space: nowrap;
-}
-.plus-price-group {
-  width: 100%;
-  height: 100%;
-  margin-bottom: $default-margin;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-}
-.doctors-dialog-content-plus {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  @extend %default-img;
-}
-.doctors-dialog-content-text {
-  width: 100%;
-  height: 100%;
-  margin-left: 1%;
-  display: flex;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.7777777778;
-  color: #000000;
-  font-family: $font-stack;
-}
-.doctors-dialog-footer {
-  width: 96%;
-  height: 100%;
-  position: relative;
-  margin-left: 2%;
-  margin-bottom: 2%;
-  display: flex;
-  flex-direction: row;
-  align-items: end;
-  justify-content: end;
-}
 .doctors-dialog-footer-buttons {
   width: 100%;
   height: 100%;
@@ -229,77 +7,29 @@
   flex-direction: row-reverse;
   column-gap: 4%;
 }
-.doctors-dialog-footer-button {
-  width: 20%;
-  height: 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #e7f2f6;
-  font-family: $font-stack;
-  white-space: nowrap;
-  background: linear-gradient(134.44deg, #a8def0 0%, #245787 162.14%);
-  border-radius: 0.5rem;
-}
 .doctors-dialog-footer-button-service {
   width: 30%;
   height: 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #e7f2f6;
-  font-family: $font-stack;
   background: linear-gradient(134.44deg, #a8def0 0%, #245787 162.14%);
   border-radius: 0.5rem;
+  @extend %button;
 }
 .doctor-create {
   width: 95%;
   height: 4rem;
   margin-left: 5%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #e7f2f6;
-  font-family: $font-stack;
   background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
   border-radius: $default-radius;
+  @extend %button;
 }
 .create-doctor-dialog-blackout {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  position: fixed;
-  top: 0;
-  border: none!important;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background-color: rgba(0, 0, 0, 0.3600000143);
+  @extend %dialog-blackout;
 }
 .create-doctor-dialog-content {
   width: 76%;
-  position: relative;
-  background-color: $default-background;
-  @extend %default-flex;
-  box-sizing: border-box;
+  min-height: 10%;
   border-radius: $default-radius;
-  max-height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  @extend %dialog-content;
 }
 .create-doctor-dialog-content::-webkit-scrollbar {
   display: none;
@@ -308,34 +38,21 @@
   width: 96%;
   height: 100%;
   position: relative;
-  margin-left: 2%;
-  @extend %default-flex;
+  margin-left: $default-margin;
   box-sizing: border-box;
+  @extend %default-flex;
 }
 .create-doctor-dialog-title {
-  width: 100%;
-  margin: 2%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @extend %dialog-title;
 }
 .create-doctor-dialog-title-text {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %dialog-title-text;
 }
 .create-doctor-dialog-close {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  @extend %default-img;
-  transform: rotate(45deg);
+  @extend %dialog-close;
 }
 .create-doctor-dialog-close-div {
-  padding-right: 4%;
+  @extend %dialog-close-div;
 }
 .form {
   width: 100%;
@@ -362,30 +79,11 @@
 .required-field-title {
   display: flex;
   margin-bottom: 1%;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %title-text;
 }
 .required-field-input {
-  box-sizing: border-box;
   padding: 4%;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
-  white-space: nowrap;
-  background-color: $default-background;
-  border: $default-border;
-  border-radius: $default-radius;
+  @extend %input;
 }
 .photo-field {
   width: 100%;
@@ -395,30 +93,11 @@
 .photo-field-title {
   display: flex;
   margin-bottom: 1%;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %title-text;
 }
 .photo-field-input {
-  box-sizing: border-box;
   padding: 5%;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
-  white-space: nowrap;
-  background-color: $default-background;
-  border: $default-border;
-  border-radius: $default-radius;
+  @extend %input;
 }
 .additional-fields {
   width: 100%;
@@ -435,76 +114,32 @@
 .additional-field-title {
   display: flex;
   margin-bottom: 1%;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %title-text;
 }
 .additional-field-input {
-  box-sizing: border-box;
   padding: 4% 4% 50% 4%;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
   overflow: hidden;
-  color: #000000;
-  font-family: $font-stack;
-  background-color: $default-background;
-  border: $default-border;
-  border-radius: $default-radius;
+  @extend %input;
 }
 .save-button {
   margin-bottom: $default-margin;
   @extend %button;
 }
 .services-doctor-button {
-  width: 100%;
   height: 4.3rem;
   margin-top: 6%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #e7f2f6;
-  font-family: $font-stack;
-  white-space: nowrap;
   background: linear-gradient(134.44deg, #a8def0 0%, #245787 162.14%);
   border-radius: 5px;
+  @extend %button;
 }
 .delete-dialog-blackout {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  position: fixed;
-  top: 0;
-  border: none!important;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background-color: rgba(0, 0, 0, 0.3600000143);
+  @extend %dialog-blackout;
 }
 .delete-dialog-content {
   width: 60%;
-  position: relative;
-  background-color: $default-background;
-  @extend %default-flex;
-  box-sizing: border-box;
+  min-height: 10%;
   border-radius: $default-radius;
-  max-height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  @extend %dialog-content;
 }
 .delete-dialog-content::-webkit-scrollbar {
   display: none;
@@ -513,34 +148,22 @@
   width: 96%;
   height: 100%;
   position: relative;
-  margin-left: 2%;
-  @extend %default-flex;
+  margin-left: $default-margin;
   box-sizing: border-box;
+  @extend %default-flex;
 }
 .delete-dialog-title {
-  width: 100%;
-  margin: 2%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @extend %dialog-title;
 }
 .delete-dialog-title-text {
-  font-size: 28px;
-  font-weight: 600;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %dialog-title-text;
 }
 .delete-dialog-content-description {
   width: 100%;
   height: 100%;
-  margin-bottom: 2%;
-  font-size: 16px;
-  font-weight: 400;
+  margin-bottom: $default-margin;
   line-height: 2.1428571429;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %text;
 }
 .delete-dialog-content-plus {
   width: 20px;
@@ -552,8 +175,8 @@
   width: 96%;
   height: 50px;
   position: relative;
-  margin-bottom: 2%;
-  margin-left: 2%;
+  margin-bottom: $default-margin;
+  margin-left: $default-margin;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -563,241 +186,93 @@
 .delete-dialog-footer-button {
   width: 45%;
   height: 100%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #e7f2f6;
-  font-family: $font-stack;
-  white-space: nowrap;
   background: linear-gradient(134.44deg, #a8def0 0%, #245787 162.14%);
   border-radius: 0.5rem;
+  @extend %button;
 }
 .services-dialog-blackout {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  position: fixed;
-  top: 0;
-  border: none!important;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background-color: rgba(0, 0, 0, 0.3600000143);
+  @extend %dialog-blackout;
 }
 .services-dialog-content {
-  width: 96%;
-  position: relative;
-  background-color: $default-background;
-  @extend %default-flex;
-  box-sizing: border-box;
-  border-radius: 80px;
-  max-height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  min-height: 10%;
+  border-radius: $default-radius;
+  @extend %dialog-content;
 }
 .services-dialog-content::-webkit-scrollbar {
   display: none;
 }
 .services-dialog-title {
-  width: 100%;
-  margin: 2%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  @extend %dialog-title;
 }
 .services-dialog-title-text {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %dialog-title-text;
 }
 .services-dialog-close {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  @extend %default-img;
-  transform: rotate(45deg);
+  @extend %dialog-close;
 }
 .services-dialog-close-div {
-  padding-right: 4%;
+  @extend %dialog-close-div;
 }
 .button-services {
-  width: 100%;
   height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin: 2% 0;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #ffffff;
-  font-family: $font-stack;
-  white-space: nowrap;
-  background: linear-gradient(138.65deg, #245787 0%, #a8def0 94.96%);
   border-radius: 0.5rem;
+  @extend %button;
 }
 .list-of-services {
   display: flex;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
   font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %text;
 }
 .list-of-services-patient {
   display: flex;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
   font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %text;
 }
 .row-header-services-of-patient {
-  width: 100%;
   height: 4rem;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+  @extend %table-row;
 }
 .cell-header-services-of-patient {
-  box-sizing: border-box;
-  padding-top: 0.8%;
-  width: 34%;
-  height: 100%;
-  border: solid 0.1rem #5b5b5b;
-  background-color: $default-background-header-component;
-  flex-shrink: 0;
+  @extend %table-cell-header;
 }
 .cell-header-content-services-of-patient {
-  margin-bottom: 2%;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %table-cell-content-header;
 }
 .row-services-of-patient {
-  width: 100%;
   height: 3.5rem;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
+  @extend %table-row;
 }
 .cell-services-of-patient {
-  width: 34%;
-  height: 100%;
-  border: solid 0.1rem #245787;
-  box-sizing: border-box;
-  background-color: $default-background;
-  flex-shrink: 0;
+  @extend %table-cell-body;
 }
 .cell-services-of-patient-selected {
-  width: 34%;
-  height: 100%;
-  border: solid 0.1rem #245787;
-  box-sizing: border-box;
-  background-color: #64caef;
-  flex-shrink: 0;
+  @extend %table-cell-selected
 }
 .cell-content-services-of-patient {
-  margin-bottom: 2%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %table-cell-content;
 }
 .row-header-services-from-doctor {
-  width: 100%;
   height: 4rem;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+  @extend %table-row;
 }
 .cell-header-services-from-doctor {
-  box-sizing: border-box;
-  padding-top: 0.8%;
   width: 50%;
-  height: 100%;
-  border: solid 0.1rem #5b5b5b;
-  background-color: $default-background-header-component;
-  flex-shrink: 0;
+  @extend %table-cell-header;
 }
 .cell-header-content-services-from-doctor {
-  margin-bottom: 2%;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
-  white-space: nowrap;
+  @extend %table-cell-content-header;
 }
 .row-services-from-doctor {
-  width: 100%;
   height: 4rem;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
+  @extend %table-row;
 }
 .cell-services-from-doctor {
   width: 50%;
-  height: 100%;
-  border: solid 0.1rem #245787;
-  box-sizing: border-box;
-  background-color: $default-background;
-  flex-shrink: 0;
+  @extend %table-cell-body;
 }
 .cell-content-services-from-doctor {
-  margin-bottom: 2%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %table-cell-content;
 }
 .services-content {
   width: 94%;
@@ -814,19 +289,10 @@
 }
 .doctor-info-services-title {
   display: flex;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.2125;
   font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %text;
 }
 .doctor-info-services-name {
   display: flex;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.2125;
-  font-style: italic;
-  color: #000000;
-  font-family: $font-stack;
+  @extend %title-text;
 }
