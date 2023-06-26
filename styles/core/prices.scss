@@ -84,7 +84,6 @@
   background-color: $default-background;
   border-radius: 0.5rem;
   line-height: 1.875;
-  white-space: nowrap;
   @extend %title-text;
 }
 .prices-dialog-blackout {

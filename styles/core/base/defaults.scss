@@ -24,12 +24,19 @@ $default-padding: 2%;
 
 %default-page {
   width: 100%;
-  overflow: hidden;
   align-items: center;
   position: relative;
   background-color: #ffffff;
   padding-bottom: $default-padding;
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   @extend %default-flex;
+}
+%default-page::-webkit-scrollbar {
+  display: none;
 }
 
 %default-body-on-page {
