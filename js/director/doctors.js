@@ -1,179 +1,131 @@
-const url = 'https://af2f-46-164-217-97.ngrok-free.app/';
-var token = GetCookie("access_token")
-const headers = {
-  "Host":  'af2f-46-164-217-97.ngrok-free.app',
-  "Origin":  'https://af2f-46-164-217-97.ngrok-free.app/',
-  "Accept": "*/*",
-  'ngrok-skip-browser-warning':true
-}
+import { get, post } from "../core/rest.js";
+import {updateDoctors, initDoctors, doctorsDialog, currentDoctor, updateDoctorsValue} from "../core/page/doctors.js";
+import {Doctor} from "../core/model/user.js";
+import {changeClassRows} from "../core/table.js";
 
-var doctorId = 1;
+const doctorId = 1;
 
-let firstRowDoctor = document.getElementById("firstRowDoctor");
-let firstRowDoctorCell1 = document.getElementById("firstRowDoctorCell1");
-let firstRowDoctorName = document.getElementById("firstRowDoctorName");
-let firstRowDoctorCell2 = document.getElementById("firstRowDoctorCell2");
-let firstRowDoctorDescription = document.getElementById("firstRowDoctorDescription");
-let firstRowDoctorCell3 = document.getElementById("firstRowDoctorCell3");
-let firstRowDoctorPrice = document.getElementById("firstRowDoctorPrice");
+const firstRowDoctor = document.getElementById("firstRowDoctor");
+const firstRowDoctorCell1 = document.getElementById("firstRowDoctorCell1");
+const firstRowDoctorName = document.getElementById("firstRowDoctorName");
+const firstRowDoctorCell2 = document.getElementById("firstRowDoctorCell2");
+const firstRowDoctorDescription = document.getElementById("firstRowDoctorDescription");
+const firstRowDoctorCell3 = document.getElementById("firstRowDoctorCell3");
+const firstRowDoctorPrice = document.getElementById("firstRowDoctorPrice");
 
-let secondRowDoctor = document.getElementById("secondRowDoctor");
-let secondRowDoctorCell1 = document.getElementById("secondRowDoctorCell1");
-let secondRowDoctorName = document.getElementById("secondRowDoctorName");
-let secondRowDoctorCell2 = document.getElementById("secondRowDoctorCell2");
-let secondRowDoctorDescription = document.getElementById("secondRowDoctorDescription");
-let secondRowDoctorCell3 = document.getElementById("secondRowDoctorCell3");
-let secondRowDoctorPrice = document.getElementById("secondRowDoctorPrice");
+const secondRowDoctor = document.getElementById("secondRowDoctor");
+const secondRowDoctorCell1 = document.getElementById("secondRowDoctorCell1");
+const secondRowDoctorName = document.getElementById("secondRowDoctorName");
+const secondRowDoctorCell2 = document.getElementById("secondRowDoctorCell2");
+const secondRowDoctorDescription = document.getElementById("secondRowDoctorDescription");
+const secondRowDoctorCell3 = document.getElementById("secondRowDoctorCell3");
+const secondRowDoctorPrice = document.getElementById("secondRowDoctorPrice");
 
-let thirdRowDoctor = document.getElementById("thirdRowDoctor");
-let thirdRowDoctorCell1 = document.getElementById("thirdRowDoctorCell1");
-let thirdRowDoctorName = document.getElementById("thirdRowDoctorName");
-let thirdRowDoctorCell2 = document.getElementById("thirdRowDoctorCell2");
-let thirdRowDoctorDescription = document.getElementById("thirdRowDoctorDescription");
-let thirdRowDoctorCell3 = document.getElementById("thirdRowDoctorCell3");
-let thirdRowDoctorPrice = document.getElementById("thirdRowDoctorPrice");
+const thirdRowDoctor = document.getElementById("thirdRowDoctor");
+const thirdRowDoctorCell1 = document.getElementById("thirdRowDoctorCell1");
+const thirdRowDoctorName = document.getElementById("thirdRowDoctorName");
+const thirdRowDoctorCell2 = document.getElementById("thirdRowDoctorCell2");
+const thirdRowDoctorDescription = document.getElementById("thirdRowDoctorDescription");
+const thirdRowDoctorCell3 = document.getElementById("thirdRowDoctorCell3");
+const thirdRowDoctorPrice = document.getElementById("thirdRowDoctorPrice");
 
-let fourthRowDoctor = document.getElementById("fourthRowDoctor");
-let fourthRowDoctorCell1 = document.getElementById("fourthRowDoctorCell1");
-let fourthRowDoctorName = document.getElementById("fourthRowDoctorName");
-let fourthRowDoctorCell2 = document.getElementById("fourthRowDoctorCell2");
-let fourthRowDoctorDescription = document.getElementById("fourthRowDoctorDescription");
-let fourthRowDoctorCell3 = document.getElementById("fourthRowDoctorCell3");
-let fourthRowDoctorPrice = document.getElementById("fourthRowDoctorPrice");
+const fourthRowDoctor = document.getElementById("fourthRowDoctor");
+const fourthRowDoctorCell1 = document.getElementById("fourthRowDoctorCell1");
+const fourthRowDoctorName = document.getElementById("fourthRowDoctorName");
+const fourthRowDoctorCell2 = document.getElementById("fourthRowDoctorCell2");
+const fourthRowDoctorDescription = document.getElementById("fourthRowDoctorDescription");
+const fourthRowDoctorCell3 = document.getElementById("fourthRowDoctorCell3");
+const fourthRowDoctorPrice = document.getElementById("fourthRowDoctorPrice");
 
 
-let firstRowAll = document.getElementById("firstRowAll");
-let firstRowAllCell1 = document.getElementById("firstRowAllCell1");
-let firstRowAllName = document.getElementById("firstRowAllName");
-let firstRowAllCell2 = document.getElementById("firstRowAllCell2");
-let firstRowAllDescription = document.getElementById("firstRowAllDescription");
-let firstRowAllCell3 = document.getElementById("firstRowAllCell3");
-let firstRowAllPrice = document.getElementById("firstRowAllPrice");
+const firstRowAll = document.getElementById("firstRowAll");
+const firstRowAllCell1 = document.getElementById("firstRowAllCell1");
+const firstRowAllName = document.getElementById("firstRowAllName");
+const firstRowAllCell2 = document.getElementById("firstRowAllCell2");
+const firstRowAllDescription = document.getElementById("firstRowAllDescription");
+const firstRowAllCell3 = document.getElementById("firstRowAllCell3");
+const firstRowAllPrice = document.getElementById("firstRowAllPrice");
 
-let secondRowAll = document.getElementById("secondRowAll");
-let secondRowAllCell1 = document.getElementById("secondRowAllCell1");
-let secondRowAllName = document.getElementById("secondRowAllName");
-let secondRowAllCell2 = document.getElementById("secondRowAllCell2");
-let secondRowAllDescription = document.getElementById("secondRowAllDescription");
-let secondRowAllCell3 = document.getElementById("secondRowAllCell3");
-let secondRowAllPrice = document.getElementById("secondRowAllPrice");
+const secondRowAll = document.getElementById("secondRowAll");
+const secondRowAllCell1 = document.getElementById("secondRowAllCell1");
+const secondRowAllName = document.getElementById("secondRowAllName");
+const secondRowAllCell2 = document.getElementById("secondRowAllCell2");
+const secondRowAllDescription = document.getElementById("secondRowAllDescription");
+const secondRowAllCell3 = document.getElementById("secondRowAllCell3");
+const secondRowAllPrice = document.getElementById("secondRowAllPrice");
 
-let thirdRowAll = document.getElementById("thirdRowAll");
-let thirdRowAllCell1 = document.getElementById("thirdRowAllCell1");
-let thirdRowAllName = document.getElementById("thirdRowAllName");
-let thirdRowAllCell2 = document.getElementById("thirdRowAllCell2");
-let thirdRowAllDescription = document.getElementById("thirdRowAllDescription");
-let thirdRowAllCell3 = document.getElementById("thirdRowAllCell3");
-let thirdRowAllPrice = document.getElementById("thirdRowAllPrice");
+const thirdRowAll = document.getElementById("thirdRowAll");
+const thirdRowAllCell1 = document.getElementById("thirdRowAllCell1");
+const thirdRowAllName = document.getElementById("thirdRowAllName");
+const thirdRowAllCell2 = document.getElementById("thirdRowAllCell2");
+const thirdRowAllDescription = document.getElementById("thirdRowAllDescription");
+const thirdRowAllCell3 = document.getElementById("thirdRowAllCell3");
+const thirdRowAllPrice = document.getElementById("thirdRowAllPrice");
 
-let fourthRowAll = document.getElementById("fourthRowAll");
-let fourthRowAllCell1 = document.getElementById("fourthRowAllCell1");
-let fourthRowAllName = document.getElementById("fourthRowAllName");
-let fourthRowAllCell2 = document.getElementById("fourthRowAllCell2");
-let fourthRowAllDescription = document.getElementById("fourthRowAllDescription");
-let fourthRowAllCell3 = document.getElementById("fourthRowAllCell3");
-let fourthRowAllPrice = document.getElementById("fourthRowAllPrice");
+const fourthRowAll = document.getElementById("fourthRowAll");
+const fourthRowAllCell1 = document.getElementById("fourthRowAllCell1");
+const fourthRowAllName = document.getElementById("fourthRowAllName");
+const fourthRowAllCell2 = document.getElementById("fourthRowAllCell2");
+const fourthRowAllDescription = document.getElementById("fourthRowAllDescription");
+const fourthRowAllCell3 = document.getElementById("fourthRowAllCell3");
+const fourthRowAllPrice = document.getElementById("fourthRowAllPrice");
 
+const deleteButton = document.getElementById("deleteButton");
+const addButton = document.getElementById("addButton");
 
-let deleteButton = document.getElementById("deleteButton");
-let addButton = document.getElementById("addButton");
+const createForm = document.getElementById("create-form");
+const editForm = document.getElementById("edit-form");
+const photoField = document.getElementById("photo");
+const photoEditField = document.getElementById("photoEdit");
+const doctorNameServices = document.getElementById("doctorNameServices");
 
-let doctorsForm = document.getElementById("doctors-form");
-let doctors = document.getElementById("doctors-body");
-var doctorSelector = doctorsForm.selector;
-let goToTop = document.getElementById("goToTop");
-let doctorsDialogTitle = document.getElementById("doctors-dialog-title");
-let doctorsDialogDescription = document.getElementById("doctors-dialog-description");
-let doctorsDialogPluses = document.getElementById("doctors-dialog-pluses");
-let createForm = document.getElementById("create-form");
-let editForm = document.getElementById("edit-form");
-let doctorNameServices = document.getElementById("doctorNameServices");
+const createDoctorDialog = document.querySelector('#createDoctorDialog');
 
 let imageString ='';
-
-getDoctors();
-
-var doctorsDialog = document.querySelector('#doctorsDialog');
-document.querySelector('#doctorsDialogClose').onclick = function() {
-  doctorsDialog.style.display = null;
-  doctorsDialog.close();
-  doctorsDialogTitle.innerText = ''
-  doctorsDialogDescription.innerText = 'Упс. Что-то пошло не так...';
-  doctorsDialogPluses.innerHTML = ``;
-}
-doctorSelector.addEventListener("change", findDoctors);
-
-let doctorsValue = [];
-let filteredDoctorsValue = [];
-let doctorContentArray = [];
-let currentDoctor = {};
-
+let fileName ='';
 let doctorServiceTableValue = [];
 let servicesTableValue = [];
-
 let selectedRowDoctorService = -1;
 let selectedRowServices = -1;
 
-goToTop.addEventListener("click", (e) => {
-  topFunction();
-})
+initDoctors();
 
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    goToTop.style.display = "block";
-  } else {
-    goToTop.style.display = "none";
-  }
-}
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
-
-function getDoctors() {
-  GetUrl("doctors").then((data) => {
-    doctorsValue = data;
-    filteredDoctorsValue = doctorsValue;
-    updateDoctors();
-  }).catch((error) => console.log(error))
-}
-
-var createDoctorDialog = document.querySelector('#createDoctorDialog');
-document.querySelector('#openCreateDoctorDialog').onclick = function() {
+document.querySelector('#openCreateDoctorDialog').onclick = () => {
   createDoctorDialog.style.display = 'flex';
   createDoctorDialog.show();
 }
-document.querySelector('#createDoctorDialogClose').onclick = function() {
+document.querySelector('#createDoctorDialogClose').onclick = () => {
   createDoctorDialog.style.display = null;
   createDoctorDialog.close();
 }
-document.querySelector('#createDoctorDialogSave').onclick = function() {
-  const createDoctorBody = {
-    name: createForm.name.value,
-    surname: createForm.surname.value,
-    patronymic: createForm.patronymic.value,
-    specialization: createForm.spec.options[createForm.spec.selectedIndex].value,
-    photo: imageString,
-    description: createForm.description.value,
-    pluses: createForm.pluses.value
-  }
-  PostUrl('doctor/create', createDoctorBody).then((data) => {
-    doctorsValue = data;
-    filteredDoctorsValue = doctorsValue;
+document.querySelector('#createDoctorDialogSave').onclick = () => {
+  const createDoctorBody = new Doctor(
+    null,
+    createForm.name.value,
+    createForm.surname.value,
+    createForm.patronymic.value,
+    createForm.spec.options[createForm.spec.selectedIndex].value,
+    createForm.description.value,
+    imageString,
+    fileName,
+    createForm.pluses.value
+  )
+  post('doctor/create', createDoctorBody).then((data) => {
+    updateDoctorsValue(data);
     updateDoctors();
     imageString = '';
+    fileName = '';
     createDoctorDialog.style.display = null;
     createDoctorDialog.close();
   }).catch((error) => {
     imageString = '';
+    fileName = '';
     console.error(error)
   })
 }
 
-var editDoctorDialog = document.querySelector('#editDoctorDialog');
-document.querySelector('#openEditDoctorDialog').onclick = function() {
+const editDoctorDialog = document.querySelector('#editDoctorDialog');
+document.querySelector('#openEditDoctorDialog').onclick = () => {
   doctorsDialog.style.display = null;
   doctorsDialog.close();
   editForm.nameEdit.value = currentDoctor['part-name']
@@ -184,91 +136,87 @@ document.querySelector('#openEditDoctorDialog').onclick = function() {
   editDoctorDialog.style.display = 'flex';
   editDoctorDialog.show();
 }
-document.querySelector('#editDoctorDialogClose').onclick = function() {
+document.querySelector('#editDoctorDialogClose').onclick = () => {
   editDoctorDialog.style.display = null;
   editDoctorDialog.close();
   doctorsDialog.style.display = 'flex';
   doctorsDialog.show();
 }
-document.querySelector('#editDoctorDialogSave').onclick = function() {
-  const editDoctorBody = {
-    name: editForm.nameEdit.value,
-    surname: editForm.surnameEdit.value,
-    patronymic: editForm.patronymicEdit.value,
-    specialization: editForm.specEdit.options[editForm.specEdit.selectedIndex].value,
-    photo: imageString,
-    description: editForm.descriptionEdit.value,
-    pluses: editForm.plusesEdit.value
-  }
-  PostUrl('doctor/edit', editDoctorBody).then((data) => {
-    doctorsValue = data;
-    filteredDoctorsValue = doctorsValue;
+document.querySelector('#editDoctorDialogSave').onclick = () => {
+  const editDoctorBody = new Doctor(
+    currentDoctor.id,
+    editForm.nameEdit.value,
+    editForm.surnameEdit.value,
+    editForm.patronymicEdit.value,
+    editForm.specEdit.options[editForm.specEdit.selectedIndex].value,
+    editForm.descriptionEdit.value,
+    imageString,
+    fileName,
+    editForm.plusesEdit.value
+)
+  post('doctor/edit', editDoctorBody).then((data) => {
+    updateDoctorsValue(data);
     updateDoctors();
     imageString = '';
+    fileName = '';
     editDoctorDialog.style.display = null;
     editDoctorDialog.close();
   }).catch((error) => {
     imageString = '';
+    fileName = '';
     console.error(error)
   })
-
 }
 
-var deleteDoctorDialog = document.querySelector('#deleteDoctorDialog');
-document.querySelector('#openDeleteDoctorDialog').onclick = function() {
+const deleteDoctorDialog = document.querySelector('#deleteDoctorDialog');
+document.querySelector('#openDeleteDoctorDialog').onclick = () => {
   doctorsDialog.style.display = null;
   doctorsDialog.close();
   deleteDoctorDialog.style.display = 'flex';
   deleteDoctorDialog.show();
 }
-document.querySelector('#backButtonDeleteDoctorDialogClose').onclick = function() {
+document.querySelector('#backButtonDeleteDoctorDialogClose').onclick = () => {
   deleteDoctorDialog.style.display = null;
   deleteDoctorDialog.close();
   doctorsDialog.style.display = 'flex';
   doctorsDialog.show();
 }
-document.querySelector('#deleteDoctorDialogClose').onclick = function() {
-  PostUrl('doctor/delete', currentDoctor).then((data) => {
-    doctorsValue = data;
-    filteredDoctorsValue = doctorsValue;
+document.querySelector('#deleteDoctorDialogClose').onclick = () => {
+  post('doctor/delete', currentDoctor).then((data) => {
+    updateDoctorsValue(data);
     updateDoctors();
     deleteDoctorDialog.style.display = null;
     deleteDoctorDialog.close();
   }).catch((error) => console.error(error))
 }
 
-var servicesDoctorDialog = document.querySelector('#servicesDoctorDialog');
-document.querySelector('#openCreateServicesDoctorDialog').onclick = function() {
-  doctorNameServices.innerText = `${createForm.surname.value} ${createForm.name.value} ${createForm.patronymic.value}`
-  getServicesForDoctor()
-  getServices()
-  servicesDoctorDialog.style.display = 'flex';
-  servicesDoctorDialog.show();
+const servicesDoctorDialog = document.querySelector('#servicesDoctorDialog');
+document.querySelector('#openCreateServicesDoctorDialog').onclick = () => {
+  openDoctorService(`${createForm.surname.value} ${createForm.name.value} ${createForm.patronymic.value}`);
 }
-document.querySelector('#openEditServicesDoctorDialog').onclick = function() {
-  doctorNameServices.innerText = `${editForm.surnameEdit.value} ${editForm.nameEdit.value} ${editForm.patronymicEdit.value}`
-  getServicesForDoctor()
-  getServices()
-  servicesDoctorDialog.style.display = 'flex';
-  servicesDoctorDialog.show();
+document.querySelector('#openEditServicesDoctorDialog').onclick = () => {
+  openDoctorService(`${editForm.surnameEdit.value} ${editForm.nameEdit.value} ${editForm.patronymicEdit.value}`);
 }
-document.querySelector('#openServicesDoctorDialog').onclick = function() {
-  doctorNameServices.innerText = `${currentDoctor.name}`
-  getServicesForDoctor()
-  getServices()
-  servicesDoctorDialog.style.display = 'flex';
-  servicesDoctorDialog.show();
+document.querySelector('#openServicesDoctorDialog').onclick = () => {
+  openDoctorService(currentDoctor.name);
 }
-document.querySelector('#servicesDoctorDialogClose').onclick = function() {
+document.querySelector('#servicesDoctorDialogClose').onclick = () => {
   servicesDoctorDialog.style.display = null;
   servicesDoctorDialog.close();
 }
+photoField.addEventListener("change", (e) => {
+  imageUploaded();
+})
+photoEditField.addEventListener("change", (e) => {
+  imageUploaded();
+})
 
 deleteButton.addEventListener("click", (e) => {
   if (selectedRowDoctorService > -1) {
-    PostUrl(`services/doctor/delete/${doctorId}`, doctorServiceTableValue[selectedRowDoctorService]).then((data) => {
+    post(`services/doctor/delete/${doctorId}`, doctorServiceTableValue[selectedRowDoctorService]).then((data) => {
       doctorServiceTableValue = data;
       updateDoctorServices();
+      clearDoctorService();
     }).catch((error) => {
       console.error(error)
     })
@@ -277,31 +225,31 @@ deleteButton.addEventListener("click", (e) => {
 
 addButton.addEventListener("click", (e) => {
   if (selectedRowServices > -1) {
-    PostUrl(`services/doctor/add/${doctorId}`, servicesTableValue[selectedRowServices]).then((data) => {
+    post(`services/doctor/add/${doctorId}`, servicesTableValue[selectedRowServices]).then((data) => {
       doctorServiceTableValue = data;
       updateDoctorServices();
+      clearDoctorService();
     }).catch((error) => {
       console.error(error)
     })
   }
 })
 
-
-function getServicesForDoctor() {
-  GetUrl(`services/doctor/${doctorId}`).then((data) => {
+const getServicesForDoctor = () => {
+  get(`services/doctor/${doctorId}`).then((data) => {
     doctorServiceTableValue = data;
     updateDoctorServices();
   }).catch((error) => console.log(error))
 }
 
-function getServices() {
-  GetUrl("services/all").then((data) => {
+const getServices = () => {
+  get("services/all").then((data) => {
     servicesTableValue = data;
     updateServices();
   }).catch((error) => console.log(error))
 }
 
-function updateDoctorServices() {
+const updateDoctorServices = () => {
   if (doctorServiceTableValue[0]) {
     firstRowDoctorName.textContent = doctorServiceTableValue[0].service
     firstRowDoctorDescription.textContent = doctorServiceTableValue[0].description
@@ -343,7 +291,7 @@ function updateDoctorServices() {
   }
 }
 
-function updateServices() {
+const updateServices = () => {
   if (servicesTableValue[0]) {
     firstRowAllName.textContent = servicesTableValue[0].service
     firstRowAllDescription.textContent = servicesTableValue[0].description
@@ -385,275 +333,150 @@ function updateServices() {
   }
 }
 
-function updateDoctors() {
-  let counter = 0;
-  let doctorContent = document.createElement('div');
-  doctorContent.classList.add("doctors-content");
-
-  doctorContentArray.forEach((doctorContentForRemove) => doctors.removeChild(doctorContentForRemove));
-  doctorContentArray = [];
-
-  filteredDoctorsValue
-    .forEach((doctorInfo) => {
-      if (counter < 4) {
-        doctorContent.appendChild(createDoctorCard(doctorInfo));
-        counter++;
-      } else {
-        counter = 0;
-        doctors.appendChild(doctorContent);
-        doctorContentArray.push(doctorContent);
-
-        doctorContent = document.createElement('div');
-        doctorContent.classList.add("doctors-content");
-
-        doctorContent.appendChild(createDoctorCard(doctorInfo));
-        counter++;
-      }
-    })
-  doctors.appendChild(doctorContent);
-  doctorContentArray.push(doctorContent);
-}
-
-function createDoctorCard(doctorInfo) {
-  let doctorCard = document.createElement('div');
-  doctorCard.classList.add("doctor-card");
-
-  let doctorAvatar = document.createElement('div');
-  doctorAvatar.classList.add("doctor-avatar");
-
-  let doctorName = document.createElement('div');
-  doctorName.classList.add("doctor-name");
-  doctorName.innerText = doctorInfo.name;
-
-  let doctorSpec = document.createElement('div');
-  doctorSpec.classList.add("doctor-spec");
-  doctorSpec.innerText = doctorInfo.specialization;
-
-  let img = document.createElement('img');
-  img.classList.add("doctor-image");
-  img.src = doctorInfo.photo;
-  doctorAvatar.appendChild(img);
-
-  doctorCard.appendChild(doctorAvatar);
-  doctorCard.appendChild(doctorName);
-  doctorCard.appendChild(doctorSpec);
-  doctorCard.addEventListener("click", (e) => {
-    openDialog(doctorInfo.id);
-  })
-
-  return doctorCard
-}
-
-function findDoctors() {
-  var selectedOption = doctorSelector.options[doctorSelector.selectedIndex].value;
-  filteredDoctorsValue = [];
-  doctorsValue
-    .filter((doctorInfo) => doctorInfo.specialization.includes(selectedOption) || doctorSelector.selectedIndex === 0)
-    .forEach((doctor) => filteredDoctorsValue.push(doctor));
-  updateDoctors();
-}
-
-function openDialog(doctorId) {
-  GetUrl(`doctor/${doctorId}`).then(data => {
-    currentDoctor = data
-    doctorsDialogTitle.innerText = data.name;
-    doctorsDialogDescription.innerText = data.description;
-
-    let plusesHtml = `
-          <div class="pluses-group-title">${data.name} владеет следующими профессиональными навыками:</div>
-    `;
-
-    data.pluses.split(".").forEach(plus => {
-      plusesHtml += `
-          <div class="plus-price-group">
-            <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
-            <div class="doctors-dialog-content-text">${plus}</div>
-          </div>
-      `;
-    });
-    doctorsDialogPluses.innerHTML = plusesHtml;
-  }).catch(error => console.error(error));
-  doctorsDialog.style.display = 'flex';
-  doctorsDialog.show();
-}
-
-function imageUploaded() {
-  var file = document.querySelector(
+const imageUploaded = () => {
+  const file = document.querySelector(
     'input[type=file]')['files'][0];
 
-  var reader = new FileReader();
+  const reader = new FileReader();
+  fileName = file.name;
 
-  reader.onload = function () {
-    imageString = reader.result;
-  }
+  reader.onload = () => imageString = reader.result;
   reader.readAsDataURL(file);
 }
 
+const openDoctorService = (name) => {
+  clearDoctorService();
+  doctorNameServices.innerText = `${name}`
+  getServicesForDoctor()
+  getServices()
+  servicesDoctorDialog.style.display = 'flex';
+  servicesDoctorDialog.show();
+}
 
 firstRowDoctor.addEventListener("click", (e) => {
   if (selectedRowDoctorService !== 0) {
-    firstRowDoctorCell1.classList.remove("cell-services-of-patient")
-    firstRowDoctorCell1.classList.add("cell-services-of-patient-selected")
-    firstRowDoctorCell2.classList.remove("cell-services-of-patient")
-    firstRowDoctorCell2.classList.add("cell-services-of-patient-selected")
-    firstRowDoctorCell3.classList.remove("cell-services-of-patient")
-    firstRowDoctorCell3.classList.add("cell-services-of-patient-selected")
+    changeClassRows([
+      firstRowDoctorCell1,
+      firstRowDoctorCell2,
+      firstRowDoctorCell3
+    ], "cell-services-of-patient", "cell-services-of-patient-selected")
 
-    secondRowDoctorCell1.classList.remove("cell-services-of-patient-selected")
-    secondRowDoctorCell1.classList.add("cell-services-of-patient")
-    secondRowDoctorCell2.classList.remove("cell-services-of-patient-selected")
-    secondRowDoctorCell2.classList.add("cell-services-of-patient")
-    secondRowDoctorCell3.classList.remove("cell-services-of-patient-selected")
-    secondRowDoctorCell3.classList.add("cell-services-of-patient")
-
-    thirdRowDoctorCell1.classList.remove("cell-services-of-patient-selected")
-    thirdRowDoctorCell1.classList.add("cell-services-of-patient")
-    thirdRowDoctorCell2.classList.remove("cell-services-of-patient-selected")
-    thirdRowDoctorCell2.classList.add("cell-services-of-patient")
-    thirdRowDoctorCell3.classList.remove("cell-services-of-patient-selected")
-    thirdRowDoctorCell3.classList.add("cell-services-of-patient")
-
-    fourthRowDoctorCell1.classList.remove("cell-services-of-patient-selected")
-    fourthRowDoctorCell1.classList.add("cell-services-of-patient")
-    fourthRowDoctorCell2.classList.remove("cell-services-of-patient-selected")
-    fourthRowDoctorCell2.classList.add("cell-services-of-patient")
-    fourthRowDoctorCell3.classList.remove("cell-services-of-patient-selected")
-    fourthRowDoctorCell3.classList.add("cell-services-of-patient")
+    changeClassRows([
+      secondRowDoctorCell1,
+      secondRowDoctorCell2,
+      secondRowDoctorCell3,
+      thirdRowDoctorCell1,
+      thirdRowDoctorCell2,
+      thirdRowDoctorCell3,
+      fourthRowDoctorCell1,
+      fourthRowDoctorCell2,
+      fourthRowDoctorCell3
+    ], "cell-services-of-patient-selected", "cell-services-of-patient")
 
     selectedRowDoctorService = 0;
   } else {
-    firstRowDoctorCell1.classList.remove("cell-services-of-patient-selected")
-    firstRowDoctorCell1.classList.add("cell-services-of-patient")
-    firstRowDoctorCell2.classList.remove("cell-services-of-patient-selected")
-    firstRowDoctorCell2.classList.add("cell-services-of-patient")
-    firstRowDoctorCell3.classList.remove("cell-services-of-patient-selected")
-    firstRowDoctorCell3.classList.add("cell-services-of-patient")
+    changeClassRows([
+      firstRowDoctorCell1,
+      firstRowDoctorCell2,
+      firstRowDoctorCell3
+    ], "cell-services-of-patient-selected", "cell-services-of-patient")
+
     selectedRowDoctorService = -1;
   }
 })
 
 secondRowDoctor.addEventListener("click", (e) => {
   if (selectedRowDoctorService !== 1) {
-    secondRowDoctorCell1.classList.remove("cell-services-of-patient")
-    secondRowDoctorCell1.classList.add("cell-services-of-patient-selected")
-    secondRowDoctorCell2.classList.remove("cell-services-of-patient")
-    secondRowDoctorCell2.classList.add("cell-services-of-patient-selected")
-    secondRowDoctorCell3.classList.remove("cell-services-of-patient")
-    secondRowDoctorCell3.classList.add("cell-services-of-patient-selected")
+    changeClassRows([
+      secondRowDoctorCell1,
+      secondRowDoctorCell2,
+      secondRowDoctorCell3
+    ], "cell-services-of-patient", "cell-services-of-patient-selected")
 
-    firstRowDoctorCell1.classList.remove("cell-services-of-patient-selected")
-    firstRowDoctorCell1.classList.add("cell-services-of-patient")
-    firstRowDoctorCell2.classList.remove("cell-services-of-patient-selected")
-    firstRowDoctorCell2.classList.add("cell-services-of-patient")
-    firstRowDoctorCell3.classList.remove("cell-services-of-patient-selected")
-    firstRowDoctorCell3.classList.add("cell-services-of-patient")
-
-    thirdRowDoctorCell1.classList.remove("cell-services-of-patient-selected")
-    thirdRowDoctorCell1.classList.add("cell-services-of-patient")
-    thirdRowDoctorCell2.classList.remove("cell-services-of-patient-selected")
-    thirdRowDoctorCell2.classList.add("cell-services-of-patient")
-    thirdRowDoctorCell3.classList.remove("cell-services-of-patient-selected")
-    thirdRowDoctorCell3.classList.add("cell-services-of-patient")
-
-    fourthRowDoctorCell1.classList.remove("cell-services-of-patient-selected")
-    fourthRowDoctorCell1.classList.add("cell-services-of-patient")
-    fourthRowDoctorCell2.classList.remove("cell-services-of-patient-selected")
-    fourthRowDoctorCell2.classList.add("cell-services-of-patient")
-    fourthRowDoctorCell3.classList.remove("cell-services-of-patient-selected")
-    fourthRowDoctorCell3.classList.add("cell-services-of-patient")
+    changeClassRows([
+      firstRowDoctorCell1,
+      firstRowDoctorCell2,
+      firstRowDoctorCell3,
+      thirdRowDoctorCell1,
+      thirdRowDoctorCell2,
+      thirdRowDoctorCell3,
+      fourthRowDoctorCell1,
+      fourthRowDoctorCell2,
+      fourthRowDoctorCell3
+    ], "cell-services-of-patient-selected", "cell-services-of-patient")
 
     selectedRowDoctorService = 1;
   } else {
-    secondRowDoctorCell1.classList.remove("cell-services-of-patient-selected")
-    secondRowDoctorCell1.classList.add("cell-services-of-patient")
-    secondRowDoctorCell2.classList.remove("cell-services-of-patient-selected")
-    secondRowDoctorCell2.classList.add("cell-services-of-patient")
-    secondRowDoctorCell3.classList.remove("cell-services-of-patient-selected")
-    secondRowDoctorCell3.classList.add("cell-services-of-patient")
+    changeClassRows([
+      secondRowDoctorCell1,
+      secondRowDoctorCell2,
+      secondRowDoctorCell3
+    ], "cell-services-of-patient-selected", "cell-services-of-patient")
+
     selectedRowDoctorService = -1;
   }
 })
 
 thirdRowDoctor.addEventListener("click", (e) => {
   if (selectedRowDoctorService !== 2) {
-    thirdRowDoctorCell1.classList.remove("cell-services-of-patient")
-    thirdRowDoctorCell1.classList.add("cell-services-of-patient-selected")
-    thirdRowDoctorCell2.classList.remove("cell-services-of-patient")
-    thirdRowDoctorCell2.classList.add("cell-services-of-patient-selected")
-    thirdRowDoctorCell3.classList.remove("cell-services-of-patient")
-    thirdRowDoctorCell3.classList.add("cell-services-of-patient-selected")
+    changeClassRows([
+      thirdRowDoctorCell1,
+      thirdRowDoctorCell2,
+      thirdRowDoctorCell3
+    ], "cell-services-of-patient", "cell-services-of-patient-selected")
 
-    firstRowDoctorCell1.classList.remove("cell-services-of-patient-selected")
-    firstRowDoctorCell1.classList.add("cell-services-of-patient")
-    firstRowDoctorCell2.classList.remove("cell-services-of-patient-selected")
-    firstRowDoctorCell2.classList.add("cell-services-of-patient")
-    firstRowDoctorCell3.classList.remove("cell-services-of-patient-selected")
-    firstRowDoctorCell3.classList.add("cell-services-of-patient")
-
-    secondRowDoctorCell1.classList.remove("cell-services-of-patient-selected")
-    secondRowDoctorCell1.classList.add("cell-services-of-patient")
-    secondRowDoctorCell2.classList.remove("cell-services-of-patient-selected")
-    secondRowDoctorCell2.classList.add("cell-services-of-patient")
-    secondRowDoctorCell3.classList.remove("cell-services-of-patient-selected")
-    secondRowDoctorCell3.classList.add("cell-services-of-patient")
-
-    fourthRowDoctorCell1.classList.remove("cell-services-of-patient-selected")
-    fourthRowDoctorCell1.classList.add("cell-services-of-patient")
-    fourthRowDoctorCell2.classList.remove("cell-services-of-patient-selected")
-    fourthRowDoctorCell2.classList.add("cell-services-of-patient")
-    fourthRowDoctorCell3.classList.remove("cell-services-of-patient-selected")
-    fourthRowDoctorCell3.classList.add("cell-services-of-patient")
+    changeClassRows([
+      firstRowDoctorCell1,
+      firstRowDoctorCell2,
+      firstRowDoctorCell3,
+      secondRowDoctorCell1,
+      secondRowDoctorCell2,
+      secondRowDoctorCell3,
+      fourthRowDoctorCell1,
+      fourthRowDoctorCell2,
+      fourthRowDoctorCell3
+    ], "cell-services-of-patient-selected", "cell-services-of-patient")
 
     selectedRowDoctorService = 2;
   } else {
-    thirdRowDoctorCell1.classList.remove("cell-services-of-patient-selected")
-    thirdRowDoctorCell1.classList.add("cell-services-of-patient")
-    thirdRowDoctorCell2.classList.remove("cell-services-of-patient-selected")
-    thirdRowDoctorCell2.classList.add("cell-services-of-patient")
-    thirdRowDoctorCell3.classList.remove("cell-services-of-patient-selected")
-    thirdRowDoctorCell3.classList.add("cell-services-of-patient")
+    changeClassRows([
+      thirdRowDoctorCell1,
+      thirdRowDoctorCell2,
+      thirdRowDoctorCell3
+    ], "cell-services-of-patient-selected", "cell-services-of-patient")
+
     selectedRowDoctorService = -1;
   }
 })
 
 fourthRowDoctor.addEventListener("click", (e) => {
   if (selectedRowDoctorService !== 3) {
-    fourthRowDoctorCell1.classList.remove("cell-services-of-patient")
-    fourthRowDoctorCell1.classList.add("cell-services-of-patient-selected")
-    fourthRowDoctorCell2.classList.remove("cell-services-of-patient")
-    fourthRowDoctorCell2.classList.add("cell-services-of-patient-selected")
-    fourthRowDoctorCell3.classList.remove("cell-services-of-patient")
-    fourthRowDoctorCell3.classList.add("cell-services-of-patient-selected")
+    changeClassRows([
+      fourthRowDoctorCell1,
+      fourthRowDoctorCell2,
+      fourthRowDoctorCell3
+    ], "cell-services-of-patient", "cell-services-of-patient-selected")
 
-    firstRowDoctorCell1.classList.remove("cell-services-of-patient-selected")
-    firstRowDoctorCell1.classList.add("cell-services-of-patient")
-    firstRowDoctorCell2.classList.remove("cell-services-of-patient-selected")
-    firstRowDoctorCell2.classList.add("cell-services-of-patient")
-    firstRowDoctorCell3.classList.remove("cell-services-of-patient-selected")
-    firstRowDoctorCell3.classList.add("cell-services-of-patient")
-
-    secondRowDoctorCell1.classList.remove("cell-services-of-patient-selected")
-    secondRowDoctorCell1.classList.add("cell-services-of-patient")
-    secondRowDoctorCell2.classList.remove("cell-services-of-patient-selected")
-    secondRowDoctorCell2.classList.add("cell-services-of-patient")
-    secondRowDoctorCell3.classList.remove("cell-services-of-patient-selected")
-    secondRowDoctorCell3.classList.add("cell-services-of-patient")
-
-    thirdRowDoctorCell1.classList.remove("cell-services-of-patient-selected")
-    thirdRowDoctorCell1.classList.add("cell-services-of-patient")
-    thirdRowDoctorCell2.classList.remove("cell-services-of-patient-selected")
-    thirdRowDoctorCell2.classList.add("cell-services-of-patient")
-    thirdRowDoctorCell3.classList.remove("cell-services-of-patient-selected")
-    thirdRowDoctorCell3.classList.add("cell-services-of-patient")
+    changeClassRows([
+      firstRowDoctorCell1,
+      firstRowDoctorCell2,
+      firstRowDoctorCell3,
+      secondRowDoctorCell1,
+      secondRowDoctorCell2,
+      secondRowDoctorCell3,
+      thirdRowDoctorCell1,
+      thirdRowDoctorCell2,
+      thirdRowDoctorCell3
+    ], "cell-services-of-patient-selected", "cell-services-of-patient")
 
     selectedRowDoctorService = 3;
   } else {
-    fourthRowDoctorCell1.classList.remove("cell-services-of-patient-selected")
-    fourthRowDoctorCell1.classList.add("cell-services-of-patient")
-    fourthRowDoctorCell2.classList.remove("cell-services-of-patient-selected")
-    fourthRowDoctorCell2.classList.add("cell-services-of-patient")
-    fourthRowDoctorCell3.classList.remove("cell-services-of-patient-selected")
-    fourthRowDoctorCell3.classList.add("cell-services-of-patient")
+    changeClassRows([
+      fourthRowDoctorCell1,
+      fourthRowDoctorCell2,
+      fourthRowDoctorCell3
+    ], "cell-services-of-patient-selected", "cell-services-of-patient")
+
     selectedRowDoctorService = -1;
   }
 })
@@ -661,193 +484,163 @@ fourthRowDoctor.addEventListener("click", (e) => {
 
 firstRowAll.addEventListener("click", (e) => {
   if (selectedRowServices !== 0) {
-    firstRowAllCell1.classList.remove("cell-services-of-patient")
-    firstRowAllCell1.classList.add("cell-services-of-patient-selected")
-    firstRowAllCell2.classList.remove("cell-services-of-patient")
-    firstRowAllCell2.classList.add("cell-services-of-patient-selected")
-    firstRowAllCell3.classList.remove("cell-services-of-patient")
-    firstRowAllCell3.classList.add("cell-services-of-patient-selected")
+    changeClassRows([
+      firstRowAllCell1,
+      firstRowAllCell2,
+      firstRowAllCell3
+    ], "cell-services-of-patient", "cell-services-of-patient-selected")
 
-    secondRowAllCell1.classList.remove("cell-services-of-patient-selected")
-    secondRowAllCell1.classList.add("cell-services-of-patient")
-    secondRowAllCell2.classList.remove("cell-services-of-patient-selected")
-    secondRowAllCell2.classList.add("cell-services-of-patient")
-    secondRowAllCell3.classList.remove("cell-services-of-patient-selected")
-    secondRowAllCell3.classList.add("cell-services-of-patient")
-
-    thirdRowAllCell1.classList.remove("cell-services-of-patient-selected")
-    thirdRowAllCell1.classList.add("cell-services-of-patient")
-    thirdRowAllCell2.classList.remove("cell-services-of-patient-selected")
-    thirdRowAllCell2.classList.add("cell-services-of-patient")
-    thirdRowAllCell3.classList.remove("cell-services-of-patient-selected")
-    thirdRowAllCell3.classList.add("cell-services-of-patient")
-
-    fourthRowAllCell1.classList.remove("cell-services-of-patient-selected")
-    fourthRowAllCell1.classList.add("cell-services-of-patient")
-    fourthRowAllCell2.classList.remove("cell-services-of-patient-selected")
-    fourthRowAllCell2.classList.add("cell-services-of-patient")
-    fourthRowAllCell3.classList.remove("cell-services-of-patient-selected")
-    fourthRowAllCell3.classList.add("cell-services-of-patient")
+    changeClassRows([
+      secondRowAllCell1,
+      secondRowAllCell2,
+      secondRowAllCell3,
+      thirdRowAllCell1,
+      thirdRowAllCell2,
+      thirdRowAllCell3,
+      fourthRowAllCell1,
+      fourthRowAllCell2,
+      fourthRowAllCell3
+    ], "cell-services-of-patient-selected", "cell-services-of-patient")
 
     selectedRowServices = 0;
   } else {
-    firstRowAllCell1.classList.remove("cell-services-of-patient-selected")
-    firstRowAllCell1.classList.add("cell-services-of-patient")
-    firstRowAllCell2.classList.remove("cell-services-of-patient-selected")
-    firstRowAllCell2.classList.add("cell-services-of-patient")
-    firstRowAllCell3.classList.remove("cell-services-of-patient-selected")
-    firstRowAllCell3.classList.add("cell-services-of-patient")
+    changeClassRows([
+      firstRowAllCell1,
+      firstRowAllCell2,
+      firstRowAllCell3
+    ], "cell-services-of-patient-selected", "cell-services-of-patient")
+
     selectedRowServices = -1;
   }
 })
 
 secondRowAll.addEventListener("click", (e) => {
   if (selectedRowServices !== 1) {
-    secondRowAllCell1.classList.remove("cell-services-of-patient")
-    secondRowAllCell1.classList.add("cell-services-of-patient-selected")
-    secondRowAllCell2.classList.remove("cell-services-of-patient")
-    secondRowAllCell2.classList.add("cell-services-of-patient-selected")
-    secondRowAllCell3.classList.remove("cell-services-of-patient")
-    secondRowAllCell3.classList.add("cell-services-of-patient-selected")
+    changeClassRows([
+      secondRowAllCell1,
+      secondRowAllCell2,
+      secondRowAllCell3
+    ], "cell-services-of-patient", "cell-services-of-patient-selected")
 
-    firstRowAllCell1.classList.remove("cell-services-of-patient-selected")
-    firstRowAllCell1.classList.add("cell-services-of-patient")
-    firstRowAllCell2.classList.remove("cell-services-of-patient-selected")
-    firstRowAllCell2.classList.add("cell-services-of-patient")
-    firstRowAllCell3.classList.remove("cell-services-of-patient-selected")
-    firstRowAllCell3.classList.add("cell-services-of-patient")
-
-    thirdRowAllCell1.classList.remove("cell-services-of-patient-selected")
-    thirdRowAllCell1.classList.add("cell-services-of-patient")
-    thirdRowAllCell2.classList.remove("cell-services-of-patient-selected")
-    thirdRowAllCell2.classList.add("cell-services-of-patient")
-    thirdRowAllCell3.classList.remove("cell-services-of-patient-selected")
-    thirdRowAllCell3.classList.add("cell-services-of-patient")
-
-    fourthRowAllCell1.classList.remove("cell-services-of-patient-selected")
-    fourthRowAllCell1.classList.add("cell-services-of-patient")
-    fourthRowAllCell2.classList.remove("cell-services-of-patient-selected")
-    fourthRowAllCell2.classList.add("cell-services-of-patient")
-    fourthRowAllCell3.classList.remove("cell-services-of-patient-selected")
-    fourthRowAllCell3.classList.add("cell-services-of-patient")
+    changeClassRows([
+      firstRowAllCell1,
+      firstRowAllCell2,
+      firstRowAllCell3,
+      thirdRowAllCell1,
+      thirdRowAllCell2,
+      thirdRowAllCell3,
+      fourthRowAllCell1,
+      fourthRowAllCell2,
+      fourthRowAllCell3
+    ], "cell-services-of-patient-selected", "cell-services-of-patient")
 
     selectedRowServices = 1;
   } else {
-    secondRowAllCell1.classList.remove("cell-services-of-patient-selected")
-    secondRowAllCell1.classList.add("cell-services-of-patient")
-    secondRowAllCell2.classList.remove("cell-services-of-patient-selected")
-    secondRowAllCell2.classList.add("cell-services-of-patient")
-    secondRowAllCell3.classList.remove("cell-services-of-patient-selected")
-    secondRowAllCell3.classList.add("cell-services-of-patient")
+    changeClassRows([
+      secondRowAllCell1,
+      secondRowAllCell2,
+      secondRowAllCell3
+    ], "cell-services-of-patient-selected", "cell-services-of-patient")
+
     selectedRowServices = -1;
   }
 })
 
 thirdRowAll.addEventListener("click", (e) => {
   if (selectedRowServices !== 2) {
-    thirdRowAllCell1.classList.remove("cell-services-of-patient")
-    thirdRowAllCell1.classList.add("cell-services-of-patient-selected")
-    thirdRowAllCell2.classList.remove("cell-services-of-patient")
-    thirdRowAllCell2.classList.add("cell-services-of-patient-selected")
-    thirdRowAllCell3.classList.remove("cell-services-of-patient")
-    thirdRowAllCell3.classList.add("cell-services-of-patient-selected")
+    changeClassRows([
+      thirdRowAllCell1,
+      thirdRowAllCell2,
+      thirdRowAllCell3
+    ], "cell-services-of-patient", "cell-services-of-patient-selected")
 
-    firstRowAllCell1.classList.remove("cell-services-of-patient-selected")
-    firstRowAllCell1.classList.add("cell-services-of-patient")
-    firstRowAllCell2.classList.remove("cell-services-of-patient-selected")
-    firstRowAllCell2.classList.add("cell-services-of-patient")
-    firstRowAllCell3.classList.remove("cell-services-of-patient-selected")
-    firstRowAllCell3.classList.add("cell-services-of-patient")
-
-    secondRowAllCell1.classList.remove("cell-services-of-patient-selected")
-    secondRowAllCell1.classList.add("cell-services-of-patient")
-    secondRowAllCell2.classList.remove("cell-services-of-patient-selected")
-    secondRowAllCell2.classList.add("cell-services-of-patient")
-    secondRowAllCell3.classList.remove("cell-services-of-patient-selected")
-    secondRowAllCell3.classList.add("cell-services-of-patient")
-
-    fourthRowAllCell1.classList.remove("cell-services-of-patient-selected")
-    fourthRowAllCell1.classList.add("cell-services-of-patient")
-    fourthRowAllCell2.classList.remove("cell-services-of-patient-selected")
-    fourthRowAllCell2.classList.add("cell-services-of-patient")
-    fourthRowAllCell3.classList.remove("cell-services-of-patient-selected")
-    fourthRowAllCell3.classList.add("cell-services-of-patient")
+    changeClassRows([
+      firstRowAllCell1,
+      firstRowAllCell2,
+      firstRowAllCell3,
+      secondRowAllCell1,
+      secondRowAllCell2,
+      secondRowAllCell3,
+      fourthRowAllCell1,
+      fourthRowAllCell2,
+      fourthRowAllCell3
+    ], "cell-services-of-patient-selected", "cell-services-of-patient")
 
     selectedRowServices = 2;
   } else {
-    thirdRowAllCell1.classList.remove("cell-services-of-patient-selected")
-    thirdRowAllCell1.classList.add("cell-services-of-patient")
-    thirdRowAllCell2.classList.remove("cell-services-of-patient-selected")
-    thirdRowAllCell2.classList.add("cell-services-of-patient")
-    thirdRowAllCell3.classList.remove("cell-services-of-patient-selected")
-    thirdRowAllCell3.classList.add("cell-services-of-patient")
+    changeClassRows([
+      thirdRowAllCell1,
+      thirdRowAllCell2,
+      thirdRowAllCell3
+    ], "cell-services-of-patient-selected", "cell-services-of-patient")
+
     selectedRowServices = -1;
   }
 })
 
 fourthRowAll.addEventListener("click", (e) => {
   if (selectedRowServices !== 3) {
-    fourthRowAllCell1.classList.remove("cell-services-of-patient")
-    fourthRowAllCell1.classList.add("cell-services-of-patient-selected")
-    fourthRowAllCell2.classList.remove("cell-services-of-patient")
-    fourthRowAllCell2.classList.add("cell-services-of-patient-selected")
-    fourthRowAllCell3.classList.remove("cell-services-of-patient")
-    fourthRowAllCell3.classList.add("cell-services-of-patient-selected")
+    changeClassRows([
+      fourthRowAllCell1,
+      fourthRowAllCell2,
+      fourthRowAllCell3
+    ], "cell-services-of-patient", "cell-services-of-patient-selected")
 
-    firstRowAllCell1.classList.remove("cell-services-of-patient-selected")
-    firstRowAllCell1.classList.add("cell-services-of-patient")
-    firstRowAllCell2.classList.remove("cell-services-of-patient-selected")
-    firstRowAllCell2.classList.add("cell-services-of-patient")
-    firstRowAllCell3.classList.remove("cell-services-of-patient-selected")
-    firstRowAllCell3.classList.add("cell-services-of-patient")
-
-    secondRowAllCell1.classList.remove("cell-services-of-patient-selected")
-    secondRowAllCell1.classList.add("cell-services-of-patient")
-    secondRowAllCell2.classList.remove("cell-services-of-patient-selected")
-    secondRowAllCell2.classList.add("cell-services-of-patient")
-    secondRowAllCell3.classList.remove("cell-services-of-patient-selected")
-    secondRowAllCell3.classList.add("cell-services-of-patient")
-
-    thirdRowAllCell1.classList.remove("cell-services-of-patient-selected")
-    thirdRowAllCell1.classList.add("cell-services-of-patient")
-    thirdRowAllCell2.classList.remove("cell-services-of-patient-selected")
-    thirdRowAllCell2.classList.add("cell-services-of-patient")
-    thirdRowAllCell3.classList.remove("cell-services-of-patient-selected")
-    thirdRowAllCell3.classList.add("cell-services-of-patient")
+    changeClassRows([
+      firstRowAllCell1,
+      firstRowAllCell2,
+      firstRowAllCell3,
+      secondRowAllCell1,
+      secondRowAllCell2,
+      secondRowAllCell3,
+      thirdRowAllCell1,
+      thirdRowAllCell2,
+      thirdRowAllCell3
+    ], "cell-services-of-patient-selected", "cell-services-of-patient")
 
     selectedRowServices = 3;
   } else {
-    fourthRowAllCell1.classList.remove("cell-services-of-patient-selected")
-    fourthRowAllCell1.classList.add("cell-services-of-patient")
-    fourthRowAllCell2.classList.remove("cell-services-of-patient-selected")
-    fourthRowAllCell2.classList.add("cell-services-of-patient")
-    fourthRowAllCell3.classList.remove("cell-services-of-patient-selected")
-    fourthRowAllCell3.classList.add("cell-services-of-patient")
+    changeClassRows([
+      fourthRowAllCell1,
+      fourthRowAllCell2,
+      fourthRowAllCell3
+    ], "cell-services-of-patient-selected", "cell-services-of-patient")
+
     selectedRowServices = -1;
   }
 })
 
+const clearDoctorService = () => {
+  changeClassRows([
+    firstRowDoctorCell1,
+    firstRowDoctorCell2,
+    firstRowDoctorCell3,
+    secondRowDoctorCell1,
+    secondRowDoctorCell2,
+    secondRowDoctorCell3,
+    thirdRowDoctorCell1,
+    thirdRowDoctorCell2,
+    thirdRowDoctorCell3,
+    fourthRowDoctorCell1,
+    fourthRowDoctorCell2,
+    fourthRowDoctorCell3
+  ], "cell-services-of-patient-selected", "cell-services-of-patient")
 
+  changeClassRows([
+    firstRowAllCell1,
+    firstRowAllCell2,
+    firstRowAllCell3,
+    secondRowAllCell1,
+    secondRowAllCell2,
+    secondRowAllCell3,
+    thirdRowAllCell1,
+    thirdRowAllCell2,
+    thirdRowAllCell3,
+    fourthRowAllCell1,
+    fourthRowAllCell2,
+    fourthRowAllCell3
+  ], "cell-services-of-patient-selected", "cell-services-of-patient")
 
-function GetCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
-}
-
-function GetUrl(getUrl) {
-  return fetch(url + getUrl, {
-    method: 'GET',
-    headers: headers
-  })
-    .then(response => response.json())
-}
-
-function PostUrl(postUrl, body) {
-  return fetch(url + postUrl, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(body)
-  })
-    .then(response => response.json())
+  selectedRowDoctorService = -1;
+  selectedRowServices = -1;
 }

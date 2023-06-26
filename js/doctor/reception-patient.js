@@ -1,191 +1,194 @@
-const url = 'https://af2f-46-164-217-97.ngrok-free.app/';
-var token = GetCookie("access_token")
-const headers = {
-  "Host":  'af2f-46-164-217-97.ngrok-free.app',
-  "Origin":  'https://af2f-46-164-217-97.ngrok-free.app/',
-  "Accept": "*/*",
-  'ngrok-skip-browser-warning':true
-}
-var userId = 2;
+import {get, post, postWithoutResponse} from "../core/rest.js";
+import {User} from "../core/model/user.js";
+import {changeClassRows} from "../core/table.js";
+
+const userId = 2;
+
+const left8Up = document.getElementById("left8Up");
+const left8Down = document.getElementById("left8Down");
+const right1Up = document.getElementById("right1Up");
+const right1Down = document.getElementById("right1Down");
+const left7Up = document.getElementById("left7Up");
+const left7Down = document.getElementById("left7Down");
+const right2Up = document.getElementById("right2Up");
+const right2Down = document.getElementById("right2Down");
+const left6Up = document.getElementById("left6Up");
+const left6Down = document.getElementById("left6Down");
+const right3Up = document.getElementById("right3Up");
+const right3Down = document.getElementById("right3Down");
+const left5Up = document.getElementById("left5Up");
+const left5Down = document.getElementById("left5Down");
+const right4Up = document.getElementById("right4Up");
+const right4Down = document.getElementById("right4Down");
+const left4Up = document.getElementById("left4Up");
+const left4Down = document.getElementById("left4Down");
+const right5Up = document.getElementById("right5Up");
+const right5Down = document.getElementById("right5Down");
+const left3Up = document.getElementById("left3Up");
+const left3Down = document.getElementById("left3Down");
+const right6Up = document.getElementById("right6Up");
+const right6Down = document.getElementById("right6Down");
+const left2Up = document.getElementById("left2Up");
+const left2Down = document.getElementById("left2Down");
+const right7Up = document.getElementById("right7Up");
+const right7Down = document.getElementById("right7Down");
+const left1Up = document.getElementById("left1Up");
+const left1Down = document.getElementById("left1Down");
+const right8Up = document.getElementById("right8Up");
+const right8Down = document.getElementById("right8Down");
 
 
-let left8Up = document.getElementById("left8Up");
-let left8Down = document.getElementById("left8Down");
-let right1Up = document.getElementById("right1Up");
-let right1Down = document.getElementById("right1Down");
-let left7Up = document.getElementById("left7Up");
-let left7Down = document.getElementById("left7Down");
-let right2Up = document.getElementById("right2Up");
-let right2Down = document.getElementById("right2Down");
-let left6Up = document.getElementById("left6Up");
-let left6Down = document.getElementById("left6Down");
-let right3Up = document.getElementById("right3Up");
-let right3Down = document.getElementById("right3Down");
-let left5Up = document.getElementById("left5Up");
-let left5Down = document.getElementById("left5Down");
-let right4Up = document.getElementById("right4Up");
-let right4Down = document.getElementById("right4Down");
-let left4Up = document.getElementById("left4Up");
-let left4Down = document.getElementById("left4Down");
-let right5Up = document.getElementById("right5Up");
-let right5Down = document.getElementById("right5Down");
-let left3Up = document.getElementById("left3Up");
-let left3Down = document.getElementById("left3Down");
-let right6Up = document.getElementById("right6Up");
-let right6Down = document.getElementById("right6Down");
-let left2Up = document.getElementById("left2Up");
-let left2Down = document.getElementById("left2Down");
-let right7Up = document.getElementById("right7Up");
-let right7Down = document.getElementById("right7Down");
-let left1Up = document.getElementById("left1Up");
-let left1Down = document.getElementById("left1Down");
-let right8Up = document.getElementById("right8Up");
-let right8Down = document.getElementById("right8Down");
+const firstRequestCell1 = document.getElementById("first-request-cell1");
+const firstRequestCell2 = document.getElementById("first-request-cell2");
+const secondRequestCell1 = document.getElementById("second-request-cell1");
+const secondRequestCell2 = document.getElementById("second-request-cell2");
+const thirdRequestCell1 = document.getElementById("third-request-cell1");
+const thirdRequestCell2 = document.getElementById("third-request-cell2");
 
+const firstRowDiagnosisOfPatient = document.getElementById("firstRowDiagnosisOfPatient")
+const firstRowDiagnosisOfPatientCell1 = document.getElementById("firstRowDiagnosisOfPatientCell1")
+const firstDiagnosisOfPatientDiagnose = document.getElementById("firstDiagnosisOfPatientDiagnose")
+const firstRowDiagnosisOfPatientCell2 = document.getElementById("firstRowDiagnosisOfPatientCell2")
+const firstDiagnosisOfPatientDescription = document.getElementById("firstDiagnosisOfPatientDescription")
+const firstRowDiagnosisOfPatientCell3 = document.getElementById("firstRowDiagnosisOfPatientCell3")
+const firstDiagnosisOfPatientStatus = document.getElementById("firstDiagnosisOfPatientStatus")
 
-let firstRequestCell1 = document.getElementById("first-request-cell1");
-let firstRequestCell2 = document.getElementById("first-request-cell2");
-let secondRequestCell1 = document.getElementById("second-request-cell1");
-let secondRequestCell2 = document.getElementById("second-request-cell2");
-let thirdRequestCell1 = document.getElementById("third-request-cell1");
-let thirdRequestCell2 = document.getElementById("third-request-cell2");
+const secondRowDiagnosisOfPatient = document.getElementById("secondRowDiagnosisOfPatient")
+const secondRowDiagnosisOfPatientCell1 = document.getElementById("secondRowDiagnosisOfPatientCell1")
+const secondDiagnosisOfPatientDiagnose = document.getElementById("secondDiagnosisOfPatientDiagnose")
+const secondRowDiagnosisOfPatientCell2 = document.getElementById("secondRowDiagnosisOfPatientCell2")
+const secondDiagnosisOfPatientDescription = document.getElementById("secondDiagnosisOfPatientDescription")
+const secondRowDiagnosisOfPatientCell3 = document.getElementById("secondRowDiagnosisOfPatientCell3")
+const secondDiagnosisOfPatientStatus = document.getElementById("secondDiagnosisOfPatientStatus")
 
-let firstRowDiagnosisOfPatient = document.getElementById("firstRowDiagnosisOfPatient")
-let firstRowDiagnosisOfPatientCell1 = document.getElementById("firstRowDiagnosisOfPatientCell1")
-let firstDiagnosisOfPatientDiagnose = document.getElementById("firstDiagnosisOfPatientDiagnose")
-let firstRowDiagnosisOfPatientCell2 = document.getElementById("firstRowDiagnosisOfPatientCell2")
-let firstDiagnosisOfPatientDescription = document.getElementById("firstDiagnosisOfPatientDescription")
-let firstRowDiagnosisOfPatientCell3 = document.getElementById("firstRowDiagnosisOfPatientCell3")
-let firstDiagnosisOfPatientStatus = document.getElementById("firstDiagnosisOfPatientStatus")
+const thirdRowDiagnosisOfPatient = document.getElementById("thirdRowDiagnosisOfPatient")
+const thirdRowDiagnosisOfPatientCell1 = document.getElementById("thirdRowDiagnosisOfPatientCell1")
+const thirdDiagnosisOfPatientDiagnose = document.getElementById("thirdDiagnosisOfPatientDiagnose")
+const thirdRowDiagnosisOfPatientCell2 = document.getElementById("thirdRowDiagnosisOfPatientCell2")
+const thirdDiagnosisOfPatientDescription = document.getElementById("thirdDiagnosisOfPatientDescription")
+const thirdRowDiagnosisOfPatientCell3 = document.getElementById("thirdRowDiagnosisOfPatientCell3")
+const thirdDiagnosisOfPatientStatus = document.getElementById("thirdDiagnosisOfPatientStatus")
 
-let secondRowDiagnosisOfPatient = document.getElementById("secondRowDiagnosisOfPatient")
-let secondRowDiagnosisOfPatientCell1 = document.getElementById("secondRowDiagnosisOfPatientCell1")
-let secondDiagnosisOfPatientDiagnose = document.getElementById("secondDiagnosisOfPatientDiagnose")
-let secondRowDiagnosisOfPatientCell2 = document.getElementById("secondRowDiagnosisOfPatientCell2")
-let secondDiagnosisOfPatientDescription = document.getElementById("secondDiagnosisOfPatientDescription")
-let secondRowDiagnosisOfPatientCell3 = document.getElementById("secondRowDiagnosisOfPatientCell3")
-let secondDiagnosisOfPatientStatus = document.getElementById("secondDiagnosisOfPatientStatus")
+const fourthRowDiagnosisOfPatient = document.getElementById("fourthRowDiagnosisOfPatient")
+const fourthRowDiagnosisOfPatientCell1 = document.getElementById("fourthRowDiagnosisOfPatientCell1")
+const fourthDiagnosisOfPatientDiagnose = document.getElementById("fourthDiagnosisOfPatientDiagnose")
+const fourthRowDiagnosisOfPatientCell2 = document.getElementById("fourthRowDiagnosisOfPatientCell2")
+const fourthDiagnosisOfPatientDescription = document.getElementById("fourthDiagnosisOfPatientDescription")
+const fourthRowDiagnosisOfPatientCell3 = document.getElementById("fourthRowDiagnosisOfPatientCell3")
+const fourthDiagnosisOfPatientStatus = document.getElementById("fourthDiagnosisOfPatientStatus")
 
-let thirdRowDiagnosisOfPatient = document.getElementById("thirdRowDiagnosisOfPatient")
-let thirdRowDiagnosisOfPatientCell1 = document.getElementById("thirdRowDiagnosisOfPatientCell1")
-let thirdDiagnosisOfPatientDiagnose = document.getElementById("thirdDiagnosisOfPatientDiagnose")
-let thirdRowDiagnosisOfPatientCell2 = document.getElementById("thirdRowDiagnosisOfPatientCell2")
-let thirdDiagnosisOfPatientDescription = document.getElementById("thirdDiagnosisOfPatientDescription")
-let thirdRowDiagnosisOfPatientCell3 = document.getElementById("thirdRowDiagnosisOfPatientCell3")
-let thirdDiagnosisOfPatientStatus = document.getElementById("thirdDiagnosisOfPatientStatus")
+const firstRowDiagnosisFromDoctor = document.getElementById("firstRowDiagnosisFromDoctor")
+const firstRowDiagnosisFromDoctorCell1 = document.getElementById("firstRowDiagnosisFromDoctorCell1")
+const firstDiagnosisFromDoctorDiagnose = document.getElementById("firstDiagnosisFromDoctorDiagnose")
+const firstRowDiagnosisFromDoctorCell2 = document.getElementById("firstRowDiagnosisFromDoctorCell2")
+const firstDiagnosisFromDoctorDescription = document.getElementById("firstDiagnosisFromDoctorDescription")
 
-let fourthRowDiagnosisOfPatient = document.getElementById("fourthRowDiagnosisOfPatient")
-let fourthRowDiagnosisOfPatientCell1 = document.getElementById("fourthRowDiagnosisOfPatientCell1")
-let fourthDiagnosisOfPatientDiagnose = document.getElementById("fourthDiagnosisOfPatientDiagnose")
-let fourthRowDiagnosisOfPatientCell2 = document.getElementById("fourthRowDiagnosisOfPatientCell2")
-let fourthDiagnosisOfPatientDescription = document.getElementById("fourthDiagnosisOfPatientDescription")
-let fourthRowDiagnosisOfPatientCell3 = document.getElementById("fourthRowDiagnosisOfPatientCell3")
-let fourthDiagnosisOfPatientStatus = document.getElementById("fourthDiagnosisOfPatientStatus")
+const secondRowDiagnosisFromDoctor = document.getElementById("secondRowDiagnosisFromDoctor")
+const secondRowDiagnosisFromDoctorCell1 = document.getElementById("secondRowDiagnosisFromDoctorCell1")
+const secondDiagnosisFromDoctorDiagnose = document.getElementById("secondDiagnosisFromDoctorDiagnose")
+const secondRowDiagnosisFromDoctorCell2 = document.getElementById("secondRowDiagnosisFromDoctorCell2")
+const secondDiagnosisFromDoctorDescription = document.getElementById("secondDiagnosisFromDoctorDescription")
 
-let firstRowDiagnosisFromDoctor = document.getElementById("firstRowDiagnosisFromDoctor")
-let firstRowDiagnosisFromDoctorCell1 = document.getElementById("firstRowDiagnosisFromDoctorCell1")
-let firstDiagnosisFromDoctorDiagnose = document.getElementById("firstDiagnosisFromDoctorDiagnose")
-let firstRowDiagnosisFromDoctorCell2 = document.getElementById("firstRowDiagnosisFromDoctorCell2")
-let firstDiagnosisFromDoctorDescription = document.getElementById("firstDiagnosisFromDoctorDescription")
+const thirdRowDiagnosisFromDoctor = document.getElementById("thirdRowDiagnosisFromDoctor")
+const thirdRowDiagnosisFromDoctorCell1 = document.getElementById("thirdRowDiagnosisFromDoctorCell1")
+const thirdDiagnosisFromDoctorDiagnose = document.getElementById("thirdDiagnosisFromDoctorDiagnose")
+const thirdRowDiagnosisFromDoctorCell2 = document.getElementById("thirdRowDiagnosisFromDoctorCell2")
+const thirdDiagnosisFromDoctorDescription = document.getElementById("thirdDiagnosisFromDoctorDescription")
 
-let secondRowDiagnosisFromDoctor = document.getElementById("secondRowDiagnosisFromDoctor")
-let secondRowDiagnosisFromDoctorCell1 = document.getElementById("secondRowDiagnosisFromDoctorCell1")
-let secondDiagnosisFromDoctorDiagnose = document.getElementById("secondDiagnosisFromDoctorDiagnose")
-let secondRowDiagnosisFromDoctorCell2 = document.getElementById("secondRowDiagnosisFromDoctorCell2")
-let secondDiagnosisFromDoctorDescription = document.getElementById("secondDiagnosisFromDoctorDescription")
+const fourthRowDiagnosisFromDoctor = document.getElementById("fourthRowDiagnosisFromDoctor")
+const fourthRowDiagnosisFromDoctorCell1 = document.getElementById("fourthRowDiagnosisFromDoctorCell1")
+const fourthDiagnosisFromDoctorDiagnose = document.getElementById("fourthDiagnosisFromDoctorDiagnose")
+const fourthRowDiagnosisFromDoctorCell2 = document.getElementById("fourthRowDiagnosisFromDoctorCell2")
+const fourthDiagnosisFromDoctorDescription = document.getElementById("fourthDiagnosisFromDoctorDescription")
 
-let thirdRowDiagnosisFromDoctor = document.getElementById("thirdRowDiagnosisFromDoctor")
-let thirdRowDiagnosisFromDoctorCell1 = document.getElementById("thirdRowDiagnosisFromDoctorCell1")
-let thirdDiagnosisFromDoctorDiagnose = document.getElementById("thirdDiagnosisFromDoctorDiagnose")
-let thirdRowDiagnosisFromDoctorCell2 = document.getElementById("thirdRowDiagnosisFromDoctorCell2")
-let thirdDiagnosisFromDoctorDescription = document.getElementById("thirdDiagnosisFromDoctorDescription")
+const curedButton = document.getElementById("cured-button")
+const addDiagnoseButton = document.getElementById("add-diagnose-button")
 
-let fourthRowDiagnosisFromDoctor = document.getElementById("fourthRowDiagnosisFromDoctor")
-let fourthRowDiagnosisFromDoctorCell1 = document.getElementById("fourthRowDiagnosisFromDoctorCell1")
-let fourthDiagnosisFromDoctorDiagnose = document.getElementById("fourthDiagnosisFromDoctorDiagnose")
-let fourthRowDiagnosisFromDoctorCell2 = document.getElementById("fourthRowDiagnosisFromDoctorCell2")
-let fourthDiagnosisFromDoctorDescription = document.getElementById("fourthDiagnosisFromDoctorDescription")
+const toothPictures = document.getElementById("toothPictures");
 
+const firstRowCheckBox = document.getElementById("first");
+const secondRowCheckBox = document.getElementById("second");
+const thirdRowCheckBox = document.getElementById("third");
+const fourthRowCheckBox = document.getElementById("fourth");
+const paymentsForm = document.getElementById("paymentsForm");
 
-let curedButton = document.getElementById("cured-button")
-let addDiagnoseButton = document.getElementById("add-diagnose-button")
+const firstRowService = document.getElementById("firstRowService")
+const firstRowDescription = document.getElementById("firstRowDescription")
+const firstRowPrice = document.getElementById("firstRowPrice")
 
+const secondRowService = document.getElementById("secondRowService")
+const secondRowDescription = document.getElementById("secondRowDescription")
+const secondRowPrice = document.getElementById("secondRowPrice")
 
-let toothPictures = document.getElementById("toothPictures");
+const thirdRowService = document.getElementById("thirdRowService")
+const thirdRowDescription = document.getElementById("thirdRowDescription")
+const thirdRowPrice = document.getElementById("thirdRowPrice")
 
+const fourthRowService = document.getElementById("fourthRowService")
+const fourthRowDescription = document.getElementById("fourthRowDescription")
+const fourthRowPrice = document.getElementById("fourthRowPrice")
 
-let firstRowCheckBox = document.getElementById("first");
-let secondRowCheckBox = document.getElementById("second");
-let thirdRowCheckBox = document.getElementById("third");
-let fourthRowCheckBox = document.getElementById("fourth");
-let paymentsForm = document.getElementById("paymentsForm");
+const servicesDone = document.getElementById("services-done")
+const cost = document.getElementById("cost")
+const paymentButton = document.getElementById("paymentButton")
 
-let firstRowService = document.getElementById("firstRowService")
-let firstRowDescription = document.getElementById("firstRowDescription")
-let firstRowPrice = document.getElementById("firstRowPrice")
-
-let secondRowService = document.getElementById("secondRowService")
-let secondRowDescription = document.getElementById("secondRowDescription")
-let secondRowPrice = document.getElementById("secondRowPrice")
-
-let thirdRowService = document.getElementById("thirdRowService")
-let thirdRowDescription = document.getElementById("thirdRowDescription")
-let thirdRowPrice = document.getElementById("thirdRowPrice")
-
-let fourthRowService = document.getElementById("fourthRowService")
-let fourthRowDescription = document.getElementById("fourthRowDescription")
-let fourthRowPrice = document.getElementById("fourthRowPrice")
-
-
-let servicesDone = document.getElementById("services-done")
-let cost = document.getElementById("cost")
-let paymentButton = document.getElementById("paymentButton")
-
-
-let nameField = document.getElementById("name");
-let dateOfBirthdayField = document.getElementById("dateOfBirthday");
-let phoneField = document.getElementById("phone");
-let eMailField = document.getElementById("e-mail");
-let allergiesField = document.getElementById("allergies");
+const nameField = document.getElementById("name");
+const dateOfBirthdayField = document.getElementById("dateOfBirthday");
+const phoneField = document.getElementById("phone");
+const eMailField = document.getElementById("e-mail");
+const allergiesField = document.getElementById("allergies");
 let dataAppointment = {};
 let toothCard = {};
 let selectedRowDiagnosisOfPatient = -1;
 let selectedRowDiagnosisFromDoctor = -1;
 let diagnosisTableValue = [];
 let diagnosisFromDoctorTableValue = [];
-let selectedPayments = [];
+const selectedPayments = [];
 let services = [];
 
 
-getAppointment()
-
-
-function getAppointment() {
-  let query = window.location.href.split('/');
-  let appointmentId = query[query.length - 1]
-  GetUrl(`appointments/${appointmentId}`).then((data) => {
+const getAppointment = () => {
+  const query = window.location.href.split('/');
+  const appointmentId = query[query.length - 1]
+  get(`appointments/${appointmentId}`).then((data) => {
     dataAppointment = data;
     getUserInfo(dataAppointment['user-id'])
     getRequests(dataAppointment['user-id'])
     getUserToothCard(dataAppointment['user-id'])
   }).catch((error) => {
     console.error(error)
-    createCalendar(date.getMonth(), date.getFullYear())
   })
 }
 
-function getUserInfo(patientId) {
-  GetUrl(`user/${patientId}`).then(data => {
-    nameField.innerText = data['full-name'];
-    dateOfBirthdayField.innerText = data.dateOfBirthday
-    phoneField.innerText = data.phone
-    eMailField.innerText = data['e-mail']
-    allergiesField.innerText = data.allergies
+getAppointment()
+
+const getUserInfo = (patientId) => {
+  get(`user/${patientId}`).then(data => {
+    const {id, name, surname, patronymic, dateOfBirthday, phone, allergies, photo, photoName, address} = data;
+    const email = data['e-mail'];
+    const patient = new User(
+      id,
+      name,
+      surname,
+      patronymic,
+      dateOfBirthday,
+      phone,
+      email,
+      allergies,
+      photo,
+      photoName,
+      address
+    )
+    nameField.innerText = patient.fullName;
+    dateOfBirthdayField.innerText = patient.dateOfBirthday
+    phoneField.innerText = patient.phone
+    eMailField.innerText = patient.email
+    allergiesField.innerText = patient.allergies
   }).catch(error => console.error(error));
 }
 
-function getRequests(patientId) {
-  GetUrl(`user/requests/${patientId}`).then(data => {
+const getRequests = (patientId) => {
+  get(`user/requests/${patientId}`).then(data => {
     firstRequestCell1.innerText = data[0] ? data[0].date : '';
     firstRequestCell2.innerText = data[0] ? data[0].description : '';
     secondRequestCell1.innerText = data[1] ? data[1].date : '';
@@ -195,45 +198,46 @@ function getRequests(patientId) {
   }).catch(error => console.error(error));
 }
 
-function getServices() {
-  GetUrl(`doctors/${userId}/services`).then(data => {
+const getServices = () => {
+  get(`doctors/${userId}/services`).then(data => {
     services = data;
     updateServicesTable()
   }).catch(error => console.error(error));
 }
 
-function getUserToothCard(patientId) {
-  GetUrl(`user/tooth-card/${patientId}`).then((data) => {
+const getUserToothCard = (patientId) => {
+  get(`user/tooth-card/${patientId}`).then((data) => {
     toothCard = data;
     updateToothCard();
   }).catch(error => console.error(error));
 }
 
-function getToothPictures(patientId) {
-  GetUrl(`user/tooth/${patientId}`).then(data => {
+const getToothPictures = (patientId) => {
+  get(`user/tooth/${patientId}`).then(data => {
     data.forEach((picture) => {
-      let img = document.createElement('img');
+      const img = document.createElement('img');
       img.classList.add("tooth-picture");
       img.src = picture.data;
       toothPictures.appendChild(img);
     })
   }).catch(error => console.error(error));
 }
-function getUserDiagnosis(patientId) {
-  GetUrl(`user/diagnosis/${patientId}`).then(data => {
+
+const getUserDiagnosis = (patientId) => {
+  get(`user/diagnosis/${patientId}`).then(data => {
     diagnosisTableValue = data
     updateDiagnosisTable()
   }).catch(error => console.error(error));
 }
 
-function getDiagnosis() {
-  GetUrl(`diagnosis`).then(data => {
+const getDiagnosis = () => {
+  get(`diagnosis`).then(data => {
     diagnosisFromDoctorTableValue = data
     updateDiagnosisFromDoctorTable()
   }).catch(error => console.error(error));
 }
 
-function updateDiagnosisTable() {
+const updateDiagnosisTable = () => {
   if (diagnosisTableValue[0]) {
     firstDiagnosisOfPatientDiagnose.textContent = diagnosisTableValue[0].name
     firstDiagnosisOfPatientDescription.textContent = diagnosisTableValue[0].description
@@ -275,7 +279,7 @@ function updateDiagnosisTable() {
   }
 }
 
-function updateDiagnosisFromDoctorTable() {
+const updateDiagnosisFromDoctorTable = () => {
   if (diagnosisFromDoctorTableValue[0]) {
     firstDiagnosisFromDoctorDiagnose.textContent = diagnosisFromDoctorTableValue[0].name
     firstDiagnosisFromDoctorDescription.textContent = diagnosisFromDoctorTableValue[0].description
@@ -309,7 +313,7 @@ function updateDiagnosisFromDoctorTable() {
   }
 }
 
-function updateServicesTable() {
+const updateServicesTable = () => {
   if (services[0]) {
     firstRowService.textContent = services[0].service
     firstRowDescription.textContent = services[0].description
@@ -353,171 +357,151 @@ function updateServicesTable() {
 
 firstRowDiagnosisFromDoctor.addEventListener("click", (e) => {
   if (selectedRowDiagnosisFromDoctor !== 0) {
-    firstRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor")
-    firstRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor-selected")
-    firstRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor")
-    firstRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor-selected")
+    changeClassRows([
+      firstRowDiagnosisFromDoctorCell1,
+      firstRowDiagnosisFromDoctorCell2
+    ], "cell-diagnosis-from-doctor", "cell-diagnosis-from-doctor-selected")
 
-    secondRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor-selected")
-    secondRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor")
-    secondRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor-selected")
-    secondRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor")
-
-    thirdRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor-selected")
-    thirdRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor")
-    thirdRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor-selected")
-    thirdRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor")
-
-    fourthRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor-selected")
-    fourthRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor")
-    fourthRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor-selected")
-    fourthRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor")
+    changeClassRows([
+      secondRowDiagnosisFromDoctorCell1,
+      secondRowDiagnosisFromDoctorCell2,
+      thirdRowDiagnosisFromDoctorCell1,
+      thirdRowDiagnosisFromDoctorCell2,
+      fourthRowDiagnosisFromDoctorCell1,
+      fourthRowDiagnosisFromDoctorCell2
+    ], "cell-diagnosis-from-doctor-selected", "cell-diagnosis-from-doctor")
 
     selectedRowDiagnosisFromDoctor = 0;
   } else {
-    firstRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor-selected")
-    firstRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor")
-    firstRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor-selected")
-    firstRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor")
+    changeClassRows([
+      firstRowDiagnosisFromDoctorCell1,
+      firstRowDiagnosisFromDoctorCell2
+    ], "cell-diagnosis-from-doctor-selected", "cell-diagnosis-from-doctor")
+
     selectedRowDiagnosisFromDoctor = -1;
   }
 })
 
 secondRowDiagnosisFromDoctor.addEventListener("click", (e) => {
   if (selectedRowDiagnosisFromDoctor !== 1) {
-    secondRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor")
-    secondRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor-selected")
-    secondRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor")
-    secondRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor-selected")
+    changeClassRows([
+      secondRowDiagnosisFromDoctorCell1,
+      secondRowDiagnosisFromDoctorCell2
+    ], "cell-diagnosis-from-doctor", "cell-diagnosis-from-doctor-selected")
 
-    firstRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor-selected")
-    firstRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor")
-    firstRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor-selected")
-    firstRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor")
-
-    thirdRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor-selected")
-    thirdRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor")
-    thirdRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor-selected")
-    thirdRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor")
-
-    fourthRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor-selected")
-    fourthRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor")
-    fourthRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor-selected")
-    fourthRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor")
+    changeClassRows([
+      firstRowDiagnosisFromDoctorCell1,
+      firstRowDiagnosisFromDoctorCell2,
+      thirdRowDiagnosisFromDoctorCell1,
+      thirdRowDiagnosisFromDoctorCell2,
+      fourthRowDiagnosisFromDoctorCell1,
+      fourthRowDiagnosisFromDoctorCell2
+    ], "cell-diagnosis-from-doctor-selected", "cell-diagnosis-from-doctor")
 
     selectedRowDiagnosisFromDoctor = 1;
   } else {
-    secondRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor-selected")
-    secondRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor")
-    secondRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor-selected")
-    secondRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor")
+    changeClassRows([
+      secondRowDiagnosisFromDoctorCell1,
+      secondRowDiagnosisFromDoctorCell2
+    ], "cell-diagnosis-from-doctor-selected", "cell-diagnosis-from-doctor")
+
     selectedRowDiagnosisFromDoctor = -1;
   }
 })
 
 thirdRowDiagnosisFromDoctor.addEventListener("click", (e) => {
   if (selectedRowDiagnosisFromDoctor !== 2) {
-    thirdRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor")
-    thirdRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor-selected")
-    thirdRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor")
-    thirdRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor-selected")
+    changeClassRows([
+      thirdRowDiagnosisFromDoctorCell1,
+      thirdRowDiagnosisFromDoctorCell2
+    ], "cell-diagnosis-from-doctor", "cell-diagnosis-from-doctor-selected")
 
-    secondRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor-selected")
-    secondRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor")
-    secondRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor-selected")
-    secondRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor")
-
-    firstRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor-selected")
-    firstRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor")
-    firstRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor-selected")
-    firstRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor")
-
-    fourthRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor-selected")
-    fourthRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor")
-    fourthRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor-selected")
-    fourthRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor")
+    changeClassRows([
+      firstRowDiagnosisFromDoctorCell1,
+      firstRowDiagnosisFromDoctorCell2,
+      secondRowDiagnosisFromDoctorCell1,
+      secondRowDiagnosisFromDoctorCell2,
+      fourthRowDiagnosisFromDoctorCell1,
+      fourthRowDiagnosisFromDoctorCell2
+    ], "cell-diagnosis-from-doctor-selected", "cell-diagnosis-from-doctor")
 
     selectedRowDiagnosisFromDoctor = 2;
   } else {
-    thirdRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor-selected")
-    thirdRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor")
-    thirdRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor-selected")
-    thirdRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor")
+    changeClassRows([
+      thirdRowDiagnosisFromDoctorCell1,
+      thirdRowDiagnosisFromDoctorCell2
+    ], "cell-diagnosis-from-doctor-selected", "cell-diagnosis-from-doctor")
+
     selectedRowDiagnosisFromDoctor = -1;
   }
 })
 
 fourthRowDiagnosisFromDoctor.addEventListener("click", (e) => {
   if (selectedRowDiagnosisFromDoctor !== 3) {
-    fourthRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor")
-    fourthRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor-selected")
-    fourthRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor")
-    fourthRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor-selected")
+    changeClassRows([
+      fourthRowDiagnosisFromDoctorCell1,
+      fourthRowDiagnosisFromDoctorCell2
+    ], "cell-diagnosis-from-doctor", "cell-diagnosis-from-doctor-selected")
 
-    secondRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor-selected")
-    secondRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor")
-    secondRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor-selected")
-    secondRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor")
-
-    thirdRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor-selected")
-    thirdRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor")
-    thirdRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor-selected")
-    thirdRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor")
-
-    firstRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor-selected")
-    firstRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor")
-    firstRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor-selected")
-    firstRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor")
+    changeClassRows([
+      firstRowDiagnosisFromDoctorCell1,
+      firstRowDiagnosisFromDoctorCell2,
+      secondRowDiagnosisFromDoctorCell1,
+      secondRowDiagnosisFromDoctorCell2,
+      thirdRowDiagnosisFromDoctorCell1,
+      thirdRowDiagnosisFromDoctorCell2
+    ], "cell-diagnosis-from-doctor-selected", "cell-diagnosis-from-doctor")
 
     selectedRowDiagnosisFromDoctor = 3;
   } else {
-    fourthRowDiagnosisFromDoctorCell1.classList.remove("cell-diagnosis-from-doctor-selected")
-    fourthRowDiagnosisFromDoctorCell1.classList.add("cell-diagnosis-from-doctor")
-    fourthRowDiagnosisFromDoctorCell2.classList.remove("cell-diagnosis-from-doctor-selected")
-    fourthRowDiagnosisFromDoctorCell2.classList.add("cell-diagnosis-from-doctor")
+    changeClassRows([
+      fourthRowDiagnosisFromDoctorCell1,
+      fourthRowDiagnosisFromDoctorCell2
+    ], "cell-diagnosis-from-doctor", "cell-diagnosis-from-doctor-selected")
+
     selectedRowDiagnosisFromDoctor = -1;
   }
 })
 
 
-function actualDiagnosisMapper(isActual) {
+const actualDiagnosisMapper = (isActual) => {
   return isActual ? "Не вылечено" : "Вылечено"
 }
 
-var toothPictureDialog = document.querySelector('#toothPicture');
-document.querySelector('#openToothPicture').onclick = function() {
+const toothPictureDialog = document.querySelector('#toothPicture');
+document.querySelector('#openToothPicture').onclick = () => {
   getToothPictures(dataAppointment['user-id'])
   toothPictureDialog.style.display = 'flex';
   toothPictureDialog.show();
 }
-document.querySelector('#toothPictureClose').onclick = function() {
+document.querySelector('#toothPictureClose').onclick = () => {
   toothPictureDialog.style.display = null;
   toothPictureDialog.close();
 }
 
-var diagnosisDialog = document.querySelector('#diagnosisDialog');
-document.querySelector('#openDiagnosisDialog').onclick = function() {
+const diagnosisDialog = document.querySelector('#diagnosisDialog');
+document.querySelector('#openDiagnosisDialog').onclick = () => {
   getUserDiagnosis(dataAppointment['user-id'])
   getDiagnosis()
   diagnosisDialog.style.display = 'flex';
   diagnosisDialog.show();
 }
-document.querySelector('#diagnosisDialogClose').onclick = function() {
+document.querySelector('#diagnosisDialogClose').onclick = () => {
   diagnosisDialog.style.display = null;
   diagnosisDialog.close();
 }
 
-
-var paymentsDialog = document.querySelector('#paymentsDialog');
-document.querySelector('#openPaymentsDialog').onclick = function() {
+const paymentsDialog = document.querySelector('#paymentsDialog');
+document.querySelector('#openPaymentsDialog').onclick = () => {
   getServices()
   paymentsDialog.style.display = 'flex';
   paymentsDialog.show();
 }
-document.querySelector('#paymentsDialogClose').onclick = function() {
+document.querySelector('#paymentsDialogClose').onclick = () => {
   paymentsDialog.style.display = null;
   paymentsDialog.close();
 }
+
 left8Up.addEventListener("change", (e) => {
   toothCard.left8Up = left8Up.selectedIndex
 });
@@ -617,168 +601,128 @@ right8Down.addEventListener("change", (e) => {
 
 firstRowDiagnosisOfPatient.addEventListener("click", (e) => {
   if (selectedRowDiagnosisOfPatient !== 0) {
-    firstRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient")
-    firstRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient-selected")
-    firstRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient")
-    firstRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient-selected")
-    firstRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient")
-    firstRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient-selected")
+    changeClassRows([
+      firstRowDiagnosisOfPatientCell1,
+      firstRowDiagnosisOfPatientCell2,
+      firstRowDiagnosisOfPatientCell3
+    ], "cell-diagnosis-of-patient", "cell-diagnosis-of-patient-selected")
 
-    secondRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient-selected")
-    secondRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient")
-    secondRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient-selected")
-    secondRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient")
-    secondRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient-selected")
-    secondRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient")
-
-    thirdRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient-selected")
-    thirdRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient")
-    thirdRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient-selected")
-    thirdRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient")
-    thirdRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient-selected")
-    thirdRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient")
-
-    fourthRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient-selected")
-    fourthRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient")
-    fourthRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient-selected")
-    fourthRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient")
-    fourthRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient-selected")
-    fourthRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient")
+    changeClassRows([
+      secondRowDiagnosisOfPatientCell1,
+      secondRowDiagnosisOfPatientCell2,
+      secondRowDiagnosisOfPatientCell3,
+      thirdRowDiagnosisOfPatientCell1,
+      thirdRowDiagnosisOfPatientCell2,
+      thirdRowDiagnosisOfPatientCell3,
+      fourthRowDiagnosisOfPatientCell1,
+      fourthRowDiagnosisOfPatientCell2,
+      fourthRowDiagnosisOfPatientCell3
+    ], "cell-diagnosis-of-patient-selected", "cell-diagnosis-of-patient")
 
     selectedRowDiagnosisOfPatient = 0;
   } else {
-    firstRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient-selected")
-    firstRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient")
-    firstRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient-selected")
-    firstRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient")
-    firstRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient-selected")
-    firstRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient")
+    changeClassRows([
+      firstRowDiagnosisOfPatientCell1,
+      firstRowDiagnosisOfPatientCell2,
+      firstRowDiagnosisOfPatientCell3
+    ], "cell-diagnosis-of-patient-selected", "cell-diagnosis-of-patient")
+
     selectedRowDiagnosisOfPatient = -1;
   }
 })
 
 secondRowDiagnosisOfPatient.addEventListener("click", (e) => {
   if (selectedRowDiagnosisOfPatient !== 1) {
-    secondRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient")
-    secondRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient-selected")
-    secondRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient")
-    secondRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient-selected")
-    secondRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient")
-    secondRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient-selected")
+    changeClassRows([
+      secondRowDiagnosisOfPatientCell1,
+      secondRowDiagnosisOfPatientCell2,
+      secondRowDiagnosisOfPatientCell3
+    ], "cell-diagnosis-of-patient", "cell-diagnosis-of-patient-selected")
 
-    firstRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient-selected")
-    firstRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient")
-    firstRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient-selected")
-    firstRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient")
-    firstRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient-selected")
-    firstRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient")
-
-    thirdRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient-selected")
-    thirdRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient")
-    thirdRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient-selected")
-    thirdRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient")
-    thirdRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient-selected")
-    thirdRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient")
-
-    fourthRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient-selected")
-    fourthRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient")
-    fourthRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient-selected")
-    fourthRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient")
-    fourthRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient-selected")
-    fourthRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient")
+    changeClassRows([
+      firstRowDiagnosisOfPatientCell1,
+      firstRowDiagnosisOfPatientCell2,
+      firstRowDiagnosisOfPatientCell3,
+      thirdRowDiagnosisOfPatientCell1,
+      thirdRowDiagnosisOfPatientCell2,
+      thirdRowDiagnosisOfPatientCell3,
+      fourthRowDiagnosisOfPatientCell1,
+      fourthRowDiagnosisOfPatientCell2,
+      fourthRowDiagnosisOfPatientCell3
+    ], "cell-diagnosis-of-patient-selected", "cell-diagnosis-of-patient")
 
     selectedRowDiagnosisOfPatient = 1;
   } else {
-    secondRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient-selected")
-    secondRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient")
-    secondRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient-selected")
-    secondRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient")
-    secondRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient-selected")
-    secondRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient")
+    changeClassRows([
+      secondRowDiagnosisOfPatientCell1,
+      secondRowDiagnosisOfPatientCell2,
+      secondRowDiagnosisOfPatientCell3
+    ], "cell-diagnosis-of-patient-selected", "cell-diagnosis-of-patient")
+
     selectedRowDiagnosisOfPatient = -1;
   }
 })
 
 thirdRowDiagnosisOfPatient.addEventListener("click", (e) => {
   if (selectedRowDiagnosisOfPatient !== 2) {
-    thirdRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient")
-    thirdRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient-selected")
-    thirdRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient")
-    thirdRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient-selected")
-    thirdRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient")
-    thirdRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient-selected")
+    changeClassRows([
+      thirdRowDiagnosisOfPatientCell1,
+      thirdRowDiagnosisOfPatientCell2,
+      thirdRowDiagnosisOfPatientCell3
+    ], "cell-diagnosis-of-patient", "cell-diagnosis-of-patient-selected")
 
-    secondRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient-selected")
-    secondRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient")
-    secondRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient-selected")
-    secondRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient")
-    secondRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient-selected")
-    secondRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient")
-
-    firstRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient-selected")
-    firstRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient")
-    firstRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient-selected")
-    firstRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient")
-    firstRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient-selected")
-    firstRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient")
-
-    fourthRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient-selected")
-    fourthRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient")
-    fourthRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient-selected")
-    fourthRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient")
-    fourthRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient-selected")
-    fourthRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient")
+    changeClassRows([
+      firstRowDiagnosisOfPatientCell1,
+      firstRowDiagnosisOfPatientCell2,
+      firstRowDiagnosisOfPatientCell3,
+      secondRowDiagnosisOfPatientCell1,
+      secondRowDiagnosisOfPatientCell2,
+      secondRowDiagnosisOfPatientCell3,
+      fourthRowDiagnosisOfPatientCell1,
+      fourthRowDiagnosisOfPatientCell2,
+      fourthRowDiagnosisOfPatientCell3
+    ], "cell-diagnosis-of-patient-selected", "cell-diagnosis-of-patient")
 
     selectedRowDiagnosisOfPatient = 2;
   } else {
-    thirdRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient-selected")
-    thirdRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient")
-    thirdRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient-selected")
-    thirdRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient")
-    thirdRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient-selected")
-    thirdRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient")
+    changeClassRows([
+      thirdRowDiagnosisOfPatientCell1,
+      thirdRowDiagnosisOfPatientCell2,
+      thirdRowDiagnosisOfPatientCell3
+    ], "cell-diagnosis-of-patient-selected", "cell-diagnosis-of-patient")
+
     selectedRowDiagnosisOfPatient = -1;
   }
 })
 
 fourthRowDiagnosisOfPatient.addEventListener("click", (e) => {
   if (selectedRowDiagnosisOfPatient !== 0) {
-    fourthRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient")
-    fourthRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient-selected")
-    fourthRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient")
-    fourthRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient-selected")
-    fourthRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient")
-    fourthRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient-selected")
+    changeClassRows([
+      fourthRowDiagnosisOfPatientCell1,
+      fourthRowDiagnosisOfPatientCell2,
+      fourthRowDiagnosisOfPatientCell3
+    ], "cell-diagnosis-of-patient", "cell-diagnosis-of-patient-selected")
 
-    secondRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient-selected")
-    secondRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient")
-    secondRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient-selected")
-    secondRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient")
-    secondRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient-selected")
-    secondRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient")
-
-    thirdRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient-selected")
-    thirdRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient")
-    thirdRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient-selected")
-    thirdRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient")
-    thirdRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient-selected")
-    thirdRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient")
-
-    firstRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient-selected")
-    firstRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient")
-    firstRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient-selected")
-    firstRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient")
-    firstRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient-selected")
-    firstRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient")
+    changeClassRows([
+      firstRowDiagnosisOfPatientCell1,
+      firstRowDiagnosisOfPatientCell2,
+      firstRowDiagnosisOfPatientCell3,
+      secondRowDiagnosisOfPatientCell1,
+      secondRowDiagnosisOfPatientCell2,
+      secondRowDiagnosisOfPatientCell3,
+      thirdRowDiagnosisOfPatientCell1,
+      thirdRowDiagnosisOfPatientCell2,
+      thirdRowDiagnosisOfPatientCell3
+    ], "cell-diagnosis-of-patient-selected", "cell-diagnosis-of-patient")
 
     selectedRowDiagnosisOfPatient = 0;
   } else {
-    fourthRowDiagnosisOfPatientCell1.classList.remove("cell-diagnosis-of-patient-selected")
-    fourthRowDiagnosisOfPatientCell1.classList.add("cell-diagnosis-of-patient")
-    fourthRowDiagnosisOfPatientCell2.classList.remove("cell-diagnosis-of-patient-selected")
-    fourthRowDiagnosisOfPatientCell2.classList.add("cell-diagnosis-of-patient")
-    fourthRowDiagnosisOfPatientCell3.classList.remove("cell-diagnosis-of-patient-selected")
-    fourthRowDiagnosisOfPatientCell3.classList.add("cell-diagnosis-of-patient")
+    changeClassRows([
+      fourthRowDiagnosisOfPatientCell1,
+      fourthRowDiagnosisOfPatientCell2,
+      fourthRowDiagnosisOfPatientCell3
+    ], "cell-diagnosis-of-patient-selected", "cell-diagnosis-of-patient")
+
     selectedRowDiagnosisOfPatient = -1;
   }
 })
@@ -793,11 +737,12 @@ curedButton.addEventListener("click", (e) => {
     diagnose: diagnoseOfPatient
   }
 
-  PostUrlWithResponse('user/diagnosis/update', updateBody)
+  post('user/diagnosis/update', updateBody)
     .then((data) => {
       alert("Статус диагноза изменен")
       diagnosisTableValue = data
       updateDiagnosisTable()
+      clearDiagnosisOfPatient()
     })
     .catch((error) =>  alert("Статус диагноза не изменен"));
 })
@@ -810,15 +755,46 @@ addDiagnoseButton.addEventListener("click", (e) => {
     diagnose: newDiagnose
   }
 
-  PostUrlWithResponse('user/diagnosis/create', createBody)
+  post('user/diagnosis/create', createBody)
     .then((data) => {
       alert("Диагноз добавлен")
       diagnosisTableValue = data
       updateDiagnosisTable()
+      clearDiagnosisOfPatient()
     })
     .catch((error) =>  alert("Диагноз не добавлен"));
 })
 
+const clearDiagnosisOfPatient =() => {
+  changeClassRows([
+    firstRowDiagnosisOfPatientCell1,
+    firstRowDiagnosisOfPatientCell2,
+    firstRowDiagnosisOfPatientCell3,
+    secondRowDiagnosisOfPatientCell1,
+    secondRowDiagnosisOfPatientCell2,
+    secondRowDiagnosisOfPatientCell3,
+    thirdRowDiagnosisOfPatientCell1,
+    thirdRowDiagnosisOfPatientCell2,
+    thirdRowDiagnosisOfPatientCell3,
+    fourthRowDiagnosisOfPatientCell1,
+    fourthRowDiagnosisOfPatientCell2,
+    fourthRowDiagnosisOfPatientCell3
+  ], "cell-diagnosis-of-patient-selected", "cell-diagnosis-of-patient")
+
+  changeClassRows([
+    firstRowDiagnosisFromDoctorCell1,
+    firstRowDiagnosisFromDoctorCell2,
+    secondRowDiagnosisFromDoctorCell1,
+    secondRowDiagnosisFromDoctorCell2,
+    thirdRowDiagnosisFromDoctorCell1,
+    thirdRowDiagnosisFromDoctorCell2,
+    fourthRowDiagnosisFromDoctorCell1,
+    fourthRowDiagnosisFromDoctorCell2
+  ], "cell-diagnosis-from-doctor-selected", "cell-diagnosis-from-doctor")
+
+  selectedRowDiagnosisFromDoctor = -1;
+  selectedRowDiagnosisOfPatient = -1;
+}
 
 firstRowCheckBox.addEventListener("change", (e) => {
   const index = selectedPayments.findIndex((selected) => selected === 0);
@@ -843,17 +819,17 @@ fourthRowCheckBox.addEventListener("change", (e) => {
 
 paymentButton.addEventListener("click", (e) => {
   if (selectedPayments.length > 0) {
-    let resultServices = []
+    const resultServices = []
     selectedPayments.forEach((selected) => {
       resultServices.push(services[selected]);
     });
 
     const paymentBody = {
-      'user-id': dataAppointment['user-id'],
+      userId: dataAppointment['user-id'],
       services: resultServices
     }
-    PostUrl(`appointments/${dataAppointment.id}/finish`, paymentBody).then((data) => {
-      PostUrl(`user/tooth-card/${dataAppointment['user-id']}`, toothCard).then((data) => {
+    postWithoutResponse(`appointments/${dataAppointment.id}/finish`, paymentBody).then((data) => {
+      postWithoutResponse(`user/tooth-card/${dataAppointment['user-id']}/update`, toothCard).then((data) => {
         alert("Приём окончен");
         location.assign('/doctor/reception');
       }).catch((error) => console.log(error))
@@ -861,18 +837,20 @@ paymentButton.addEventListener("click", (e) => {
   }
 })
 
-function updatePaymentInfo() {
+const updatePaymentInfo = () => {
   let summary = 0
   servicesDone.innerText = "Оказанные услуги: "
   cost.innerText = "Стоимость: "
   selectedPayments.forEach((selected) => {
-    servicesDone.innerText += " " + services[selected].service + ", "
-    summary += services[selected].price
+    if (services[selected]) {
+      servicesDone.innerText += " " + services[selected].service + ", "
+      summary += services[selected].price
+    }
   })
   cost.innerText += " " + summary + " Р."
 }
 
-function updateToothCard() {
+const updateToothCard = () => {
   left8Up.selectedIndex = toothCard.left8Up;
   left8Down.selectedIndex = toothCard.left8Down;
   right1Up.selectedIndex = toothCard.right1Up;
@@ -905,36 +883,4 @@ function updateToothCard() {
   left1Down.selectedIndex = toothCard.left1Down;
   right8Up.selectedIndex = toothCard.right8Up;
   right8Down.selectedIndex = toothCard.right8Down;
-}
-
-function GetCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
-}
-
-function GetUrl(getUrl) {
-  return fetch(url + getUrl, {
-    method: 'GET',
-    headers: headers
-  })
-    .then(response => response.json())
-}
-
-function PostUrl(postUrl, body) {
-  return fetch(url + postUrl, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(body)
-  })
-    .then(response => response)
-}
-
-function PostUrlWithResponse(postUrl, body) {
-  return fetch(url + postUrl, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(body)
-  })
-    .then(response => response.json())
 }

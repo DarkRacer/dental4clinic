@@ -4,6 +4,7 @@
   "description": "",
   "keywords": "",
   "license": "",
+  "type": "module",
   "author": "",
   "scripts": {
     "build": "npm run convertToCss & parcel build index.html",

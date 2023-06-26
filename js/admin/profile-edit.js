@@ -1,43 +1,49 @@
-const url = 'https://af2f-46-164-217-97.ngrok-free.app/';
-var token = GetCookie("access_token")
-const headers = {
-  "Host":  'af2f-46-164-217-97.ngrok-free.app',
-  "Origin":  'https://af2f-46-164-217-97.ngrok-free.app/',
-  "Accept": "*/*",
-  'ngrok-skip-browser-warning':true
-}
+import { get, postWithoutResponse } from "../core/rest.js";
+import {GenericUser} from "../core/model/user.js";
 
+const query = window.location.href.split('/');
+const userId = query[query.length - 2];
 
-let query = window.location.href.split('/');
-let userId = query[query.length - 2];
-
-let editForm = document.getElementById("edit-form");
-let saveButton = document.getElementById("save-button");
+const editForm = document.getElementById("edit-form");
+const photoField = document.getElementById("photo-field");
+const saveButton = document.getElementById("save-button");
 let imageString ='';
+let fileName ='';
 
 
-getUserInfo();
-
-function getUserInfo() {
-  GetUrl(`user/admin/${userId}`).then(data => {
-    editForm.name.value = data.name;
-    editForm.surname.value = data.surname;
-    editForm.patronymic.value = data.patronymic;
-    imageString = data.photo;
+const getUserInfo = () => {
+  get(`user/admin/${userId}`).then(data => {
+    const {id, name, surname, patronymic, photo, photoName} = data;
+    const user = new GenericUser(
+      id,
+      name,
+      surname,
+      patronymic,
+      photo,
+      photoName
+    )
+    editForm.name.value = user.name;
+    editForm.surname.value = user.surname;
+    editForm.patronymic.value = user.patronymic;
+    imageString = user.photo;
   }).catch(error => console.error(error));
 }
+
+getUserInfo();
 
 saveButton.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const editBody = {
-    name: editForm.name.value,
-    surname: editForm.surname.value,
-    patronymic: editForm.patronymic.value,
-    photo: imageString
-  }
+  const editBody = new GenericUser(
+    userId,
+    editForm.name.value,
+    editForm.surname.value,
+    editForm.patronymic.value,
+    imageString,
+    fileName
+)
 
-  PostUrl(`user/edit/${userId}`, editBody).then(data => {
+  postWithoutResponse(`user/edit/${userId}`, editBody).then(data => {
     alert('Данные обновлены');
     location.assign('/profile/3');
   })
@@ -47,39 +53,18 @@ saveButton.addEventListener("click", (e) => {
 
 })
 
-function imageUploaded() {
-  var file = document.querySelector(
+photoField.addEventListener("change", (e) => {
+  imageUploaded();
+})
+
+const imageUploaded = () => {
+  const file = document.querySelector(
     'input[type=file]')['files'][0];
 
-  var reader = new FileReader();
+  const reader = new FileReader();
+  fileName = file.name;
 
-  reader.onload = function () {
-    imageString = reader.result;
-  }
+  reader.onload = () => imageString = reader.result;
   reader.readAsDataURL(file);
 }
 
-function GetCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
-}
-
-function GetUrl(getUrl) {
-  console.log("get " + getUrl);
-  return fetch(url + getUrl, {
-    method: 'GET',
-    headers: headers
-  })
-    .then(response => response.json())
-}
-
-function PostUrl(postUrl, body) {
-  console.log("get " + postUrl);
-  return fetch(url + postUrl, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(body)
-  })
-    .then(response => response)
-}
