@@ -36,7 +36,7 @@
 }
 .callback-body {
   box-sizing: border-box;
-  padding: 1% 2% 0 2%;
+  padding: 1% $default-padding $default-padding $default-padding;
   width: 60%;
   overflow: hidden;
   position: relative;
@@ -116,6 +116,7 @@
   width: 35%;
   height: 15%;
   border-radius: 3rem;
+  margin-bottom: $default-margin;
   @extend %button;
 }
 .additional-field {
