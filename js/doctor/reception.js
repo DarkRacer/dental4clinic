@@ -75,6 +75,17 @@ const phoneField = document.getElementById("phone");
 const eMailField = document.getElementById("e-mail");
 const allergiesField = document.getElementById("allergies");
 
+const getAppointments = () => {
+  get(`appointments/doctor/${userId}`).then((data) => {
+    dataAppointments = data;
+    createCalendar(dataAppointments, date.getMonth(), date.getFullYear(), getInfoByDate);
+    findNextAppointment();
+  }).catch((error) => {
+    console.error(error)
+    createCalendar(dataAppointments, date.getMonth(), date.getFullYear(), getInfoByDate);
+  })
+}
+
 getAppointments()
 
 const patientWithoutCalendarDialog = document.querySelector('#patientWithoutCalendarDialog');
@@ -83,17 +94,18 @@ document.querySelector('#openPatientWithoutCalendarDialog').onclick = () => {
   patientWithoutCalendarDialog.style.display = 'flex';
   patientWithoutCalendarDialog.show();
 }
+
 document.querySelector('#patientWithoutCalendarDialogClose').onclick = () => {
   patientWithoutCalendarDialog.style.display = null;
   patientWithoutCalendarDialog.close();
 }
-
 const infoPatientDialog = document.querySelector('#infoPatientDialog');
 document.querySelector('#openInfoPatientDialog').onclick = () => {
   getUserInfo(patientId)
   infoPatientDialog.style.display = 'flex';
   infoPatientDialog.show();
 }
+
 document.querySelector('#infoPatientDialogClose').onclick = () => {
   infoPatientDialog.style.display = null;
   infoPatientDialog.close();
@@ -112,18 +124,7 @@ startButton.addEventListener("click", (e) => {
   location.assign(`/doctor/reception/${nextAppointment.id}`);
 })
 
-function getAppointments() {
-  get(`appointments/doctor/${userId}`).then((data) => {
-    dataAppointments = data;
-    createCalendar(dataAppointments, date.getMonth(), date.getFullYear(), getInfoByDate);
-    findNextAppointment();
-  }).catch((error) => {
-    console.error(error)
-    createCalendar(dataAppointments, date.getMonth(), date.getFullYear(), getInfoByDate);
-  })
-}
-
-function getUserInfo(patientId) {
+const getUserInfo = (patientId) => {
   get(`user/${patientId}`).then(data => {
     const {id, name, surname, patronymic, dateOfBirthday, phone, allergies, photo, photoName, address} = data;
     const email = data['e-mail'];
@@ -148,11 +149,11 @@ function getUserInfo(patientId) {
   }).catch(error => console.error(error));
 }
 
-function getInfoByDate({date, appointments}, month, year) {
+const getInfoByDate = ({date, appointments}, month, year) => {
   updateInfoCard(appointments)
 }
 
-function findNextAppointment() {
+const findNextAppointment = () => {
   const currentDate = new Date();
   const datesArray = [];
   dataAppointments.forEach((appointment) => {
@@ -171,7 +172,7 @@ function findNextAppointment() {
   updateInfoCard(null)
 }
 
-function updateInfoCard(appointments) {
+const updateInfoCard = (appointments) => {
   if (appointments === null) {
     patientId = nextAppointment['user-id'];
     infoCard.innerText = `Ближайший пациент на приеме ${nextAppointment['user-name']} ${nextAppointment['date']} в ${nextAppointment['datetime']}`
@@ -187,12 +188,12 @@ function updateInfoCard(appointments) {
   }
 }
 
-function closestTo(dateToCompare, datesArray) {
+const closestTo = (dateToCompare, datesArray) => {
   const buff = datesArray.filter(date => date >=dateToCompare).sort()
   return buff.length ? buff[0] : undefined
 }
 
-function updateAppointmentsTable() {
+const updateAppointmentsTable = () => {
   if (dataAppointments[0]) {
     firstPatient.textContent = dataAppointments[0]['user-name'];
     firstDescription.textContent = dataAppointments[0].description;

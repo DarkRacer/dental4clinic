@@ -10,9 +10,7 @@ const photo = document.getElementById("photo");
 let imageString ='';
 let fileName ='';
 
-getUserInfo();
-
-function getUserInfo() {
+const getUserInfo = () => {
   get(`user/${userId}`).then(data => {
     const {id, name, surname, patronymic, dateOfBirthday, phone, allergies, photo, photoName, address} = data;
     const email = data['e-mail'];
@@ -40,6 +38,8 @@ function getUserInfo() {
     imageString = user.photo;
   }).catch(error => console.error(error));
 }
+
+getUserInfo();
 
 
 saveButton.addEventListener("click", (e) => {
@@ -73,7 +73,7 @@ photo.addEventListener("change", (e) => {
   imageUploaded();
 })
 
-function imageUploaded() {
+const imageUploaded = () => {
   const file = document.querySelector(
     'input[type=file]')['files'][0];
 

@@ -2,7 +2,8 @@ class AppointmentBody {
   constructor(date, datetime, description, doctorId) {
     this.date = date;
     this.datetime = datetime;
-    this.doctorId = datetime;
+    this.datetime = description;
+    this.doctorId = doctorId;
   }
 }
 

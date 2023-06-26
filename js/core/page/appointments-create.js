@@ -27,7 +27,7 @@ const initAppointmentsCreate = () => {
   })
 }
 
-function findDoctors() {
+const findDoctors = () => {
   if (doctorValue && serviceValue) {
     filteredDoctorsTableValue = doctorsTableValue.filter((info) => info.doctor.toLowerCase().includes(doctorValue.toLowerCase()) && info.services.toLowerCase().includes(serviceValue.toLowerCase()))
   } else if (doctorValue) {
@@ -40,7 +40,7 @@ function findDoctors() {
   updateDoctorTable()
 }
 
-function updateDoctorTable() {
+const updateDoctorTable = () => {
   if (filteredDoctorsTableValue[0]) {
     pageElements.firstDoctor.textContent = filteredDoctorsTableValue[0].doctor
     pageElements.firstServices.textContent = filteredDoctorsTableValue[0].services

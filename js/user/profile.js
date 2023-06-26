@@ -29,21 +29,7 @@ let diagnosisTableValue = [];
 const query = window.location.href.split('/');
 const userId = query[query.length - 1]
 
-getUserInfo()
-getUserDiagnosis()
-
-const dialog = document.querySelector('#toothPicture');
-document.querySelector('#openToothPicture').onclick = () => {
-  dialog.style.display = 'flex';
-  getToothPictures();
-  dialog.show();
-}
-document.querySelector('#toothPictureClose').onclick = () => {
-  dialog.style.display = null;
-  dialog.close();
-}
-
-function getUserInfo() {
+const getUserInfo = () =>{
   get(`user/${userId}`).then(data => {
     const {id, name, surname, patronymic, dateOfBirthday, phone, allergies, photo, photoName, address} = data;
     const email = data['e-mail'];
@@ -69,14 +55,28 @@ function getUserInfo() {
   }).catch(error => console.error(error));
 }
 
-function getUserDiagnosis() {
+const getUserDiagnosis = () => {
   get(`user/diagnosis/${userId}`).then(data => {
     diagnosisTableValue = data
     updateDiagnosisTable()
   }).catch(error => console.error(error));
 }
 
-function updateDiagnosisTable() {
+getUserInfo()
+getUserDiagnosis()
+
+const dialog = document.querySelector('#toothPicture');
+document.querySelector('#openToothPicture').onclick = () => {
+  dialog.style.display = 'flex';
+  getToothPictures();
+  dialog.show();
+}
+document.querySelector('#toothPictureClose').onclick = () => {
+  dialog.style.display = null;
+  dialog.close();
+}
+
+const updateDiagnosisTable = () => {
   if (diagnosisTableValue[0]) {
     firstDiagnosisName.textContent = diagnosisTableValue[0].name
     firstDiagnosisDescription.textContent = diagnosisTableValue[0].description
@@ -118,7 +118,7 @@ function updateDiagnosisTable() {
   }
 }
 
-function getToothPictures() {
+const getToothPictures = () => {
   get(`user/tooth/${userId}`).then(data => {
     data.forEach((picture) => {
       const img = document.createElement('img');
@@ -130,6 +130,6 @@ function getToothPictures() {
   }).catch(error => console.error(error));
 }
 
-function actualDiagnosisMapper(isActual) {
+const actualDiagnosisMapper = (isActual) => {
   return isActual ? "Не вылечено" : "Вылечено"
 }

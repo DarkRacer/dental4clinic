@@ -8,9 +8,7 @@ const descriptionField = document.getElementById("description");
 const plusesField = document.getElementById("pluses");
 
 
-getUserInfo()
-
-function getUserInfo() {
+const getUserInfo = () => {
   const query = window.location.href.split('/');
   const userId = query[query.length - 1]
   get(`user/doctor/${userId}`).then(data => {
@@ -33,3 +31,5 @@ function getUserInfo() {
     plusesField.innerText = doctor.pluses;
   }).catch(error => console.error(error));
 }
+
+getUserInfo()

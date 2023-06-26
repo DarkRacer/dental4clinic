@@ -153,15 +153,15 @@ document.querySelector('#editAdminDialogSave').onclick = () => {
   })
 }
 
-getAdmins()
-
-function getAdmins() {
+const getAdmins = () => {
   post("admins/all").then((data) => {
     updateAdminTableValue(data);
   }).catch((error) => console.log(error))
 }
 
-function updateAdmins() {
+getAdmins()
+
+const updateAdmins = () => {
   if (adminsTableValue[0]) {
     firstRowAllName.textContent = adminsTableValue[0].name
     firstRowAllSurname.textContent = adminsTableValue[0].surname

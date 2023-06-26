@@ -49,7 +49,7 @@ const getPrices = () => {
   })
 }
 
-function cretePriceContent(data) {
+const cretePriceContent = (data) => {
   while (pricesContent.firstChild) {
     pricesContent.removeChild(pricesContent.lastChild);
   }

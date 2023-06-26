@@ -19,7 +19,7 @@ const initRecordList = (role) => {
   });
 }
 
-function findAppointments() {
+const findAppointments = () => {
   if (doctorValue && patientValue) {
     currentCalendarDateAppointments = calendarDateAppointments.filter((info) => info['doctor-name'].toLowerCase().includes(doctorValue.toLowerCase()) && info['user-name'].toLowerCase().includes(patientValue.toLowerCase()))
   } else if (doctorValue) {
@@ -32,7 +32,7 @@ function findAppointments() {
   createCalendar(currentCalendarDateAppointments, date.getMonth(), date.getFullYear(), null, true);
 }
 
-function getAppointments(role) {
+const getAppointments = (role) => {
   get(`appointments/${role}`).then((data) => {
     calendarDateAppointments = data;
     currentCalendarDateAppointments = calendarDateAppointments;

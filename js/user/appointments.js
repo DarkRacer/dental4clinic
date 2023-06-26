@@ -22,10 +22,7 @@ submitButton.addEventListener("click", (e) => {
   postWithoutResponse('request/create', requestBody).then(() => alert("Заявка отправлена")).catch((error) => alert("Заявка не отправлена"))
 });
 
-getAppointments()
-getUserInfo()
-
-function getAppointments() {
+const getAppointments = () => {
   get(`appointments/user/${userId}`).then((data) => {
     createCalendar(data, date.getMonth(), date.getFullYear(), getInfoByDate);
   }).catch((error) => {
@@ -34,6 +31,18 @@ function getAppointments() {
   })
 }
 
+const getUserInfo = () => {
+  get(`user/${userId}`).then(data => {
+    contactBodyInfo.innerText = data.name + ", мы рады что вы пользуетесь нашими услугами, вы можете посмотреть ваши записи к врачам или запросить звонок, если у Вас возникли вопросы"
+  }).catch(error => {
+    contactBodyInfo.innerText = "Mы рады что вы пользуетесь нашими услугами, вы можете посмотреть ваши записи к врачам или запросить звонок, если у Вас возникли вопросы"
+    console.error(error)
+  });
+}
+
+getAppointments()
+getUserInfo()
+
 const getInfoByDate = ({date, appointments}, month, year) => {
   contactBodyInfo.innerText = `${date} ${monthName[month]} ${year} :
 `
@@ -41,14 +50,5 @@ const getInfoByDate = ({date, appointments}, month, year) => {
     contactBodyInfo.innerText += `${appointment.datetime} - ${appointment['doctor-name']} - ${appointment['service-name']}
 `
   })
-}
-
-function getUserInfo() {
-  get(`user/${userId}`).then(data => {
-    contactBodyInfo.innerText = data.name + ", мы рады что вы пользуетесь нашими услугами, вы можете посмотреть ваши записи к врачам или запросить звонок, если у Вас возникли вопросы"
-  }).catch(error => {
-    contactBodyInfo.innerText = "Mы рады что вы пользуетесь нашими услугами, вы можете посмотреть ваши записи к врачам или запросить звонок, если у Вас возникли вопросы"
-    console.error(error)
-  });
 }
 

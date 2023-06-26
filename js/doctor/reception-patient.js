@@ -147,9 +147,7 @@ const selectedPayments = [];
 let services = [];
 
 
-getAppointment()
-
-function getAppointment() {
+const getAppointment = () => {
   const query = window.location.href.split('/');
   const appointmentId = query[query.length - 1]
   get(`appointments/${appointmentId}`).then((data) => {
@@ -162,7 +160,9 @@ function getAppointment() {
   })
 }
 
-function getUserInfo(patientId) {
+getAppointment()
+
+const getUserInfo = (patientId) => {
   get(`user/${patientId}`).then(data => {
     const {id, name, surname, patronymic, dateOfBirthday, phone, allergies, photo, photoName, address} = data;
     const email = data['e-mail'];
@@ -187,7 +187,7 @@ function getUserInfo(patientId) {
   }).catch(error => console.error(error));
 }
 
-function getRequests(patientId) {
+const getRequests = (patientId) => {
   get(`user/requests/${patientId}`).then(data => {
     firstRequestCell1.innerText = data[0] ? data[0].date : '';
     firstRequestCell2.innerText = data[0] ? data[0].description : '';
@@ -198,21 +198,21 @@ function getRequests(patientId) {
   }).catch(error => console.error(error));
 }
 
-function getServices() {
+const getServices = () => {
   get(`doctors/${userId}/services`).then(data => {
     services = data;
     updateServicesTable()
   }).catch(error => console.error(error));
 }
 
-function getUserToothCard(patientId) {
+const getUserToothCard = (patientId) => {
   get(`user/tooth-card/${patientId}`).then((data) => {
     toothCard = data;
     updateToothCard();
   }).catch(error => console.error(error));
 }
 
-function getToothPictures(patientId) {
+const getToothPictures = (patientId) => {
   get(`user/tooth/${patientId}`).then(data => {
     data.forEach((picture) => {
       const img = document.createElement('img');
@@ -222,21 +222,22 @@ function getToothPictures(patientId) {
     })
   }).catch(error => console.error(error));
 }
-function getUserDiagnosis(patientId) {
+
+const getUserDiagnosis = (patientId) => {
   get(`user/diagnosis/${patientId}`).then(data => {
     diagnosisTableValue = data
     updateDiagnosisTable()
   }).catch(error => console.error(error));
 }
 
-function getDiagnosis() {
+const getDiagnosis = () => {
   get(`diagnosis`).then(data => {
     diagnosisFromDoctorTableValue = data
     updateDiagnosisFromDoctorTable()
   }).catch(error => console.error(error));
 }
 
-function updateDiagnosisTable() {
+const updateDiagnosisTable = () => {
   if (diagnosisTableValue[0]) {
     firstDiagnosisOfPatientDiagnose.textContent = diagnosisTableValue[0].name
     firstDiagnosisOfPatientDescription.textContent = diagnosisTableValue[0].description
@@ -278,7 +279,7 @@ function updateDiagnosisTable() {
   }
 }
 
-function updateDiagnosisFromDoctorTable() {
+const updateDiagnosisFromDoctorTable = () => {
   if (diagnosisFromDoctorTableValue[0]) {
     firstDiagnosisFromDoctorDiagnose.textContent = diagnosisFromDoctorTableValue[0].name
     firstDiagnosisFromDoctorDescription.textContent = diagnosisFromDoctorTableValue[0].description
@@ -312,7 +313,7 @@ function updateDiagnosisFromDoctorTable() {
   }
 }
 
-function updateServicesTable() {
+const updateServicesTable = () => {
   if (services[0]) {
     firstRowService.textContent = services[0].service
     firstRowDescription.textContent = services[0].description
@@ -463,7 +464,7 @@ fourthRowDiagnosisFromDoctor.addEventListener("click", (e) => {
 })
 
 
-function actualDiagnosisMapper(isActual) {
+const actualDiagnosisMapper = (isActual) => {
   return isActual ? "Не вылечено" : "Вылечено"
 }
 
@@ -836,7 +837,7 @@ paymentButton.addEventListener("click", (e) => {
   }
 })
 
-function updatePaymentInfo() {
+const updatePaymentInfo = () => {
   let summary = 0
   servicesDone.innerText = "Оказанные услуги: "
   cost.innerText = "Стоимость: "
@@ -849,7 +850,7 @@ function updatePaymentInfo() {
   cost.innerText += " " + summary + " Р."
 }
 
-function updateToothCard() {
+const updateToothCard = () => {
   left8Up.selectedIndex = toothCard.left8Up;
   left8Down.selectedIndex = toothCard.left8Down;
   right1Up.selectedIndex = toothCard.right1Up;

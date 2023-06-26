@@ -87,7 +87,7 @@ get(`payments/user/${userId}`).then(data => {
     console.error('Error:', error);
   });
 
-function updateDoctorTable() {
+const updateDoctorTable = () => {
   if (paymentsTableValue[0]) {
     firstDate.textContent = paymentsTableValue[0].date;
     firstDoctor.textContent = paymentsTableValue[0].doctor
@@ -299,7 +299,7 @@ fifthRow.addEventListener("click", (e) => {
   }
 })
 
-function updatePaymentInfo() {
+const updatePaymentInfo = () => {
   let summary = 0;
   selectedRow.forEach((selected) => {
     summary += paymentsTableValue[selected].price;
@@ -314,6 +314,6 @@ function updatePaymentInfo() {
   }
 }
 
-function paymentActiveMapper(isActive) {
+const paymentActiveMapper = (isActive) => {
   return isActive ? "" : "Оплачено"
 }

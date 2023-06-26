@@ -96,7 +96,7 @@ get("requests").then(data => {
     console.error('Error:', error);
   });
 
-function updateRequestTable() {
+const updateRequestTable = () => {
   if (requestsTableValue[0]) {
     firstName.textContent = requestsTableValue[0].name
     firstPhone.textContent = requestsTableValue[0].phone
@@ -157,6 +157,7 @@ function updateRequestTable() {
     sixthDescription.textContent = ''
   }
 }
+
 pageElements.firstRow.addEventListener("click", (e) => {
   if (selectedRow !== 0) {
     changeClassRows([

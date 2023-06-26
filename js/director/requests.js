@@ -363,6 +363,6 @@ fifthRow.addEventListener("click", (e) => {
   }
 })
 
-function statusMapper(isActual) {
+const statusMapper = (isActual) => {
   return isActual ? '' : 'Рассмотрено'
 }

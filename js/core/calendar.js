@@ -20,7 +20,7 @@ monthNext.addEventListener("click", (e) => {
   createCalendar(calendarDateAppointments, newDate.getMonth(), newDate.getFullYear())
 })
 
-function createCalendar(data, month, year, getInfoByDate = currentInfoByDate, reset = false) {
+const createCalendar = (data, month, year, getInfoByDate = currentInfoByDate, reset = false) => {
   if (reset) {
     currentDiffMonth = 0;
   }
@@ -64,7 +64,7 @@ function createCalendar(data, month, year, getInfoByDate = currentInfoByDate, re
 
 }
 
-function createNewWeekMap() {
+const createNewWeekMap = () => {
   const weekMap =  new Map();
   weekMap.set(0, {date: 0, appointments: null});
   weekMap.set(1, {date: 0, appointments: null});
@@ -76,7 +76,7 @@ function createNewWeekMap() {
   return weekMap;
 }
 
-function createCalendarDateGroupRow(weekMap, month, year, getInfoByDate) {
+const createCalendarDateGroupRow = (weekMap, month, year, getInfoByDate) => {
   const calendarDateGroupRow = document.createElement('div');
   calendarDateGroupRow.classList.add("calendar-date-group-row");
 
@@ -100,7 +100,7 @@ function createCalendarDateGroupRow(weekMap, month, year, getInfoByDate) {
 
   return calendarDateGroupRow;
 }
-function changeMonths(date, months) {
+const changeMonths = (date, months) => {
   const dateCopy = new Date(date);
 
   dateCopy.setMonth(dateCopy.getMonth() + months);
@@ -108,7 +108,7 @@ function changeMonths(date, months) {
   return dateCopy;
 }
 
-function daysInMonth (month, year) {
+const daysInMonth = (month, year) => {
   return new Date(year, month+1, 0).getDate();
 }
 

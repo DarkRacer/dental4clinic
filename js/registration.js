@@ -41,7 +41,7 @@ photoField.addEventListener("change", (e) => {
   imageUploaded();
 })
 
-function imageUploaded() {
+const imageUploaded = () => {
   const file = document.querySelector(
     'input[type=file]')['files'][0];
 

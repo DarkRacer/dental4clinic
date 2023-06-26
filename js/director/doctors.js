@@ -235,21 +235,21 @@ addButton.addEventListener("click", (e) => {
   }
 })
 
-function getServicesForDoctor() {
+const getServicesForDoctor = () => {
   get(`services/doctor/${doctorId}`).then((data) => {
     doctorServiceTableValue = data;
     updateDoctorServices();
   }).catch((error) => console.log(error))
 }
 
-function getServices() {
+const getServices = () => {
   get("services/all").then((data) => {
     servicesTableValue = data;
     updateServices();
   }).catch((error) => console.log(error))
 }
 
-function updateDoctorServices() {
+const updateDoctorServices = () => {
   if (doctorServiceTableValue[0]) {
     firstRowDoctorName.textContent = doctorServiceTableValue[0].service
     firstRowDoctorDescription.textContent = doctorServiceTableValue[0].description
@@ -291,7 +291,7 @@ function updateDoctorServices() {
   }
 }
 
-function updateServices() {
+const updateServices = () => {
   if (servicesTableValue[0]) {
     firstRowAllName.textContent = servicesTableValue[0].service
     firstRowAllDescription.textContent = servicesTableValue[0].description
@@ -333,7 +333,7 @@ function updateServices() {
   }
 }
 
-function imageUploaded() {
+const imageUploaded = () => {
   const file = document.querySelector(
     'input[type=file]')['files'][0];
 
