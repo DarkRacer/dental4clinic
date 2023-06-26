@@ -120,6 +120,9 @@ const updateDiagnosisTable = () => {
 
 const getToothPictures = () => {
   get(`user/tooth/${userId}`).then(data => {
+    while (toothPictures.firstChild) {
+      toothPictures.removeChild(toothPictures.lastChild);
+    }
     data.forEach((picture) => {
       const img = document.createElement('img');
       img.classList.add("tooth-picture");

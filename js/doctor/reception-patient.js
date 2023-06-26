@@ -214,6 +214,9 @@ const getUserToothCard = (patientId) => {
 
 const getToothPictures = (patientId) => {
   get(`user/tooth/${patientId}`).then(data => {
+    while (toothPictures.firstChild) {
+      toothPictures.removeChild(toothPictures.lastChild);
+    }
     data.forEach((picture) => {
       const img = document.createElement('img');
       img.classList.add("tooth-picture");
