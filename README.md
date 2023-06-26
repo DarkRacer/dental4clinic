@@ -8,11 +8,17 @@ Demo site https://67a9-46-164-217-97.ngrok-free.app/
 ## Use Cases
 ![image](https://github.com/DarkRacer/dental4clinic/assets/56476550/32f5e8e8-83cd-4fc5-b0ea-2926a6e00fa7)
 
-# Stubs
+## Local start
+You can use [docker](https://github.com/DarkRacer/dental4clinic/blob/master/docker-compose.yaml) or run [app.cjs](https://github.com/DarkRacer/dental4clinic/blob/master/app.cjs)
+
+## Stubs
 
 All expected backend responses are presented in [/stub](https://github.com/DarkRacer/dental4clinic/tree/master/stub)
 
-For stub responses, you can use server https://af2f-46-164-217-97.ngrok-free.app/ or fiddler4 with import [fiddler_script](https://github.com/DarkRacer/dental4clinic/blob/master/stub/fiddler_dental4clinic.farx).
+For stub responses, you can use:
+- Server https://af2f-46-164-217-97.ngrok-free.app/ 
+- Fiddler4 with import [fiddler_script](https://github.com/DarkRacer/dental4clinic/blob/master/stub/fiddler_dental4clinic.farx)
+- Run [stub-server.cjs](https://github.com/DarkRacer/dental4clinic/blob/master/stub/stub-server.cjs)
 
 
 ## More Information
