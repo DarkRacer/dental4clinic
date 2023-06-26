@@ -58,6 +58,9 @@ router.get('/payments/user/1',function(req,res){
 router.post('/user/edit/1',function(req,res){
   res.status(204).send();
 });
+router.post('/user/edit/3',function(req,res){
+  res.status(204).send();
+});
 router.get('/appointments/doctor/2',function(req,res){
   res.sendFile(path.join(__dirname+'/responses/appointments/doctor/2.json'));
 });
@@ -106,7 +109,7 @@ router.post('/appointments/1/finish',function(req,res){
 router.post('/user/tooth-card/3/update',function(req,res){
   res.status(204).send();
 });
-router.get('/user/registration',function(req,res){
+router.post('/user/registration',function(req,res){
   res.sendFile(path.join(__dirname+'/responses/admin/user_registration.json'));
 });
 router.get('/user/admin/3',function(req,res){
@@ -172,7 +175,7 @@ router.post('/services/doctor/delete/1',function(req,res){
 router.post('/services/doctor/add/1',function(req,res){
   res.sendFile(path.join(__dirname+'/responses/services/doctor_services_added.json'));
 });
-router.get('/admins/all',function(req,res){
+router.post('/admins/all',function(req,res){
   res.sendFile(path.join(__dirname+'/responses/admin/admins.json'));
 });
 router.post('/admins/create',function(req,res){

@@ -1,13 +1,7 @@
-const url = 'https://af2f-46-164-217-97.ngrok-free.app/';
-var token = GetCookie("access_token")
-const headers = {
-  "Host":  'af2f-46-164-217-97.ngrok-free.app',
-  "Origin":  'https://af2f-46-164-217-97.ngrok-free.app/',
-  "Accept": "*/*",
-  'ngrok-skip-browser-warning':true
-}
-var userId = 1;
+import { get } from "../core/rest.js";
+import {changeClassRows} from "../core/table.js";
 
+const userId = 1;
 
 const firstRow = document.getElementById("first-row");
 const firstRowCell1 = document.getElementById("first-row-cell-1");
@@ -21,7 +15,6 @@ const firstDoctor = document.getElementById("first-doctor");
 const firstService = document.getElementById("first-service");
 const firstPrice = document.getElementById("first-price");
 const firstStatus = document.getElementById("first-status");
-
 
 const secondRow = document.getElementById("second-row");
 const secondRowCell1 = document.getElementById("second-row-cell-1");
@@ -83,10 +76,10 @@ const paymentInfoPrice = document.getElementById("payment-info-price");
 
 
 let paymentsTableValue = [];
-let selectedRow = [];
+const selectedRow = [];
 
 
-GetUrl(`payments/user/${userId}`).then(data => {
+get(`payments/user/${userId}`).then(data => {
   paymentsTableValue = data
   updateDoctorTable()
 })
@@ -170,29 +163,24 @@ firstRow.addEventListener("click", (e) => {
   if (paymentsTableValue[0]) {
     const index = selectedRow.findIndex((selected) => selected === 0);
     if (index === -1) {
-      firstRowCell1.classList.remove("cell-payments")
-      firstRowCell1.classList.add("cell-payments-selected")
-      firstRowCell2.classList.remove("cell-payments")
-      firstRowCell2.classList.add("cell-payments-selected")
-      firstRowCell3.classList.remove("cell-payments")
-      firstRowCell3.classList.add("cell-payments-selected")
-      firstRowCell4.classList.remove("cell-payments")
-      firstRowCell4.classList.add("cell-payments-selected")
-      firstRowCell5.classList.remove("cell-payments")
-      firstRowCell5.classList.add("cell-payments-selected")
+      changeClassRows([
+        firstRowCell1,
+        firstRowCell2,
+        firstRowCell3,
+        firstRowCell4,
+        firstRowCell5
+      ], 'cell-payments', 'cell-payments-selected')
 
       selectedRow.push(0);
     } else {
-      firstRowCell1.classList.remove("cell-payments-selected")
-      firstRowCell1.classList.add("cell-payments")
-      firstRowCell2.classList.remove("cell-payments-selected")
-      firstRowCell2.classList.add("cell-payments")
-      firstRowCell3.classList.remove("cell-payments-selected")
-      firstRowCell3.classList.add("cell-payments")
-      firstRowCell4.classList.remove("cell-payments-selected")
-      firstRowCell4.classList.add("cell-payments")
-      firstRowCell5.classList.remove("cell-payments-selected")
-      firstRowCell5.classList.add("cell-payments")
+      changeClassRows([
+        firstRowCell1,
+        firstRowCell2,
+        firstRowCell3,
+        firstRowCell4,
+        firstRowCell5
+      ], 'cell-payments-selected', 'cell-payments')
+
       selectedRow.splice(index, 1);
     }
     updatePaymentInfo()
@@ -203,29 +191,24 @@ secondRow.addEventListener("click", (e) => {
   if (paymentsTableValue[1]) {
     const index = selectedRow.findIndex((selected) => selected === 1);
     if (index === -1) {
-      secondRowCell1.classList.remove("cell-payments")
-      secondRowCell1.classList.add("cell-payments-selected")
-      secondRowCell2.classList.remove("cell-payments")
-      secondRowCell2.classList.add("cell-payments-selected")
-      secondRowCell3.classList.remove("cell-payments")
-      secondRowCell3.classList.add("cell-payments-selected")
-      secondRowCell4.classList.remove("cell-payments")
-      secondRowCell4.classList.add("cell-payments-selected")
-      secondRowCell5.classList.remove("cell-payments")
-      secondRowCell5.classList.add("cell-payments-selected")
+      changeClassRows([
+        secondRowCell1,
+        secondRowCell2,
+        secondRowCell3,
+        secondRowCell4,
+        secondRowCell5
+      ], 'cell-payments', 'cell-payments-selected')
 
       selectedRow.push(1);
     } else {
-      secondRowCell1.classList.remove("cell-payments-selected")
-      secondRowCell1.classList.add("cell-payments")
-      secondRowCell2.classList.remove("cell-payments-selected")
-      secondRowCell2.classList.add("cell-payments")
-      secondRowCell3.classList.remove("cell-payments-selected")
-      secondRowCell3.classList.add("cell-payments")
-      secondRowCell4.classList.remove("cell-payments-selected")
-      secondRowCell4.classList.add("cell-payments")
-      secondRowCell5.classList.remove("cell-payments-selected")
-      secondRowCell5.classList.add("cell-payments")
+      changeClassRows([
+        secondRowCell1,
+        secondRowCell2,
+        secondRowCell3,
+        secondRowCell4,
+        secondRowCell5
+      ], 'cell-payments-selected', 'cell-payments')
+
       selectedRow.splice(index, 1);
     }
     updatePaymentInfo()
@@ -236,29 +219,24 @@ thirdRow.addEventListener("click", (e) => {
   if (paymentsTableValue[2]) {
     const index = selectedRow.findIndex((selected) => selected === 2);
     if (index === -1) {
-      thirdRowCell1.classList.remove("cell-payments")
-      thirdRowCell1.classList.add("cell-payments-selected")
-      thirdRowCell2.classList.remove("cell-payments")
-      thirdRowCell2.classList.add("cell-payments-selected")
-      thirdRowCell3.classList.remove("cell-payments")
-      thirdRowCell3.classList.add("cell-payments-selected")
-      thirdRowCell4.classList.remove("cell-payments")
-      thirdRowCell4.classList.add("cell-payments-selected")
-      thirdRowCell5.classList.remove("cell-payments")
-      thirdRowCell5.classList.add("cell-payments-selected")
+      changeClassRows([
+        thirdRowCell1,
+        thirdRowCell2,
+        thirdRowCell3,
+        thirdRowCell4,
+        thirdRowCell5
+      ], 'cell-payments', 'cell-payments-selected')
 
       selectedRow.push(2);
     } else {
-      thirdRowCell1.classList.remove("cell-payments-selected")
-      thirdRowCell1.classList.add("cell-payments")
-      thirdRowCell2.classList.remove("cell-payments-selected")
-      thirdRowCell2.classList.add("cell-payments")
-      thirdRowCell3.classList.remove("cell-payments-selected")
-      thirdRowCell3.classList.add("cell-payments")
-      thirdRowCell4.classList.remove("cell-payments-selected")
-      thirdRowCell4.classList.add("cell-payments")
-      thirdRowCell5.classList.remove("cell-payments-selected")
-      thirdRowCell5.classList.add("cell-payments")
+      changeClassRows([
+        thirdRowCell1,
+        thirdRowCell2,
+        thirdRowCell3,
+        thirdRowCell4,
+        thirdRowCell5
+      ], 'cell-payments-selected', 'cell-payments')
+
       selectedRow.splice(index, 1);
     }
     updatePaymentInfo()
@@ -269,29 +247,24 @@ fourthRow.addEventListener("click", (e) => {
   if (paymentsTableValue[3]) {
     const index = selectedRow.findIndex((selected) => selected === 3);
     if (index === -1) {
-      fourthRowCell1.classList.remove("cell-payments")
-      fourthRowCell1.classList.add("cell-payments-selected")
-      fourthRowCell2.classList.remove("cell-payments")
-      fourthRowCell2.classList.add("cell-payments-selected")
-      fourthRowCell3.classList.remove("cell-payments")
-      fourthRowCell3.classList.add("cell-payments-selected")
-      fourthRowCell4.classList.remove("cell-payments")
-      fourthRowCell4.classList.add("cell-payments-selected")
-      fourthRowCell5.classList.remove("cell-payments")
-      fourthRowCell5.classList.add("cell-payments-selected")
+      changeClassRows([
+        fourthRowCell1,
+        fourthRowCell2,
+        fourthRowCell3,
+        fourthRowCell4,
+        fourthRowCell5
+      ], 'cell-payments', 'cell-payments-selected')
 
       selectedRow.push(3);
     } else {
-      fourthRowCell1.classList.remove("cell-payments-selected")
-      fourthRowCell1.classList.add("cell-payments")
-      fourthRowCell2.classList.remove("cell-payments-selected")
-      fourthRowCell2.classList.add("cell-payments")
-      fourthRowCell3.classList.remove("cell-payments-selected")
-      fourthRowCell3.classList.add("cell-payments")
-      fourthRowCell4.classList.remove("cell-payments-selected")
-      fourthRowCell4.classList.add("cell-payments")
-      fourthRowCell5.classList.remove("cell-payments-selected")
-      fourthRowCell5.classList.add("cell-payments")
+      changeClassRows([
+        fourthRowCell1,
+        fourthRowCell2,
+        fourthRowCell3,
+        fourthRowCell4,
+        fourthRowCell5
+      ], 'cell-payments-selected', 'cell-payments')
+
       selectedRow.splice(index, 1);
     }
     updatePaymentInfo()
@@ -302,29 +275,24 @@ fifthRow.addEventListener("click", (e) => {
   if (paymentsTableValue[4]) {
     const index = selectedRow.findIndex((selected) => selected === 4);
     if (index === -1) {
-      fifthRowCell1.classList.remove("cell-payments")
-      fifthRowCell1.classList.add("cell-payments-selected")
-      fifthRowCell2.classList.remove("cell-payments")
-      fifthRowCell2.classList.add("cell-payments-selected")
-      fifthRowCell3.classList.remove("cell-payments")
-      fifthRowCell3.classList.add("cell-payments-selected")
-      fifthRowCell4.classList.remove("cell-payments")
-      fifthRowCell4.classList.add("cell-payments-selected")
-      fifthRowCell5.classList.remove("cell-payments")
-      fifthRowCell5.classList.add("cell-payments-selected")
+      changeClassRows([
+        fifthRowCell1,
+        fifthRowCell2,
+        fifthRowCell3,
+        fifthRowCell4,
+        fifthRowCell5
+      ], 'cell-payments', 'cell-payments-selected')
 
       selectedRow.push(4);
     } else {
-      fifthRowCell1.classList.remove("cell-payments-selected")
-      fifthRowCell1.classList.add("cell-payments")
-      fifthRowCell2.classList.remove("cell-payments-selected")
-      fifthRowCell2.classList.add("cell-payments")
-      fifthRowCell3.classList.remove("cell-payments-selected")
-      fifthRowCell3.classList.add("cell-payments")
-      fifthRowCell4.classList.remove("cell-payments-selected")
-      fifthRowCell4.classList.add("cell-payments")
-      fifthRowCell5.classList.remove("cell-payments-selected")
-      fifthRowCell5.classList.add("cell-payments")
+      changeClassRows([
+        fifthRowCell1,
+        fifthRowCell2,
+        fifthRowCell3,
+        fifthRowCell4,
+        fifthRowCell5
+      ], 'cell-payments-selected', 'cell-payments')
+
       selectedRow.splice(index, 1);
     }
     updatePaymentInfo()
@@ -348,27 +316,4 @@ function updatePaymentInfo() {
 
 function paymentActiveMapper(isActive) {
   return isActive ? "" : "Оплачено"
-}
-
-function GetCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
-}
-
-function GetUrl(getUrl) {
-  return fetch(url + getUrl, {
-    method: 'GET',
-    headers: headers
-  })
-    .then(response => response.json())
-}
-
-function PostUrl(postUrl, body) {
-  return fetch(url + postUrl, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(body)
-  })
-    .then(response => response)
 }

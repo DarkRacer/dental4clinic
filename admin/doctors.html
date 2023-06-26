@@ -56,7 +56,7 @@
         </select>
       </form>
     </div>
-    <img class="go-to-top" onclick="topFunction()" id="goToTop" src="../img/arrow.png"/>
+    <img class="go-to-top" id="goToTop" src="../img/arrow.png"/>
   </div>
   <dialog class="doctors-dialog-blackout" id="doctorsDialog">
     <div class="doctors-dialog-content">
@@ -71,10 +71,10 @@
         <div class="pluses-group" id="doctors-dialog-pluses"></div>
       </div>
       <div class="doctors-dialog-footer">
-        <div class="doctors-dialog-footer-button" onclick="location.assign('/unauthorized/appointments/create');">Записаться</div>
+        <div class="doctors-dialog-footer-button" onclick="location.assign('/admin/appointments/create');">Записать</div>
       </div>
     </div>
   </dialog>
 </div>
-<script src="../js/admin/doctors.js"></script>
+<script type="module" src="../js/admin/doctors.js"></script>
 </body>

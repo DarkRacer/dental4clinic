@@ -1,39 +1,37 @@
-const url = 'https://af2f-46-164-217-97.ngrok-free.app/';
-var token = GetCookie("access_token")
-const headers = {
-  "Host":  'af2f-46-164-217-97.ngrok-free.app',
-  "Origin":  'https://af2f-46-164-217-97.ngrok-free.app/',
-  "Accept": "*/*",
-  'ngrok-skip-browser-warning':true
-}
+import { post } from "../core/rest.js";
+import {RegistrationBody} from "../core/model/registration.js";
 
-let createForm = document.getElementById("createForm");
-let saveButton = document.getElementById("save-button");
-let notification = document.getElementById("notification");
-let notificationText = document.getElementById("notificationText");
-
-notification.style.visibility = 'hidden';
+const createForm = document.getElementById("createForm");
+const saveButton = document.getElementById("save-button");
+const notification = document.getElementById("notification");
+const notificationText = document.getElementById("notificationText");
 
 saveButton.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const registrationBody = {
-    name: createForm.name.value,
-    surname: createForm.surname.value,
-    patronymic: createForm.patronymic.value,
-    dateOfBirthday: createForm.dateOfBirthday.value,
-    address: createForm.address.value,
-    allergies: createForm.allergies.value,
-    phone: createForm.phone.value,
-    email: createForm.email.value
-  }
+  const registrationBody = new RegistrationBody(
+    null,
+    createForm.name.value,
+    createForm.surname.value,
+    createForm.patronymic.value,
+    createForm.dateOfBirthday.value,
+    createForm.phone.value,
+    createForm.email.value,
+    createForm.allergies.value,
+    null,
+    null,
+    createForm.address.value,
+    null,
+    null
+  )
 
-  PostUrl("user/registration", registrationBody).then(data => {
+  post("user/registration", registrationBody).then(data => {
+    const { login, password } = data;
     notification.style.visibility = 'visible';
     notificationText.innerText = `
           Пользователь успешно создан
-          Логин: ${data.login}
-          Пароль: ${data.password}
+          Логин: ${login}
+          Пароль: ${password}
           Не забудьте напомнить поменять пароль!
     `
   })
@@ -43,20 +41,3 @@ saveButton.addEventListener("click", (e) => {
     });
 
 })
-
-
-function GetCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
-}
-
-function PostUrl(postUrl, body) {
-  console.log("get " + postUrl);
-  return fetch(url + postUrl, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(body)
-  })
-    .then(response => response.json())
-}

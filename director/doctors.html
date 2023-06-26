@@ -58,7 +58,7 @@
       </label>
       <div class="doctor-create" id="openCreateDoctorDialog">Добавить врача</div>
     </div>
-    <img class="go-to-top" onclick="topFunction()" id="goToTop" src="../img/arrow.png"/>
+    <img class="go-to-top" id="goToTop" src="../img/arrow.png"/>
   </div>
   <dialog class="create-doctor-dialog-blackout" id="createDoctorDialog" >
     <div class="create-doctor-dialog-content">
@@ -106,7 +106,7 @@
             </div>
             <div class="photo-field">
               <div class="photo-field-title">Фотография</div>
-              <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photo" class="photo-field-input" onchange="imageUploaded()">
+              <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photo" class="photo-field-input">
             </div>
             <div class="required-field">
               <div class="services-doctor-button" id="openCreateServicesDoctorDialog">Выбрать оказываемые услуги</div>
@@ -194,7 +194,7 @@
             </div>
             <div class="photo-field">
               <div class="photo-field-title">Фотография</div>
-              <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photoEdit" class="photo-field-input" onchange="imageUploaded()">
+              <input type="file" name="photo" multiple accept="image/*,image/jpeg" id="photoEdit" class="photo-field-input">
             </div>
             <div class="required-field">
               <div class="services-doctor-button" id="openEditServicesDoctorDialog">Выбрать оказываемые услуги</div>
@@ -210,7 +210,7 @@
               <textarea type="text" id="plusesEdit" name="pluses" placeholder="Проффесиональные навыки" class="additional-field-input"></textarea>
             </div>
           </div>
-          <div class="save-button" id="editDoctorDialogSave">Создать</div>
+          <div class="save-button" id="editDoctorDialogSave">Изменить</div>
         </form>
       </div>
     </div>
@@ -368,5 +368,5 @@
     </div>
   </dialog>
 </div>
-<script src="../js/director/doctors.js"></script>
+<script type="module" src="../js/director/doctors.js"></script>
 </body>

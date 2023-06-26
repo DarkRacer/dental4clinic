@@ -1,11 +1,5 @@
-const url = 'https://af2f-46-164-217-97.ngrok-free.app/';
-var token = GetCookie("access_token")
-const headers = {
-  "Host":  'af2f-46-164-217-97.ngrok-free.app',
-  "Origin":  'https://af2f-46-164-217-97.ngrok-free.app/',
-  "Accept": "*/*",
-  'ngrok-skip-browser-warning':true
-}
+import { get, post } from "../core/rest.js";
+import {changeClassRows} from "../core/table.js";
 
 const firstRow = document.getElementById("firstRow")
 const firstRowCell1 = document.getElementById("firstRowCell1")
@@ -57,48 +51,43 @@ const fifthContent = document.getElementById("fifthContent")
 const fifthRowCell4 = document.getElementById("fifthRowCell4")
 const fifthStatus = document.getElementById("fifthStatus")
 
-
 const checkedButton = document.getElementById("checked-button")
-
 
 let requestsTableValue = [];
 let selectedRow = -1;
 
-GetUrl('requests').then((data) => {
-  requestsTableValue = data
-  updateRequestsTable()
+get('requests').then((data) => {
+  updateRequestsTableValue(data)
 }).then((error) => console.error(error))
 
-var deleteDialog = document.querySelector('#deleteDialog');
-document.querySelector('#openDeleteDialog').onclick = function() {
+const deleteDialog = document.querySelector('#deleteDialog');
+document.querySelector('#openDeleteDialog').onclick = () => {
   deleteDialog.style.display = 'flex';
   deleteDialog.show();
 }
-document.querySelector('#deleteDialogClose').onclick = function() {
-  PostUrl('requests/delete', requestsTableValue[selectedRow]).then((data) => {
-    requestsTableValue = data
-    updateRequestsTable()
+document.querySelector('#deleteDialogClose').onclick = () => {
+  post('requests/delete', requestsTableValue[selectedRow]).then((data) => {
+    updateRequestsTableValue(data)
   }).catch((error) => console.error(error))
   deleteDialog.style.display = null;
   deleteDialog.close();
 }
-document.querySelector('#backButtonDeleteDialogClose').onclick = function() {
+document.querySelector('#backButtonDeleteDialogClose').onclick = () => {
   deleteDialog.style.display = null;
   deleteDialog.close();
 }
 
 checkedButton.addEventListener("click", (e) => {
-  if (selectedRow > -1) {
-    let requestToUpdate = requestsTableValue[selectedRow]
+  const requestToUpdate = getSelectedPayment()
+  if (requestToUpdate) {
     requestToUpdate.isActual = false;
-      PostUrl('requests/update', requestToUpdate).then((data) => {
-        requestsTableValue = data
-        updateRequestsTable()
+      post('requests/update', requestToUpdate).then((data) => {
+        updateRequestsTableValue(data)
       }).catch((error) => console.error(error))
   }
 })
 
-function updateRequestsTable() {
+const updateRequestsTable = () => {
   if (requestsTableValue[0]) {
     firstName.textContent = requestsTableValue[0].name
     firstPhone.textContent = requestsTableValue[0].phone
@@ -160,334 +149,220 @@ function updateRequestsTable() {
   }
 }
 
+const updateRequestsTableValue = (data) => {
+  requestsTableValue = data;
+  updateRequestsTable()
+}
+
+const getSelectedPayment = () => {
+  return selectedRow > -1 ? requestsTableValue[selectedRow] : null;
+}
+
 firstRow.addEventListener("click", (e) => {
   if (selectedRow !== 0) {
-    firstRowCell1.classList.remove("cell-requests")
-    firstRowCell1.classList.add("cell-requests-selected")
-    firstRowCell2.classList.remove("cell-requests")
-    firstRowCell2.classList.add("cell-requests-selected")
-    firstRowCell3.classList.remove("cell-requests")
-    firstRowCell3.classList.add("cell-requests-selected")
-    firstRowCell4.classList.remove("cell-requests")
-    firstRowCell4.classList.add("cell-requests-selected")
+    changeClassRows([
+      firstRowCell1,
+      firstRowCell2,
+      firstRowCell3,
+      firstRowCell4
+    ], "cell-requests", "cell-requests-selected")
 
-    secondRowCell1.classList.remove("cell-requests-selected")
-    secondRowCell1.classList.add("cell-requests")
-    secondRowCell2.classList.remove("cell-requests-selected")
-    secondRowCell2.classList.add("cell-requests")
-    secondRowCell3.classList.remove("cell-requests-selected")
-    secondRowCell3.classList.add("cell-requests")
-    secondRowCell4.classList.remove("cell-requests-selected")
-    secondRowCell4.classList.add("cell-requests")
-
-    thirdRowCell1.classList.remove("cell-requests-selected")
-    thirdRowCell1.classList.add("cell-requests")
-    thirdRowCell2.classList.remove("cell-requests-selected")
-    thirdRowCell2.classList.add("cell-requests")
-    thirdRowCell3.classList.remove("cell-requests-selected")
-    thirdRowCell3.classList.add("cell-requests")
-    thirdRowCell4.classList.remove("cell-requests-selected")
-    thirdRowCell4.classList.add("cell-requests")
-
-    fourthRowCell1.classList.remove("cell-requests-selected")
-    fourthRowCell1.classList.add("cell-requests")
-    fourthRowCell2.classList.remove("cell-requests-selected")
-    fourthRowCell2.classList.add("cell-requests")
-    fourthRowCell3.classList.remove("cell-requests-selected")
-    fourthRowCell3.classList.add("cell-requests")
-    fourthRowCell4.classList.remove("cell-requests-selected")
-    fourthRowCell4.classList.add("cell-requests")
-
-    fifthRowCell1.classList.remove("cell-requests-selected")
-    fifthRowCell1.classList.add("cell-requests")
-    fifthRowCell2.classList.remove("cell-requests-selected")
-    fifthRowCell2.classList.add("cell-requests")
-    fifthRowCell3.classList.remove("cell-requests-selected")
-    fifthRowCell3.classList.add("cell-requests")
-    fifthRowCell4.classList.remove("cell-requests-selected")
-    fifthRowCell4.classList.add("cell-requests")
+    changeClassRows([
+      secondRowCell1,
+      secondRowCell2,
+      secondRowCell3,
+      secondRowCell4,
+      thirdRowCell1,
+      thirdRowCell2,
+      thirdRowCell3,
+      thirdRowCell4,
+      fourthRowCell1,
+      fourthRowCell2,
+      fourthRowCell3,
+      fourthRowCell4,
+      fifthRowCell1,
+      fifthRowCell2,
+      fifthRowCell3,
+      fifthRowCell4
+    ], "cell-requests-selected", "cell-requests")
 
     selectedRow = 0;
   } else {
-    firstRowCell1.classList.remove("cell-requests-selected")
-    firstRowCell1.classList.add("cell-requests")
-    firstRowCell2.classList.remove("cell-requests-selected")
-    firstRowCell2.classList.add("cell-requests")
-    firstRowCell3.classList.remove("cell-requests-selected")
-    firstRowCell3.classList.add("cell-requests")
-    firstRowCell4.classList.remove("cell-requests-selected")
-    firstRowCell4.classList.add("cell-requests")
+    changeClassRows([
+      firstRowCell1,
+      firstRowCell2,
+      firstRowCell3,
+      firstRowCell4
+    ], "cell-requests-selected", "cell-requests")
+
     selectedRow = -1;
   }
 })
 
 secondRow.addEventListener("click", (e) => {
   if (selectedRow !== 1) {
-    secondRowCell1.classList.remove("cell-requests")
-    secondRowCell1.classList.add("cell-requests-selected")
-    secondRowCell2.classList.remove("cell-requests")
-    secondRowCell2.classList.add("cell-requests-selected")
-    secondRowCell3.classList.remove("cell-requests")
-    secondRowCell3.classList.add("cell-requests-selected")
-    secondRowCell4.classList.remove("cell-requests")
-    secondRowCell4.classList.add("cell-requests-selected")
+    changeClassRows([
+      secondRowCell1,
+      secondRowCell2,
+      secondRowCell3,
+      secondRowCell4
+    ], "cell-requests", "cell-requests-selected")
 
-    firstRowCell1.classList.remove("cell-requests-selected")
-    firstRowCell1.classList.add("cell-requests")
-    firstRowCell2.classList.remove("cell-requests-selected")
-    firstRowCell2.classList.add("cell-requests")
-    firstRowCell3.classList.remove("cell-requests-selected")
-    firstRowCell3.classList.add("cell-requests")
-    firstRowCell4.classList.remove("cell-requests-selected")
-    firstRowCell4.classList.add("cell-requests")
-
-    thirdRowCell1.classList.remove("cell-requests-selected")
-    thirdRowCell1.classList.add("cell-requests")
-    thirdRowCell2.classList.remove("cell-requests-selected")
-    thirdRowCell2.classList.add("cell-requests")
-    thirdRowCell3.classList.remove("cell-requests-selected")
-    thirdRowCell3.classList.add("cell-requests")
-    thirdRowCell4.classList.remove("cell-requests-selected")
-    thirdRowCell4.classList.add("cell-requests")
-
-    fourthRowCell1.classList.remove("cell-requests-selected")
-    fourthRowCell1.classList.add("cell-requests")
-    fourthRowCell2.classList.remove("cell-requests-selected")
-    fourthRowCell2.classList.add("cell-requests")
-    fourthRowCell3.classList.remove("cell-requests-selected")
-    fourthRowCell3.classList.add("cell-requests")
-    fourthRowCell4.classList.remove("cell-requests-selected")
-    fourthRowCell4.classList.add("cell-requests")
-
-    fifthRowCell1.classList.remove("cell-requests-selected")
-    fifthRowCell1.classList.add("cell-requests")
-    fifthRowCell2.classList.remove("cell-requests-selected")
-    fifthRowCell2.classList.add("cell-requests")
-    fifthRowCell3.classList.remove("cell-requests-selected")
-    fifthRowCell3.classList.add("cell-requests")
-    fifthRowCell4.classList.remove("cell-requests-selected")
-    fifthRowCell4.classList.add("cell-requests")
+    changeClassRows([
+      firstRowCell1,
+      firstRowCell2,
+      firstRowCell3,
+      firstRowCell4,
+      thirdRowCell1,
+      thirdRowCell2,
+      thirdRowCell3,
+      thirdRowCell4,
+      fourthRowCell1,
+      fourthRowCell2,
+      fourthRowCell3,
+      fourthRowCell4,
+      fifthRowCell1,
+      fifthRowCell2,
+      fifthRowCell3,
+      fifthRowCell4
+    ], "cell-requests-selected", "cell-requests")
 
     selectedRow = 1;
   } else {
-    secondRowCell1.classList.remove("cell-requests-selected")
-    secondRowCell1.classList.add("cell-requests")
-    secondRowCell2.classList.remove("cell-requests-selected")
-    secondRowCell2.classList.add("cell-requests")
-    secondRowCell3.classList.remove("cell-requests-selected")
-    secondRowCell3.classList.add("cell-requests")
-    secondRowCell4.classList.remove("cell-requests-selected")
-    secondRowCell4.classList.add("cell-requests")
+    changeClassRows([
+      secondRowCell1,
+      secondRowCell2,
+      secondRowCell3,
+      secondRowCell4
+    ], "cell-requests-selected", "cell-requests")
+
     selectedRow = -1;
   }
 })
 
 thirdRow.addEventListener("click", (e) => {
   if (selectedRow !== 2) {
-    thirdRowCell1.classList.remove("cell-requests")
-    thirdRowCell1.classList.add("cell-requests-selected")
-    thirdRowCell2.classList.remove("cell-requests")
-    thirdRowCell2.classList.add("cell-requests-selected")
-    thirdRowCell3.classList.remove("cell-requests")
-    thirdRowCell3.classList.add("cell-requests-selected")
-    thirdRowCell4.classList.remove("cell-requests")
-    thirdRowCell4.classList.add("cell-requests-selected")
+    changeClassRows([
+      thirdRowCell1,
+      thirdRowCell2,
+      thirdRowCell3,
+      thirdRowCell4
+    ], "cell-requests", "cell-requests-selected")
 
-    secondRowCell1.classList.remove("cell-requests-selected")
-    secondRowCell1.classList.add("cell-requests")
-    secondRowCell2.classList.remove("cell-requests-selected")
-    secondRowCell2.classList.add("cell-requests")
-    secondRowCell3.classList.remove("cell-requests-selected")
-    secondRowCell3.classList.add("cell-requests")
-    secondRowCell4.classList.remove("cell-requests-selected")
-    secondRowCell4.classList.add("cell-requests")
-
-    firstRowCell1.classList.remove("cell-requests-selected")
-    firstRowCell1.classList.add("cell-requests")
-    firstRowCell2.classList.remove("cell-requests-selected")
-    firstRowCell2.classList.add("cell-requests")
-    firstRowCell3.classList.remove("cell-requests-selected")
-    firstRowCell3.classList.add("cell-requests")
-    firstRowCell4.classList.remove("cell-requests-selected")
-    firstRowCell4.classList.add("cell-requests")
-
-    fourthRowCell1.classList.remove("cell-requests-selected")
-    fourthRowCell1.classList.add("cell-requests")
-    fourthRowCell2.classList.remove("cell-requests-selected")
-    fourthRowCell2.classList.add("cell-requests")
-    fourthRowCell3.classList.remove("cell-requests-selected")
-    fourthRowCell3.classList.add("cell-requests")
-    fourthRowCell4.classList.remove("cell-requests-selected")
-    fourthRowCell4.classList.add("cell-requests")
-
-    fifthRowCell1.classList.remove("cell-requests-selected")
-    fifthRowCell1.classList.add("cell-requests")
-    fifthRowCell2.classList.remove("cell-requests-selected")
-    fifthRowCell2.classList.add("cell-requests")
-    fifthRowCell3.classList.remove("cell-requests-selected")
-    fifthRowCell3.classList.add("cell-requests")
-    fifthRowCell4.classList.remove("cell-requests-selected")
-    fifthRowCell4.classList.add("cell-requests")
+    changeClassRows([
+      firstRowCell1,
+      firstRowCell2,
+      firstRowCell3,
+      firstRowCell4,
+      secondRowCell1,
+      secondRowCell2,
+      secondRowCell3,
+      secondRowCell4,
+      fourthRowCell1,
+      fourthRowCell2,
+      fourthRowCell3,
+      fourthRowCell4,
+      fifthRowCell1,
+      fifthRowCell2,
+      fifthRowCell3,
+      fifthRowCell4
+    ], "cell-requests-selected", "cell-requests")
 
     selectedRow = 2;
   } else {
-    thirdRowCell1.classList.remove("cell-requests-selected")
-    thirdRowCell1.classList.add("cell-requests")
-    thirdRowCell2.classList.remove("cell-requests-selected")
-    thirdRowCell2.classList.add("cell-requests")
-    thirdRowCell3.classList.remove("cell-requests-selected")
-    thirdRowCell3.classList.add("cell-requests")
-    thirdRowCell4.classList.remove("cell-requests-selected")
-    thirdRowCell4.classList.add("cell-requests")
+    changeClassRows([
+      thirdRowCell1,
+      thirdRowCell2,
+      thirdRowCell3,
+      thirdRowCell4
+    ], "cell-requests-selected", "cell-requests")
+
     selectedRow = -1;
   }
 })
 
 fourthRow.addEventListener("click", (e) => {
   if (selectedRow !== 3) {
-    fourthRowCell1.classList.remove("cell-requests")
-    fourthRowCell1.classList.add("cell-requests-selected")
-    fourthRowCell2.classList.remove("cell-requests")
-    fourthRowCell2.classList.add("cell-requests-selected")
-    fourthRowCell3.classList.remove("cell-requests")
-    fourthRowCell3.classList.add("cell-requests-selected")
-    fourthRowCell4.classList.remove("cell-requests")
-    fourthRowCell4.classList.add("cell-requests-selected")
+    changeClassRows([
+      fourthRowCell1,
+      fourthRowCell2,
+      fourthRowCell3,
+      fourthRowCell4
+    ], "cell-requests", "cell-requests-selected")
 
-    secondRowCell1.classList.remove("cell-requests-selected")
-    secondRowCell1.classList.add("cell-requests")
-    secondRowCell2.classList.remove("cell-requests-selected")
-    secondRowCell2.classList.add("cell-requests")
-    secondRowCell3.classList.remove("cell-requests-selected")
-    secondRowCell3.classList.add("cell-requests")
-    secondRowCell4.classList.remove("cell-requests-selected")
-    secondRowCell4.classList.add("cell-requests")
-
-    thirdRowCell1.classList.remove("cell-requests-selected")
-    thirdRowCell1.classList.add("cell-requests")
-    thirdRowCell2.classList.remove("cell-requests-selected")
-    thirdRowCell2.classList.add("cell-requests")
-    thirdRowCell3.classList.remove("cell-requests-selected")
-    thirdRowCell3.classList.add("cell-requests")
-    thirdRowCell4.classList.remove("cell-requests-selected")
-    thirdRowCell4.classList.add("cell-requests")
-
-    firstRowCell1.classList.remove("cell-requests-selected")
-    firstRowCell1.classList.add("cell-requests")
-    firstRowCell2.classList.remove("cell-requests-selected")
-    firstRowCell2.classList.add("cell-requests")
-    firstRowCell3.classList.remove("cell-requests-selected")
-    firstRowCell3.classList.add("cell-requests")
-    firstRowCell4.classList.remove("cell-requests-selected")
-    firstRowCell4.classList.add("cell-requests")
-
-    fifthRowCell1.classList.remove("cell-requests-selected")
-    fifthRowCell1.classList.add("cell-requests")
-    fifthRowCell2.classList.remove("cell-requests-selected")
-    fifthRowCell2.classList.add("cell-requests")
-    fifthRowCell3.classList.remove("cell-requests-selected")
-    fifthRowCell3.classList.add("cell-requests")
-    fifthRowCell4.classList.remove("cell-requests-selected")
-    fifthRowCell4.classList.add("cell-requests")
+    changeClassRows([
+      firstRowCell1,
+      firstRowCell2,
+      firstRowCell3,
+      firstRowCell4,
+      secondRowCell1,
+      secondRowCell2,
+      secondRowCell3,
+      secondRowCell4,
+      thirdRowCell1,
+      thirdRowCell2,
+      thirdRowCell3,
+      thirdRowCell4,
+      fifthRowCell1,
+      fifthRowCell2,
+      fifthRowCell3,
+      fifthRowCell4
+    ], "cell-requests-selected", "cell-requests")
 
     selectedRow = 3;
   } else {
-    fourthRowCell1.classList.remove("cell-requests-selected")
-    fourthRowCell1.classList.add("cell-requests")
-    fourthRowCell2.classList.remove("cell-requests-selected")
-    fourthRowCell2.classList.add("cell-requests")
-    fourthRowCell3.classList.remove("cell-requests-selected")
-    fourthRowCell3.classList.add("cell-requests")
-    fourthRowCell4.classList.remove("cell-requests-selected")
-    fourthRowCell4.classList.add("cell-requests")
+    changeClassRows([
+      fourthRowCell1,
+      fourthRowCell2,
+      fourthRowCell3,
+      fourthRowCell4
+    ], "cell-requests-selected", "cell-requests")
+
     selectedRow = -1;
   }
 })
 
 fifthRow.addEventListener("click", (e) => {
   if (selectedRow !== 4) {
-    fifthRowCell1.classList.remove("cell-requests")
-    fifthRowCell1.classList.add("cell-requests-selected")
-    fifthRowCell2.classList.remove("cell-requests")
-    fifthRowCell2.classList.add("cell-requests-selected")
-    fifthRowCell3.classList.remove("cell-requests")
-    fifthRowCell3.classList.add("cell-requests-selected")
-    fifthRowCell4.classList.remove("cell-requests")
-    fifthRowCell4.classList.add("cell-requests-selected")
+    changeClassRows([
+      fifthRowCell1,
+      fifthRowCell2,
+      fifthRowCell3,
+      fifthRowCell4
+    ], "cell-requests", "cell-requests-selected")
 
-    secondRowCell1.classList.remove("cell-requests-selected")
-    secondRowCell1.classList.add("cell-requests")
-    secondRowCell2.classList.remove("cell-requests-selected")
-    secondRowCell2.classList.add("cell-requests")
-    secondRowCell3.classList.remove("cell-requests-selected")
-    secondRowCell3.classList.add("cell-requests")
-    secondRowCell4.classList.remove("cell-requests-selected")
-    secondRowCell4.classList.add("cell-requests")
-
-    thirdRowCell1.classList.remove("cell-requests-selected")
-    thirdRowCell1.classList.add("cell-requests")
-    thirdRowCell2.classList.remove("cell-requests-selected")
-    thirdRowCell2.classList.add("cell-requests")
-    thirdRowCell3.classList.remove("cell-requests-selected")
-    thirdRowCell3.classList.add("cell-requests")
-    thirdRowCell4.classList.remove("cell-requests-selected")
-    thirdRowCell4.classList.add("cell-requests")
-
-    fourthRowCell1.classList.remove("cell-requests-selected")
-    fourthRowCell1.classList.add("cell-requests")
-    fourthRowCell2.classList.remove("cell-requests-selected")
-    fourthRowCell2.classList.add("cell-requests")
-    fourthRowCell3.classList.remove("cell-requests-selected")
-    fourthRowCell3.classList.add("cell-requests")
-    fourthRowCell4.classList.remove("cell-requests-selected")
-    fourthRowCell4.classList.add("cell-requests")
-
-    firstRowCell1.classList.remove("cell-requests-selected")
-    firstRowCell1.classList.add("cell-requests")
-    firstRowCell2.classList.remove("cell-requests-selected")
-    firstRowCell2.classList.add("cell-requests")
-    firstRowCell3.classList.remove("cell-requests-selected")
-    firstRowCell3.classList.add("cell-requests")
-    firstRowCell4.classList.remove("cell-requests-selected")
-    firstRowCell4.classList.add("cell-requests")
+    changeClassRows([
+      firstRowCell1,
+      firstRowCell2,
+      firstRowCell3,
+      firstRowCell4,
+      secondRowCell1,
+      secondRowCell2,
+      secondRowCell3,
+      secondRowCell4,
+      thirdRowCell1,
+      thirdRowCell2,
+      thirdRowCell3,
+      thirdRowCell4,
+      fourthRowCell1,
+      fourthRowCell2,
+      fourthRowCell3,
+      fourthRowCell4
+    ], "cell-requests-selected", "cell-requests")
 
     selectedRow = 4;
   } else {
-    fifthRowCell1.classList.remove("cell-requests-selected")
-    fifthRowCell1.classList.add("cell-requests")
-    fifthRowCell2.classList.remove("cell-requests-selected")
-    fifthRowCell2.classList.add("cell-requests")
-    fifthRowCell3.classList.remove("cell-requests-selected")
-    fifthRowCell3.classList.add("cell-requests")
-    fifthRowCell4.classList.remove("cell-requests-selected")
-    fifthRowCell4.classList.add("cell-requests")
+    changeClassRows([
+      fifthRowCell1,
+      fifthRowCell2,
+      fifthRowCell3,
+      fifthRowCell4
+    ], "cell-requests-selected", "cell-requests")
+
     selectedRow = -1;
   }
 })
 
 function statusMapper(isActual) {
   return isActual ? '' : 'Рассмотрено'
-}
-
-function GetCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
-}
-
-function GetUrl(getUrl) {
-  return fetch(url + getUrl, {
-    method: 'GET',
-    headers: headers
-  })
-    .then(response => response.json())
-}
-
-function PostUrl(postUrl, body) {
-  return fetch(url + postUrl, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(body)
-  })
-    .then(response => response.json())
 }

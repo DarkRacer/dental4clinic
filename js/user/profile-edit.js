@@ -1,33 +1,43 @@
-const url = 'https://af2f-46-164-217-97.ngrok-free.app/';
-var token = GetCookie("access_token")
-const headers = {
-  "Host":  'af2f-46-164-217-97.ngrok-free.app',
-  "Origin":  'https://af2f-46-164-217-97.ngrok-free.app/',
-  "Accept": "*/*",
-  'ngrok-skip-browser-warning':true
-}
+import { get, postWithoutResponse } from "../core/rest.js";
+import {User} from "../core/model/user.js";
 
+const query = window.location.href.split('/');
+const userId = query[query.length - 2];
 
-let query = window.location.href.split('/');
-let userId = query[query.length - 2];
-
-let editForm = document.getElementById("edit-form");
-let saveButton = document.getElementById("save-button");
+const editForm = document.getElementById("edit-form");
+const saveButton = document.getElementById("save-button");
+const photo = document.getElementById("photo");
 let imageString ='';
-
+let fileName ='';
 
 getUserInfo();
+
 function getUserInfo() {
-  GetUrl(`user/${userId}`).then(data => {
-    editForm.name.value = data.name;
-    editForm.surname.value = data.surname;
-    editForm.patronymic.value = data.patronymic;
-    editForm.dateOfBirthday.value = data.dateOfBirthday
-    editForm.phone.value = data.phone
-    editForm.email.value = data['e-mail']
-    editForm.address.value = data.address
-    editForm.allergies.value = data.allergies
-    imageString = data.photo;
+  get(`user/${userId}`).then(data => {
+    const {id, name, surname, patronymic, dateOfBirthday, phone, allergies, photo, photoName, address} = data;
+    const email = data['e-mail'];
+    const user = new User(
+      id,
+      name,
+      surname,
+      patronymic,
+      dateOfBirthday,
+      phone,
+      email,
+      allergies,
+      photo,
+      photoName,
+      address
+    )
+    editForm.name.value = user.name;
+    editForm.surname.value = user.surname;
+    editForm.patronymic.value = user.patronymic;
+    editForm.dateOfBirthday.value = user.dateOfBirthday
+    editForm.phone.value = user.phone
+    editForm.email.value = user.email
+    editForm.address.value = user.address
+    editForm.allergies.value = user.allergies
+    imageString = user.photo;
   }).catch(error => console.error(error));
 }
 
@@ -35,19 +45,21 @@ function getUserInfo() {
 saveButton.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const editBody = {
-    name: editForm.name.value,
-    surname: editForm.surname.value,
-    patronymic: editForm.patronymic.value,
-    dateOfBirthday: editForm.dateOfBirthday.value,
-    address: editForm.address.value,
-    allergies: editForm.allergies.value,
-    phone: editForm.phone.value,
-    email: editForm.email.value,
-    photo: imageString
-  }
+  const editBody = new User(
+    userId,
+    editForm.name.value,
+    editForm.surname.value,
+    editForm.patronymic.value,
+    editForm.dateOfBirthday.value,
+    editForm.phone.value,
+    editForm.email.value,
+    editForm.allergies.value,
+    imageString,
+    fileName,
+    editForm.address.value
+)
 
-  PostUrl(`user/edit/${userId}`, editBody).then(data => {
+  postWithoutResponse(`user/edit/${userId}`, editBody).then(data => {
     alert('Данные обновлены');
     location.assign('/profile/1');
   })
@@ -57,39 +69,17 @@ saveButton.addEventListener("click", (e) => {
 
 })
 
+photo.addEventListener("change", (e) => {
+  imageUploaded();
+})
+
 function imageUploaded() {
-  var file = document.querySelector(
+  const file = document.querySelector(
     'input[type=file]')['files'][0];
 
-  var reader = new FileReader();
+  const reader = new FileReader();
+  fileName = file.name;
 
-  reader.onload = function () {
-    imageString = reader.result;
-  }
+  reader.onload = () => imageString = reader.result;
   reader.readAsDataURL(file);
-}
-
-function GetCookie(name) {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
-}
-
-function GetUrl(getUrl) {
-  console.log("get " + getUrl);
-  return fetch(url + getUrl, {
-    method: 'GET',
-    headers: headers
-  })
-    .then(response => response.json())
-}
-
-function PostUrl(postUrl, body) {
-  console.log("get " + postUrl);
-  return fetch(url + postUrl, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(body)
-  })
-    .then(response => response)
 }

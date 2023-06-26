@@ -25,6 +25,111 @@ router.get('/unauthorized/css/main.css',function(req,res){
 router.get('/unauthorized/img/logo.png',function(req,res){
   res.sendFile(path.join(__dirname+'/img/logo.png'));
 });
+router.get('/admin/js/core/service.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/rest.js'));
+});
+router.get('/user/js/core/rest.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/rest.js'));
+});
+router.get('/user/js/core/model/appointment.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/model/appointment.js'));
+});
+router.get('/unauthorized/js/core/rest.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/rest.js'));
+});
+router.get('/profile/js/core/rest.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/rest.js'));
+});
+router.get('/admin/js/core/model/appointment.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/model/appointment.js'));
+});
+router.get('/director/js/core/rest.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/rest.js'));
+});
+router.get('/unauthorized/js/core/model/appointment.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/model/appointment.js'));
+});
+router.get('/doctor/js/core/rest.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/rest.js'));
+});
+router.get('/doctor/js/core/model/user.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/model/user.js'));
+});
+router.get('/admin/js/core/model/user.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/model/user.js'));
+});
+router.get('/admin/js/core/page/record-list.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/page/record-list.js'));
+});
+router.get('/director/js/core/page/record-list.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/page/record-list.js'));
+});
+router.get('/admin/js/core/model/registration.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/model/registration.js'));
+});
+router.get('/user/js/core/service.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/rest.js'));
+});
+router.get('/profile/js/core/service.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/rest.js'));
+});
+router.get('/director/js/core/service.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/rest.js'));
+});
+router.get('/profile/js/core/model/user.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/model/user.js'));
+});
+router.get('/doctor/js/core/service.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/rest.js'));
+});
+router.get('/unauthorized/js/core/service.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/rest.js'));
+});
+router.get('/admin/js/core/table.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/table.js'));
+});
+router.get('/user/js/core/table.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/table.js'));
+});
+router.get('/director/js/core/table.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/table.js'));
+});
+router.get('/doctor/js/core/table.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/table.js'));
+});
+router.get('/unauthorized/js/core/table.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/table.js'));
+});
+router.get('/admin/js/core/calendar.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/calendar.js'));
+});
+router.get('/director/js/core/calendar.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/calendar.js'));
+});
+router.get('/user/js/core/calendar.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/calendar.js'));
+});
+router.get('/unauthorized/js/core/elements/appointments-create.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/elements/appointments-create.js'));
+});
+router.get('/admin/js/core/rest.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/rest.js'));
+});
+router.get('/admin/js/core/elements/appointments-create.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/elements/appointments-create.js'));
+});
+router.get('/user/js/core/elements/appointments-create.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/elements/appointments-create.js'));
+});
+router.get('/unauthorized/js/core/page/appointments-create.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/page/appointments-create.js'));
+});
+router.get('/admin/js/core/page/appointments-create.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/page/appointments-create.js'));
+});
+router.get('/user/js/core/page/appointments-create.js',function(req,res){
+  res.sendFile(path.join(__dirname+'/js/core/page/appointments-create.js'));
+});
 router.get('/unauthorized/img/user-logo.png',function(req,res){
   res.sendFile(path.join(__dirname+'/img/user-logo.png'));
 });
