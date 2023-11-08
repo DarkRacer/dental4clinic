@@ -1,0 +1,20 @@
+@import '../base/text';
+
+%input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: $default-background;
+  border: $default-border;
+  border-radius: $default-radius;
+  @extend %text;
+}
+
+%textarea {
+  padding: 3% 5%;
+  height: 85%;
+  border-radius: 2rem;
+  overflow: hidden;
+  @extend %input;
+}

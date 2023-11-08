@@ -1,0 +1,85 @@
+@import '../core/base/text';
+@import '../core/components/table';
+@import '../core/components/buttons';
+
+.payments-page {
+  @extend %default-page;
+}
+.payments-body {
+  padding-bottom: 6%;
+  @extend %default-body-on-page;
+}
+.payments-notification {
+  margin-bottom: $default-margin;
+  box-sizing: border-box;
+  padding: 0.95rem 1rem;
+  width: 100%;
+  display: flex;
+  line-height: 2.1428571429;
+  border: $default-border;
+  box-shadow: $default-shadow;
+  background-color: $default-background;
+  border-radius: 0.5rem;
+  @extend %text;
+}
+.row-header-payments {
+  height: 5rem;
+  @extend %table-row;
+}
+.cell-header-payments {
+  width: 20%;
+  @extend %table-cell-header;
+}
+.cell-header-content-payments {
+  font-size: 24px;
+  @extend %table-cell-content-header;
+}
+.row-payments {
+  height: 4.5rem;
+  @extend %table-row;
+}
+.cell-payments {
+  width: 20%;
+  @extend %table-cell-body;
+}
+.cell-content-payments {
+  @extend %table-cell-content;
+}
+.cell-payments-selected {
+  width: 20%;
+  @extend %table-cell-selected;
+}
+.cell-content-payments-selected {
+  @extend %table-cell-content;
+}
+.payment-info-card-button {
+  width: 30%;
+  height: 4.5rem;
+  border-radius: 0.5rem;
+  @extend %button;
+}
+.payment-info-card {
+  margin-top: $default-margin;
+  box-sizing: border-box;
+  padding: $default-padding;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  border: $default-border;
+  box-shadow: $default-shadow;
+  background-color: $default-background;
+  border-radius: 24px;
+  @extend %default-flex;
+}
+.payment-info-card-item {
+  margin-bottom: 6%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+.payment-info-card-text {
+  margin-bottom: 3%;
+  width: 100%;
+  font-size: 18px;
+  @extend %text;
+}

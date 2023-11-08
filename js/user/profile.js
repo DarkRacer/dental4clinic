@@ -39,6 +39,7 @@ getUserDiagnosis()
 
 var dialog = document.querySelector('#toothPicture');
 document.querySelector('#openToothPicture').onclick = function() {
+  dialog.style.display = 'flex';
   getToothPictures();
   dialog.show();
 }
