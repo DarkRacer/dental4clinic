@@ -7,3 +7,17 @@ services:
     build: ./
     ports:
       - "4200:80"
+
+  mongo:
+    ports:
+      - '27017:27017'
+    container_name: mongo
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+      - MONGO_INITDB_DATABASE=dental4clinic
+    image: mongo:3.7.9
