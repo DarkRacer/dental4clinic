@@ -6,3 +6,5 @@ dist
 css
 .idea
 .cache
+*.iml
+/.idea/
