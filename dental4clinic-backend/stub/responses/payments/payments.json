@@ -1,0 +1,35 @@
+[
+	{
+		"id": 1,
+		"date": "26.04.2023",
+		"user-id": 1,
+		"user-name": "Иванов Иван Иванович",
+		"doctor-id": 1,
+		"doctor-name": "Иванов Дитрий Иванович",
+		"service": "Протезирование",
+		"price": 100000,
+		"isActive": false
+	},
+	{
+		"id": 2,
+		"date": "30.04.2023",
+		"user-id": 2,
+		"user-name": "Сидоров Роман Игоревич",
+		"doctor-id": 2,
+		"doctor-name": "Сидоров Валерий Иванович",
+		"service": "Установка брекетов",
+		"price": 50000,
+		"isActive": true
+	},
+	{
+		"id": 3,
+		"date": "01.05.2023",
+		"user-id": 1,
+		"user-name": "Иванов Иван Иванович",
+		"doctor-id": 1,
+		"doctor-name": "Иванов Дитрий Иванович",
+		"service": "Удаление кариеса",
+		"price": 10000,
+		"isActive": true
+	}
+]

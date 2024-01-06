@@ -1,0 +1,14 @@
+[
+	{
+		"diagnosis-id": 1,
+		"name": "Кариес",
+		"description": "Кариес на 5 зубе средней степени",
+		"isActual": false
+	},
+	{
+		"diagnosis-id": 2,
+		"name": "Кариес",
+		"description": "Кариес на 6 зубе средней степени",
+		"isActual": true
+	}
+]
