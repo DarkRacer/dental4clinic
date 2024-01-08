@@ -22,7 +22,7 @@ export default {
       <!--UNAUTHORIZED-->
       <p class="header-item" v-if="!user.role" @click="$router.push({ path: '/unauthorized/appointments/create' });">Записаться</p>
       <p class="header-item" v-if="!user.role"  @click="$router.push({ path: '/unauthorized/prices' });">Цены</p>
-      <p class="header-item" v-if="!user.role"  @click="$router.push({ path: '/unauthorized/doctors' });">Врачи</p>
+      <p class="header-item" v-if="!user.role"  @click="$router.push({ path: '/doctors' });">Врачи</p>
       <div class="header-item" v-if="!user.role"  @click="$router.push({ path: '/clinic/info' });">О нас</div>
 
       <!--USER-->
@@ -30,8 +30,8 @@ export default {
       <p class="header-item" v-if="user.role === 'USER'" @click="$router.push({ path: '/user/appointments/create' });">Записаться</p>
       <p class="header-item" v-if="user.role === 'USER'" @click="$router.push({ path: '/user/payments' });">Оплата услуг</p>
       <p class="header-item" v-if="user.role === 'USER'" @click="$router.push({ path: '/user/prices' });">Цены</p>
-      <p class="header-item" v-if="user.role === 'USER'" @click="$router.push({ path: '/user/doctors' });">Врачи</p>
-      <div class="header-item" v-if="user.role === 'USER'" @click="$router.push({ path: '/user/clinic/info' });">О нас</div>
+      <p class="header-item" v-if="user.role === 'USER'" @click="$router.push({ path: '/doctors' });">Врачи</p>
+      <div class="header-item" v-if="user.role === 'USER'" @click="$router.push({ path: '/clinic/info' });">О нас</div>
 
       <!--DOCTOR-->
       <div class="header-item" v-if="user.role === 'DOCTOR'" @click="$router.push({ path: '/doctor/reception' });">Приём пациентов</div>

@@ -1,5 +1,5 @@
-@import './assets/styles/core/base/text';
-@import './assets/styles/core/components/table';
+@import 'core/base/text';
+@import 'core/components/table';
 
 body {
   margin: 0;
@@ -249,7 +249,7 @@ html {
   position: relative;
   background-size: cover;
   background-position: center;
-  background-image: url(src/img/vector.png);
+  background-image: url(../img/vector.png);
   justify-content: space-between;
   @extend %default-flex;
 }
@@ -487,8 +487,8 @@ html {
   @extend %default-img;
 }
 .go-to-top {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   display: none;
   position: fixed;
