@@ -1,0 +1,186 @@
+@import './base/text';
+@import './base/defaults';
+@import './components/dialog';
+@import './components/buttons';
+@import '../core/components/inputs';
+
+.prices-page {
+  @extend %default-page;
+}
+.prices-body {
+  @extend %default-body-on-page;
+}
+.prices-content {
+  box-sizing: border-box;
+  width: 60%;
+  height: 100%;
+  cursor: pointer;
+  align-items: center;
+  @extend %default-flex;
+}
+.prices-group {
+  margin-bottom: $default-margin;
+  width: 100%;
+  @extend %default-flex;
+}
+.prices-group-title {
+  margin-bottom: 1%;
+  display: flex;
+  font-size: 30px;
+  letter-spacing: 0.04rem;
+  color: #233567;
+  @extend %prices-text;
+}
+.prices-group-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  @extend %default-flex;
+}
+.prices-group-content-item {
+  padding: 1% 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  border: $default-border #e7f2f6;
+  box-sizing: border-box;
+}
+.prices-group-content-item:hover {
+  padding: 1% 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  border: $default-border #e7f2f6;
+  background-color: $default-background;
+  box-sizing: border-box;
+}
+.prices-group-content-item-name {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  color: #265777;
+  @extend %prices-text;
+}
+.prices-group-content-item-price {
+  margin-right: 1%;
+  height: 100%;
+  text-align: right;
+  display: flex;
+  color: #3d434c;
+  white-space: nowrap;
+  @extend %prices-text;
+}
+.prices-body-notification {
+  box-sizing: border-box;
+  margin-bottom: $default-margin;
+  padding: 1%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border: $default-border;
+  box-shadow: $default-shadow;
+  background-color: $default-background;
+  border-radius: 0.5rem;
+  line-height: 1.875;
+  @extend %title-text;
+}
+.prices-dialog-blackout {
+  @extend %dialog-blackout;
+}
+.prices-dialog-content {
+  width: 76%;
+  min-height: 10%;
+  border-radius: $default-radius;
+  @extend %dialog-content;
+}
+.prices-dialog-content::-webkit-scrollbar {
+  display: none;
+}
+.prices-dialog-body-content {
+  width: 96%;
+  height: 100%;
+  position: relative;
+  margin-left: $default-margin;
+  box-sizing: border-box;
+  @extend %default-flex;
+}
+.prices-dialog-title {
+  @extend %dialog-title;
+}
+.prices-dialog-title-text {
+  @extend %dialog-title-text;
+}
+.prices-dialog-close {
+  @extend %dialog-close;
+}
+.prices-dialog-close-div {
+  @extend %dialog-close-div;
+}
+.prices-dialog-content-description {
+  width: 100%;
+  height: 100%;
+  margin-bottom: $default-margin;
+  line-height: 2.1428571429;
+  @extend %text;
+}
+.pluses-group {
+  width: 100%;
+  height: 100%;
+  @extend %default-flex;
+}
+.pluses-group-title {
+  width: 100%;
+  height: 100%;
+  margin-bottom: $default-margin;
+  display: flex;
+  @extend %pluses-group-text;
+}
+.plus-price-group {
+  width: 100%;
+  height: 100%;
+  margin-bottom: $default-margin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.prices-dialog-content-plus {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  @extend %default-img;
+}
+.prices-dialog-content-text {
+  width: 100%;
+  height: 100%;
+  margin-left: 1%;
+  display: flex;
+  @extend %pluses-group-text;
+}
+.prices-dialog-footer {
+  width: 96%;
+  height: 100%;
+  position: relative;
+  margin-left: $default-margin;
+  margin-bottom: $default-margin;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.prices-dialog-footer-price {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  white-space: nowrap;
+  @extend %prices-text;
+}
+.prices-dialog-footer-button {
+  width: 30%;
+  height: 50px;
+  background: linear-gradient(134.44deg, #a8def0 0%, #245787 162.14%);
+  border-radius: 0.5rem;
+  @extend %button;
+}

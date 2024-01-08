@@ -1,0 +1,48 @@
+@import '../base/text';
+
+%dialog-blackout {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  border: none!important;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.3600000143);
+}
+
+%dialog-content {
+  width: 94%;
+  min-height: 92.5%;
+  position: relative;
+  background-color: $default-background;
+  box-sizing: border-box;
+  border-radius: 80px;
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  @extend %default-flex;
+}
+
+%dialog-title {
+  width: 100%;
+  margin: $default-margin;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+%dialog-close {
+  width: 40px;
+  height: 40px;
+  @extend %default-img;
+  @include transform(rotate(45deg))
+}
+
+%dialog-close-div {
+  padding-right: 4%;
+}

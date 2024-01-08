@@ -1,0 +1,53 @@
+$default-background: #e7f2f6;
+$default-background-header-component: #eff2f6;
+$default-radius: 50px;
+$default-border: 1px solid;
+$default-shadow: 0 0.4rem 3rem rgba(0, 0, 0, 0.25);
+$default-margin: 2%;
+$default-padding: 2%;
+
+%default-flex {
+  display: flex;
+  flex-direction: column;
+}
+%default-slogan {
+  width: 40%;
+  height: 40%;
+  object-fit: contain;
+  vertical-align: top;
+  margin-bottom: $default-margin;
+}
+%default-img {
+  object-fit: cover;
+  vertical-align: top;
+}
+
+%default-page {
+  width: 100%;
+  align-items: center;
+  position: relative;
+  background-color: #ffffff;
+  padding-bottom: $default-padding;
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  @extend %default-flex;
+}
+%default-page::-webkit-scrollbar {
+  display: none;
+}
+
+%default-body-on-page {
+  box-sizing: border-box;
+  width: 96%;
+  align-items: center;
+  @extend %default-flex;
+}
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}

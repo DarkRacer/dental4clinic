@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/../dental4clinic.iml" filepath="$PROJECT_DIR$/../dental4clinic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dental4clinic-backend.iml" filepath="$PROJECT_DIR$/dental4clinic-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dental4clinic-frontend.iml" filepath="$PROJECT_DIR$/dental4clinic-frontend.iml" />
     </modules>
   </component>
 </project>
