@@ -12,15 +12,11 @@ export default {
         description: 'Упс. Что-то пошло не так...',
         pluses: ''
       },
-      showDialog: false,
-      doctorContentArray: [],
       currentDoctor: {
         name: '',
         description: 'Упс. Что-то пошло не так...',
         pluses: ''
       },
-      computedDisplay: "none",
-      dialog: false,
       doctorId: null
     }
   },

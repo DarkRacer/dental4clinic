@@ -7,6 +7,7 @@ import MainPage from "./pages/MainPage.vue";
 import ClinicInfo from "./pages/ClinicInfo.vue"
 import Doctors from "./pages/Doctors.vue"
 import VueCookies from 'vue-cookies';
+import Prices from "@/pages/Prices.vue";
 
 
 const router = createRouter({
@@ -21,6 +22,10 @@ const router = createRouter({
     {
       path: '/doctors',
       component: Doctors
+    },
+    {
+      path: '/prices',
+      component: Prices
     }
   ],
   history: createWebHistory()
