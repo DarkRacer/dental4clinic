@@ -55,5 +55,5 @@ export default {
 
 <style scoped>
 @import "../assets/styles/login.scss";
-@import "../assets/styles/main.scss";
+@import "../../src/main.scss";
 </style>

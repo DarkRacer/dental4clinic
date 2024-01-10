@@ -116,5 +116,5 @@ export default {
 
 <style scoped>
 @import "../assets/styles/registration.scss";
-@import "../assets/styles/main.scss";
+@import "../../src/main.scss";
 </style>

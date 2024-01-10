@@ -249,7 +249,7 @@ html {
   position: relative;
   background-size: cover;
   background-position: center;
-  background-image: url(src/img/vector.png);
+  background-image: url(../src/img/vector.png);
   justify-content: space-between;
   @extend %default-flex;
 }
@@ -424,20 +424,25 @@ html {
   flex-direction: row;
 }
 .calendar-date {
-  width: 14.5%;
-  height: 80px;
-  padding: 0.5% 0 0 0.5%;
+  width: 100%;
+  height: 100%;
+  padding: 1% 0 0 1%;
   position: relative;
   box-sizing: border-box;
   border: $default-border #245787;
   background-color: $default-background;
   @extend %calendar-text;
 }
-.date-selected {
+.date{
   box-sizing: border-box;
   width: 14.5%;
   height: 80px;
-  padding: 0.5% 0 0 0.5%;
+}
+.date-selected {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 1% 0 0 1%;
   display: flex;
   border: $default-border #245787;
   background-color: #64caef;

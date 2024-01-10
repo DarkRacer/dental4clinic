@@ -9,6 +9,7 @@ import Doctors from "./pages/Doctors.vue"
 import Prices from "@/pages/Prices.vue";
 import Login from "@/pages/Login.vue";
 import Registration from "@/pages/Registration.vue";
+import AppointmentsCreate from "@/pages/AppointmentsCreate.vue";
 import Appointments from "@/pages/Appointments.vue";
 
 
@@ -40,6 +41,10 @@ const router = createRouter({
     },
     {
       path: '/appointments/create',
+      component: AppointmentsCreate
+    },
+    {
+      path: '/appointments/:userId',
       component: Appointments
     }
   ],
