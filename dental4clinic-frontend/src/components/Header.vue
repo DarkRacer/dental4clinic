@@ -1,11 +1,19 @@
 <script>
+import { useCookies } from '@vueuse/integrations/useCookies'
+
 export default {
-  data() {
+  setup() {
+    const cookies = useCookies(['user_id', 'role', 'access_token'])
     return {
-      user: {
-        id: this.$cookies.get("user_id"),
-        role: this.$cookies.get("role"),
-        token: this.$cookies.get("access_token")
+      cookies,
+    }
+  },
+  computed: {
+    user: function () {
+      return {
+        id: this.cookies.get("user_id"),
+        role: this.cookies.get("role"),
+        token: this.cookies.get("access_token")
       }
     }
   }
@@ -57,7 +65,7 @@ export default {
       <div class="logo-user" v-if="!user.token" @click="$router.push({ path: '/login' });">
         <img class="logo-user-image" src="../img/user-logo.png"/>
       </div>
-      <div class="logo-user" v-else-if="!user.token" @click="$router.push({ path: `/profile/${user.id}` });">
+      <div class="logo-user" v-else-if="user.token" @click="$router.push({ path: `/profile/${user.id}` });">
 <!--        todo: change after upload image from backend-->
         <img class="logo-user-image" src="../img/user-photo.png"/>
       </div>
