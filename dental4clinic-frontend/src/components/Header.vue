@@ -36,7 +36,7 @@ export default {
       <!--USER-->
       <p class="header-item" v-if="user.role === 'USER'" @click="$router.push({ path: '/appointments/' + this.user.id });">Мои записи</p>
       <p class="header-item" v-if="user.role === 'USER'" @click="$router.push({ path: '/appointments/create' });">Записаться</p>
-      <p class="header-item" v-if="user.role === 'USER'" @click="$router.push({ path: '/user/payments' });">Оплата услуг</p>
+      <p class="header-item" v-if="user.role === 'USER'" @click="$router.push({ path: '/payments/' + this.user.id });">Оплата услуг</p>
       <p class="header-item" v-if="user.role === 'USER'" @click="$router.push({ path: '/prices' });">Цены</p>
       <p class="header-item" v-if="user.role === 'USER'" @click="$router.push({ path: '/doctors' });">Врачи</p>
       <div class="header-item" v-if="user.role === 'USER'" @click="$router.push({ path: '/clinic/info' });">О нас</div>

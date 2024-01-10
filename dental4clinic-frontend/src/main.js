@@ -11,6 +11,7 @@ import Login from "@/pages/Login.vue";
 import Registration from "@/pages/Registration.vue";
 import AppointmentsCreate from "@/pages/AppointmentsCreate.vue";
 import Appointments from "@/pages/Appointments.vue";
+import UserPayments from "@/pages/UserPayments.vue";
 
 
 const router = createRouter({
@@ -46,6 +47,10 @@ const router = createRouter({
     {
       path: '/appointments/:userId',
       component: Appointments
+    },
+    {
+      path: '/payments/:userId',
+      component: UserPayments
     }
   ],
   history: createWebHistory()

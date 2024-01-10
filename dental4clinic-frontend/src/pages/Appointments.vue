@@ -27,7 +27,6 @@ export default {
       },
       { immediate: true }
     )
-    window.addEventListener('scroll', this.handleScroll);
   },
   methods: {
     getAppointments: function () {
