@@ -1,0 +1,10 @@
+@import '../core/payments';
+
+.buttons {
+  width: 100%;
+  height: 60px;
+  margin-top: $default-margin;
+  display: flex;
+  flex-direction: row;
+  column-gap: 40%;
+}

@@ -3,19 +3,44 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import MainPage from "@/MainPage.vue";
-import TheWelcome from "@/components/TheWelcome.vue";
-import VueCookies from 'vue-cookies';
+import MainPage from "./pages/MainPage.vue";
+import ClinicInfo from "./pages/ClinicInfo.vue"
+import Doctors from "./pages/Doctors.vue"
+import Prices from "@/pages/Prices.vue";
+import Login from "@/pages/Login.vue";
+import Registration from "@/pages/Registration.vue";
+import Appointments from "@/pages/Appointments.vue";
 
 
 const router = createRouter({
-  routes: [{
-    path: '/',
-    component: MainPage
-  },
+  routes: [
     {
-      path: '/test',
-      component: TheWelcome
+      path: '/',
+      component: MainPage
+    },
+    {
+      path: '/login',
+      component: Login
+    },
+    {
+      path: '/registration',
+      component: Registration
+    },
+    {
+      path: '/clinic/info',
+      component: ClinicInfo
+    },
+    {
+      path: '/doctors',
+      component: Doctors
+    },
+    {
+      path: '/prices',
+      component: Prices
+    },
+    {
+      path: '/appointments/create',
+      component: Appointments
     }
   ],
   history: createWebHistory()
@@ -23,5 +48,4 @@ const router = createRouter({
 
 const app = createApp(App)
 app.use(router)
-app.use(VueCookies);
 app.mount('#app')

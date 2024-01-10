@@ -26,10 +26,10 @@
   column-gap: 4%;
   align-items: flex-start;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 .doctor-card {
   width: 22%;
-  height: 100%;
   margin-bottom: $default-margin;
   position: relative;
   align-items: center;
@@ -73,7 +73,7 @@
 }
 .selector {
   box-sizing: border-box;
-  padding: 5%;
+  padding: 1%;
   height: 100%;
   background-color: $default-background;
   @extend %selector-text;

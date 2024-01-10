@@ -22,7 +22,7 @@ router.post('/registration',function(req,res){
 router.get('/doctors/services',function(req,res){
   res.sendFile(path.join(__dirname+'/responses/doctors_services.json'));
 });
-router.post('/appointments/create/unauthorized',function(req,res){
+router.post('/appointments/create',function(req,res){
   res.status(204).send();
 });
 router.get('/prices',function(req,res){
