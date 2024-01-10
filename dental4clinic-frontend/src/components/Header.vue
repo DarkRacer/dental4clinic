@@ -28,7 +28,7 @@ export default {
       </div>
 
       <!--UNAUTHORIZED-->
-      <p class="header-item" v-if="!user.role" @click="$router.push({ path: '/unauthorized/appointments/create' });">Записаться</p>
+      <p class="header-item" v-if="!user.role" @click="$router.push({ path: '/appointments/create' });">Записаться</p>
       <p class="header-item" v-if="!user.role"  @click="$router.push({ path: '/prices' });">Цены</p>
       <p class="header-item" v-if="!user.role"  @click="$router.push({ path: '/doctors' });">Врачи</p>
       <div class="header-item" v-if="!user.role"  @click="$router.push({ path: '/clinic/info' });">О нас</div>

@@ -9,6 +9,7 @@ import Doctors from "./pages/Doctors.vue"
 import Prices from "@/pages/Prices.vue";
 import Login from "@/pages/Login.vue";
 import Registration from "@/pages/Registration.vue";
+import Appointments from "@/pages/Appointments.vue";
 
 
 const router = createRouter({
@@ -36,6 +37,10 @@ const router = createRouter({
     {
       path: '/prices',
       component: Prices
+    },
+    {
+      path: '/appointments/create',
+      component: Appointments
     }
   ],
   history: createWebHistory()

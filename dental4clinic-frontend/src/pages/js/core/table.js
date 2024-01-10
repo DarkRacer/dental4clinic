@@ -5,9 +5,9 @@ const changeClassRowCell = (rowCell, classForRemove, classForAdd) => {
 }
 
 const changeClassRows = (rowCells, classForRemove, classForAdd) => {
-  rowCells.forEach((rowCell) => {
+  for (const rowCell of rowCells) {
     changeClassRowCell(rowCell, classForRemove, classForAdd)
-  })
+  }
 }
 
 export { changeClassRows }
