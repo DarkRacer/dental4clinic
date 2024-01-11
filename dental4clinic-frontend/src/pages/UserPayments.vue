@@ -20,7 +20,6 @@ export default {
       {immediate: true}
     )
   },
-  computed: {},
   methods: {
     getPayments: function () {
       get(`payments/user/${this.$route.params.userId}`).then(data => {
