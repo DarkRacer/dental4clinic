@@ -9,7 +9,11 @@ import Doctors from "./pages/Doctors.vue"
 import Prices from "@/pages/Prices.vue";
 import Login from "@/pages/Login.vue";
 import Registration from "@/pages/Registration.vue";
+import AppointmentsCreate from "@/pages/AppointmentsCreate.vue";
 import Appointments from "@/pages/Appointments.vue";
+import UserPayments from "@/pages/UserPayments.vue";
+import Profile from "@/pages/Profile.vue";
+import ProfileEdit from "@/pages/ProfileEdit.vue";
 
 
 const router = createRouter({
@@ -21,6 +25,14 @@ const router = createRouter({
     {
       path: '/login',
       component: Login
+    },
+    {
+      path: '/profile/:userId',
+      component: Profile
+    },
+    {
+      path: '/profile/:userId/edit',
+      component: ProfileEdit
     },
     {
       path: '/registration',
@@ -40,7 +52,15 @@ const router = createRouter({
     },
     {
       path: '/appointments/create',
+      component: AppointmentsCreate
+    },
+    {
+      path: '/appointments/:userId',
       component: Appointments
+    },
+    {
+      path: '/payments/:userId',
+      component: UserPayments
     }
   ],
   history: createWebHistory()
