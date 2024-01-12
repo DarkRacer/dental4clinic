@@ -257,8 +257,7 @@ export default {
         }
         postWithoutResponse(`appointments/${this.dataAppointment.id}/finish`, paymentBody).then((data) => {
           postWithoutResponse(`user/tooth-card/${this.dataAppointment['user-id']}/update`, this.toothCard).then((data) => {
-            location.assign('/doctor/reception');
-            this.$router.push({ path: `/${ this.$route.params.userId }/reception` })
+            this.$router.push({ path: `/${ this.$route.params.userId }/receptions` })
           }).catch((error) => console.log(error))
         }).catch((error) => console.log(error))
       }

@@ -1,5 +1,6 @@
 <script>
 import {get, postWithoutResponse} from "@/pages/js/core/rest.js";
+import {useCookies} from "@vueuse/integrations/useCookies";
 
 export default {
   data() {
@@ -21,6 +22,12 @@ export default {
       }
     }
   },
+  setup() {
+    const cookies = useCookies(['user_id', 'role', 'access_token'])
+    return {
+      cookies,
+    }
+  },
   created() {
     this.$watch(
       () => this.$route.params,
@@ -29,6 +36,15 @@ export default {
       },
       {immediate: true}
     )
+  },
+  computed: {
+    userCookie: function () {
+      return {
+        id: this.cookies.get("user_id"),
+        role: this.cookies.get("role"),
+        token: this.cookies.get("access_token")
+      }
+    }
   },
   methods: {
     getUserInfo: function () {
@@ -78,7 +94,7 @@ export default {
             <input type="text" name="patronymic" placeholder="Отчество" class="required-field-input" v-model="userForm.patronymic">
           </div>
         </div>
-        <div class="required-fields">
+        <div class="required-fields" v-if="userCookie.role === 'USER'">
           <div class="required-field">
             <div class="required-field-title">Дата рождения</div>
             <input type="date" name="dateOfBirthday" placeholder="Дата рождения" class="required-field-input" v-model="userForm.dateOfBirthday">
@@ -92,7 +108,7 @@ export default {
             <input type="email" name="email" placeholder="E-mail" class="required-field-input" v-model="userForm.email">
           </div>
         </div>
-        <div class="additional-fields">
+        <div class="additional-fields" v-if="userCookie.role === 'USER'">
           <div class="additional-field">
             <div class="additional-field-title">Адрес проживания</div>
             <textarea type="text" name="address" placeholder="Адрес проживания" class="additional-field-input" v-model="userForm.address"></textarea>
