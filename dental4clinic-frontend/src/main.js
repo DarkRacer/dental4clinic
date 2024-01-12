@@ -18,6 +18,7 @@ import Receptions from "@/pages/Receptions.vue";
 import Reception from "@/pages/Reception.vue";
 import CreateUser from "@/pages/CreateUser.vue";
 import RecordList from "@/pages/RecordList.vue";
+import Payments from "@/pages/Payments.vue";
 
 
 const router = createRouter({
@@ -81,6 +82,10 @@ const router = createRouter({
     {
       path: '/record/list',
       component: RecordList
+    },
+    {
+      path: '/payments',
+      component: Payments
     }
   ],
   history: createWebHistory()

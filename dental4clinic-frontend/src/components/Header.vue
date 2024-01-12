@@ -50,7 +50,7 @@ export default {
       <p class="header-item" v-if="user.role === 'ADMIN'" @click="$router.push({ path: '/record/list' });">График записей</p>
       <p class="header-item" v-if="user.role === 'ADMIN'" @click="$router.push({ path: '/prices' });">Цены</p>
       <p class="header-item" v-if="user.role === 'ADMIN'" @click="$router.push({ path: '/doctors' });">Врачи</p>
-      <div class="header-item" v-if="user.role === 'ADMIN'" @click="$router.push({ path: '/admin/payments' });">Оплаты</div>
+      <div class="header-item" v-if="user.role === 'ADMIN'" @click="$router.push({ path: '/payments' });">Оплаты</div>
 
       <!--DIRECTOR-->
       <p class="header-item" v-if="user.role === 'DIRECTOR'" @click="$router.push({ path: '/record/list' });">График записей</p>
