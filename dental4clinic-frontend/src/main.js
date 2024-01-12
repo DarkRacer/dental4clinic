@@ -17,6 +17,7 @@ import ProfileEdit from "@/pages/ProfileEdit.vue";
 import Receptions from "@/pages/Receptions.vue";
 import Reception from "@/pages/Reception.vue";
 import CreateUser from "@/pages/CreateUser.vue";
+import RecordList from "@/pages/RecordList.vue";
 
 
 const router = createRouter({
@@ -76,6 +77,10 @@ const router = createRouter({
     {
       path: '/user/create',
       component: CreateUser
+    },
+    {
+      path: '/record/list',
+      component: RecordList
     }
   ],
   history: createWebHistory()
