@@ -42,7 +42,7 @@ export default {
       <div class="header-item" v-if="user.role === 'USER'" @click="$router.push({ path: '/clinic/info' });">О нас</div>
 
       <!--DOCTOR-->
-      <div class="header-item" v-if="user.role === 'DOCTOR'" @click="$router.push({ path: '/doctor/reception' });">Приём пациентов</div>
+      <div class="header-item" v-if="user.role === 'DOCTOR'" @click="$router.push({ path: '/' + this.user.id + '/receptions' });">Приём пациентов</div>
 
       <!--ADMIN-->
       <p class="header-item" v-if="user.role === 'ADMIN'" @click="$router.push({ path: '/admin/user/create' });">Создать пользователя</p>

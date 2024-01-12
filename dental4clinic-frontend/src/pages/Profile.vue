@@ -1,5 +1,6 @@
 <script>
 import {get} from "@/pages/js/core/rest.js";
+import {useCookies} from "@vueuse/integrations/useCookies";
 
 export default {
   data() {
@@ -15,10 +16,19 @@ export default {
         allergies: '',
         photo: '',
         photoName: '',
-        address: ''
+        address: '',
+        specialization: '',
+        description: '',
+        pluses: ''
       },
       diagnosisTableValue: [],
       toothPictures: []
+    }
+  },
+  setup() {
+    const cookies = useCookies(['user_id', 'role', 'access_token'])
+    return {
+      cookies,
     }
   },
   created() {
@@ -26,7 +36,9 @@ export default {
       () => this.$route.params,
       () => {
         this.getUserInfo()
-        this.getUserDiagnosis()
+        if (this.userCookie.role === 'USER') {
+          this.getUserDiagnosis()
+        }
       },
       {immediate: true}
     )
@@ -34,6 +46,13 @@ export default {
   computed: {
     fullName: function() {
       return `${this.user.surname}  ${this.user.name}  ${this.user.patronymic}`
+    },
+    userCookie: function () {
+      return {
+        id: this.cookies.get("user_id"),
+        role: this.cookies.get("role"),
+        token: this.cookies.get("access_token")
+      }
     }
   },
   methods: {
@@ -80,30 +99,34 @@ export default {
               <div class="user-card-field">ФИО</div>
               <div class="field-content" v-text="fullName"></div>
             </div>
-            <div class="card-field-group">
+            <div class="card-field-group" v-if="userCookie.role === 'USER'">
               <div class="user-card-field">Дата рождения</div>
               <div class="field-content" v-text="user.dateOfBirthday"></div>
             </div>
-            <div class="card-field-group">
+            <div class="card-field-group" v-if="userCookie.role === 'USER'">
               <div class="user-card-field">Телефон</div>
               <div class="field-content" v-text="user.phone"></div>
             </div>
-            <div class="card-field-group">
+            <div class="card-field-group" v-if="userCookie.role === 'USER'">
               <div class="user-card-field">E-mail</div>
               <div class="field-content" v-text="user.email"></div>
             </div>
-            <div class="card-field-group">
+            <div class="card-field-group" v-if="userCookie.role === 'USER'">
               <div class="user-card-field">Аллергии</div>
               <div class="field-content" v-text="user.allergies"></div>
+            </div>
+            <div class="card-field-group" v-if="userCookie.role === 'DOCTOR'">
+              <div class="user-card-field">Специализация</div>
+              <div class="field-content" v-text="user.specialization"></div>
             </div>
           </div>
         </div>
         <div class="user-card-buttons">
-          <div class="user-card-button" id="openToothPicture" @click="openToothPictures()">Снимки</div>
+          <div class="user-card-button" id="openToothPicture" @click="openToothPictures()" v-if="userCookie.role === 'USER'">Снимки</div>
           <div class="user-card-button-last" @click="$router.push({ path: `/profile/${this.$route.params.userId}/edit` });">Редактировать профиль</div>
         </div>
       </div>
-      <table class="table">
+      <table class="table" v-if="userCookie.role === 'USER'">
         <tbody class="table">
         <tr class="row-header">
           <th class="cell-header">
@@ -130,8 +153,18 @@ export default {
         </tr>
         </tbody>
       </table>
+      <div class="doctor-info" v-if="userCookie.role === 'DOCTOR'">
+        <div class="doctor-info-content">
+          <p class="card-title">Описание</p>
+          <p class="doctor-info-content-text" v-text="user.description"></p>
+        </div>
+        <div class="doctor-info-content">
+          <p class="card-title">Проффесиональные навыки</p>
+          <p class="doctor-info-content-text" v-text="user.pluses"></p>
+        </div>
+      </div>
     </div>
-    <dialog class="tooth-pictures-dialog-blackout" id="toothPicture" ref="toothPicture">
+    <dialog class="tooth-pictures-dialog-blackout" id="toothPicture" ref="toothPicture" v-if="userCookie.role === 'USER'">
       <div class="tooth-pictures-dialog-content">
         <div class="tooth-pictures-dialog-title">
           <div class="tooth-pictures-dialog-title-text">Снимки</div>
@@ -149,5 +182,6 @@ export default {
 
 <style scoped>
 @import "../../src/assets/styles/user/profile.scss";
+@import "../../src/assets/styles/doctor/profile.scss";
 @import "../../src/main.scss";
 </style>
