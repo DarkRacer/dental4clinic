@@ -1,6 +1,7 @@
 <script>
 
 import {get} from "@/pages/js/core/rest.js";
+import {useCookies} from "@vueuse/integrations/useCookies";
 
 export default {
   data() {
@@ -17,7 +18,14 @@ export default {
         description: 'Упс. Что-то пошло не так...',
         pluses: ''
       },
-      doctorId: null
+      doctorId: null,
+      computedDisplay: 'none'
+    }
+  },
+  setup() {
+    const cookies = useCookies(['user_id', 'role', 'access_token'])
+    return {
+      cookies,
     }
   },
   created() {
@@ -38,6 +46,13 @@ export default {
       return this.doctorsValue.filter((doctorInfo) =>
         doctorInfo.specialization.includes(this.selectedDocSpec) || this.selectedDocSpec === '')
     },
+    user: function () {
+      return {
+        id: this.cookies.get("user_id"),
+        role: this.cookies.get("role"),
+        token: this.cookies.get("access_token")
+      }
+    }
   },
   methods: {
     topFunction: function () {
