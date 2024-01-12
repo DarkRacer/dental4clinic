@@ -82,7 +82,7 @@ router.get('/user/tooth/3',function(req,res){
 router.get('/user/tooth/1',function(req,res){
   res.sendFile(path.join(__dirname+'/responses/user/tooth/tooths_1.json'));
 });
-router.get('/user/doctor/2',function(req,res){
+router.get('/user/2',function(req,res){
   res.sendFile(path.join(__dirname+'/responses/doctor/2.json'));
 });
 router.post('/user/edit/2',function(req,res){
