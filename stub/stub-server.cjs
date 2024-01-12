@@ -124,7 +124,7 @@ router.post('/appointments/create/admin',function(req,res){
 router.get('/requests',function(req,res){
   res.sendFile(path.join(__dirname+'/responses/requests/requests.json'));
 });
-router.get('/appointments/admin',function(req,res){
+router.get('/appointments',function(req,res){
   res.sendFile(path.join(__dirname+'/responses/appointments/admin/appointments.json'));
 });
 router.post('/payments/update',function(req,res){
@@ -132,9 +132,6 @@ router.post('/payments/update',function(req,res){
 });
 router.get('/payments/all',function(req,res){
   res.sendFile(path.join(__dirname+'/responses/payments/payments.json'));
-});
-router.get('/appointments/director',function(req,res){
-  res.sendFile(path.join(__dirname+'/responses/appointments/admin/appointments.json'));
 });
 router.post('/requests/update',function(req,res){
   res.sendFile(path.join(__dirname+'/responses/requests/requests_updated.json'));

@@ -45,16 +45,16 @@ export default {
       <div class="header-item" v-if="user.role === 'DOCTOR'" @click="$router.push({ path: '/' + this.user.id + '/receptions' });">Приём пациентов</div>
 
       <!--ADMIN-->
-      <p class="header-item" v-if="user.role === 'ADMIN'" @click="$router.push({ path: '/admin/user/create' });">Создать пользователя</p>
-      <p class="header-item" v-if="user.role === 'ADMIN'" @click="$router.push({ path: '/admin/appointments/create' });">Назначить запись</p>
-      <p class="header-item" v-if="user.role === 'ADMIN'" @click="$router.push({ path: '/admin/record/list' });">График записей</p>
+      <p class="header-item" v-if="user.role === 'ADMIN'" @click="$router.push({ path: '/user/create' });">Создать пользователя</p>
+      <p class="header-item" v-if="user.role === 'ADMIN'" @click="$router.push({ path: '/appointments/create' });">Назначить запись</p>
+      <p class="header-item" v-if="user.role === 'ADMIN'" @click="$router.push({ path: '/record/list' });">График записей</p>
       <p class="header-item" v-if="user.role === 'ADMIN'" @click="$router.push({ path: '/prices' });">Цены</p>
       <p class="header-item" v-if="user.role === 'ADMIN'" @click="$router.push({ path: '/doctors' });">Врачи</p>
-      <div class="header-item" v-if="user.role === 'ADMIN'" @click="$router.push({ path: '/admin/payments' });">Оплаты</div>
+      <div class="header-item" v-if="user.role === 'ADMIN'" @click="$router.push({ path: '/payments' });">Оплаты</div>
 
       <!--DIRECTOR-->
-      <p class="header-item" v-if="user.role === 'DIRECTOR'" @click="$router.push({ path: '/director/record/list' });">График записей</p>
-      <p class="header-item" v-if="user.role === 'DIRECTOR'" @click="$router.push({ path: '/director/requests' });">Заявки</p>
+      <p class="header-item" v-if="user.role === 'DIRECTOR'" @click="$router.push({ path: '/record/list' });">График записей</p>
+      <p class="header-item" v-if="user.role === 'DIRECTOR'" @click="$router.push({ path: '/requests' });">Заявки</p>
       <p class="header-item" v-if="user.role === 'DIRECTOR'" @click="$router.push({ path: '/director/payments' });">Оплаты</p>
       <p class="header-item" v-if="user.role === 'DIRECTOR'" @click="$router.push({ path: '/director/prices' });">Цены</p>
       <p class="header-item" v-if="user.role === 'DIRECTOR'" @click="$router.push({ path: '/director/doctors' });">Врачи</p>
