@@ -26,7 +26,10 @@ export default {
       doctorValue: '',
       serviceValue: '',
       doctorsTableValue: [],
-      selectedIndex: -1
+      selectedIndex: -1,
+      selectedRequestIndex: -1,
+      request: {},
+      requestsTableValue: []
     }
   },
   created() {
@@ -64,6 +67,10 @@ export default {
       if (this.user.role === 'USER') {
         this.appointmentForm.userId = this.user.id
       }
+      if (this.user.role === 'ADMIN' && this.request !== {}) {
+        this.appointmentForm.requestId = this.request.id
+        this.appointmentForm.description = this.request.description
+      }
       postWithoutResponse("appointments/create", this.appointmentForm).then(data => {
       }).catch((error) => {console.error('Error:', error);});
     },
@@ -72,11 +79,19 @@ export default {
         this.doctorsTableValue = data
       }).catch((error) => {console.error('Error:', error);})
     },
+    getRequests: function () {
+      get("requests").then(data => {
+        this.requestsTableValue = data
+      })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    },
     selectRow: function (index) {
       if (this.selectedIndex === index) {
         this.selectedIndex = -1
         this.appointmentForm.doctorId = ''
-        for(let i = 0; i < 3; i++) {
+        for(let i = 0; i < 4; i++) {
           changeClassRows(this.$refs.tableRow[index].cells, "cell-recording-selected", "cell-recording")
         }
         return
@@ -85,11 +100,44 @@ export default {
       this.selectedIndex = index
 
       changeClassRows(this.$refs.tableRow[index].children, "cell-recording", "cell-recording-selected")
-      for(let i = 0; i < 3; i++) {
+      for(let i = 0; i < 4; i++) {
         if (index !== i) {
           changeClassRows(this.$refs.tableRow[i].children, "cell-recording-selected", "cell-recording")
         }
       }
+    },
+    selectRequestRow: function (index) {
+      if (this.selectedRequestIndex === index) {
+        this.selectedRequestIndex = -1
+        this.request = {}
+        for(let i = 0; i < 6; i++) {
+          changeClassRows(this.$refs.tableRequestRow[index].cells, "cell-selected", "cell")
+        }
+        return
+      }
+
+      if (index < this.requestsTableValue.length) {
+        this.request = this.requestsTableValue[index]
+        this.selectedRequestIndex = index
+        changeClassRows(this.$refs.tableRequestRow[index].children, "cell", "cell-selected")
+      }
+      for(let i = 0; i < 6; i++) {
+        if (index !== i) {
+          changeClassRows(this.$refs.tableRequestRow[i].children, "cell-selected", "cell")
+        }
+      }
+    },
+    openRequestsDialog: function () {
+      this.getRequests()
+      this.$refs.requestsDialog.style.display = 'flex';
+      this.$refs.requestsDialog.show()
+    },
+    closeRequestsDialog: function (isAppointment) {
+      if (!isAppointment) {
+        this.request = {}
+      }
+      this.$refs.requestsDialog.style.display = null;
+      this.$refs.requestsDialog.close()
     }
   }
 }
@@ -136,7 +184,28 @@ export default {
         <div class="form-field-group">
           <div class="form-field">
             <div class="form-field-title">Дата</div>
-            <input type="date" name="date" id="date-field" placeholder="Дата" class="form-field-input" v-model="appointmentForm.surname">
+            <input type="date" name="date" id="date-field" placeholder="Дата" class="form-field-input" v-model="appointmentForm.date">
+          </div>
+          <div class="form-field-last-column">
+            <div class="form-field-title">Время</div>
+            <input type="time" name="datetime" id="datetime-field" placeholder="Время" class="form-field-input" v-model="appointmentForm.datetime">
+          </div>
+        </div>
+      </form>
+      <form class="form" id="appointment-form" v-if="user.role === 'ADMIN'">
+        <div class="form-field-last-column">
+          <div class="form-field">
+            <div class="select-button" @click="openRequestsDialog">Выбрать заявку</div>
+          </div>
+          <div class="form-field-last-column">
+            <div class="form-field-title">Пациент</div>
+            <input type="text" name="patient" id="patient-field" placeholder="Пациент" class="form-field-input" v-model="request.name">
+          </div>
+        </div>
+        <div class="form-field-group">
+          <div class="form-field">
+            <div class="form-field-title">Дата</div>
+            <input type="date" name="date" id="date-field" placeholder="Дата" class="form-field-input" v-model="appointmentForm.date">
           </div>
           <div class="form-field-last-column">
             <div class="form-field-title">Время</div>
@@ -177,86 +246,51 @@ export default {
       <div class="record-button" id="record-button" @click="submit">Записаться</div>
     </div>
 
-<!--    <dialog class="request-dialog-blackout" id="requestsDialog">
-    <div class="request-dialog-content">
-      <div class="request-dialog-title">
-        <div class="request-dialog-title-text">Назначить запись</div>
-        <div class="request-dialog-close-div" id="requestsDialogClose">
-          <img class="request-dialog-close" src="../img/point-plus.png"/>
+    <dialog class="request-dialog-blackout" ref="requestsDialog">
+      <div class="request-dialog-content">
+        <div class="request-dialog-title">
+          <div class="request-dialog-title-text">Назначить запись</div>
+          <div class="request-dialog-close-div" id="requestsDialogClose" @click="closeRequestsDialog(false)">
+            <img class="request-dialog-close" src="../img/point-plus.png"/>
+          </div>
+        </div>
+        <div class="request-dialog-body-content">
+          <table class="table">
+            <tbody class="table">
+            <tr class="row-header-request">
+              <th class="cell-header">
+                <div class="cell-header-content">Имя</div>
+              </th>
+              <th class="cell-header">
+                <div class="cell-header-content">Телефон</div>
+              </th>
+              <th class="cell-header">
+                <div class="cell-header-content">Проблема</div>
+              </th>
+            </tr>
+
+            <tr class="row-request" id="first-row-request" v-for="(n, index) in 6" :key="index" ref="tableRequestRow" @click="selectRequestRow(index)">
+              <th class="cell" id="first-row-request-cell-1">
+                <div class="cell-content" v-text="requestsTableValue[index] ? requestsTableValue[index].name : ''"></div>
+              </th>
+              <th class="cell" id="first-row-request-cell-2">
+                <div class="cell-content" v-text="requestsTableValue[index] ? requestsTableValue[index].phone : ''"></div>
+              </th>
+              <th class="cell" id="first-row-request-cell-3">
+                <div class="cell-content" v-text="requestsTableValue[index] ? requestsTableValue[index].description : ''"></div>
+              </th>
+            </tr>
+            </tbody>
+          </table>
+          <div class="select-request-button" @click="closeRequestsDialog(true)">Записать</div>
         </div>
       </div>
-      <div class="request-dialog-body-content">
-        <table class="table">
-          <tbody class="table">
-          <tr class="row-header-request">
-            <th class="cell-header">
-              <div class="cell-header-content">Имя</div>
-            </th>
-            <th class="cell-header">
-              <div class="cell-header-content">Телефон</div>
-            </th>
-            <th class="cell-header">
-              <div class="cell-header-content">Проблема</div>
-            </th>
-          </tr>
-          <tr class="row-request">
-            <th class="cell">
-            </th>
-            <th class="cell">
-            </th>
-            <th class="cell">
-            </th>
-          </tr>
-          <tr class="row-request">
-            <th class="cell">
-            </th>
-            <th class="cell">
-            </th>
-            <th class="cell">
-            </th>
-          </tr>
-          <tr class="row-request">
-            <th class="cell">
-            </th>
-            <th class="cell">
-            </th>
-            <th class="cell">
-            </th>
-          </tr>
-          <tr class="row-request">
-            <th class="cell">
-            </th>
-            <th class="cell">
-            </th>
-            <th class="cell">
-            </th>
-          </tr>
-          <tr class="row-request">
-            <th class="cell">
-            </th>
-            <th class="cell">
-            </th>
-            <th class="cell">
-            </th>
-          </tr>
-          <tr class="row-request">
-            <th class="cell">
-            </th>
-            <th class="cell">
-            </th>
-            <th class="cell">
-            </th>
-          </tr>
-          </tbody>
-        </table>
-        <div class="select-request-button">Записать</div>
-      </div>
-    </div>
-  </dialog>-->
+    </dialog>
   </main>
 </template>
 
 <style scoped>
 @import "../assets/styles/unauthorized/appointments-create.scss";
+@import "../assets/styles/admin/appointments-create.scss";
 @import "../../src/main.scss";
 </style>
