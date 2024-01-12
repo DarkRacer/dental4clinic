@@ -54,7 +54,7 @@ export default {
 
       <!--DIRECTOR-->
       <p class="header-item" v-if="user.role === 'DIRECTOR'" @click="$router.push({ path: '/record/list' });">График записей</p>
-      <p class="header-item" v-if="user.role === 'DIRECTOR'" @click="$router.push({ path: '/director/requests' });">Заявки</p>
+      <p class="header-item" v-if="user.role === 'DIRECTOR'" @click="$router.push({ path: '/requests' });">Заявки</p>
       <p class="header-item" v-if="user.role === 'DIRECTOR'" @click="$router.push({ path: '/director/payments' });">Оплаты</p>
       <p class="header-item" v-if="user.role === 'DIRECTOR'" @click="$router.push({ path: '/director/prices' });">Цены</p>
       <p class="header-item" v-if="user.role === 'DIRECTOR'" @click="$router.push({ path: '/director/doctors' });">Врачи</p>

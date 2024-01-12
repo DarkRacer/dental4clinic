@@ -51,7 +51,7 @@ export default {
     selectRow: function (index) {
       if (this.selectedIndex === index) {
         this.selectedIndex = -1
-        for(let i = 0; i < 4; i++) {
+        for(let i = 0; i < 7; i++) {
           changeClassRows(this.$refs.tableRow[index].cells, "cell-payments-selected", "cell-payments")
         }
         return
@@ -59,7 +59,7 @@ export default {
       this.selectedIndex = index
 
       changeClassRows(this.$refs.tableRow[index].children, "cell-payments", "cell-payments-selected")
-      for(let i = 0; i < 4; i++) {
+      for(let i = 0; i < 7; i++) {
         if (index !== i) {
           changeClassRows(this.$refs.tableRow[i].children, "cell-payments-selected", "cell-payments")
         }
