@@ -237,7 +237,7 @@ export default {
         </div>
         <div class="prices-dialog-footer">
           <div class="prices-dialog-footer-price" id="pricesDialogPrice" v-if="currentPrice.price !== ''" v-text="currentPrice.price + ' ₽'"></div>
-          <div class="prices-dialog-footer-button" v-if="user.role !== 'DIRECTOR'" onclick="location.assign('/appointments/create');">Записаться</div>
+          <div class="prices-dialog-footer-button" v-if="user.role !== 'DIRECTOR'" @click="$router.push({ path: '/appointments/create'})">Записаться</div>
           <div class="prices-dialog-footer-buttons" v-if="user.role === 'DIRECTOR'">
             <div class="prices-dialog-footer-button" @click="openDeletePriceDialog">Удалить</div>
             <div class="prices-dialog-footer-button" @click="openEditPriceDialog">Редактировать</div>
