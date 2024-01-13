@@ -20,6 +20,7 @@ import CreateUser from "@/pages/CreateUser.vue";
 import RecordList from "@/pages/RecordList.vue";
 import Payments from "@/pages/Payments.vue";
 import Requests from "@/pages/Requests.vue";
+import Admins from "@/pages/Admins.vue";
 
 
 const router = createRouter({
@@ -91,6 +92,10 @@ const router = createRouter({
     {
       path: '/requests',
       component: Requests
+    },
+    {
+      path: '/admins',
+      component: Admins
     }
   ],
   history: createWebHistory()
