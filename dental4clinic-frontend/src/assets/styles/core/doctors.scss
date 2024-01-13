@@ -78,6 +78,13 @@
   background-color: $default-background;
   @extend %selector-text;
 }
+.dialog-selector {
+  box-sizing: border-box;
+  padding: 5%;
+  height: 100%;
+  background-color: $default-background;
+  @extend %selector-text;
+}
 .selector-text {
   display: flex;
   @extend %selector-text;
