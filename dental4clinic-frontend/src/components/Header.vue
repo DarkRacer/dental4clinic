@@ -1,12 +1,42 @@
 <script>
 import { useCookies } from '@vueuse/integrations/useCookies'
+import {get} from "@/pages/js/core/rest.js";
 
 export default {
+  data() {
+    return {
+      currentUser: {
+        id: '',
+        name: '',
+        surname: '',
+        patronymic: '',
+        dateOfBirthday: '',
+        phone: '',
+        email: '',
+        allergies: '',
+        photo: '',
+        photoName: '',
+        address: '',
+        specialization: '',
+        description: '',
+        pluses: ''
+      }
+    }
+  },
   setup() {
     const cookies = useCookies(['user_id', 'role', 'access_token'])
     return {
       cookies,
     }
+  },
+  created() {
+    this.$watch(
+      () => this.$route.params,
+      () => {
+        this.getUserInfo()
+      },
+      {immediate: true}
+    )
   },
   computed: {
     user: function () {
@@ -16,6 +46,14 @@ export default {
         token: this.cookies.get("access_token")
       }
     }
+  },
+  methods: {
+    getUserInfo: function () {
+      get(`user/${this.user.id}`).then(data => {
+        this.currentUser = data;
+        this.currentUser.email = data['e-mail'];
+      }).catch(error => console.error(error));
+    },
   }
 }
 </script>
@@ -66,8 +104,7 @@ export default {
         <img class="logo-user-image" src="../img/user-logo.png"/>
       </div>
       <div class="logo-user" v-else-if="user.token" @click="$router.push({ path: `/profile/${user.id}` });">
-<!--        todo: change after upload image from backend-->
-        <img class="logo-user-image" src="../img/user-photo.png"/>
+        <img class="logo-user-image" v-bind:src="currentUser.photo ? currentUser.photo : '../img/default.jpg'"/>
       </div>
       <div class="phone-number">
         <img class="phone" src="../img/phone.png"/>

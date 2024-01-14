@@ -132,10 +132,10 @@ export default {
         <tbody class="table">
         <tr class="row-header">
           <th class="cell-header">
-            <div class="cell-header-content">Фамилия</div>
+            <div class="cell-header-content">Имя</div>
           </th>
           <th class="cell-header">
-            <div class="cell-header-content">Имя</div>
+            <div class="cell-header-content">Фамилия</div>
           </th>
           <th class="cell-header">
             <div class="cell-header-content">Отчество</div>

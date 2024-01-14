@@ -1,18 +1,19 @@
 const url = 'http://localhost:8888/';
-const headers = {
-  "Host":  'localhost',
-  "Origin":  'http://localhost:8888/',
-  "Accept": "*/*",
-  'ngrok-skip-browser-warning':true
-}
-
 const getCookie = (name) => {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
   if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-const token = getCookie("access_token");
+const token = 'Bearer ' + getCookie("access_token");
+
+const headers = {
+  "Host":  'localhost',
+  "Origin":  'http://localhost:8888/',
+  "Accept": "*/*",
+  'ngrok-skip-browser-warning':true,
+  "Authorization": token
+}
 
 const get = (path) => {
   return fetch(url+path, {
