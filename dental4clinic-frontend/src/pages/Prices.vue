@@ -165,7 +165,7 @@ export default {
 <template>
   <main class="prices-page">
     <div class="prices-content">
-      <div class="prices-body-create" @click="openCreatePriceDialog">Создать услугу</div>
+      <div class="prices-body-create" v-if="user.role === 'DIRECTOR'" @click="openCreatePriceDialog">Создать услугу</div>
     </div>
     <div class="prices-body">
       <div class="prices-body-notification" v-if="user.role !== 'DIRECTOR'">Познакомьтесь с ценами на самые популярные услуги в центре «Dental4Clinic». Не пропустите специальные предложения и акции!</div>
