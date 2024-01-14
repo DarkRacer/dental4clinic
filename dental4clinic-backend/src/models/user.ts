@@ -1,11 +1,9 @@
-type UserConstructorArgs = {
-  id: string;
-  name: string;
-  surname: string;
-  patronymic: string;
-  photo: string;
-  photoName: string;
-};
+enum Role {
+  USER = 'USER',
+  DOCTOR = 'DOCTOR',
+  ADMIN = 'ADMIN',
+  DIRECTOR = 'DIRECTOR'
+}
 
 class GenericUser {
   id: string;
@@ -15,7 +13,7 @@ class GenericUser {
   photo: string;
   photoName: string;
 
-  constructor({ id, name, surname, patronymic, photo, photoName }: UserConstructorArgs) {
+  constructor(id: string, name: string, surname: string, patronymic: string, photo: any, photoName: string) {
     this.id = id;
     this.name = name;
     this.surname = surname;
@@ -29,28 +27,22 @@ class GenericUser {
   }
 }
 
-type UserArgs = UserConstructorArgs & {
-  dateOfBirthday: string;
-  phone: string;
-  email: string;
-  allergies: string;
-  address: string;
-};
-
 class User extends GenericUser {
-  dateOfBirthday: string;
+  dateOfBirthday: Date;
   phone: string;
   email: string;
-  allergies: string;
+  allergies: string[];
   address: string;
+  role: Role;
 
-  constructor({ dateOfBirthday, phone, email, allergies, address, ...genericUserArgs }: UserArgs) {
-    super(genericUserArgs);
+  constructor(id: string, name: string, surname: string, patronymic: string, dateOfBirthday: Date, phone: string, email: string, allergies: string[], photo: string, photoName: string, address: string) {
+    super(id, name, surname, patronymic, photo, photoName);
     this.dateOfBirthday = dateOfBirthday;
     this.phone = phone;
     this.email = email;
     this.allergies = allergies;
     this.address = address;
+    this.role = Role.USER;
   }
 
   toMongoObject(): any {
@@ -59,34 +51,31 @@ class User extends GenericUser {
       name: this.name,
       surname: this.surname,
       patronymic: this.patronymic,
-      dateOfBirthday: new Date(this.dateOfBirthday),
+      dateOfBirthday: this.dateOfBirthday,
       phone: this.phone,
       email: this.email,
       allergies: this.allergies,
       photo: this.photo,
       photoName: this.photoName,
       address: this.address,
-      fullName: this.fullName
+      fullName: this.fullName,
+      role: this.role
     };
   }
 }
 
-type DoctorArgs = UserConstructorArgs & {
-  specialization: string;
-  description: string;
-  pluses: string;
-};
-
 class Doctor extends GenericUser {
   specialization: string;
   description: string;
-  pluses: string;
+  pluses: number;
+  role: Role;
 
-  constructor({ specialization, description, pluses, ...genericUserArgs }: DoctorArgs) {
-    super(genericUserArgs);
+  constructor(id: string, name: string, surname: string, patronymic: string, specialization: string, description: string, photo: any, photoName: string, pluses: number) {
+    super(id, name, surname, patronymic, photo, photoName);
     this.specialization = specialization;
     this.description = description;
     this.pluses = pluses;
+    this.role = Role.DOCTOR;
   }
 
   toMongoObject(): any {
@@ -100,9 +89,10 @@ class Doctor extends GenericUser {
       photo: this.photo,
       photoName: this.photoName,
       pluses: this.pluses,
-      fullName: this.fullName
+      fullName: this.fullName,
+      role: this.role
     };
   }
 }
 
-export { GenericUser, User, Doctor, UserArgs, DoctorArgs };
+export { Role, GenericUser, User, Doctor };

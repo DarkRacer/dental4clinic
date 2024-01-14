@@ -10,10 +10,17 @@ const dbName = process.env.MONGO_DB;
 const url = `mongodb://${user}:${password}@localhost:${port}/`;
 const client = new MongoClient(url);
 
+let db: Db | null = null;
+
 export async function connect(): Promise<Db> {
+    if (db) {
+        return db;
+    }
+
     try {
         await client.connect();
-        return client.db(dbName);
+        db = client.db(dbName);
+        return db;
     } catch (e) {
         console.error("Could not connect to MongoDB", e);
         throw e;
@@ -22,4 +29,5 @@ export async function connect(): Promise<Db> {
 
 export async function close(): Promise<void> {
     await client.close();
+    db = null;
 }

@@ -10,9 +10,14 @@ export class DoctorController {
      */
     public getDoctor = async (req: Request, res: Response) => {
         try {
-          const doctorId: number = parseInt(req.params.doctorId);
+          const doctorId: string = req.params.doctorId;
           const doctor = await doctorService.getDoctor(doctorId);
-          res.status(200).json({ status: 200, success: true, data: doctor });
+
+          if (doctor == null) {
+            res.status(404).json({ status: 404, success: false, error: `User with id = ${doctorId} not found` });
+          }
+
+          res.status(200).json(doctor);
         } catch (e) {
             if (e instanceof Error) {
                 res.status(400).json({ status: 400, success: false, error: e.message });

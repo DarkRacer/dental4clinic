@@ -1,24 +1,29 @@
 import { connect } from "../mongo";
-import { Doctor, DoctorArgs } from '../models/user';
+import { Doctor } from '../models/user';
+import { ObjectId } from "mongodb";
 
-export async function getDoctor(doctorId: number): Promise<Doctor> {
+export async function getDoctor(doctorId: string): Promise<Doctor> {
     const db = await connect();
     const collection = db.collection("users");
     try {
-        const doctorDoc = await collection.findOne({ _id: doctorId.toString });
-        const doctorArgs: DoctorArgs = {
-            id: doctorDoc._id.toString(),
-            name: doctorDoc.name,
-            surname: doctorDoc.surname,
-            patronymic: doctorDoc.patronymic,
-            photo: doctorDoc.photo,
-            photoName: doctorDoc.photoName,
-            specialization: doctorDoc.specialization,
-            description: doctorDoc.description,
-            pluses: doctorDoc.pluses
-        };
+        const query = { _id: new ObjectId(doctorId) };
+        const doctorData = await collection.findOne(query);
 
-        return new Doctor(doctorArgs);
+        if (!doctorData) {
+            return null;
+        }
+
+        return new Doctor(
+            doctorData._id.toString(),
+            doctorData.name,
+            doctorData.surname,
+            doctorData.patronymic,
+            doctorData.specialization,
+            doctorData.description,
+            doctorData.photo,
+            doctorData.photoName,
+            doctorData.pluses
+        );
     } catch (e) {
         console.error("Error fetching user from MongoDB", e);
         throw e;

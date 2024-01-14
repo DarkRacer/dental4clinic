@@ -1,0 +1,21 @@
+class Tooth {
+    id: string;
+    data: string;
+    userId: string;
+
+    constructor(id: string, data: string, userId: string) {
+        this.id = id;
+        this.data = data;
+        this.userId = userId;
+    }
+
+    toMongoObject(): any {
+        return {
+            _id: this.id,
+            data: this.data,
+            userId: this.userId
+        };
+    }
+}
+
+export { Tooth };
