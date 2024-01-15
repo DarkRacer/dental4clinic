@@ -1,6 +1,7 @@
 <script>
 import {get, post} from "@/pages/js/core/rest.js";
 import {useCookies} from "@vueuse/integrations/useCookies";
+import {useJwt} from "@vueuse/integrations/useJwt";
 
 export default {
   data() {
@@ -29,9 +30,11 @@ export default {
     }
   },
   setup() {
-    const cookies = useCookies(['user_id', 'role', 'access_token'])
+    const cookies = useCookies(['access_token'])
+    const { payload } = useJwt(cookies.get('access_token'))
+
     return {
-      cookies,
+      payload
     }
   },
   created() {
@@ -50,9 +53,8 @@ export default {
   computed: {
     user: function () {
       return {
-        id: this.cookies.get("user_id"),
-        role: this.cookies.get("role"),
-        token: this.cookies.get("access_token")
+        id: this.payload.id,
+        role: this.payload.role
       }
     }
   },
@@ -228,7 +230,7 @@ export default {
         <div class="prices-dialog-body-content">
           <div class="prices-dialog-content-description" id="pricesDialogDescription" v-text="currentPrice.description" ></div>
           <div class="pluses-group" id="pricesDialogPluses">
-            <div class="pluses-group-title" v-if="currentPrice.name !== ''">{{ currentPrice.name }} владеет следующими профессиональными навыками:</div>
+            <div class="pluses-group-title" v-if="currentPrice.name !== ''">{{ currentPrice.name }} имеет следующие плюсы:</div>
             <div class="plus-price-group" v-if="currentPrice.pluses !== ''" v-for="plus in currentPrice.pluses.split('.')">
               <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
               <div class="doctors-dialog-content-text">{{plus}}</div>

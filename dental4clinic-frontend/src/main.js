@@ -22,7 +22,6 @@ import Payments from "@/pages/Payments.vue";
 import Requests from "@/pages/Requests.vue";
 import Admins from "@/pages/Admins.vue";
 
-
 const router = createRouter({
   routes: [
     {
