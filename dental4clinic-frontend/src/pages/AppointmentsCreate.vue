@@ -7,10 +7,9 @@ import {useJwt} from "@vueuse/integrations/useJwt";
 export default {
   setup() {
     const cookies = useCookies(['access_token'])
-    const { payload } = useJwt(cookies.get('access_token'))
 
     return {
-      payload
+      cookies
     }
   },
   data() {
@@ -57,9 +56,16 @@ export default {
       }
     },
     user: function () {
-      return {
-        id: this.payload.id,
-        role: this.payload.role
+      const { header, payload } = useJwt(this.cookies.get('access_token'))
+      if (!payload.value) {
+        return {
+          id: null,
+          role: null
+        }
+      }
+      return  {
+        id: payload.value.id,
+        role: payload.value.role
       }
     }
   },

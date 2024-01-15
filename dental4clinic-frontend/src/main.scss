@@ -182,12 +182,21 @@ html {
   @extend %header-text;;
 }
 .logo-user {
+  margin-right: 9px;
   width: 54px;
   height: 54px;
 }
 .logo-user-image {
   width: 54px;
   height: 54px;
+}
+.exit {
+  width: 40px;
+  height: 40px;
+}
+.exit-image {
+  width: 40px;
+  height: 40px;
 }
 .logo-user-image {
   width: 54px;

@@ -25,10 +25,9 @@ export default {
   },
   setup() {
     const cookies = useCookies(['access_token'])
-    const { payload } = useJwt(cookies.get('access_token'))
 
     return {
-      payload
+      cookies
     }
   },
   created() {
@@ -42,9 +41,10 @@ export default {
   },
   computed: {
     userCookie: function () {
-      return {
-        id: this.payload.id,
-        role: this.payload.role
+      const { header, payload } = useJwt(this.cookies.get('access_token'))
+      return  {
+        id: payload.value ? payload.value.id : '',
+        role: payload.value ? payload.value.id : ''
       }
     }
   },

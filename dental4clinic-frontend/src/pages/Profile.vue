@@ -28,10 +28,9 @@ export default {
   },
   setup() {
     const cookies = useCookies(['access_token'])
-    const { payload } = useJwt(cookies.get('access_token'))
 
     return {
-      payload
+      cookies
     }
   },
   created() {
@@ -51,9 +50,10 @@ export default {
       return `${this.user.surname}  ${this.user.name}  ${this.user.patronymic}`
     },
     userCookie: function () {
-      return {
-        id: this.payload.id,
-        role: this.payload.role
+      const { header, payload } = useJwt(this.cookies.get('access_token'))
+      return  {
+        id: payload.value ? payload.value.id : '',
+        role: payload.value ? payload.value.id : ''
       }
     }
   },
@@ -161,7 +161,7 @@ export default {
           <p class="doctor-info-content-text" v-text="user.description"></p>
         </div>
         <div class="doctor-info-content">
-          <p class="card-title">Проффесиональные навыки</p>
+          <p class="card-title">Профессиональныенавыки</p>
           <p class="doctor-info-content-text" v-text="user.pluses"></p>
         </div>
       </div>

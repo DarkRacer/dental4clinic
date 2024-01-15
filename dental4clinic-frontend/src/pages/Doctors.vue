@@ -50,10 +50,9 @@ export default {
   },
   setup() {
     const cookies = useCookies(['access_token'])
-    const { payload } = useJwt(cookies.get('access_token'))
 
     return {
-      payload
+      cookies
     }
   },
   created() {
@@ -75,9 +74,16 @@ export default {
         doctorInfo.specialization.includes(this.selectedDocSpec) || this.selectedDocSpec === '')
     },
     user: function () {
-      return {
-        id: this.payload.id,
-        role: this.payload.role
+      const { header, payload } = useJwt(this.cookies.get('access_token'))
+      if (!payload.value) {
+        return {
+          id: null,
+          role: null
+        }
+      }
+      return  {
+        id: payload.value.id,
+        role: payload.value.role
       }
     },
     doctorFormFullName: function () {
@@ -428,8 +434,8 @@ export default {
                 <textarea type="text" name="description" placeholder="Описание" class="additional-field-input" v-model="doctorForm.description"></textarea>
               </div>
               <div class="additional-field">
-                <div class="additional-field-title">Проффесиональные навыки</div>
-                <textarea type="text" name="pluses" placeholder="Проффесиональные навыки" class="additional-field-input" v-model="doctorForm.pluses"></textarea>
+                <div class="additional-field-title">Профессиональные навыки</div>
+                <textarea type="text" name="pluses" placeholder="Профессиональные навыки" class="additional-field-input" v-model="doctorForm.pluses"></textarea>
               </div>
             </div>
             <div class="save-button" @click="createDoctor">Создать</div>
@@ -523,8 +529,8 @@ export default {
                 <textarea type="text" name="description" placeholder="Описание" class="additional-field-input" v-model="doctorForm.description"></textarea>
               </div>
               <div class="additional-field">
-                <div class="additional-field-title">Проффесиональные навыки</div>
-                <textarea type="text" id="plusesEdit" name="pluses" placeholder="Проффесиональные навыки" class="additional-field-input" v-model="doctorForm.pluses"></textarea>
+                <div class="additional-field-title">Профессиональные навыки</div>
+                <textarea type="text" id="plusesEdit" name="pluses" placeholder="Профессиональные навыки" class="additional-field-input" v-model="doctorForm.pluses"></textarea>
               </div>
             </div>
             <div class="save-button" @click="editDoctor">Изменить</div>
