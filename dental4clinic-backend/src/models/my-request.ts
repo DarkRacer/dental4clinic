@@ -1,22 +1,33 @@
+import { ObjectId } from "mongodb";
+
 class MyRequest {
+    id: string;
     date: string;
+    userId: string;
+    name: string;
     phone: string;
     description: string;
-    userId: string;
+    isActual: boolean;
 
-    constructor(date: string, phone: string, description: string, userId: string) {
+    constructor(id: string, date: string, userId: string, name: string, phone: string, description: string, isActual: boolean) {
+        this.id = id;
         this.date = date;
+        this.userId = userId;
+        this.name = name;
         this.phone = phone;
         this.description = description;
-        this.userId = userId;
+        this.isActual = isActual;
     }
 
     toMongoObject(): any {
         return {
+            _id: this.id == null ? null : new ObjectId(this.id),
             date: this.date,
+            userId: this.userId,
+            name: this.name,
             phone: this.phone,
             description: this.description,
-            userId: this.userId
+            isActual: this.isActual
         };
     }
 }

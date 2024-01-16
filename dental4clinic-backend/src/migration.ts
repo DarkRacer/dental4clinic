@@ -114,10 +114,13 @@ function readRequestsFromFile(filePath: string): MyRequest[] {
   const rawData = fs.readFileSync(filePath, 'utf8');
   const requestDataArray = JSON.parse(rawData);
   return requestDataArray.map(requestData => new MyRequest(
-    requestData.date, 
+    requestData.id,
+    requestData.date,
+    requestData.userId,
+    requestData.name,
     requestData.phone, 
     requestData.description, 
-    requestData.userId
+    requestData.isActual
   ));
 }
 

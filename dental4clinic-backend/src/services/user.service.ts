@@ -8,7 +8,7 @@ export async function getUser(userId: string): Promise<User> {
     try {
         const query = { _id: new ObjectId(userId) };
         const userData = await collection.findOne(query);
-        console.log("userData:", userData)
+
         if (!userData) {
             return null;
         }
@@ -26,7 +26,6 @@ export async function getUser(userId: string): Promise<User> {
             userData['photo-name'],
             userData.address
         );
-        console.log("userData2:", user)
         return user;
     } catch (e) {
         console.error("Error fetching user from MongoDB", e);
