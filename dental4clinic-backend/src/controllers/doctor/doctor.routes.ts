@@ -5,8 +5,8 @@ const doctorController = new DoctorController();
 export const doctorRouter = Router();
 
 doctorRouter.get('/all', doctorController.getAllDoctors);
-doctorRouter.get('/:doctorId', doctorController.getDoctor);
-doctorRouter.get('/services', doctorController.getAllDoctorsServices); // Change API /doctors/services -> /doctor/services
+doctorRouter.get('/services', doctorController.getAllDoctorsServices);
 doctorRouter.get('/create', doctorController.createDoctor);
 doctorRouter.get('/edit', doctorController.editDoctor);
 doctorRouter.get('/delete', doctorController.deleteDoctor);
+doctorRouter.get('/:doctorId', doctorController.getDoctor);

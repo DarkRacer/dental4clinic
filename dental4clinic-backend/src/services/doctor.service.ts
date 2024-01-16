@@ -1,7 +1,7 @@
-import { connect } from "../mongo";
-import { Doctor, Role } from '../models/user';
-import { ObjectId } from "mongodb";
-import { RegistrationDoctorBody } from "../models/registration-doctor";
+import {connect} from "../mongo";
+import {Doctor, Role} from '../models/user';
+import {ObjectId} from "mongodb";
+import {RegistrationDoctorBody} from "../models/registration-doctor";
 
 export async function getDoctor(doctorId: string): Promise<Doctor> {
     const db = await connect();
@@ -35,8 +35,8 @@ export async function getAllServices(): Promise<any[]> {
     try {
         const db = await connect();
         const collection = db.collection("services");
-        const servicesData = await collection.find({}, { projection: { _id: 0 } }).toArray();
-        return servicesData;
+        const servicesData = await collection.find({}).toArray();
+        return servicesData.filter((service) => service.doctor != '');
     } catch (e) {
         console.error("Error fetching doctor services from MongoDB", e);
         throw e;

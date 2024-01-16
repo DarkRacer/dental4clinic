@@ -7,6 +7,6 @@ export const appointmentRouter = Router();
 appointmentRouter.get('/', appointmentController.getAllAppointments);
 appointmentRouter.get('/user/:userId', appointmentController.getAllAppointmentsByUser);
 appointmentRouter.get('/doctor/:doctorId', appointmentController.getAllAppointmentsByDoctor);
+appointmentRouter.post('/create', appointmentController.createAppointment);
 appointmentRouter.get('/:appointmentId', appointmentController.getAllAppointmentsById);
 appointmentRouter.post('/:appointmentId/finish', appointmentController.getAppointmentFinish);
-appointmentRouter.post('/create', appointmentController.createAppointment);
