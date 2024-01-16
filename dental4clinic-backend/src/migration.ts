@@ -8,6 +8,8 @@ import { Tooth } from './models/tooth';
 import { MyRequest } from './models/my-request';
 import { Service } from './models/service';
 import { Price } from './models/price';
+import { Appointment } from './models/appointment-body';
+import { Payment } from './models/payment';
 
 // File readers and converters
 function readUserDataFromFile(filePath: string): RegistrationUserBody {
@@ -120,6 +122,39 @@ function readPricesFromFile(filePath: string): Price[] {
   return prices;
 }
 
+function readAppointmentsFromFile(filePath: string): Appointment[] {
+  const rawData = fs.readFileSync(filePath, 'utf8');
+  const appointmentsData = JSON.parse(rawData);
+  return appointmentsData.map(appointmentData => new Appointment(
+    appointmentData.id.toString(),
+    appointmentData['user-id'].toString(),
+    appointmentData['user-name'],
+    appointmentData.doctorId.toString(),
+    appointmentData['doctor-name'],
+    appointmentData.date,
+    appointmentData.datetime,
+    appointmentData['service-name'],
+    appointmentData.description
+  ));
+}
+
+function readPaymentsFromFile(filePath: string): Payment[] {
+  const rawData = fs.readFileSync(filePath, 'utf8');
+  const paymentsData = JSON.parse(rawData);
+  return paymentsData.map(paymentData => new Payment(
+    paymentData.id,
+    paymentData.date,
+    paymentData['user-id'],
+    paymentData['user-name'],
+    paymentData['doctor-id'],
+    paymentData['doctor-name'],
+    paymentData.service,
+    paymentData.price,
+    paymentData.isActive
+  ));
+}
+
+
 // Migrations
 async function createUsers(db: Db): Promise<void> {
   const migrateUser1 = readUserDataFromFile('./stub/responses/user/1.json');
@@ -142,7 +177,13 @@ async function createUsers(db: Db): Promise<void> {
 }
 
 async function createAppointments(db: Db): Promise<void> {
+  const migrateAppointments = readAppointmentsFromFile('./stub/responses/appointments/admin/appointments.json');
   const appointmentsCollection = await db.createCollection('appointments');
+
+  for (const appointment of migrateAppointments) {
+    await appointmentsCollection.insertOne(appointment.toMongoObject());
+  }
+  console.log('All appointments have been saved successfully.');
 }
 
 async function createDiagnosis(db: Db): Promise<void> {
@@ -156,7 +197,13 @@ async function createDiagnosis(db: Db): Promise<void> {
 }
 
 async function createPayments(db: Db): Promise<void> {
+  const migratePayments = readPaymentsFromFile('./stub/responses/user/payments/payments.json');
+
   const paymentsCollection = await db.createCollection('payments');
+  for (const payment of migratePayments) {
+    await paymentsCollection.insertOne(payment.toMongoObject());
+  }
+  console.log('All payment have been saved successfully.');
 }
 
 async function createRequests(db: Db): Promise<void> {

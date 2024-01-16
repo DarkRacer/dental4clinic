@@ -9,6 +9,4 @@ appointmentRouter.get('/user/:userId', appointmentController.getAllAppointmentsB
 appointmentRouter.get('/doctor/:doctorId', appointmentController.getAllAppointmentsByDoctor);
 appointmentRouter.get('/:appointmentId', appointmentController.getAllAppointmentsById);
 appointmentRouter.post('/:appointmentId/finish', appointmentController.getAppointmentFinish);
-appointmentRouter.post('/create/admin', appointmentController.createAppointmentByAdmin);
-appointmentRouter.post('/create/user', appointmentController.createAppointmentByUser);
 appointmentRouter.post('/create', appointmentController.createAppointment);

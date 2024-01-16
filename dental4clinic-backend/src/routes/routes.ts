@@ -6,6 +6,7 @@ import { appointmentRouter } from "../controllers/appointment/appointment.router
 import { priceRouter } from "../controllers/price/price.routers";
 import { diagnoseRouter } from "../controllers/diagnose/diagnose.routers";
 import { registrationRouter } from "../controllers/registration/registration.routes";
+import { paymentRouter } from "../controllers/payment/payment.routers";
 
 const api = Router()
   .use('/user', userRouter)
@@ -13,6 +14,7 @@ const api = Router()
   .use('/auth', authRouter)
   .use('/appointments', appointmentRouter)
   .use('/price', priceRouter)
+  .use('/payments', paymentRouter)
   .use('/diagnosis', diagnoseRouter)
   .use('/registration', registrationRouter);
 

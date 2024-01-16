@@ -49,7 +49,7 @@ class User extends GenericUser {
 
   toMongoObject(): any {
     return {
-      _id: this.id,
+      _id: this.id == null ? null : new ObjectId(this.id),
       name: this.name,
       surname: this.surname,
       patronymic: this.patronymic,
