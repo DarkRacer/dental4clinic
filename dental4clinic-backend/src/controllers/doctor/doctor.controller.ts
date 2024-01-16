@@ -26,4 +26,14 @@ export class DoctorController {
             }
         }
     };
+
+    public getAllDoctorsServices = async (req: Request, res: Response) => {
+        try {
+            const services = await doctorService.getAllServices();
+            res.status(200).json(services);
+        } catch (error) {
+            console.error('Error in getServices:', error.message);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    };
 }

@@ -13,7 +13,3 @@ userRouter.get('/tooth-card/:userId', userController.getUserToothCard);
 userRouter.post('/tooth-card/:userId/update', userController.updateUserToothCard);
 userRouter.get('/tooth/:userId', userController.getUserTooth);
 userRouter.get('/requests/:userId', userController.getUserRequests);
-
-// userRouter.get('/admin/:userId', userController.getAdmin);
-// userRouter.post('/admin/:userId', userController.updateAdmin);
-// userRouter.get('/director/:userId', userController.getDirector);

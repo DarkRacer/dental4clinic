@@ -1,3 +1,5 @@
+import { ObjectId } from "mongodb";
+
 enum Role {
   USER = 'USER',
   DOCTOR = 'DOCTOR',
@@ -53,10 +55,10 @@ class User extends GenericUser {
       patronymic: this.patronymic,
       dateOfBirthday: this.dateOfBirthday,
       phone: this.phone,
-      email: this.email,
+      "e-mail": this.email,
       allergies: this.allergies,
       photo: this.photo,
-      photoName: this.photoName,
+      "photo-name": this.photoName,
       address: this.address,
       fullName: this.fullName,
       role: this.role
@@ -80,7 +82,7 @@ class Doctor extends GenericUser {
 
   toMongoObject(): any {
     return {
-      _id: this.id,
+      _id: this.id == null ? null : new ObjectId(this.id),
       name: this.name,
       surname: this.surname,
       patronymic: this.patronymic,
@@ -95,4 +97,26 @@ class Doctor extends GenericUser {
   }
 }
 
-export { Role, GenericUser, User, Doctor };
+class Admin extends GenericUser {
+  role: Role;
+
+  constructor(id: string, name: string, surname: string, patronymic: string, 
+              photo: string, photoName: string) {
+    super(id, name, surname, patronymic, photo, photoName);
+    this.role = Role.ADMIN;
+  }
+    
+  toMongoObject(): any {
+    return {
+      _id: this.id == null ? null : new ObjectId(this.id),
+      name: this.name,
+      surname: this.surname,
+      patronymic: this.patronymic,
+      photo: this.photo,
+      "photo-name": this.photoName,
+      role: this.role
+    };
+  }
+}
+
+export { Role, GenericUser, User, Doctor, Admin };

@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { Doctor } from "./user";
 
 class RegistrationDoctorBody extends Doctor {
@@ -12,14 +13,14 @@ class RegistrationDoctorBody extends Doctor {
 
   toMongoObject(): any {
     return {
-      _id: this.id,
+      _id: this.id == null ? null : new ObjectId(this.id),
       name: this.name,
       surname: this.surname,
       patronymic: this.patronymic,
       specialization: this.specialization,
       description: this.description,
       photo: this.photo,
-      photoName: this.photoName,
+      "photo-name": this.photoName,
       pluses: this.pluses,
       fullName: this.fullName,
       role: this.role,

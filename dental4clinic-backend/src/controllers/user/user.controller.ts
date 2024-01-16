@@ -5,7 +5,6 @@ import * as toothCardService from "../../services/tooth-card.service";
 import * as toothService from "../../services/tooth.service";
 import * as requestService from "../../services/request.service";
 import { User } from "../../models/user";
-import { MyRequest } from "../../models/my-request";
 
 export class UserController {
     
@@ -104,7 +103,17 @@ export class UserController {
     };
 
     public updateUserToothCard = async (req: Request, res: Response) => {
-        
+        try {
+            const userId = req.params.userId;
+            const toothData = req.body;
+
+            await toothCardService.updateToothCard(userId, toothData);
+
+            res.status(204);
+        } catch (error) {
+            console.error('Error in updateToothCard controller:', error.message);
+            res.status(500).json({ message: 'Internal server error' });
+        }
     };
 
     public getUserTooth = async (req: Request, res: Response) => {

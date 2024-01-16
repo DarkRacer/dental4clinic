@@ -1,3 +1,5 @@
+import { ObjectId } from "mongodb";
+
 class Diagnosis {
     id: string;
     name: string;
@@ -15,7 +17,7 @@ class Diagnosis {
   
     toMongoObject(): any {
       return {
-        _id: this.id,
+        _id: this.id == null ? null : new ObjectId(this.id),
         name: this.name,
         description: this.description,
         isActual: this.isActual,

@@ -1,4 +1,4 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express } from 'express';
 import routes from "./routes/routes";
 import * as dotenv from "dotenv";
 import cors from "cors";
@@ -12,10 +12,6 @@ const app: Express = express();
 const port = process.env.PORT || 3000;
 
 dotenv.config();
-
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!');
-});
 
 app.use(cors());
 app.use(express.json());
@@ -43,7 +39,7 @@ async function startServer() {
       console.log(`Server is running on http://localhost:${port}`);
     });
   } catch(err) {
-    console.error("Ошибка при запуске приложения:", err);
+    console.error("Error when starting the application:", err);
   }
 }
 

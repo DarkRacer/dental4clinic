@@ -1,3 +1,5 @@
+import { ObjectId } from "mongodb";
+
 class Tooth {
     id: string;
     data: string;
@@ -11,7 +13,7 @@ class Tooth {
 
     toMongoObject(): any {
         return {
-            _id: this.id,
+            _id: this.id == null ? null : new ObjectId(this.id),
             data: this.data,
             userId: this.userId
         };

@@ -3,17 +3,17 @@
 		"group": "Имплантация зубов",
 		"services": [
 			{
-				"service-id": 1,
+				"service-id": "507f1f77bcf86cd799412145",
 				"name": "Имплантация зубов с протезированием на имплантатах Конмет под ключ (Россия)",
 				"price": "65 500"
 			},
 			{
-				"service-id": 2,
+				"service-id": "507f1f77bcf86cd799412245",
 				"name": "Имплантация зубов с протезированием на имплантатах Astra Tech под ключ",
 				"price": "127 500"
 			},
 			{
-				"service-id": 3,
+				"service-id": "507f1f77bcf86cd799412345",
 				"name": "Имплантация зубов с протезированием на имплантатах Straumann под ключ",
 				"price": "161 000"
 			}
@@ -23,42 +23,42 @@
 		"group": "Протезирование зубов",
 		"services": [
 			{
-				"service-id": 4,
+				"service-id": "507f1f77bcf86cd799414345",
 				"name": "Безметалловые коронки по технологии E-Max",
 				"price": "29 500"
 			},
 			{
-				"service-id": 5,
+				"service-id": "507f1f77bcf86cd799452345",
 				"name": "Безметалловые коронки из диоксида циркония по технологии CAD/CAM",
 				"price": "31 000"
 			},
 			{
-				"service-id": 6,
+				"service-id": "507f1f77bcf86cd796412345",
 				"name": "Металлокерамическая коронка — металлокерамические реставрации",
 				"price": "15 000"
 			},
 			{
-				"service-id": 7,
+				"service-id": "507f1f77bcf86c7799412345",
 				"name": "Винир из керамики",
 				"price": "34 500"
 			},
 			{
-				"service-id": 8,
+				"service-id": "507f1f77bcf88cd799412345",
 				"name": "Полный съемный протез",
 				"price": "68 500"
 			},
 			{
-				"service-id": 9,
+				"service-id": "507f1f77bc986cd799412345",
 				"name": "Бюгельный протез",
 				"price": "72 000"
 			},
 			{
-				"service-id": 10,
+				"service-id": "507f1f77bcf66cd799412345",
 				"name": "Протезирование на имплантатах Конмет",
 				"price": "35 600"
 			},
 			{
-				"service-id": 11,
+				"service-id": "507f1f77bcf777d799412345",
 				"name": "Протезирование на имплантатах Straumann",
 				"price": "78 500"
 			}
@@ -68,22 +68,22 @@
 		"group": "Ортодонтия",
 		"services": [
 			{
-				"service-id": 12,
+				"service-id": "507f1f77bcf867d799412345",
 				"name": "Исправление прикуса капами «3D Smile»",
 				"price": "299 500"
 			},
 			{
-				"service-id": 13,
+				"service-id": "507f7f77bcf86cd799412345",
 				"name": "Детский курс раннего лечения капами «3D Smile»",
 				"price": "150 000"
 			},
 			{
-				"service-id": 14,
+				"service-id": "507f1f65bcf86cd799412345",
 				"name": "Брекет-система DAMON Q",
 				"price": "221 500"
 			},
 			{
-				"service-id": 15,
+				"service-id": "507f1f7g6gcf86cd79941234",
 				"name": "Ортодонтическое лечение с применением техники многопетлевой дуги",
 				"price": "225 000"
 			}
@@ -93,27 +93,27 @@
 		"group": "Гигиена и пародонтология",
 		"services": [
 			{
-				"service-id": 16,
+				"service-id": "507f1f77bcf86cd796612345",
 				"name": "Профессиональная гигиена",
 				"price": "5 850"
 			},
 			{
-				"service-id": 17,
+				"service-id": "507f1f77bcf86cd799417745",
 				"name": "Профессиональная гигиена — диспансерный визит",
 				"price": "4 680"
 			},
 			{
-				"service-id": 18,
+				"service-id": "507f1f77bcf86cd799412375",
 				"name": "«Vector»-терапия",
 				"price": "9 800"
 			},
 			{
-				"service-id": 19,
+				"service-id": "507f1f77bcf86cd79941b345",
 				"name": "Плазмолифтинг",
 				"price": "3 500"
 			},
 			{
-				"service-id": 20,
+				"service-id": "507f1f77bcf86cd799bbb345",
 				"name": "Отбеливание Zoom! WhiteSpeed",
 				"price": "39 600"
 			}
@@ -123,17 +123,17 @@
 		"group": "Лечение зубов",
 		"services": [
 			{
-				"service-id": 21,
+				"service-id": "507f1f77bcfbbcd799412345",
 				"name": "Лечение кариеса",
 				"price": "5 950"
 			},
 			{
-				"service-id": 22,
+				"service-id": "5b7f1f77bcf86cd799412345",
 				"name": "Лечение каналов зуба",
 				"price": "11 600"
 			},
 			{
-				"service-id": 23,
+				"service-id": "5bbf1f77bcf86cd799412345",
 				"name": "Лечение каналов зуба под микроскопом",
 				"price": "18 200"
 			}
@@ -143,27 +143,27 @@
 		"group": "Детская стоматология",
 		"services": [
 			{
-				"service-id": 24,
+				"service-id": "50rr1f77bcf86cd799412345",
 				"name": "Лечение кариеса у детей",
 				"price": "5 100"
 			},
 			{
-				"service-id": 25,
+				"service-id": "507f1f77bcrr6cd799412345",
 				"name": "Профессиональная гигиена при молочном прикусе и укрепление эмали зубов",
 				"price": "3 200"
 			},
 			{
-				"service-id": 26,
+				"service-id": "507f1f77bcf86cdr99412345",
 				"name": "Лечение «во сне»",
 				"price": "15 500"
 			},
 			{
-				"service-id": 27,
+				"service-id": "507f1f77bcf86rrrr9412345",
 				"name": "Седация закисью азота при лечении зубов детям",
 				"price": "3 500"
 			},
 			{
-				"service-id": 28,
+				"service-id": "507f1f77bcf8rcd799412345",
 				"name": "Удаление молочного зуба",
 				"price": "2 200"
 			}
@@ -173,17 +173,17 @@
 		"group": "Хирургическая стоматология",
 		"services": [
 			{
-				"service-id": 29,
+				"service-id": "507f1f77bcrr6cd799412345",
 				"name": "Удаление зуба",
 				"price": "от 4 250"
 			},
 			{
-				"service-id": 30,
+				"service-id": "507f1f77bcf8rrr799412345",
 				"name": "Удаление зуба мудрости",
 				"price": "от 6 350"
 			},
 			{
-				"service-id": 31,
+				"service-id": "507f1frrrcf86cd799412345",
 				"name": "Удаление зуба ультразвуком",
 				"price": "от 6 800"
 			}
