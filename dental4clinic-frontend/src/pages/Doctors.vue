@@ -261,6 +261,10 @@ export default {
       this.$refs.servicesDoctorDialog.show()
     },
     closeServicesDoctorDialog: function () {
+      this.servicesTableValue = []
+      this.doctorServiceTableValue = []
+      this.selectedDoctorServiceIndex = -1
+      this.selectedServiceIndex = -1
       this.$refs.servicesDoctorDialog.style.display = null
       this.$refs.servicesDoctorDialog.close()
     },
