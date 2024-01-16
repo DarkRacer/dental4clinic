@@ -199,12 +199,9 @@ async function createUsers(db: Db): Promise<void> {
   const migrateUsers = [
     migrateUser1.toMongoObject(), 
     migrateUser2.toMongoObject(),
-
     migrateDoctor1.toMongoObject(),
-
     migrateAdmin1.toMongoObject(),
     migrateAdmin2.toMongoObject(),
-    
     migrateDirector1.toMongoObject()
   ];
 
@@ -214,12 +211,12 @@ async function createUsers(db: Db): Promise<void> {
 }
 
 async function createAppointments(db: Db): Promise<void> {
-  const migrateAppointments = readAppointmentsFromFile('./stub/responses/appointments/admin/appointments.json');
+  // const migrateAppointments = readAppointmentsFromFile('./stub/responses/appointments/admin/appointments.json');
   const appointmentsCollection = await db.createCollection('appointments');
 
-  for (const appointment of migrateAppointments) {
-    await appointmentsCollection.insertOne(appointment.toMongoObject());
-  }
+  // for (const appointment of migrateAppointments) {
+  //   await appointmentsCollection.insertOne(appointment.toMongoObject());
+  // }
   console.log('All appointments have been saved successfully.');
 }
 
@@ -234,7 +231,7 @@ async function createDiagnosis(db: Db): Promise<void> {
 }
 
 async function createPayments(db: Db): Promise<void> {
-  const migratePayments = readPaymentsFromFile('./stub/responses/user/payments/payments.json');
+  const migratePayments = readPaymentsFromFile('./stub/responses/payments/payments.json');
 
   const paymentsCollection = await db.createCollection('payments');
   for (const payment of migratePayments) {
@@ -283,11 +280,11 @@ async function createTooth(db: Db): Promise<void> {
 
 async function createPrices(db: Db): Promise<void> {
   const migratePrices = readPricesFromFile('./stub/responses/prices/prices.json');
-
+  // console.log(migratePrices);
   const pricesCollection = await db.createCollection('prices');
-  for (const price of migratePrices) {
-    await pricesCollection.insertOne(price.toMongoObject());
-  }
+  // for (const price of migratePrices) {
+  //   await pricesCollection.insertOne(price.toMongoObject());
+  // }
   console.log('All prices have been saved successfully.');
 
 }
