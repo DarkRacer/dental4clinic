@@ -1,0 +1,16 @@
+[
+	{
+		"id": "467f1f77bcf86cd799439011",
+		"name": "Кариес",
+		"description": "Кариес на 5 зубе средней степени",
+		"isActual": false,
+		"user-id": "507f1f77bcf86cd799439011"
+	},
+	{
+		"id": "467f1f77bcf86cd799439012",
+		"name": "Кариес",
+		"description": "Кариес на 6 зубе средней степени",
+		"isActual": false,
+		"user-id": "507f1f77bcf86cd799439011"
+	}
+]
