@@ -10,6 +10,8 @@ import { Service } from './models/service';
 import { Price } from './models/price';
 import { Appointment } from './models/appointment-body';
 import { Payment } from './models/payment';
+import { RegistrationAdminBody } from './models/registration-admin';
+import { RegistrationDirectorBody } from './models/registration-director';
 
 // File readers and converters
 function readUserDataFromFile(filePath: string): RegistrationUserBody {
@@ -47,6 +49,36 @@ function readDoctorDataFromFile(filePath: string): RegistrationDoctorBody {
     doctorData.pluses, 
     doctorData.login, 
     doctorData.password
+  );
+}
+
+function readAdminDataFromFile(filePath: string): RegistrationAdminBody {
+  const rawData = fs.readFileSync(filePath, 'utf8');
+  const adminData = JSON.parse(rawData);
+  return new RegistrationAdminBody(
+    adminData.id, 
+    adminData.name, 
+    adminData.surname, 
+    adminData.patronymic,  
+    adminData.photo, 
+    adminData['photo-name'],
+    adminData.login, 
+    adminData.password
+  );
+}
+
+function readDirectorDataFromFile(filePath: string): RegistrationDirectorBody {
+  const rawData = fs.readFileSync(filePath, 'utf8');
+  const directorData = JSON.parse(rawData);
+  return new RegistrationDirectorBody(
+    directorData.id, 
+    directorData.name, 
+    directorData.surname, 
+    directorData.patronymic,  
+    directorData.photo, 
+    directorData['photo-name'],
+    directorData.login, 
+    directorData.password
   );
 }
 
@@ -160,15 +192,20 @@ async function createUsers(db: Db): Promise<void> {
   const migrateUser1 = readUserDataFromFile('./stub/responses/user/1.json');
   const migrateUser2 = readUserDataFromFile('./stub/responses/user/2.json');
   const migrateDoctor1 = readDoctorDataFromFile('./stub/responses/doctor/3.json');
-  const migrateAdmin1 = readDoctorDataFromFile('./stub/responses/admin/1.json');
-  const migrateAdmin2 = readDoctorDataFromFile('./stub/responses/admin/3.json');
+  const migrateAdmin1 = readAdminDataFromFile('./stub/responses/admin/1.json');
+  const migrateAdmin2 = readAdminDataFromFile('./stub/responses/admin/3.json');
+  const migrateDirector1 = readDirectorDataFromFile('./stub/responses/director/4.json');
   
   const migrateUsers = [
     migrateUser1.toMongoObject(), 
-    migrateUser2.toMongoObject(), 
+    migrateUser2.toMongoObject(),
+
     migrateDoctor1.toMongoObject(),
+
     migrateAdmin1.toMongoObject(),
-    migrateAdmin2.toMongoObject()
+    migrateAdmin2.toMongoObject(),
+    
+    migrateDirector1.toMongoObject()
   ];
 
   const usersCollection = await db.createCollection('users');

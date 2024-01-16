@@ -14,7 +14,7 @@ export class DoctorController {
           const doctor = await doctorService.getDoctor(doctorId);
 
           if (doctor == null) {
-            res.status(404).json({ status: 404, success: false, error: `User with id = ${doctorId} not found` });
+            res.status(404).json({ status: 404, success: false, error: `Doctor with id = ${doctorId} not found` });
           }
 
           res.status(200).json(doctor);
@@ -32,7 +32,37 @@ export class DoctorController {
             const services = await doctorService.getAllServices();
             res.status(200).json(services);
         } catch (error) {
+            console.error('Error in getAllDoctorsServices:', error.message);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    };
+
+    public createDoctor = async (req: Request, res: Response) => {
+        try {
+            const doctors = await doctorService.createDoctor(req.body);
+            res.status(200).json(doctors);
+        } catch (error) {
             console.error('Error in getServices:', error.message);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    };
+
+    public editDoctor = async (req: Request, res: Response) => {
+        try {
+            const doctors = await doctorService.editDoctor(req.body);
+            res.status(200).json(doctors);
+        } catch (error) {
+            console.error('Error in editDoctor:', error.message);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    };
+
+    public deleteDoctor = async (req: Request, res: Response) => {
+        try {
+            const doctors = await doctorService.deleteDoctor(req.body);
+            res.status(200).json(doctors);
+        } catch (error) {
+            console.error('Error in deleteDoctor:', error.message);
             res.status(500).json({ message: 'Internal server error' });
         }
     };

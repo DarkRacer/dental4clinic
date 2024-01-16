@@ -119,4 +119,25 @@ class Admin extends GenericUser {
   }
 }
 
-export { Role, GenericUser, User, Doctor, Admin };
+class Director extends GenericUser {
+  role: Role;
+
+  constructor(id: string, name: string, surname: string, patronymic: string, photo: any, photoName: string) {
+    super(id, name, surname, patronymic, photo, photoName);
+    this.role = Role.DIRECTOR;
+  }
+
+  toMongoObject(): any {
+    return {
+      _id: this.id == null ? null : new ObjectId(this.id),
+      name: this.name,
+      surname: this.surname,
+      patronymic: this.patronymic,
+      photo: this.photo,
+      "photo-name": this.photoName,
+      role: this.role,
+    };
+  }
+}
+
+export { Role, GenericUser, User, Doctor, Admin, Director };
