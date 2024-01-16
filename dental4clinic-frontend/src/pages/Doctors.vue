@@ -129,6 +129,17 @@ export default {
       reader.readAsDataURL(file);
     },
     openCreateDoctorDialog: function () {
+      this.doctorForm = {
+        id: null,
+        name: '',
+        surname: '',
+        patronymic: '',
+        description: '',
+        specialization: '',
+        photo: '',
+        photoName: '',
+        pluses: ''
+      }
       this.doctorForm.id = uuid.v4()
       this.$refs.createDoctorDialog.style.display = 'flex'
       this.$refs.createDoctorDialog.show()
