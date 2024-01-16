@@ -122,16 +122,7 @@ export async function deletePriceAndGetUpdatedPrices(priceData: any): Promise<Pr
         const db = await connect();
         const collection = db.collection("prices");
 
-        const priceObj = new Price(
-            priceData.serviceId,
-            priceData.name,
-            priceData.description,
-            priceData.pluses,
-            priceData.price,
-            priceData.group
-        );
-
-        const filter = { _id: new ObjectId(priceObj.serviceId) };
+        const filter = { _id: new ObjectId(priceData.serviceId) };
         await collection.deleteOne(filter);
 
         const prices = await collection.find({}).toArray();

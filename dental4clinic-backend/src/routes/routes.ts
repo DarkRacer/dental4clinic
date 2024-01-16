@@ -8,6 +8,7 @@ import { diagnoseRouter } from "../controllers/diagnose/diagnose.routers";
 import { registrationRouter } from "../controllers/registration/registration.routes";
 import { paymentRouter } from "../controllers/payment/payment.routers";
 import { serviceRouter } from "../controllers/service/service.routers";
+import { requestRouter } from "../controllers/request/request.routers";
 
 const api = Router()
   .use('/user', userRouter)
@@ -18,6 +19,7 @@ const api = Router()
   .use('/payments', paymentRouter)
   .use('/diagnosis', diagnoseRouter)
   .use('/registration', registrationRouter)
-  .use('/services', serviceRouter);
+  .use('/services', serviceRouter)
+  .use('/requests', requestRouter)
 
   export default Router().use('/api', api);

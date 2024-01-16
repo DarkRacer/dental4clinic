@@ -40,7 +40,7 @@ export async function getAllRequests(): Promise<MyRequest[]> {
     ));
 }
 
-export async function createRequestAndFetchAll(requestData: any): Promise<MyRequest[]> {
+export async function createRequestAndFetchAll(requestData: any): Promise<void> {
     try {
         const db = await connect();
         const collection = db.collection("requests");
@@ -56,17 +56,6 @@ export async function createRequestAndFetchAll(requestData: any): Promise<MyRequ
         );
 
         await collection.insertOne(requestObj.toMongoObject());
-
-        const requests = await collection.find({}).toArray();
-        return requests.map(request => new MyRequest(
-            request._id.toString(),
-            request.date,
-            request.userId,
-            request.name,
-            request.phone,
-            request.description,
-            request.isActual
-        ));
     } catch (error) {
         console.error('Error in createRequestAndFetchAll:', error);
         throw error;

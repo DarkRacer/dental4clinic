@@ -50,7 +50,7 @@ export class AppointmentController {
     public createAppointment = async (req: Request, res: Response) => {
         try {
             await appointmentService.createAppointment(req.body);
-            res.status(204);
+            res.status(204).send();
           } catch (error) {
             res.status(500).send(error.message);
           }

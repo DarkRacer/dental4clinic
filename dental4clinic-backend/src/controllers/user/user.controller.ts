@@ -109,7 +109,7 @@ export class UserController {
 
             await toothCardService.updateToothCard(userId, toothData);
 
-            res.status(204);
+            res.status(204).send();
         } catch (error) {
             console.error('Error in updateToothCard controller:', error.message);
             res.status(500).json({ message: 'Internal server error' });
