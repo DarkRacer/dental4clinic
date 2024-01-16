@@ -83,7 +83,7 @@ export default {
       }).catch((error) => {console.error('Error:', error);});
     },
     getDoctorsServices: function () {
-      get("doctors/services").then(data => {
+      get("doctor/services").then(data => {
         this.doctorsTableValue = data
       }).catch((error) => {console.error('Error:', error);})
     },

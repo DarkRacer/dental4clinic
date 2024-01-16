@@ -70,7 +70,7 @@ export default {
       document.documentElement.scrollTop = 0;
     },
     getPrices: function () {
-      get('prices').then(data => {
+      get('price/all').then(data => {
         this.prices = data
       }).catch(error => {
         console.error(error)
@@ -101,6 +101,10 @@ export default {
       }
     },
     openCreatePriceDialog: function () {
+      this.priceForm.name = ''
+      this.priceForm.description = ''
+      this.priceForm.price = ''
+      this.priceForm.pluses = ''
       this.$refs.createPriceDialog.style.display = 'flex'
       this.$refs.createPriceDialog.show()
     },

@@ -99,7 +99,7 @@ export default {
       document.documentElement.scrollTop = 0;
     },
     getDoctors: function () {
-      get("doctors").then((data) => {
+      get("doctor/all").then((data) => {
         this.doctorsValue = data;
       }).catch((error) => console.log(error))
     },

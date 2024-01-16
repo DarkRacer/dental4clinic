@@ -6,15 +6,15 @@ export async function getAllPaymentsByUser(userId: string): Promise<Payment[]> {
     try {
         const db = await connect();
         const collection = db.collection("payments");
-        const paymentsData = await collection.find({ "user-id": userId }).toArray();
+        const paymentsData = await collection.find({ "userId": userId }).toArray();
 
         return paymentsData.map(payment => new Payment(
             payment._id.toString(),
             payment.date,
-            payment['user-id'],
-            payment['user-name'],
-            payment['doctor-id'],
-            payment['doctor-name'],
+            payment.userId,
+            payment.userName,
+            payment.doctorId,
+            payment.doctorName,
             payment.service,
             payment.price,
             payment.isActive
@@ -34,10 +34,10 @@ export async function getAllPayments(): Promise<Payment[]> {
         return paymentsData.map(payment => new Payment(
             payment._id.toString(),
             payment.date,
-            payment['user-id'],
-            payment['user-name'],
-            payment['doctor-id'],
-            payment['doctor-name'],
+            payment.userId,
+            payment.userName,
+            payment.doctorId,
+            payment.doctorName,
             payment.service,
             payment.price,
             payment.isActive
@@ -56,10 +56,10 @@ export async function updatePaymentAndFetchAll(updatedData: any): Promise<Paymen
         const payment = new Payment(
             updatedData.id,
             updatedData.date,
-            updatedData['user-id'],
-            updatedData['user-name'],
-            updatedData['doctor-id'],
-            updatedData['doctor-name'],
+            updatedData.userId,
+            updatedData.userName,
+            updatedData.doctorId,
+            updatedData.doctorName,
             updatedData.service,
             updatedData.price,
             updatedData.isActive

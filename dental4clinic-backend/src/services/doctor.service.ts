@@ -43,11 +43,37 @@ export async function getAllServices(): Promise<any[]> {
     }
 }
 
+export async function getAllDoctors(): Promise<any[]> {
+    try {
+      const db = await connect();
+      const collection = db.collection("users");
+      const doctorsData = await collection.find({ role: Role.DOCTOR }).toArray();
+      const doctorArray = []
+      for (const doctor of doctorsData) {
+        doctorArray.push(new Doctor(
+          doctor._id.toString(),
+          doctor.name,
+          doctor.surname,
+          doctor.patronymic,
+          doctor.specialization,
+          doctor.description,
+          doctor.photo,
+          doctor.photoName,
+          doctor.pluses
+        ));
+      }
+      return doctorArray;
+    } catch (e) {
+        console.error("Error fetching doctors from MongoDB", e);
+        throw e;
+    }
+}
+
 export async function createDoctor(doctorData: any): Promise<Doctor[]> {
     try {
         const db = await connect();
         const collection = db.collection("users");
-        
+
         const doctor = new RegistrationDoctorBody(
             null,
             doctorData.name,
@@ -86,7 +112,7 @@ export async function editDoctor(editDoctor): Promise<Doctor[]> {
     try {
         const db = await connect();
         const collection = db.collection("users");
-        
+
         const doctor = new RegistrationDoctorBody(
             editDoctor.id,
             editDoctor.name,

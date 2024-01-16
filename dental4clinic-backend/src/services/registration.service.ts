@@ -4,11 +4,11 @@ import * as authService from "./auth.service";
 
 export const registration = async (userData) => {
     const db = await connect();
-    
+
     const collection = db.collection("users");
     try {
         const existingUser = await collection.findOne({ login: userData.login });
-        
+
         if (existingUser) {
             return { error: 'User with this login already exists', statusCode: 409 };
         }
@@ -31,16 +31,16 @@ export const registration = async (userData) => {
         );
 
         const insertResult = await collection.insertOne(registrationUser.toMongoObject());
-        
+
         const savedUserId = insertResult.insertedId;
         const savedUser = await collection.findOne({ _id: savedUserId });
-        
+
         if (!savedUser) {
             return { error: 'Error retrieving the saved user', statusCode: 500 };
         }
 
         const tokenResponse = authService.createToken(savedUser);
-        return { token: tokenResponse, statusCode: 200 };
+        return { token: tokenResponse, user: registrationUser, userData: userData, statusCode: 200 };
     } catch (error) {
         console.error('Registration Error:', error);
         return { error: 'Error registering user', statusCode: 500 };

@@ -1,4 +1,4 @@
-const url = 'http://localhost:8888/';
+const url = 'http://localhost:8080/api/';
 const getCookie = (name) => {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);
@@ -9,10 +9,11 @@ const token = 'Bearer ' + getCookie("access_token");
 
 const headers = {
   "Host":  'localhost',
-  "Origin":  'http://localhost:8888/',
+  "Origin":  'http://localhost:8080/',
   "Accept": "*/*",
   'ngrok-skip-browser-warning':true,
-  "Authorization": token
+  "Authorization": token,
+  'Content-Type': 'application/json'
 }
 
 const get = (path) => {

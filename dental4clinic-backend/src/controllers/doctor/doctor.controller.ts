@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import * as doctorService from "../../services/doctor.service";
 
 export class DoctorController {
-    
+
     /**
      * Method for getting a doctor by doctorId
      * @param req Unique doctor id (req.params.doctorId)
@@ -25,6 +25,16 @@ export class DoctorController {
                 res.status(500).json({ status: 500, success: false, error: 'Произошла внутренняя ошибка' });
             }
         }
+    };
+
+    public getAllDoctors = async (req: Request, res: Response) => {
+      try {
+        const doctors = await doctorService.getAllDoctors();
+        res.status(200).json(doctors);
+      } catch (error) {
+        console.error('Error in getAllDoctorsServices:', error.message);
+        res.status(500).json({ message: 'Internal server error' });
+      }
     };
 
     public getAllDoctorsServices = async (req: Request, res: Response) => {

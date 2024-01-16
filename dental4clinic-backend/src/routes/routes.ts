@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { userRouter } from "../controllers/user/user.routes";
 import { doctorRouter } from "../controllers/doctor/doctor.routes";
-import { authRouter } from "../controllers/auth/auth.routers";
+import { loginRouter } from "../controllers/auth/auth.routers";
 import { appointmentRouter } from "../controllers/appointment/appointment.routers";
 import { priceRouter } from "../controllers/price/price.routers";
 import { diagnoseRouter } from "../controllers/diagnose/diagnose.routers";
@@ -12,7 +12,7 @@ import { serviceRouter } from "../controllers/service/service.routers";
 const api = Router()
   .use('/user', userRouter)
   .use('/doctor', doctorRouter)
-  .use('/auth', authRouter)
+  .use('/login', loginRouter)
   .use('/appointments', appointmentRouter)
   .use('/price', priceRouter)
   .use('/payments', paymentRouter)

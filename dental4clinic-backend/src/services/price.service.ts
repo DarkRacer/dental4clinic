@@ -21,7 +21,7 @@ export async function getPriceByServiceId(priceId: string): Promise<Price | null
     const db = await connect();
     const collection = db.collection("prices");
 
-    const doc = await collection.findOne({ "service-id": new ObjectId(priceId) });
+    const doc = await collection.findOne({ "_id": new ObjectId(priceId) });
     if (!doc) return null;
 
     return new Price(
@@ -57,11 +57,11 @@ export async function createPriceAndGetUpdatedPrices(priceData: any): Promise<Pr
         const collection = db.collection("prices");
 
         const priceObj = new Price(
-            priceData["service-id"], 
-            priceData.name, 
-            priceData.description, 
-            priceData.pluses, 
-            priceData.price, 
+            priceData["service-id"],
+            priceData.name,
+            priceData.description,
+            priceData.pluses,
+            priceData.price,
             priceData.group
         );
 
@@ -70,10 +70,10 @@ export async function createPriceAndGetUpdatedPrices(priceData: any): Promise<Pr
         const prices = await collection.find({}).toArray();
         return prices.map(pr => new Price(
             pr._id.toString(),
-            pr.name, 
-            pr.description, 
-            pr.pluses, 
-            pr.price, 
+            pr.name,
+            pr.description,
+            pr.pluses,
+            pr.price,
             pr.group
         ));
     } catch (error) {
@@ -88,11 +88,11 @@ export async function editPriceAndGetUpdatedPrices(priceData: any): Promise<Pric
         const collection = db.collection("prices");
 
         const priceObj = new Price(
-            priceData["service-id"], 
-            priceData.name, 
-            priceData.description, 
-            priceData.pluses, 
-            priceData.price, 
+            priceData.serviceId,
+            priceData.name,
+            priceData.description,
+            priceData.pluses,
+            priceData.price,
             priceData.group
         );
 
@@ -105,10 +105,10 @@ export async function editPriceAndGetUpdatedPrices(priceData: any): Promise<Pric
         const prices = await collection.find({}).toArray();
         return prices.map(pr => new Price(
             pr._id.toString(),
-            pr.name, 
-            pr.description, 
-            pr.pluses, 
-            pr.price, 
+            pr.name,
+            pr.description,
+            pr.pluses,
+            pr.price,
             pr.group
         ));
     } catch (error) {
@@ -123,11 +123,11 @@ export async function deletePriceAndGetUpdatedPrices(priceData: any): Promise<Pr
         const collection = db.collection("prices");
 
         const priceObj = new Price(
-            priceData["service-id"], 
-            priceData.name, 
-            priceData.description, 
-            priceData.pluses, 
-            priceData.price, 
+            priceData.serviceId,
+            priceData.name,
+            priceData.description,
+            priceData.pluses,
+            priceData.price,
             priceData.group
         );
 
@@ -137,10 +137,10 @@ export async function deletePriceAndGetUpdatedPrices(priceData: any): Promise<Pr
         const prices = await collection.find({}).toArray();
         return prices.map(pr => new Price(
             pr._id.toString(),
-            pr.name, 
-            pr.description, 
-            pr.pluses, 
-            pr.price, 
+            pr.name,
+            pr.description,
+            pr.pluses,
+            pr.price,
             pr.group
         ));
     } catch (error) {

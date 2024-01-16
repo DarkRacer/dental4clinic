@@ -150,10 +150,10 @@ export default {
             <div class="cell-content" v-text="paymentsTableValue[index] ? paymentsTableValue[index].date : ''"></div>
           </th>
           <th class="cell-payments">
-            <div class="cell-content" v-text="paymentsTableValue[index] ? paymentsTableValue[index]['user-name'] : ''"></div>
+            <div class="cell-content" v-text="paymentsTableValue[index] ? paymentsTableValue[index].userName : ''"></div>
           </th>
           <th class="cell-payments">
-            <div class="cell-content" v-text="paymentsTableValue[index] ? paymentsTableValue[index]['doctor-name'] : ''"></div>
+            <div class="cell-content" v-text="paymentsTableValue[index] ? paymentsTableValue[index].doctorName : ''"></div>
           </th>
           <th class="cell-payments">
             <div class="cell-content" v-text="paymentsTableValue[index] ? paymentsTableValue[index].service : ''"></div>
