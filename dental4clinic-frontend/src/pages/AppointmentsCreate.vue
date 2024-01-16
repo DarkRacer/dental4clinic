@@ -251,7 +251,8 @@ export default {
         </tr>
         </tbody>
       </table>
-      <div class="record-button" id="record-button" @click="submit">Записать</div>
+      <div class="record-button" id="record-button" @click="submit" v-if="user.role !== 'ADMIN'">Записаться</div>
+      <div class="record-button" id="record-button" @click="submit" v-if="user.role === 'ADMIN'">Записать</div>
     </div>
 
     <dialog class="request-dialog-blackout" ref="requestsDialog">

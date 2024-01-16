@@ -42,9 +42,15 @@ export default {
   computed: {
     userCookie: function () {
       const { header, payload } = useJwt(this.cookies.get('access_token'))
+      if (!payload.value) {
+        return {
+          id: null,
+          role: null
+        }
+      }
       return  {
-        id: payload.value ? payload.value.id : '',
-        role: payload.value ? payload.value.id : ''
+        id: payload.value.id,
+        role: payload.value.role
       }
     }
   },
