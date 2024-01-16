@@ -15,20 +15,3 @@ services:
       options:
         max-size: 1g
 
-  backend:
-    container_name: dental4clinic-backend
-    image: backend
-    build:
-      context: ./
-      dockerfile: ./dental4clinic-backend/Dockerfile
-    restart: always
-    ports:
-      - '3000:3000'
-    logging:
-      driver: 'json-file'
-      options:
-        max-size: '100m'
-        max-file: '3'
-    depends_on:
-      - mongo-db
-

@@ -18,6 +18,6 @@ const api = Router()
   .use('/payments', paymentRouter)
   .use('/diagnosis', diagnoseRouter)
   .use('/registration', registrationRouter)
-  .use('/service', serviceRouter);
+  .use('/services', serviceRouter);
 
   export default Router().use('/api', api);
