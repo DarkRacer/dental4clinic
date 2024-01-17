@@ -167,7 +167,7 @@ export default {
           <p class="doctor-info-content-text" v-text="user.description"></p>
         </div>
         <div class="doctor-info-content">
-          <p class="card-title">Профессиональныенавыки</p>
+          <p class="card-title">Профессиональные навыки</p>
           <p class="doctor-info-content-text" v-text="user.pluses"></p>
         </div>
       </div>

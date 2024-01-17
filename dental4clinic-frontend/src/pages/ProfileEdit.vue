@@ -58,7 +58,7 @@ export default {
     getUserInfo: function () {
       get(`user/${this.$route.params.userId}`).then(data => {
         this.userForm = data;
-        this.userForm.email = data['e-mail'];
+        this.userForm.email = data['email'];
       }).catch(error => console.error(error));
     },
     imageUploaded: function() {
@@ -66,9 +66,9 @@ export default {
         'input[type=file]')['files'][0];
 
       const reader = new FileReader();
-      this.userForm.fileName = file.name;
+      this.userForm.photoName = file.name;
 
-      reader.onload = () => this.userForm.imageString = reader.result;
+      reader.onload = () => this.userForm.photo = reader.result;
       reader.readAsDataURL(file);
     },
     submit: function () {

@@ -19,7 +19,7 @@ export const registration = async (userData) => {
             userData.name,
             userData.surname,
             userData.patronymic,
-            new Date(userData.dateOfBirthday),
+            userData.dateOfBirthday,
             userData.phone,
             userData.email,
             allergiesArray,

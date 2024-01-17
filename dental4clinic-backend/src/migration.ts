@@ -12,6 +12,7 @@ import { Appointment } from './models/appointment-body';
 import { Payment } from './models/payment';
 import { RegistrationAdminBody } from './models/registration-admin';
 import { RegistrationDirectorBody } from './models/registration-director';
+import { DoctorService } from './models/doctor.service';
 
 // File readers and converters
 function readUserDataFromFile(filePath: string): RegistrationUserBody {
@@ -22,7 +23,7 @@ function readUserDataFromFile(filePath: string): RegistrationUserBody {
     userData.name,
     userData.surname,
     userData.patronymic,
-    new Date(userData.dateOfBirthday),
+    userData.dateOfBirthday,
     userData.phone,
     userData['e-mail'],
     userData.allergies,
@@ -123,16 +124,26 @@ function readRequestsFromFile(filePath: string): MyRequest[] {
   ));
 }
 
-function readServicesFromFile(filePath: string): MyRequest[] {
+function readDoctorServicesFromFile(filePath: string): DoctorService[] {
   const rawData = fs.readFileSync(filePath, 'utf8');
-  const servicesData = JSON.parse(rawData);
-  return servicesData.map(serviceData => new Service(
-    serviceData['doctor-id'],
-    serviceData.doctor,
-    serviceData.services,
+  const doctorServicesData = JSON.parse(rawData);
+  return doctorServicesData.map(doctorServiceData => new DoctorService(
     null,
+    doctorServiceData.doctorId,
+    doctorServiceData.doctor,
+    doctorServiceData.services,
+    doctorServiceData.serviceId
+  ));
+}
+
+function readServicesFromFile(filePath: string): Service[] {
+  const rawData = fs.readFileSync(filePath, 'utf8');
+  const doctorServicesData = JSON.parse(rawData);
+  return doctorServicesData.map(serviceData => new Service(
     null,
-    null
+    serviceData.service,
+    serviceData.description,
+    serviceData.price,
   ));
 }
 
@@ -146,7 +157,8 @@ function readPricesFromFile(filePath: string): Price[] {
       const group = groupData.group;
       groupData.services.forEach(service => {
           prices.push(new Price(
-              service['service-id'],
+              null,
+              service.serviceId,
               service.name,
               service.description || null,
               service.pluses || null,
@@ -216,7 +228,7 @@ async function createUsers(db: Db): Promise<void> {
 }
 
 async function createAppointments(db: Db): Promise<void> {
-  // const migrateAppointments = readAppointmentsFromFile('./stub/responses/appointments/admin/appointments.json');
+  //const migrateAppointments = readAppointmentsFromFile('./stub/responses/appointments/admin/appointments.json');
   const appointmentsCollection = await db.createCollection('appointments');
 
   // for (const appointment of migrateAppointments) {
@@ -255,13 +267,23 @@ async function createRequests(db: Db): Promise<void> {
   console.log('All requests have been saved successfully.');
 }
 
+async function createDoctorsServices(db: Db): Promise<void> {
+  const migrateDoctorsServices = readDoctorServicesFromFile('./stub/responses/doctors_services.json');
+
+  const doctorsServicesCollection = await db.createCollection('doctors-services');
+  for (const doctorService of migrateDoctorsServices) {
+    await doctorsServicesCollection.insertOne(doctorService.toMongoObject());
+  }
+  console.log('All doctors-services have been saved successfully.');
+}
+
 async function createServices(db: Db): Promise<void> {
-  // const migrateServices = readServicesFromFile('./stub/responses/doctors_services.json');
+  const migrateServices = readServicesFromFile('./stub/responses/services/services.json');
 
   const servicesCollection = await db.createCollection('services');
-  // for (const service of migrateServices) {
-  //   await servicesCollection.insertOne(service.toMongoObject());
-  // }
+  for (const service of migrateServices) {
+    await servicesCollection.insertOne(service.toMongoObject());
+  }
   console.log('All services have been saved successfully.');
 }
 
@@ -300,6 +322,7 @@ export async function createCollectionAndInsertData(db: Db): Promise<void> {
   await createDiagnosis(db);
   await createPayments(db);
   await createRequests(db);
+  await createDoctorsServices(db);
   await createServices(db);
   await createToothCard(db);
   await createTooth(db);

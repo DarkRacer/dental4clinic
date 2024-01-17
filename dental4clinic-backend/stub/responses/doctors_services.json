@@ -1,22 +1,20 @@
 [
 	{
-		"doctor-id": "607f1f77bcf86cd799439014",
+		"doctorId": "607f1f77bcf86cd799439014",
 		"doctor": "Щербаков Максим Сергеевич",
-		"services": "Лечение кариеса, Осмотр"
+		"services": "Лечение кариеса, Осмотр",
+		"serviceId": "65a7d5d2ed2564f9466d6d77"
 	},
 	{
-		"doctor-id": "607f1f77bcf86cd799439015",
-		"doctor": "Сидоров Петр Иванович",
-		"services": "Лечение кариеса, Осмотр"
-	},
-	{
-		"doctor-id": "607f1f77bcf86cd799439016",
+		"doctorId": "607f1f77bcf86cd799439014",
 		"doctor": "Иванов Петр Петрович",
-		"services": "Осмотр"
+		"services": "Осмотр",
+		"serviceId": "65a7d5d2ed2564f9466d6d78"
 	},
 	{
-		"doctor-id": "607f1f77bcf86cd799439017",
+		"doctorId": "607f1f77bcf86cd799439014",
 		"doctor": "Петров Петр Петрович",
-		"services": "Лечение кариеса, Осмотр"
+		"services": "Лечение кариеса, Осмотр",
+		"serviceId": "65a7d5d2ed2564f9466d6d79"
 	}
 ]

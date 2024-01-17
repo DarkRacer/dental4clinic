@@ -188,7 +188,7 @@ export default {
         <div class="prices-group" v-for="price in prices">
           <div class="prices-group-title" v-text="price.group"></div>
           <div class="prices-group-content" v-for="service in price.services">
-            <div class="prices-group-content-item" @click="this.priceId = service['service-id']; openPriceCard()">
+            <div class="prices-group-content-item" @click="this.priceId = service['serviceId']; openPriceCard()">
               <div class="prices-group-content-item-name" v-text="service.name"></div>
               <div class="prices-group-content-item-price" v-text="service.price + ' ₽'"></div>
             </div>

@@ -20,7 +20,7 @@ class RegistrationDoctorBody extends Doctor {
       specialization: this.specialization,
       description: this.description,
       photo: this.photo,
-      "photo-name": this.photoName,
+      photoName: this.photoName,
       pluses: this.pluses,
       fullName: this.fullName,
       role: this.role,

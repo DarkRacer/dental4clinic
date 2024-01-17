@@ -1,6 +1,7 @@
 import { ObjectId } from "mongodb";
 
 class Price {
+    id: string;
     serviceId: string;
     name: string;
     description: string;
@@ -8,7 +9,8 @@ class Price {
     price: string;
     group: string;
 
-    constructor(serviceId, name: string, description: string, pluses: string, price: string, group: string) {
+    constructor(id: string, serviceId: string, name: string, description: string, pluses: string, price: string, group: string) {
+        this.id = id;
         this.serviceId = serviceId;
         this.name = name;
         this.description = description;
@@ -19,7 +21,8 @@ class Price {
 
     toMongoObject(): any {
         return {
-            _id: this.serviceId == null ? null : new ObjectId(this.serviceId),
+            _id: this.serviceId == null ? null : new ObjectId(this.id),
+            serviceId: this.serviceId,
             name: this.name,
             description: this.description,
             pluses: this.pluses,

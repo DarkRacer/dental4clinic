@@ -1,36 +1,41 @@
 import { ObjectId } from "mongodb";
 import { Price } from "../models/price";
 import { connect } from "../mongo";
+import { Service } from "../models/service";
 
 export async function getAllPrices(): Promise<Price[]> {
     const db = await connect();
     const collection = db.collection("prices");
 
     const pricesData = await collection.find({}).toArray();
-    return pricesData.map(doc => new Price(
-        doc._id.toString(),
-        doc.name,
-        doc.description || '',
-        doc.pluses || '',
-        doc.price,
-        doc.group
+    return pricesData.map(price => new Price(
+        null,
+        price.serviceId,
+        price.name,
+        price.description,
+        price.pluses,
+        price.price,
+        price.group
     ));
 }
 
-export async function getPriceByServiceId(priceId: string): Promise<Price | null> {
+export async function getPriceByServiceId(serviceId: string): Promise<Price | null> {
     const db = await connect();
     const collection = db.collection("prices");
 
-    const doc = await collection.findOne({ "_id": new ObjectId(priceId) });
-    if (!doc) return null;
+    const price = await collection.findOne({ "serviceId": serviceId });
+    if (!price) {
+        return null;
+    }
 
     return new Price(
-        doc._id.toString(),
-        doc.name,
-        doc.description || '',
-        doc.pluses || '',
-        doc.price,
-        doc.group
+        null,
+        price.serviceId,
+        price.name,
+        price.description,
+        price.pluses,
+        price.price,
+        price.group
     );
 }
 
@@ -42,7 +47,7 @@ export function groupPricesByService(prices: Price[]): any {
             grouped[price.group] = { group: price.group, services: [] };
         }
         grouped[price.group].services.push({
-            'service-id': price.serviceId,
+            serviceId: price.serviceId,
             name: price.name,
             price: price.price
         });
@@ -54,10 +59,22 @@ export function groupPricesByService(prices: Price[]): any {
 export async function createPriceAndGetUpdatedPrices(priceData: any): Promise<Price[]> {
     try {
         const db = await connect();
-        const collection = db.collection("prices");
+
+        const collectionService = db.collection("services");
+
+        const serviceObj = new Service(
+            null,
+            priceData.name,
+            priceData.description,
+            priceData.price
+        );
+        const documentService = await collectionService.insertOne(serviceObj.toMongoObject());
+
+        const collectionPrice = db.collection("prices");
 
         const priceObj = new Price(
-            priceData["service-id"],
+            null,
+            documentService.insertedId.toString(),
             priceData.name,
             priceData.description,
             priceData.pluses,
@@ -65,16 +82,17 @@ export async function createPriceAndGetUpdatedPrices(priceData: any): Promise<Pr
             priceData.group
         );
 
-        await collection.insertOne(priceObj.toMongoObject());
+        await collectionPrice.insertOne(priceObj.toMongoObject());
 
-        const prices = await collection.find({}).toArray();
-        return prices.map(pr => new Price(
-            pr._id.toString(),
-            pr.name,
-            pr.description,
-            pr.pluses,
-            pr.price,
-            pr.group
+        const prices = await collectionPrice.find({}).toArray();
+        return prices.map(price => new Price(
+            null,
+            price.serviceId,
+            price.name,
+            null,
+            null,
+            price.price,
+            price.group
         ));
     } catch (error) {
         console.error('Error in createPriceAndGetUpdatedPrices:', error);
@@ -85,34 +103,43 @@ export async function createPriceAndGetUpdatedPrices(priceData: any): Promise<Pr
 export async function editPriceAndGetUpdatedPrices(priceData: any): Promise<Price[]> {
     try {
         const db = await connect();
-        const collection = db.collection("prices");
 
-        const priceObj = new Price(
-            priceData.serviceId,
-            priceData.name,
-            priceData.description,
-            priceData.pluses,
-            priceData.price,
-            priceData.group
-        );
-
-        const filter = { _id: new ObjectId(priceObj.serviceId) };
-        const update = {
-            $set: priceObj.toMongoObject()
+        const collectionService = db.collection("services");
+        const filterService = { _id: new ObjectId(priceData.serviceId) };
+        const updateService = {
+            $set: {
+                service: priceData.name,
+                description: priceData.description,
+                price: priceData.price
+            }
         };
-        await collection.updateOne(filter, update);
+        await collectionService.updateOne(filterService, updateService);
 
-        const prices = await collection.find({}).toArray();
-        return prices.map(pr => new Price(
-            pr._id.toString(),
-            pr.name,
-            pr.description,
-            pr.pluses,
-            pr.price,
-            pr.group
+
+        const collectionPrice = db.collection("prices");
+        const filterPrice = { serviceId: priceData.serviceId };
+        const updatePrice = {
+            $set: {
+                name: priceData.name,
+                description: priceData.description,
+                pluses: priceData.pluses,
+                price: priceData.price
+            }
+        };
+        await collectionPrice.updateOne(filterPrice, updatePrice);
+
+        const prices = await collectionPrice.find({}).toArray();
+        return prices.map(price => new Price(
+            null,
+            price.serviceId,
+            price.name,
+            null,
+            null,
+            price.price,
+            price.group
         ));
     } catch (error) {
-        console.error('Error in createPriceAndGetUpdatedPrices:', error);
+        console.error('Error in editPriceAndGetUpdatedPrices:', error);
         throw error;
     }
 }
@@ -120,22 +147,31 @@ export async function editPriceAndGetUpdatedPrices(priceData: any): Promise<Pric
 export async function deletePriceAndGetUpdatedPrices(priceData: any): Promise<Price[]> {
     try {
         const db = await connect();
-        const collection = db.collection("prices");
 
-        const filter = { _id: new ObjectId(priceData.serviceId) };
-        await collection.deleteOne(filter);
+        const collectionService = db.collection("services");
+        const filterService = { _id: new ObjectId(priceData.serviceId) };
+        await collectionService.deleteOne(filterService);
 
-        const prices = await collection.find({}).toArray();
-        return prices.map(pr => new Price(
-            pr._id.toString(),
-            pr.name,
-            pr.description,
-            pr.pluses,
-            pr.price,
-            pr.group
+        const collectionDoctorsService = db.collection("doctors-services");
+        const filterDoctorsService = { serviceId: priceData.serviceId };
+        await collectionDoctorsService.deleteOne(filterDoctorsService);
+
+        const collectionPrice = db.collection("prices");
+        const filterPrice = { serviceId: priceData.serviceId };
+        await collectionService.deleteOne(filterPrice);
+
+        const prices = await collectionPrice.find({}).toArray();
+        return prices.map(price => new Price(
+            null,
+            price.serviceId,
+            price.name,
+            null,
+            null,
+            price.price,
+            price.group
         ));
     } catch (error) {
-        console.error('Error in createPriceAndGetUpdatedPrices:', error);
+        console.error('Error in editPriceAndGetUpdatedPrices:', error);
         throw error;
     }
 }

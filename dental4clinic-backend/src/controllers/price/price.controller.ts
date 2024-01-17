@@ -14,9 +14,9 @@ export class PriceController {
         }
     }
 
-    public getPriceById = async (req: Request, res: Response) => {
+    public getPriceByServiceId = async (req: Request, res: Response) => {
         try {
-            const serviceId = req.params.priceId;
+            const serviceId = req.params.priceId; // На фронт передаётся serviceId и используется как priceId
             const price = await priceService.getPriceByServiceId(serviceId);
 
             if (!price) {

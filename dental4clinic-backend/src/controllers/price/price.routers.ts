@@ -8,4 +8,4 @@ priceRouter.get('/all', priceController.getAllPrices); // Change API /prices -> 
 priceRouter.post('/create', priceController.createPrice);
 priceRouter.post('/edit', priceController.editPrice);
 priceRouter.post('/delete', priceController.deletePrice);
-priceRouter.get('/:priceId', priceController.getPriceById);
+priceRouter.get('/:priceId', priceController.getPriceByServiceId);

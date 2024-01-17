@@ -6,7 +6,7 @@ import { connect } from "../mongo";
 const SECRET_KEY = 'ваш_секретный_ключ';
 
 export function createToken(user) {
-  console.log(user);
+  // console.log(user);
   const token = jwt.sign({ id: user._id, role: user.role }, SECRET_KEY, { expiresIn: '1h' });
   return {
       id: user._id,

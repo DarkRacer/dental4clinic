@@ -36,6 +36,8 @@ export async function getAllServices(): Promise<any[]> {
         const db = await connect();
         const collection = db.collection("services");
         const servicesData = await collection.find({}).toArray();
+        // TODO: поправить
+
         return servicesData.filter((service) => service.doctor != '');
     } catch (e) {
         console.error("Error fetching doctor services from MongoDB", e);

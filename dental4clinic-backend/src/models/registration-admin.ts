@@ -20,7 +20,7 @@ class RegistrationAdminBody extends Admin {
         surname: this.surname,
         patronymic: this.patronymic,
         photo: this.photo,
-        "photo-name": this.photoName,
+        photoName: this.photoName,
         role: this.role,
         login: this.login,
         password: this.password

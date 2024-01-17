@@ -2,8 +2,7 @@ import { ObjectId } from "mongodb";
 import { Appointment } from "../models/appointment-body";
 import { connect } from "../mongo";
 import { AppointmentBodyAdmin, AppointmentBodyUnauthorized, AppointmentBodyUser } from "../models/appointment";
-import {request} from "express";
-import {disableRequest, getRequestsById, getRequestsByUserId} from "./request.service";
+import {disableRequest, getRequestsById} from "./request.service";
 import {getUser} from "./user.service";
 
 export async function getAllAppointments(): Promise<Appointment[]> {
@@ -96,6 +95,9 @@ export async function getAllAppointmentsById(appointmentId: string): Promise<App
         console.error('Error in getAllAppointmentsById:', error);
         throw error;
     }
+}
+
+export async function appointmentsToFinish(appointmentId: string): Promise<void> {
 }
 
 export async function createAppointment(appointmentData: any, userRole: string): Promise<void> {

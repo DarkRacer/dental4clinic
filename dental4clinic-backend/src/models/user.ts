@@ -30,14 +30,14 @@ class GenericUser {
 }
 
 class User extends GenericUser {
-  dateOfBirthday: Date;
+  dateOfBirthday: string;
   phone: string;
   email: string;
-  allergies: string[];
+  allergies: string;
   address: string;
   role: Role;
 
-  constructor(id: string, name: string, surname: string, patronymic: string, dateOfBirthday: Date, phone: string, email: string, allergies: string[], photo: string, photoName: string, address: string) {
+  constructor(id: string, name: string, surname: string, patronymic: string, dateOfBirthday: string, phone: string, email: string, allergies: string, photo: string, photoName: string, address: string) {
     super(id, name, surname, patronymic, photo, photoName);
     this.dateOfBirthday = dateOfBirthday;
     this.phone = phone;
@@ -55,10 +55,10 @@ class User extends GenericUser {
       patronymic: this.patronymic,
       dateOfBirthday: this.dateOfBirthday,
       phone: this.phone,
-      "e-mail": this.email,
+      email: this.email,
       allergies: this.allergies,
       photo: this.photo,
-      "photo-name": this.photoName,
+      photoName: this.photoName,
       address: this.address,
       fullName: this.fullName,
       role: this.role
@@ -113,7 +113,7 @@ class Admin extends GenericUser {
       surname: this.surname,
       patronymic: this.patronymic,
       photo: this.photo,
-      "photo-name": this.photoName,
+      photoName: this.photoName,
       role: this.role
     };
   }
@@ -134,7 +134,7 @@ class Director extends GenericUser {
       surname: this.surname,
       patronymic: this.patronymic,
       photo: this.photo,
-      "photo-name": this.photoName,
+      photoName: this.photoName,
       role: this.role,
     };
   }

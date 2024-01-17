@@ -6,7 +6,7 @@ class RegistrationUserBody extends User {
   password: string;
 
   constructor(id: string, name: string, surname: string, patronymic: string, 
-    dateOfBirthday: Date, phone: string, email: string, allergies: string[], 
+    dateOfBirthday: string, phone: string, email: string, allergies: string, 
     photo: string, photoName: string, address: string, login: string, password: string) {
     super(id, name, surname, patronymic, dateOfBirthday, phone, email, allergies, photo, photoName, address);
     this.login = login;
@@ -21,10 +21,10 @@ class RegistrationUserBody extends User {
       patronymic: this.patronymic,
       dateOfBirthday: this.dateOfBirthday,
       phone: this.phone,
-      "e-mail": this.email,
+      email: this.email,
       allergies: this.allergies,
       photo: this.photo,
-      "photo-name": this.photoName,
+      photoName: this.photoName,
       address: this.address,
       fullName: this.fullName,
       role: this.role,

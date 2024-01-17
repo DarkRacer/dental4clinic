@@ -35,9 +35,7 @@ export class UserController {
     public editUser = async (req: Request, res: Response) => {
         try {
           const userId: string = req.params.userId;
-          const userData: User = req.body;
-          const user = new User(userData.id, userData.name, userData.surname, userData.patronymic, userData.dateOfBirthday, userData.phone, userData.email, userData.allergies, userData.photo, userData.photoName, userData.address)
-          userService.editUser(userId, user);
+          userService.editUser(userId, req.body);
           res.status(204).send();
         } catch (e) {
             if (e instanceof Error) {
