@@ -136,7 +136,6 @@ export default {
     },
     openCreateDoctorDialog: function () {
       this.doctorForm.id = new ObjectID()
-      this.doctorForm.doctor = this.doctorForm
       this.$refs.createDoctorDialog.style.display = 'flex'
       this.$refs.createDoctorDialog.show()
     },
