@@ -40,6 +40,24 @@ const post = (path, body) => {
     .then(response => response.json())
 }
 
+const postWithDynamicalResponse = (path, body) => {
+  const token = 'Bearer ' + getCookie("access_token");
+  const headers = {
+    "Host":  'localhost',
+    "Origin":  'http://localhost:8080/',
+    "Accept": "*/*",
+    'ngrok-skip-browser-warning':true,
+    "Authorization": token,
+    'Content-Type': 'application/json'
+  }
+  return fetch(url+path, {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(body)
+  })
+    .then(response => response)
+}
+
 const postWithoutResponse = (path, body) => {
   const token = 'Bearer ' + getCookie("access_token");
   const headers = {
@@ -58,4 +76,4 @@ const postWithoutResponse = (path, body) => {
     .then(response => response)
 }
 
-export { get, post, getCookie, postWithoutResponse }
+export { get, post, getCookie, postWithoutResponse, postWithDynamicalResponse }

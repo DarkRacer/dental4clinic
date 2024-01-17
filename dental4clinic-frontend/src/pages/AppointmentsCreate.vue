@@ -1,5 +1,5 @@
 <script>
-import {get, post, postWithoutResponse} from "@/pages/js/core/rest.js";
+import {get, post, postWithDynamicalResponse, postWithoutResponse} from "@/pages/js/core/rest.js";
 import {changeClassRows} from "@/pages/js/core/table.js";
 import {useCookies} from "@vueuse/integrations/useCookies";
 import {useJwt} from "@vueuse/integrations/useJwt";
@@ -99,7 +99,7 @@ export default {
         alert("Выберите врача")
         return
       }
-      post("appointments/create", this.appointmentForm).then(data => {
+      postWithDynamicalResponse("appointments/create", this.appointmentForm).then(data => {
         alert("Запись произошла успешна")
         this.appointmentForm = {
           name: '',
@@ -114,7 +114,8 @@ export default {
           userId: '',
         }
         if (!this.user.id || !this.user.role) {
-          alert("Данные учетной записи: Логин: " + data.login + " Пароль: " + data.password)
+          const dataJson = data.json()
+          alert("Данные учетной записи: Логин: " + dataJson.login + " Пароль: " + dataJson.password)
         }
       }).catch((error) => {console.error('Error:', error);});
     },
