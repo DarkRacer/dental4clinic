@@ -1,5 +1,5 @@
 <script>
-import {get, postWithoutResponse} from "@/pages/js/core/rest.js";
+import {get, post, postWithoutResponse} from "@/pages/js/core/rest.js";
 import {changeClassRows} from "@/pages/js/core/table.js";
 import {useCookies} from "@vueuse/integrations/useCookies";
 import {useJwt} from "@vueuse/integrations/useJwt";
@@ -99,7 +99,7 @@ export default {
         alert("Выберите врача")
         return
       }
-      postWithoutResponse("appointments/create", this.appointmentForm).then(data => {
+      post("appointments/create", this.appointmentForm).then(data => {
         alert("Запись произошла успешна")
         this.appointmentForm = {
           name: '',
@@ -112,6 +112,9 @@ export default {
           doctorName: '',
           requestId: '',
           userId: '',
+        }
+        if (!this.user.id || !this.user.role) {
+          alert("Данные учетной записи: Логин: " + data.login + " Пароль: " + data.password)
         }
       }).catch((error) => {console.error('Error:', error);});
     },
