@@ -310,9 +310,7 @@ export default {
     },
     deleteService: function () {
       if (this.selectedDoctorServiceIndex > -1) {
-        var service = this.doctorServiceTableValue[this.selectedDoctorServiceIndex]
-        service.doctor = this.doctorFormFullName
-        post(`services/doctor/delete/${this.doctorForm.id}`, service).then((data) => {
+        post(`services/doctor/delete/${this.doctorForm.id}`, this.doctorServiceTableValue[this.selectedDoctorServiceIndex]).then((data) => {
           this.doctorServiceTableValue = data;
           this.selectedDoctorServiceIndex = -1;
 
@@ -326,7 +324,7 @@ export default {
     },
     addService: function () {
       if (this.selectedServiceIndex > -1) {
-        var service = this.doctorServiceTableValue[this.selectedDoctorServiceIndex]
+        var service = this.servicesTableValue[this.selectedServiceIndex]
         service.doctor = this.doctorFormFullName
         post(`services/doctor/add/${this.doctorForm.id}`, service).then((data) => {
           this.doctorServiceTableValue = data;
