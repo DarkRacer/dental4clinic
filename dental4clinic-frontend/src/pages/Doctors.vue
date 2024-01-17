@@ -5,6 +5,7 @@ import {useCookies} from "@vueuse/integrations/useCookies";
 import { uuid } from 'vue-uuid';
 import {changeClassRows} from "@/pages/js/core/table.js";
 import {useJwt} from "@vueuse/integrations/useJwt";
+import ObjectID  from 'bson-objectid';
 
 export default {
   data() {
@@ -135,7 +136,7 @@ export default {
       reader.readAsDataURL(file);
     },
     openCreateDoctorDialog: function () {
-      this.doctorForm.id = uuid.v4()
+      this.doctorForm.id = new ObjectID()
       this.$refs.createDoctorDialog.style.display = 'flex'
       this.$refs.createDoctorDialog.show()
     },
