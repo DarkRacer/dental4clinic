@@ -1,9 +1,8 @@
 import { Request, Response } from "express";
 import * as appointmentService from "../../services/appointment.service";
 import * as authService from "../../services/auth.service";
-import {registration} from "../../services/registration.service";
+import * as userService from "../../services/user.service";
 import {ObjectId} from "mongodb";
-import {RegistrationUserBody} from "../../models/registration-user";
 
 export class AppointmentController {
 
@@ -46,45 +45,41 @@ export class AppointmentController {
         }
     };
 
-    // Что за API?
     public getAppointmentFinish = async (req: Request, res: Response) => {
-        throw new Error("Method not implemented.");
+        try {
+            const appointmentId = req.params.appointmentId;
+            const body = req.body;
+            appointmentService.getAppointmentToFinish(appointmentId, body);
+            res.status(204).send();
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
     };
 
     public createAppointment = async (req: Request, res: Response) => {
         try {
-            const currentUser = authService.getCurrentUserFromRequest(req)
-            let role = ""
+            const currentUser = authService.getCurrentUserFromRequest(req);
+            let role = "";
             if (currentUser) {
-              role = currentUser['role']
-            }
-
-            await appointmentService.createAppointment(req.body, role);
-            res.status(204).send();
-
-          //               let currentUser = authService.getCurrentUserFromRequest(req)
-          //             let role = ""
-          //             let login = ""
-          //             let password = ""
-          //             if (currentUser) {
-          //               role = currentUser['role']
-          //             } else {
-          //               let userData = {
-          //                 name: req.body.name,
-          //                 surname: req.body.surname,
-          //                 phone: req.body.phone,
-          //                 login: req.body.phone,
-          //                 password: new ObjectId(),
-          //               }
-          //               const registerInfo = await registration(userData)
-          //               role = "USER"
-          //               req.body.userId = registerInfo.user.id
-          //               login = registerInfo.user.login
-          //               password = registerInfo.user.password
-          //             }
-          //
-          //             await appointmentService.createAppointment(req.body, role, currentUser);
-          //             return {login: login, password: password}
+                role = currentUser['role']
+                await appointmentService.createAppointment(req.body, role);
+                res.status(204).send();
+            } else {
+                let userData = {
+                    name: req.body.name,
+                    surname: req.body.surname,
+                    phone: req.body.phone,
+                    login: req.body.phone,
+                    password: new ObjectId().toHexString(),
+                }
+                const saveUser = await userService.saveUserToMongo(userData)
+                console.log(saveUser)
+                role = "USER"
+                req.body.userId = saveUser._id.toString();
+                console.log("54353345", req.body)
+                await appointmentService.createAppointment(req.body, role);
+                res.status(200).json({login: saveUser.login, password: saveUser.password});
+            }   
           } catch (error) {
             res.status(500).send(error.message);
           }

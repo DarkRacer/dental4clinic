@@ -99,8 +99,7 @@ export default {
         alert("Выберите врача")
         return
       }
-      postWithDynamicalResponse("appointments/create", this.appointmentForm).then(data => {
-        alert("Запись произошла успешна")
+      post("appointments/create", this.appointmentForm).then(data => {
         this.appointmentForm = {
           name: '',
           date: '',
@@ -114,8 +113,7 @@ export default {
           userId: '',
         }
         if (!this.user.id || !this.user.role) {
-          const dataJson = data.json()
-          alert("Данные учетной записи: Логин: " + dataJson.login + " Пароль: " + dataJson.password)
+          alert("Запись произошла успешна! \n Данные учетной записи: \n Логин: " + data.login + " Пароль: " + data.password)
         }
       }).catch((error) => {console.error('Error:', error);});
     },

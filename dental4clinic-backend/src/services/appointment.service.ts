@@ -1,9 +1,10 @@
 import { ObjectId } from "mongodb";
 import { Appointment } from "../models/appointment-body";
 import { connect } from "../mongo";
-import { AppointmentBodyAdmin, AppointmentBodyUnauthorized, AppointmentBodyUser } from "../models/appointment";
+import { AppointmentBodyAdmin, AppointmentBodyUser } from "../models/appointment";
 import {disableRequest, getRequestsById} from "./request.service";
 import {getUser} from "./user.service";
+import { Payment } from "../models/payment";
 
 export async function getAllAppointments(): Promise<Appointment[]> {
     try {
@@ -97,10 +98,8 @@ export async function getAllAppointmentsById(appointmentId: string): Promise<App
     }
 }
 
-export async function appointmentsToFinish(appointmentId: string): Promise<void> {
-}
-
 export async function createAppointment(appointmentData: any, userRole: string): Promise<void> {
+    console.log("1", appointmentData)
     let appointment;
     let user;
     let userName;
@@ -122,7 +121,8 @@ export async function createAppointment(appointmentData: any, userRole: string):
           appointmentData.description,
           appointmentData.doctorId,
           appointmentData.doctorName,
-          userName
+          userName,
+          request.userId
         );
         break;
       case "USER":
@@ -135,25 +135,11 @@ export async function createAppointment(appointmentData: any, userRole: string):
           appointmentData.description,
           appointmentData.doctorId,
           appointmentData.doctorName,
-          userName
-        );
-        break;
-      default:
-        userName = appointmentData.surname + ' ' + appointmentData.name
-        appointment = new AppointmentBodyUnauthorized(
-          appointmentData.name,
-          appointmentData.date,
-          appointmentData.datetime,
-          appointmentData.description,
-          appointmentData.doctorId,
-          appointmentData.phone,
-          appointmentData.surname,
-          appointmentData.doctorName,
-          userName
+          userName,
         );
         break;
     }
-
+    console.log(appointment)
     try {
         const db = await connect();
         const collection = db.collection("appointments");
@@ -163,6 +149,44 @@ export async function createAppointment(appointmentData: any, userRole: string):
         }
     } catch (error) {
         console.error('Error in createAppointment:', error);
+        throw error;
+    }
+}
+
+
+export async function getAppointmentToFinish(appointmentId: string, body: any): Promise<void> {
+    const userId = body.userId;
+    const services = body.services;
+    try {
+        const db = await connect();
+        const collectionAppointments = db.collection("appointments");
+
+        const query = { _id: new ObjectId(appointmentId) }
+        const appointmentData = await collectionAppointments.findOne(query);
+
+        let allServices = '';
+        let allPrice = 0;
+        services.array.forEach(element => {
+            allServices += element.name + ', ';
+            allPrice += element.price;
+        });
+
+        const payment = new Payment(
+            null,
+            appointmentData.date,
+            appointmentData.userId,
+            appointmentData.userName,
+            appointmentData.doctorId,
+            appointmentData.doctorName,
+            allServices,
+            allPrice,
+            false
+        );
+
+        const collectionPayments = db.collection("payments");
+        await collectionPayments.insertOne(payment.toMongoObject());
+    } catch (error) {
+        console.error('Error in getAllAppointmentsById:', error);
         throw error;
     }
 }

@@ -20,17 +20,19 @@ class AppointmentBody {
 
 class AppointmentBodyAdmin extends AppointmentBody {
   requestId: string;
+  userId: string;
 
-  constructor(requestId: string, date: string, datetime: string, description: string, doctorId: string, doctorName: string, userName: string) {
+  constructor(requestId: string, date: string, datetime: string, description: string, doctorId: string, doctorName: string, userName: string, userId: string) {
     super(date, datetime, description, doctorId, doctorName, userName);
     this.requestId = requestId;
+    this.userId = userId;
   }
 
   toMongoObject(): any {
     return {
       _id: this.requestId == null ? null : new ObjectId(this.requestId),
       date: this.date,
-      userId: null,
+      userId: this.userId,
       doctorName: this.doctorName,
       datetime: this.datetime,
       description: this.description,
