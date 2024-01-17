@@ -101,7 +101,18 @@ export default {
       }
       postWithoutResponse("appointments/create", this.appointmentForm).then(data => {
         alert("Запись произошла успешна")
-        this.$router.go({ path: 'appointments/create'})
+        this.appointmentForm = {
+          name: '',
+          date: '',
+          datetime: '',
+          description: '',
+          phone: '',
+          surname: '',
+          doctorId: '',
+          doctorName: '',
+          requestId: '',
+          userId: '',
+        }
       }).catch((error) => {console.error('Error:', error);});
     },
     getDoctorsServices: function () {

@@ -102,6 +102,7 @@ export async function createAppointment(appointmentData: any, userRole: string):
     let appointment;
     let user;
     let userName;
+    console.log(userRole)
     switch (userRole) {
       case "ADMIN":
         const request = await getRequestsById(appointmentData.requestId)
@@ -124,6 +125,7 @@ export async function createAppointment(appointmentData: any, userRole: string):
         break;
       case "USER":
         user = await getUser(appointmentData.userId)
+        console.log(user)
         userName = user.surname + ' ' + user.name + ' ' + user.patronymic
         appointment = new AppointmentBodyUser(
           appointmentData.userId,

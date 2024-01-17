@@ -5,18 +5,16 @@ const getCookie = (name) => {
   if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-const token = 'Bearer ' + getCookie("access_token");
-
-const headers = {
-  "Host":  'localhost',
-  "Origin":  'http://localhost:8080/',
-  "Accept": "*/*",
-  'ngrok-skip-browser-warning':true,
-  "Authorization": token,
-  'Content-Type': 'application/json'
-}
-
 const get = (path) => {
+  const token = 'Bearer ' + getCookie("access_token");
+  const headers = {
+    "Host":  'localhost',
+    "Origin":  'http://localhost:8080/',
+    "Accept": "*/*",
+    'ngrok-skip-browser-warning':true,
+    "Authorization": token,
+    'Content-Type': 'application/json'
+  }
   return fetch(url+path, {
     method: 'GET',
     headers: headers
@@ -25,6 +23,15 @@ const get = (path) => {
 }
 
 const post = (path, body) => {
+  const token = 'Bearer ' + getCookie("access_token");
+  const headers = {
+    "Host":  'localhost',
+    "Origin":  'http://localhost:8080/',
+    "Accept": "*/*",
+    'ngrok-skip-browser-warning':true,
+    "Authorization": token,
+    'Content-Type': 'application/json'
+  }
   return fetch(url+path, {
     method: 'POST',
     headers: headers,
@@ -34,6 +41,15 @@ const post = (path, body) => {
 }
 
 const postWithoutResponse = (path, body) => {
+  const token = 'Bearer ' + getCookie("access_token");
+  const headers = {
+    "Host":  'localhost',
+    "Origin":  'http://localhost:8080/',
+    "Accept": "*/*",
+    'ngrok-skip-browser-warning':true,
+    "Authorization": token,
+    'Content-Type': 'application/json'
+  }
   return fetch(url + path, {
     method: 'POST',
     headers: headers,
@@ -42,18 +58,4 @@ const postWithoutResponse = (path, body) => {
     .then(response => response)
 }
 
-const selectFunctionalByRole = (role) => {
-  if (role === "USER") {
-    location.assign('/user/home')
-  } else if (role === "DOCTOR") {
-    location.assign('/doctor/home')
-  } else if (role === "ADMIN") {
-    location.assign('/admin/home')
-  } else if (role === "DIRECTOR") {
-    location.assign('/director/home')
-  } else {
-    location.assign('/unauthorized/home')
-  }
-}
-
-export { get, post, getCookie, token, postWithoutResponse, selectFunctionalByRole }
+export { get, post, getCookie, postWithoutResponse }
