@@ -127,7 +127,8 @@ export default {
         <img class="logo-user-image" src="../img/user-logo.png"/>
       </div>
       <div class="logo-user" v-else-if="user.id" @click="$router.push({ path: `/profile/${user.id}` });">
-        <img class="logo-user-image" v-bind:src="currentUser.photo ? currentUser.photo : '../img/user-logo.png'"/>
+        <img class="logo-user-image" v-if="currentUser.photo" v-bind:src="currentUser.photo"/>
+        <img class="logo-user-image" v-else src="../img/user-logo.png"/>
       </div>
       <div class="phone-number">
         <img class="phone" src="../img/phone.png"/>

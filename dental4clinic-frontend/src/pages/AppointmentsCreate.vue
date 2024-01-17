@@ -22,6 +22,7 @@ export default {
         phone: '',
         surname: '',
         doctorId: '',
+        doctorName: '',
         requestId: '',
         userId: '',
       },
@@ -73,13 +74,34 @@ export default {
     submit() {
       this.$emit('submit', this.appointmentForm)
       if (this.user.role === 'USER') {
-        this.appointmentForm.userId = this.user.id
-      }
-      if (this.user.role === 'ADMIN' && this.request !== {}) {
+        if (this.user.id) {
+          this.appointmentForm.userId = this.user.id
+        } else {
+          const { header, payload } = useJwt(this.cookies.get('access_token'))
+          this.appointmentForm.userId = payload.value.id
+        }
+      } else if (this.user.role === 'ADMIN' && this.request !== {}) {
         this.appointmentForm.requestId = this.request.id
+        this.appointmentForm.name = this.request.name
         this.appointmentForm.description = this.request.description
+        this.appointmentForm.phone = this.request.phone
+      } else {
+        if (!this.appointmentForm.name || !this.appointmentForm.surname || !this.appointmentForm.phone) {
+          alert("Заполните информацию о себе")
+          return
+        }
+      }
+      if (!this.appointmentForm.date || !this.appointmentForm.datetime) {
+        alert("Выберите дату и время")
+        return
+      }
+      if (!this.appointmentForm.doctorId || !this.appointmentForm.doctorName) {
+        alert("Выберите врача")
+        return
       }
       postWithoutResponse("appointments/create", this.appointmentForm).then(data => {
+        alert("Запись произошла успешна")
+        this.$router.go({ path: 'appointments/create'})
       }).catch((error) => {console.error('Error:', error);});
     },
     getDoctorsServices: function () {
@@ -88,7 +110,7 @@ export default {
       }).catch((error) => {console.error('Error:', error);})
     },
     getRequests: function () {
-      get("requests").then(data => {
+      get("requests/active").then(data => {
         this.requestsTableValue = data
       })
         .catch((error) => {
@@ -105,6 +127,7 @@ export default {
         return
       }
       this.appointmentForm.doctorId = this.filteredDoctorsTableValue[index][`doctor-id`]
+      this.appointmentForm.doctorName = this.filteredDoctorsTableValue[index].doctor
       this.selectedIndex = index
 
       changeClassRows(this.$refs.tableRow[index].children, "cell-recording", "cell-recording-selected")

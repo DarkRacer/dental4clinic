@@ -37,18 +37,18 @@ export default {
       this.contactBodyInfo = `${date} ${this.monthName[month]} ${year} :
 `
       appointments.forEach((appointment) => {
-        this.contactBodyInfo += `${appointment.datetime} - ${appointment['doctor-name']} - ${appointment['service-name']}
+        this.contactBodyInfo += `${appointment.datetime} - ${appointment.doctorName} - ${appointment.username}
 `
       })
     },
     submit() {
       this.$emit('submit', this.requestForm)
       if (this.doctor && this.patient) {
-        this.filteredAppointments = this.appointments.filter((info) => info['doctor-name'].toLowerCase().includes(this.doctor.toLowerCase()) && info['user-name'].toLowerCase().includes(this.patient.toLowerCase()))
+        this.filteredAppointments = this.appointments.filter((info) => info.doctorName.toLowerCase().includes(this.doctor.toLowerCase()) && info.userName.toLowerCase().includes(this.patient.toLowerCase()))
       } else if (this.doctor) {
-        this.filteredAppointments = this.appointments.filter((info) => info['doctor-name'].toLowerCase().includes(this.doctor.toLowerCase()))
+        this.filteredAppointments = this.appointments.filter((info) => info.doctorName.toLowerCase().includes(this.doctor.toLowerCase()))
       } else if (this.patient) {
-        this.filteredAppointments = this.appointments.filter((info) => info['user-name'].toLowerCase().includes(this.patient.toLowerCase()))
+        this.filteredAppointments = this.appointments.filter((info) => info.userName.toLowerCase().includes(this.patient.toLowerCase()))
       } else {
         this.filteredAppointments = this.appointments
       }

@@ -5,7 +5,7 @@ import { connect } from "../mongo";
 export async function getServicesByDoctorId(doctorId: string): Promise<Service[]> {
     try {
         const db = await connect();
-        const collection = db.collection("requests");
+        const collection = db.collection("services");
 
         const services = await collection.find({ "doctorId": doctorId }).toArray();
 
@@ -26,8 +26,8 @@ export async function getServicesByDoctorId(doctorId: string): Promise<Service[]
 export async function getAllService(): Promise<Service[]> {
     try {
         const db = await connect();
-        const collection = db.collection("requests");
-        
+        const collection = db.collection("prices");
+
         const services = await collection.find({}).toArray();
 
         return services.map(service => new Service(
@@ -47,7 +47,7 @@ export async function getAllService(): Promise<Service[]> {
 export async function deleteDoctorFromService(doctorId: string, requestData: any): Promise<Service[]> {
     try {
         const db = await connect();
-        const collection = db.collection("requests");
+        const collection = db.collection("services");
 
         const filter = { _id: new ObjectId(requestData.id), doctorId: doctorId };
         const update = {
@@ -76,7 +76,7 @@ export async function deleteDoctorFromService(doctorId: string, requestData: any
 export async function addDoctorFromService(doctorId: string, requestData: any): Promise<Service[]> {
     try {
         const db = await connect();
-        const collection = db.collection("prices");
+        const collection = db.collection("services");
 
         const filter = { _id: new ObjectId(requestData.id) };
         const update = {

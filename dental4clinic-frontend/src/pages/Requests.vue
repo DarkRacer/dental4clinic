@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     getRequests: function () {
-      get('requests').then((data) => {
+      get('requests/all').then((data) => {
         this.requestsTableValue = data
       }).catch((error) => console.error(error))
     },

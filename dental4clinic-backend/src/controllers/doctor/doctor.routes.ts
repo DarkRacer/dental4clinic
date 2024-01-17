@@ -6,7 +6,7 @@ export const doctorRouter = Router();
 
 doctorRouter.get('/all', doctorController.getAllDoctors);
 doctorRouter.get('/services', doctorController.getAllDoctorsServices);
-doctorRouter.get('/create', doctorController.createDoctor);
-doctorRouter.get('/edit', doctorController.editDoctor);
-doctorRouter.get('/delete', doctorController.deleteDoctor);
+doctorRouter.post('/create', doctorController.createDoctor);
+doctorRouter.post('/edit', doctorController.editDoctor);
+doctorRouter.post('/delete', doctorController.deleteDoctor);
 doctorRouter.get('/:doctorId', doctorController.getDoctor);

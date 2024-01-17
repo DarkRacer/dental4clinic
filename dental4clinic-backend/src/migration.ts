@@ -18,18 +18,18 @@ function readUserDataFromFile(filePath: string): RegistrationUserBody {
   const rawData = fs.readFileSync(filePath, 'utf8');
   const userData = JSON.parse(rawData);
   return new RegistrationUserBody(
-    userData.id, 
-    userData.name, 
-    userData.surname, 
+    userData.id,
+    userData.name,
+    userData.surname,
     userData.patronymic,
-    new Date(userData.dateOfBirthday), 
-    userData.phone, 
-    userData['e-mail'], 
+    new Date(userData.dateOfBirthday),
+    userData.phone,
+    userData['e-mail'],
     userData.allergies,
-    userData.photo, 
-    userData['photo-name'], 
-    userData.address, 
-    userData.login, 
+    userData.photo,
+    userData['photo-name'],
+    userData.address,
+    userData.login,
     userData.password
   );
 }
@@ -38,16 +38,16 @@ function readDoctorDataFromFile(filePath: string): RegistrationDoctorBody {
   const rawData = fs.readFileSync(filePath, 'utf8');
   const doctorData = JSON.parse(rawData);
   return new RegistrationDoctorBody(
-    doctorData.id, 
-    doctorData.name, 
-    doctorData.surname, 
-    doctorData.patronymic, 
+    doctorData.id,
+    doctorData.name,
+    doctorData.surname,
+    doctorData.patronymic,
     doctorData.specialization,
-    doctorData.description, 
-    doctorData.photo, 
-    doctorData['photo-name'], 
-    doctorData.pluses, 
-    doctorData.login, 
+    doctorData.description,
+    doctorData.photo,
+    doctorData['photo-name'],
+    doctorData.pluses,
+    doctorData.login,
     doctorData.password
   );
 }
@@ -56,13 +56,13 @@ function readAdminDataFromFile(filePath: string): RegistrationAdminBody {
   const rawData = fs.readFileSync(filePath, 'utf8');
   const adminData = JSON.parse(rawData);
   return new RegistrationAdminBody(
-    adminData.id, 
-    adminData.name, 
-    adminData.surname, 
-    adminData.patronymic,  
-    adminData.photo, 
+    adminData.id,
+    adminData.name,
+    adminData.surname,
+    adminData.patronymic,
+    adminData.photo,
     adminData['photo-name'],
-    adminData.login, 
+    adminData.login,
     adminData.password
   );
 }
@@ -71,13 +71,13 @@ function readDirectorDataFromFile(filePath: string): RegistrationDirectorBody {
   const rawData = fs.readFileSync(filePath, 'utf8');
   const directorData = JSON.parse(rawData);
   return new RegistrationDirectorBody(
-    directorData.id, 
-    directorData.name, 
-    directorData.surname, 
-    directorData.patronymic,  
-    directorData.photo, 
+    directorData.id,
+    directorData.name,
+    directorData.surname,
+    directorData.patronymic,
+    directorData.photo,
     directorData['photo-name'],
-    directorData.login, 
+    directorData.login,
     directorData.password
   );
 }
@@ -104,8 +104,8 @@ function readToothsFromFile(filePath: string): Tooth[] {
   const rawData = fs.readFileSync(filePath, 'utf8');
   const toothDataArray = JSON.parse(rawData);
   return toothDataArray.map(toothData => new Tooth(
-    toothData.id, 
-    toothData.data, 
+    toothData.id,
+    toothData.data,
     toothData.userId
   ));
 }
@@ -115,11 +115,10 @@ function readRequestsFromFile(filePath: string): MyRequest[] {
   const requestDataArray = JSON.parse(rawData);
   return requestDataArray.map(requestData => new MyRequest(
     requestData.id,
-    requestData.date,
     requestData.userId,
     requestData.name,
-    requestData.phone, 
-    requestData.description, 
+    requestData.phone,
+    requestData.description,
     requestData.isActual
   ));
 }
@@ -130,7 +129,10 @@ function readServicesFromFile(filePath: string): MyRequest[] {
   return servicesData.map(serviceData => new Service(
     serviceData['doctor-id'],
     serviceData.doctor,
-    serviceData.services
+    serviceData.services,
+    null,
+    null,
+    null
   ));
 }
 
@@ -198,9 +200,9 @@ async function createUsers(db: Db): Promise<void> {
   const migrateAdmin1 = readAdminDataFromFile('./stub/responses/admin/1.json');
   const migrateAdmin2 = readAdminDataFromFile('./stub/responses/admin/3.json');
   const migrateDirector1 = readDirectorDataFromFile('./stub/responses/director/4.json');
-  
+
   const migrateUsers = [
-    migrateUser1.toMongoObject(), 
+    migrateUser1.toMongoObject(),
     migrateUser2.toMongoObject(),
     migrateDoctor1.toMongoObject(),
     migrateAdmin1.toMongoObject(),
@@ -225,7 +227,7 @@ async function createAppointments(db: Db): Promise<void> {
 
 async function createDiagnosis(db: Db): Promise<void> {
   const migrateDiagnosis = readUserDiagnosisDataFromFile('./stub/responses/user/diagnosis/diagnosis_created.json');
-  
+
   const diagnosisCollection = await db.createCollection('diagnosis');
   for (const diagnosis of migrateDiagnosis) {
     await diagnosisCollection.insertOne(diagnosis.toMongoObject());

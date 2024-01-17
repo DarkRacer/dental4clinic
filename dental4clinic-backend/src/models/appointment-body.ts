@@ -7,19 +7,19 @@ class Appointment {
     doctorId: string;
     doctorName: string;
     date: string;
-    dateTime: string;
+    datetime: string;
     serviceName: string;
     description: string;
 
-    constructor(id: string, userId: string, userName: string, doctorId: string, 
-        doctorName: string, date: string, dateTime: string, serviceName: string, description: string) {
+    constructor(id: string, userId: string, userName: string, doctorId: string,
+        doctorName: string, date: string, datetime: string, serviceName: string, description: string) {
         this.id = id;
         this.userId = userId;
         this.userName = userName;
         this.doctorId = doctorId;
         this.doctorName = doctorName;
         this.date = date;
-        this.dateTime = dateTime;
+        this.datetime = datetime;
         this.serviceName = serviceName;
         this.description = description;
     }
@@ -32,7 +32,7 @@ class Appointment {
             doctorId: this.doctorId,
             doctorName: this.doctorName,
             date: this.date,
-            dateTime: this.dateTime,
+            datetime: this.datetime,
             serviceName: this.serviceName,
             description: this.description
         };

@@ -35,3 +35,11 @@ export async function signIn(authData: Login): Promise<Token> {
     return null;
   }
 }
+
+export function getCurrentUserFromRequest(req) {
+  const token = req.header("Authorization").replace("Bearer ", "")
+  if (token && token !== "undefined") {
+    return jwt.decode(req.header("Authorization").replace("Bearer ", ""))
+  }
+  return null
+}

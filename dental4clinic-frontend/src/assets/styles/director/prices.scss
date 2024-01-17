@@ -68,8 +68,17 @@
   margin-bottom: 1%;
   @extend %title-text;
 }
+.required-field-title-group {
+  display: flex;
+  margin-bottom: 1%;
+  @extend %title-text;
+}
 .required-field-input {
   padding: 4%;
+  @extend %input;
+}
+.required-field-input-group {
+  padding: 2%;
   @extend %input;
 }
 .additional-fields {

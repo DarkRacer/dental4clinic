@@ -2,6 +2,9 @@ import { ObjectId } from "mongodb";
 import { Appointment } from "../models/appointment-body";
 import { connect } from "../mongo";
 import { AppointmentBodyAdmin, AppointmentBodyUnauthorized, AppointmentBodyUser } from "../models/appointment";
+import {request} from "express";
+import {disableRequest, getRequestsById, getRequestsByUserId} from "./request.service";
+import {getUser} from "./user.service";
 
 export async function getAllAppointments(): Promise<Appointment[]> {
     try {
@@ -16,7 +19,7 @@ export async function getAllAppointments(): Promise<Appointment[]> {
             item.doctorId,
             item.doctorName,
             item.date,
-            item.dateTime,
+            item.datetime,
             item.serviceName,
             item.description
         ));
@@ -30,7 +33,7 @@ export async function getAllAppointmentsByUser(userId: string): Promise<Appointm
     try {
         const db = await connect();
         const collection = db.collection("appointments");
-        const appointmentsData = await collection.find({ "user-id": userId }).toArray();
+        const appointmentsData = await collection.find({ "userId": userId }).toArray();
 
         return appointmentsData.map(item => new Appointment(
             item._id.toString(),
@@ -39,7 +42,7 @@ export async function getAllAppointmentsByUser(userId: string): Promise<Appointm
             item.doctorId,
             item.doctorName,
             item.date,
-            item.dateTime,
+            item.datetime,
             item.serviceName,
             item.description
         ));
@@ -62,7 +65,7 @@ export async function getAllAppointmentsByDoctor(doctorId: string): Promise<Appo
             item.doctorId,
             item.doctorName,
             item.date,
-            item.dateTime,
+            item.datetime,
             item.serviceName,
             item.description
         ));
@@ -85,7 +88,7 @@ export async function getAllAppointmentsById(appointmentId: string): Promise<App
             item.doctorId,
             item.doctorName,
             item.date,
-            item.dateTime,
+            item.datetime,
             item.serviceName,
             item.description
         ));
@@ -95,37 +98,55 @@ export async function getAllAppointmentsById(appointmentId: string): Promise<App
     }
 }
 
-export async function createAppointment(appointmentData: any): Promise<void> {
+export async function createAppointment(appointmentData: any, userRole: string): Promise<void> {
     let appointment;
-
-    switch (appointmentData.role) {
+    let user;
+    let userName;
+    switch (userRole) {
       case "ADMIN":
+        const request = await getRequestsById(appointmentData.requestId)
+        if (request.userId) {
+          user = await getUser(request.userId)
+          userName = user.surname + ' ' + user.name + ' ' + user.patronymic
+        } else {
+          userName = request.name
+        }
+
         appointment = new AppointmentBodyAdmin(
           appointmentData.requestId,
           appointmentData.date,
           appointmentData.datetime,
           appointmentData.description,
-          appointmentData.doctorId
+          appointmentData.doctorId,
+          appointmentData.doctorName,
+          userName
         );
         break;
       case "USER":
+        user = await getUser(appointmentData.userId)
+        userName = user.surname + ' ' + user.name + ' ' + user.patronymic
         appointment = new AppointmentBodyUser(
           appointmentData.userId,
           appointmentData.date,
           appointmentData.datetime,
           appointmentData.description,
-          appointmentData.doctorId
+          appointmentData.doctorId,
+          appointmentData.doctorName,
+          userName
         );
         break;
       default:
+        userName = appointmentData.surname + ' ' + appointmentData.name
         appointment = new AppointmentBodyUnauthorized(
-        appointmentData.name,
-        appointmentData.date,
-        appointmentData.datetime,
-        appointmentData.description,
-        appointmentData.doctorId,
-        appointmentData.phone,
-        appointmentData.surname
+          appointmentData.name,
+          appointmentData.date,
+          appointmentData.datetime,
+          appointmentData.description,
+          appointmentData.doctorId,
+          appointmentData.phone,
+          appointmentData.surname,
+          appointmentData.doctorName,
+          userName
         );
         break;
     }
@@ -134,8 +155,11 @@ export async function createAppointment(appointmentData: any): Promise<void> {
         const db = await connect();
         const collection = db.collection("appointments");
         await collection.insertOne(appointment.toMongoObject());
+        if (appointmentData.requestId) {
+          await disableRequest(appointmentData.requestId)
+        }
     } catch (error) {
-        console.error('Error in getAllAppointmentsById:', error);
+        console.error('Error in createAppointment:', error);
         throw error;
     }
 }

@@ -113,7 +113,7 @@ export async function editDoctor(editDoctor): Promise<Doctor[]> {
         const db = await connect();
         const collection = db.collection("users");
 
-        const doctor = new RegistrationDoctorBody(
+        const doctor = new Doctor(
             editDoctor.id,
             editDoctor.name,
             editDoctor.surname,
@@ -123,8 +123,6 @@ export async function editDoctor(editDoctor): Promise<Doctor[]> {
             editDoctor.photo,
             editDoctor.photoName,
             editDoctor.pluses,
-            editDoctor.login,
-            editDoctor.password
         );
 
         const query = { _id: new ObjectId(editDoctor.id) };

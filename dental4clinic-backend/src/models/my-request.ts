@@ -2,16 +2,14 @@ import { ObjectId } from "mongodb";
 
 class MyRequest {
     id: string;
-    date: string;
     userId: string;
     name: string;
     phone: string;
     description: string;
     isActual: boolean;
 
-    constructor(id: string, date: string, userId: string, name: string, phone: string, description: string, isActual: boolean) {
+    constructor(id: string, userId: string, name: string, phone: string, description: string, isActual: boolean) {
         this.id = id;
-        this.date = date;
         this.userId = userId;
         this.name = name;
         this.phone = phone;
@@ -22,7 +20,6 @@ class MyRequest {
     toMongoObject(): any {
         return {
             _id: this.id == null ? null : new ObjectId(this.id),
-            date: this.date,
             userId: this.userId,
             name: this.name,
             phone: this.phone,

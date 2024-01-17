@@ -11,19 +11,22 @@ export default {
         name: '',
         description: 'Упс. Что-то пошло не так...',
         price: '',
-        pluses: ''
+        pluses: '',
+        group: ''
       },
       currentPrice: {
         name: '',
         description: 'Упс. Что-то пошло не так...',
         price: '',
-        pluses: ''
+        pluses: '',
+        group: ''
       },
       priceForm: {
         name: '',
         description: '',
         price: '',
-        pluses: ''
+        pluses: '',
+        group: ''
       },
       priceId: null,
       computedDisplay: 'none'
@@ -214,6 +217,12 @@ export default {
                 <input type="text" name="cost" placeholder="Стоимость (Р.)" class="required-field-input" v-model="priceForm.price">
               </div>
             </div>
+            <div class="required-fields">
+              <div class="required-field">
+                <div class="required-field-title-group">Название группы</div>
+                <input type="text" name="Группа" placeholder="Название группы" class="required-field-input-group" v-model="priceForm.group">
+              </div>
+            </div>
             <div class="additional-fields">
               <div class="additional-field">
                 <div class="additional-field-title">Описание</div>
@@ -275,6 +284,12 @@ export default {
               <div class="required-field">
                 <div class="required-field-title">Стоимость</div>
                 <input type="text" name="cost" placeholder="Стоимость (Р.)" class="required-field-input" v-model="priceForm.price">
+              </div>
+            </div>
+            <div class="required-fields">
+              <div class="required-field">
+                <div class="required-field-title-group">Название группы</div>
+                <input type="text" name="Группа" placeholder="Название группы" class="required-field-input-group" v-model="priceForm.group">
               </div>
             </div>
             <div class="additional-fields">

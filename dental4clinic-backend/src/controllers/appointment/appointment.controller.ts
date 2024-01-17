@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import * as appointmentService from "../../services/appointment.service";
+import * as authService from "../../services/auth.service";
 
 export class AppointmentController {
-    
+
     public getAllAppointments = async (req: Request, res: Response) => {
         try {
             const appointments = await appointmentService.getAllAppointments();
@@ -49,7 +50,13 @@ export class AppointmentController {
 
     public createAppointment = async (req: Request, res: Response) => {
         try {
-            await appointmentService.createAppointment(req.body);
+            const currentUser = authService.getCurrentUserFromRequest(req)
+            let role = ""
+            if (currentUser) {
+              role = currentUser['role']
+            }
+
+            await appointmentService.createAppointment(req.body, role);
             res.status(204).send();
           } catch (error) {
             res.status(500).send(error.message);
