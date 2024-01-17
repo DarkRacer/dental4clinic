@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import * as doctorService from "../../services/doctor.service";
+import {getAllDoctorsServices} from "../../services/doctor.service";
 
 export class DoctorController {
 
@@ -39,7 +40,7 @@ export class DoctorController {
 
     public getAllDoctorsServices = async (req: Request, res: Response) => {
         try {
-            const services = await doctorService.getAllServices();
+            const services = await doctorService.getAllDoctorsServices();
             res.status(200).json(services);
         } catch (error) {
             console.error('Error in getAllDoctorsServices:', error.message);
