@@ -140,7 +140,7 @@ export default {
         }
         return
       }
-      this.appointmentForm.doctorId = this.filteredDoctorsTableValue[index][`doctor-id`]
+      this.appointmentForm.doctorId = this.filteredDoctorsTableValue[index].doctorId
       this.appointmentForm.doctorName = this.filteredDoctorsTableValue[index].doctor
       this.selectedIndex = index
 
