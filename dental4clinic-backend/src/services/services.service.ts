@@ -70,15 +70,21 @@ export async function deleteDoctorFromService(doctorId: string, requestData: any
 export async function addDoctorFromService(doctorId: string, requestData: any): Promise<Service[]> {
     try {
         const db = await connect();
-        const collectionU = db.collection("users");
-        const query = { _id: new ObjectId(doctorId) };
-        const doctorData = await collectionU.findOne(query);
+        let doctorName
+        if (!requestData.doctor) {
+          const collectionU = db.collection("users");
+          const query = { _id: new ObjectId(doctorId) };
+          const doctorData = await collectionU.findOne(query);
+          doctorName = doctorData.surname + " " + doctorData.name + " " + doctorData.patronymic
+        } else {
+          doctorName = requestData.doctor
+        }
 
         const collectionDS = db.collection("doctors-services");
         const doctorService = new DoctorService(
             null,
             doctorId,
-            doctorData.surname + doctorData.name + doctorData.patronymic,
+            doctorName,
             requestData.service,
             requestData.id
         );

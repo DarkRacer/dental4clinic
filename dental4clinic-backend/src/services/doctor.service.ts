@@ -44,7 +44,6 @@ export async function getAllServices(): Promise<Service[]> {
             service.price
         ));
 
-        return servicesData.filter((service) => service.doctor != '');
     } catch (e) {
         console.error("Error fetching doctor services from MongoDB", e);
         throw e;

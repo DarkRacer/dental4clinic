@@ -2,7 +2,6 @@
 
 import {get, post} from "@/pages/js/core/rest.js";
 import {useCookies} from "@vueuse/integrations/useCookies";
-import { uuid } from 'vue-uuid';
 import {changeClassRows} from "@/pages/js/core/table.js";
 import {useJwt} from "@vueuse/integrations/useJwt";
 import ObjectID  from 'bson-objectid';
@@ -137,6 +136,7 @@ export default {
     },
     openCreateDoctorDialog: function () {
       this.doctorForm.id = new ObjectID()
+      this.doctorForm.doctor = this.doctorForm
       this.$refs.createDoctorDialog.style.display = 'flex'
       this.$refs.createDoctorDialog.show()
     },
@@ -310,7 +310,9 @@ export default {
     },
     deleteService: function () {
       if (this.selectedDoctorServiceIndex > -1) {
-        post(`services/doctor/delete/${this.doctorForm.id}`, this.doctorServiceTableValue[this.selectedDoctorServiceIndex]).then((data) => {
+        var service = this.doctorServiceTableValue[this.selectedDoctorServiceIndex]
+        service.doctor = this.doctorFormFullName
+        post(`services/doctor/delete/${this.doctorForm.id}`, service).then((data) => {
           this.doctorServiceTableValue = data;
           this.selectedDoctorServiceIndex = -1;
 
@@ -324,7 +326,9 @@ export default {
     },
     addService: function () {
       if (this.selectedServiceIndex > -1) {
-        post(`services/doctor/add/${this.doctorForm.id}`, this.servicesTableValue[this.selectedServiceIndex]).then((data) => {
+        var service = this.doctorServiceTableValue[this.selectedDoctorServiceIndex]
+        service.doctor = this.doctorFormFullName
+        post(`services/doctor/add/${this.doctorForm.id}`, service).then((data) => {
           this.doctorServiceTableValue = data;
           this.selectedServiceIndex = -1;
 
