@@ -69,10 +69,10 @@ class User extends GenericUser {
 class Doctor extends GenericUser {
   specialization: string;
   description: string;
-  pluses: number;
+  pluses: string;
   role: Role;
 
-  constructor(id: string, name: string, surname: string, patronymic: string, specialization: string, description: string, photo: any, photoName: string, pluses: number) {
+  constructor(id: string, name: string, surname: string, patronymic: string, specialization: string, description: string, photo: any, photoName: string, pluses: string) {
     super(id, name, surname, patronymic, photo, photoName);
     this.specialization = specialization;
     this.description = description;
@@ -100,12 +100,12 @@ class Doctor extends GenericUser {
 class Admin extends GenericUser {
   role: Role;
 
-  constructor(id: string, name: string, surname: string, patronymic: string, 
+  constructor(id: string, name: string, surname: string, patronymic: string,
               photo: string, photoName: string) {
     super(id, name, surname, patronymic, photo, photoName);
     this.role = Role.ADMIN;
   }
-    
+
   toMongoObject(): any {
     return {
       _id: this.id == null ? null : new ObjectId(this.id),

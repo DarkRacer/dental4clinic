@@ -256,12 +256,12 @@ async function createRequests(db: Db): Promise<void> {
 }
 
 async function createServices(db: Db): Promise<void> {
-  const migrateServices = readServicesFromFile('./stub/responses/doctors_services.json');
+  // const migrateServices = readServicesFromFile('./stub/responses/doctors_services.json');
 
   const servicesCollection = await db.createCollection('services');
-  for (const service of migrateServices) {
-    await servicesCollection.insertOne(service.toMongoObject());
-  }
+  // for (const service of migrateServices) {
+  //   await servicesCollection.insertOne(service.toMongoObject());
+  // }
   console.log('All services have been saved successfully.');
 }
 
