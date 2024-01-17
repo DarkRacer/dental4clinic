@@ -1,6 +1,9 @@
 import { Request, Response } from "express";
 import * as appointmentService from "../../services/appointment.service";
 import * as authService from "../../services/auth.service";
+import {registration} from "../../services/registration.service";
+import {ObjectId} from "mongodb";
+import {RegistrationUserBody} from "../../models/registration-user";
 
 export class AppointmentController {
 
@@ -58,6 +61,30 @@ export class AppointmentController {
 
             await appointmentService.createAppointment(req.body, role);
             res.status(204).send();
+
+          //               let currentUser = authService.getCurrentUserFromRequest(req)
+          //             let role = ""
+          //             let login = ""
+          //             let password = ""
+          //             if (currentUser) {
+          //               role = currentUser['role']
+          //             } else {
+          //               let userData = {
+          //                 name: req.body.name,
+          //                 surname: req.body.surname,
+          //                 phone: req.body.phone,
+          //                 login: req.body.phone,
+          //                 password: new ObjectId(),
+          //               }
+          //               const registerInfo = await registration(userData)
+          //               role = "USER"
+          //               req.body.userId = registerInfo.user.id
+          //               login = registerInfo.user.login
+          //               password = registerInfo.user.password
+          //             }
+          //
+          //             await appointmentService.createAppointment(req.body, role, currentUser);
+          //             return {login: login, password: password}
           } catch (error) {
             res.status(500).send(error.message);
           }

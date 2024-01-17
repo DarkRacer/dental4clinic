@@ -127,7 +127,6 @@ export async function createAppointment(appointmentData: any, userRole: string):
         break;
       case "USER":
         user = await getUser(appointmentData.userId)
-        console.log(user)
         userName = user.surname + ' ' + user.name + ' ' + user.patronymic
         appointment = new AppointmentBodyUser(
           appointmentData.userId,
