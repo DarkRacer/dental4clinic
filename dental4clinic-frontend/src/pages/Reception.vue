@@ -118,7 +118,7 @@ export default {
       }).catch(error => console.error(error));
     },
     getServices: function () {
-      get(`doctors/${ this.$route.params.userId }/services`).then(data => {
+      get(`services/doctor/${ this.$route.params.userId }`).then(data => {
         this.services = data;
       }).catch(error => console.error(error));
     },

@@ -7,7 +7,7 @@ import * as requestService from "../../services/request.service";
 import { User } from "../../models/user";
 
 export class UserController {
-    
+
     /**
      * Method for getting a user by userId
      * @param req Unique user id (req.params.userId)
@@ -36,7 +36,8 @@ export class UserController {
         try {
           const userId: string = req.params.userId;
           const userData: User = req.body;
-          userService.editUser(userId, userData.toMongoObject());
+          const user = new User(userData.id, userData.name, userData.surname, userData.patronymic, userData.dateOfBirthday, userData.phone, userData.email, userData.allergies, userData.photo, userData.photoName, userData.address)
+          userService.editUser(userId, user);
           res.status(204).send();
         } catch (e) {
             if (e instanceof Error) {

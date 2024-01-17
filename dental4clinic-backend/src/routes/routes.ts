@@ -9,6 +9,7 @@ import { registrationRouter } from "../controllers/registration/registration.rou
 import { paymentRouter } from "../controllers/payment/payment.routers";
 import { serviceRouter } from "../controllers/service/service.routers";
 import { requestRouter } from "../controllers/request/request.routers";
+import {adminRouter} from "../controllers/admin/admin.routers";
 
 const api = Router()
   .use('/user', userRouter)
@@ -21,5 +22,6 @@ const api = Router()
   .use('/registration', registrationRouter)
   .use('/services', serviceRouter)
   .use('/requests', requestRouter)
+  .use('/admins', adminRouter)
 
   export default Router().use('/api', api);

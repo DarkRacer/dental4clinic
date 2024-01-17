@@ -90,7 +90,7 @@ function readUserDiagnosisDataFromFile(filePath: string): Diagnosis[] {
     diagnosisData.name,
     diagnosisData.description,
     diagnosisData.isActual,
-    diagnosisData['user-id']
+    diagnosisData.userId
   ));
 }
 
@@ -164,7 +164,7 @@ function readAppointmentsFromFile(filePath: string): Appointment[] {
   const appointmentsData = JSON.parse(rawData);
   return appointmentsData.map(appointmentData => new Appointment(
     appointmentData.id.toString(),
-    appointmentData['user-id'].toString(),
+    appointmentData.userId.toString(),
     appointmentData['user-name'],
     appointmentData.doctorId.toString(),
     appointmentData['doctor-name'],

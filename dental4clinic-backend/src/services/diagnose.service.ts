@@ -3,7 +3,7 @@ import { Diagnosis } from "../models/diagnosis";
 import { connect } from "../mongo";
 
 async function fetchAllDiagnosesForUser(userId: string, collection: any): Promise<Diagnosis[]> {
-    const userDiagnoses = await collection.find({ "user-id": userId }).toArray();
+    const userDiagnoses = await collection.find({ "userId": userId }).toArray();
     return userDiagnoses.map(diagnose => new Diagnosis(
         diagnose._id.toString(),
         diagnose.name,
@@ -55,7 +55,7 @@ export async function addDiagnoseAndGetAll(userId: string, diagnoseData: any): P
             null,
             diagnoseData.name,
             diagnoseData.description,
-            diagnoseData.isActual,
+            true,
             userId
         );
         await collection.insertOne(newDiagnose.toMongoObject());
@@ -73,7 +73,7 @@ export async function updateDiagnosisAndGetAll(userId: string, diagnoseData: any
         const collection = db.collection("diagnosis");
 
         const updatedDiagnose = new Diagnosis(
-            null,
+            diagnoseData.id,
             diagnoseData.name,
             diagnoseData.description,
             diagnoseData.isActual,

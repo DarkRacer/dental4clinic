@@ -1,5 +1,5 @@
 <script >
-import {post} from "@/pages/js/core/rest.js";
+import {get, post} from "@/pages/js/core/rest.js";
 import {changeClassRows} from "@/pages/js/core/table.js";
 
 export default {
@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     getAdmins: function () {
-      post("admins/all").then((data) => {
+      get("admins/all").then((data) => {
         this.adminsTableValue = data;
       }).catch((error) => console.log(error))
     },

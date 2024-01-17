@@ -79,7 +79,7 @@ export default {
       if (this.patientId) {
         get(`user/${this.patientId}`).then(data => {
           this.user = data;
-          this.user.email = data['e-mail'];
+          this.user.email = data.email;
         }).catch(error => {
           console.error(error)
         });

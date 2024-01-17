@@ -5,7 +5,7 @@ class RegistrationDoctorBody extends Doctor {
   login: string;
   password: string;
 
-  constructor(id: string, name: string, surname: string, patronymic: string, specialization: string, description: string, photo: any, photoName: string, pluses: number, login: string, password: string) {
+  constructor(id: string, name: string, surname: string, patronymic: string, specialization: string, description: string, photo: any, photoName: string, pluses: string, login: string, password: string) {
     super(id, name, surname, patronymic, specialization, description, photo, photoName, pluses);
     this.login = login;
     this.password = password;

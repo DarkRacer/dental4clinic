@@ -67,7 +67,7 @@ export default {
     getUserInfo: function () {
       get(`user/${this.$route.params.userId}`).then(data => {
         this.user = data;
-        this.user.email = data['e-mail'];
+        this.user.email = data.email;
       }).catch(error => console.error(error));
     },
     getUserDiagnosis: function () {
