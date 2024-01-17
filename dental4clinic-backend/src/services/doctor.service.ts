@@ -3,6 +3,7 @@ import {Doctor, Role} from '../models/user';
 import {ObjectId} from "mongodb";
 import {RegistrationDoctorBody} from "../models/registration-doctor";
 import { Service } from "../models/service";
+import {DoctorService} from "../models/doctor.service";
 
 export async function getDoctor(doctorId: string): Promise<Doctor> {
     const db = await connect();
@@ -32,22 +33,22 @@ export async function getDoctor(doctorId: string): Promise<Doctor> {
     }
 }
 
-export async function getAllServices(): Promise<Service[]> {
-    try {
-        const db = await connect();
-        const collection = db.collection("services");
-        const servicesData = await collection.find({}).toArray();
-        return servicesData.map(service => new Service(
-            service._id.toString(),
-            service.service,
-            service.description,
-            service.price
-        ));
-
-    } catch (e) {
-        console.error("Error fetching doctor services from MongoDB", e);
-        throw e;
-    }
+export async function getAllDoctorsServices(): Promise<DoctorService[]> {
+  try {
+    const db = await connect();
+    const collection = db.collection("doctors-services");
+    const servicesData = await collection.find({}).toArray();
+    return servicesData.map(service => new DoctorService(
+      service._id.toString(),
+      service.doctorId,
+      service.doctor,
+      service.services,
+      service.serviceId
+    ));
+  } catch (e) {
+    console.error("Error fetching doctor services from MongoDB", e);
+    throw e;
+  }
 }
 
 export async function getAllDoctors(): Promise<any[]> {
