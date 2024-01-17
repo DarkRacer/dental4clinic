@@ -4,23 +4,23 @@ import { connect } from "../mongo";
 
 async function fetchAllDiagnosesForUser(userId: string, collection: any): Promise<Diagnosis[]> {
     const userDiagnoses = await collection.find({ "user-id": userId }).toArray();
-    return userDiagnoses.map(doc => new Diagnosis(
-        doc._id.toString(),
-        doc.name,
-        doc.description,
-        doc.isActual,
-        doc["user-id"]
+    return userDiagnoses.map(diagnose => new Diagnosis(
+        diagnose._id.toString(),
+        diagnose.name,
+        diagnose.description,
+        diagnose.isActual,
+        diagnose.userId
     ));
 }
 
 async function fetchAllDiagnoses(collection: any): Promise<Diagnosis[]> {
     const userDiagnoses = await collection.find({}).toArray();
-    return userDiagnoses.map(doc => new Diagnosis(
-        doc._id.toString(),
-        doc.name,
-        doc.description,
-        doc.isActual,
-        doc["user-id"]
+    return userDiagnoses.map(diagnose => new Diagnosis(
+        diagnose._id.toString(),
+        diagnose.name,
+        diagnose.description,
+        diagnose.isActual,
+        diagnose.userId
     ));
 }
 
@@ -81,7 +81,7 @@ export async function updateDiagnosisAndGetAll(userId: string, diagnoseData: any
         );
 
         await collection.updateOne(
-            { _id: new ObjectId(diagnoseData.id), "user-id": userId },
+            { _id: new ObjectId(diagnoseData.id), "userId": userId },
             { $set: updatedDiagnose.toMongoObject() }
         );
 
