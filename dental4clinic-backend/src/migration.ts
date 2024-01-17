@@ -140,7 +140,7 @@ function readServicesFromFile(filePath: string): Service[] {
   const rawData = fs.readFileSync(filePath, 'utf8');
   const doctorServicesData = JSON.parse(rawData);
   return doctorServicesData.map(serviceData => new Service(
-    null,
+    serviceData.id,
     serviceData.service,
     serviceData.description,
     serviceData.price,
@@ -267,16 +267,6 @@ async function createRequests(db: Db): Promise<void> {
   console.log('All requests have been saved successfully.');
 }
 
-async function createDoctorsServices(db: Db): Promise<void> {
-  const migrateDoctorsServices = readDoctorServicesFromFile('./stub/responses/doctors_services.json');
-
-  const doctorsServicesCollection = await db.createCollection('doctors-services');
-  for (const doctorService of migrateDoctorsServices) {
-    await doctorsServicesCollection.insertOne(doctorService.toMongoObject());
-  }
-  console.log('All doctors-services have been saved successfully.');
-}
-
 async function createServices(db: Db): Promise<void> {
   const migrateServices = readServicesFromFile('./stub/responses/services/services.json');
 
@@ -285,6 +275,16 @@ async function createServices(db: Db): Promise<void> {
     await servicesCollection.insertOne(service.toMongoObject());
   }
   console.log('All services have been saved successfully.');
+}
+
+async function createDoctorsServices(db: Db): Promise<void> {
+  const migrateDoctorsServices = readDoctorServicesFromFile('./stub/responses/doctors_services.json');
+
+  const doctorsServicesCollection = await db.createCollection('doctors-services');
+  for (const doctorService of migrateDoctorsServices) {
+    await doctorsServicesCollection.insertOne(doctorService.toMongoObject());
+  }
+  console.log('All doctors-services have been saved successfully.');
 }
 
 async function createToothCard(db: Db): Promise<void> {

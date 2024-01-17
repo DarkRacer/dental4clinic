@@ -7,4 +7,4 @@ export const serviceRouter = Router();
 serviceRouter.get('/all', serviceController.getAllService);
 serviceRouter.get('/doctor/:doctorId', serviceController.getDoctorServices);
 serviceRouter.post('/doctor/delete/:doctorId', serviceController.deleteDoctorService);
-serviceRouter.get('/doctor/add/:doctorId', serviceController.addDoctorService);
+serviceRouter.post('/doctor/add/:doctorId', serviceController.addDoctorService);

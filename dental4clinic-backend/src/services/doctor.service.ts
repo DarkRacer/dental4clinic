@@ -2,6 +2,7 @@ import {connect} from "../mongo";
 import {Doctor, Role} from '../models/user';
 import {ObjectId} from "mongodb";
 import {RegistrationDoctorBody} from "../models/registration-doctor";
+import { Service } from "../models/service";
 
 export async function getDoctor(doctorId: string): Promise<Doctor> {
     const db = await connect();
@@ -31,12 +32,17 @@ export async function getDoctor(doctorId: string): Promise<Doctor> {
     }
 }
 
-export async function getAllServices(): Promise<any[]> {
+export async function getAllServices(): Promise<Service[]> {
     try {
         const db = await connect();
         const collection = db.collection("services");
         const servicesData = await collection.find({}).toArray();
-        // TODO: поправить
+        return servicesData.map(service => new Service(
+            service._id.toString(),
+            service.service,
+            service.description,
+            service.price
+        ));
 
         return servicesData.filter((service) => service.doctor != '');
     } catch (e) {
