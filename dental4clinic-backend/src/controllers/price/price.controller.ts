@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import * as priceService from "../../services/price.service";
-import { Price } from "../../models/price";
 
 export class PriceController {
     public getAllPrices = async (req: Request, res: Response) => {
@@ -32,8 +31,7 @@ export class PriceController {
 
     public createPrice = async (req: Request, res: Response) => {
         try {
-            const data = req.body;
-            const updatedPrices = await priceService.createPriceAndGetUpdatedPrices(data);
+            const updatedPrices = await priceService.createPriceAndGetUpdatedPrices(req.body);
             const groupedPrices = priceService.groupPricesByService(updatedPrices);
             res.status(200).json(groupedPrices);
         } catch (error) {
@@ -44,24 +42,22 @@ export class PriceController {
 
     public editPrice = async (req: Request, res: Response) => {
         try {
-            const data = req.body;
-            const updatedPrices = await priceService.editPriceAndGetUpdatedPrices(data);
+            const updatedPrices = await priceService.editPriceAndGetUpdatedPrices(req.body);
             const groupedPrices = priceService.groupPricesByService(updatedPrices);
             res.status(200).json(groupedPrices);
         } catch (error) {
-            console.error("Error creating price:", error);
+            console.error("Error editing price:", error);
             res.status(500).send("Internal Server Error");
         }
     }
 
     public deletePrice = async (req: Request, res: Response) => {
         try {
-            const data = req.body;
-            const updatedPrices = await priceService.deletePriceAndGetUpdatedPrices(data);
-            const groupedPrices = priceService.groupPricesByService(updatedPrices);
+            const deletedPrices = await priceService.deletePriceAndGetUpdatedPrices(req.body);
+            const groupedPrices = priceService.groupPricesByService(deletedPrices);
             res.status(200).json(groupedPrices);
         } catch (error) {
-            console.error("Error creating price:", error);
+            console.error("Error deleting price:", error);
             res.status(500).send("Internal Server Error");
         }
     }

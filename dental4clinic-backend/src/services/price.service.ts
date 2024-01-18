@@ -123,7 +123,8 @@ export async function editPriceAndGetUpdatedPrices(priceData: any): Promise<Pric
                 name: priceData.name,
                 description: priceData.description,
                 pluses: priceData.pluses,
-                price: priceData.price
+                price: priceData.price,
+                group: priceData.group
             }
         };
         await collectionPrice.updateOne(filterPrice, updatePrice);
@@ -152,13 +153,13 @@ export async function deletePriceAndGetUpdatedPrices(priceData: any): Promise<Pr
         const filterService = { _id: new ObjectId(priceData.serviceId) };
         await collectionService.deleteOne(filterService);
 
+        const collectionPrice = db.collection("prices");
+        const filterPrice = { "serviceId": priceData.serviceId };
+        await collectionPrice.deleteOne(filterPrice);
+
         const collectionDoctorsService = db.collection("doctors-services");
         const filterDoctorsService = { serviceId: priceData.serviceId };
         await collectionDoctorsService.deleteOne(filterDoctorsService);
-
-        const collectionPrice = db.collection("prices");
-        const filterPrice = { serviceId: priceData.serviceId };
-        await collectionService.deleteOne(filterPrice);
 
         const prices = await collectionPrice.find({}).toArray();
         return prices.map(price => new Price(

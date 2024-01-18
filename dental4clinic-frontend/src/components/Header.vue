@@ -61,7 +61,7 @@ export default {
       if (this.user && this.user.id) {
         get(`user/${this.user.id}`).then(data => {
           this.currentUser = data;
-          this.currentUser.email = data['e-mail'];
+          this.currentUser.email = data.email;
         }).catch(error => console.error(error));
       }
     },

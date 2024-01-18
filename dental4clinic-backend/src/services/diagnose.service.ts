@@ -1,36 +1,23 @@
 import { ObjectId } from "mongodb";
 import { Diagnosis } from "../models/diagnosis";
 import { connect } from "../mongo";
+import { UserDiagnosis } from "../models/user.diagnosis";
 
-async function fetchAllDiagnosesForUser(userId: string, collection: any): Promise<Diagnosis[]> {
-    const userDiagnoses = await collection.find({ "userId": userId }).toArray();
-    return userDiagnoses.map(diagnose => new Diagnosis(
-        diagnose._id.toString(),
-        diagnose.name,
-        diagnose.description,
-        diagnose.isActual,
-        diagnose.userId
-    ));
-}
-
-async function fetchAllDiagnoses(collection: any): Promise<Diagnosis[]> {
-    const userDiagnoses = await collection.find({}).toArray();
-    return userDiagnoses.map(diagnose => new Diagnosis(
-        diagnose._id.toString(),
-        diagnose.name,
-        diagnose.description,
-        diagnose.isActual,
-        diagnose.userId
-    ));
-}
-
-export async function getDiagnosesByUserId(userId: string): Promise<Diagnosis[]> {
+export async function getDiagnosesByUserId(userId: string): Promise<UserDiagnosis[]> {
     try {
         const db = await connect();
-        const collection = db.collection("diagnosis");
-        return await fetchAllDiagnosesForUser(userId, collection);
+        const collection = db.collection("users-diagnosis");
+        const userDiagnoses = await collection.find({ "userId": userId }).toArray();
+        return userDiagnoses.map(diagnose => new UserDiagnosis(
+            diagnose._id.toString(),
+            diagnose.name,
+            diagnose.description,
+            diagnose.isActual,
+            diagnose.userId,
+            diagnose.diagnosisId
+        ));
     } catch (error) {
-        console.error('Error in getDiagnosesByUserId:', error);
+        console.error('Error in getAllDiagnosisByUserId:', error);
         throw error;
     }
 }
@@ -39,7 +26,12 @@ export async function getAllDiagnosis(): Promise<Diagnosis[]> {
     try {
         const db = await connect();
         const collection = db.collection("diagnosis");
-        return await fetchAllDiagnoses(collection);
+        const userDiagnoses = await collection.find({}).toArray();
+        return userDiagnoses.map(diagnose => new Diagnosis(
+        diagnose._id.toString(),
+        diagnose.name,
+        diagnose.description
+        ));
     } catch (error) {
         console.error('Error in getAllDiagnosis:', error);
         throw error;
@@ -49,18 +41,27 @@ export async function getAllDiagnosis(): Promise<Diagnosis[]> {
 export async function addDiagnoseAndGetAll(userId: string, diagnoseData: any): Promise<Diagnosis[]> {
     try {
         const db = await connect();
-        const collection = db.collection("diagnosis");
+        const collection = db.collection("users-diagnosis");
 
-        const newDiagnose = new Diagnosis(
+        const newDiagnose = new UserDiagnosis(
             null,
             diagnoseData.name,
             diagnoseData.description,
             true,
-            userId
+            userId,
+            diagnoseData.id
         );
         await collection.insertOne(newDiagnose.toMongoObject());
 
-        return await fetchAllDiagnosesForUser(userId, collection);
+        const userDiagnoses = await collection.find({ "userId": userId }).toArray();
+        return userDiagnoses.map(diagnose => new UserDiagnosis(
+            diagnose._id.toString(),
+            diagnose.name,
+            diagnose.description,
+            diagnose.isActual,
+            null,
+            null
+        ));
     } catch (error) {
         console.error('Error in addDiagnoseAndGetAll:', error);
         throw error;
@@ -70,22 +71,26 @@ export async function addDiagnoseAndGetAll(userId: string, diagnoseData: any): P
 export async function updateDiagnosisAndGetAll(userId: string, diagnoseData: any): Promise<Diagnosis[]> {
     try {
         const db = await connect();
-        const collection = db.collection("diagnosis");
+        const collection = db.collection("users-diagnosis");
 
-        const updatedDiagnose = new Diagnosis(
-            diagnoseData.id,
-            diagnoseData.name,
-            diagnoseData.description,
-            diagnoseData.isActual,
-            userId
-        );
+        const filterPrice = { _id: new ObjectId(diagnoseData.id), userId : userId };
+        const updatePrice = {
+            $set: {
+                isActual: diagnoseData.isActual
+            }
+        };
 
-        await collection.updateOne(
-            { _id: new ObjectId(diagnoseData.id), "userId": userId },
-            { $set: updatedDiagnose.toMongoObject() }
-        );
+        await collection.updateOne(filterPrice, updatePrice);
 
-        return await fetchAllDiagnosesForUser(userId, collection);
+        const userDiagnoses = await collection.find({ "userId": userId }).toArray();
+        return userDiagnoses.map(diagnose => new UserDiagnosis(
+            diagnose._id.toString(),
+            diagnose.name,
+            diagnose.description,
+            diagnose.isActual,
+            null,
+            null
+        ));
     } catch (error) {
         console.error('Error in updateDiagnosisAndGetAll:', error);
         throw error;

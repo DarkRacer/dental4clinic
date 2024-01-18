@@ -36,9 +36,10 @@ class ToothCard {
     constructor(userId: string, toothData: { [key: string]: string }) {
         this.userId = userId;
         Object.keys(toothData).forEach(key => {
-            if (toothData[key] === "-") {
-              this[key] = 0;
-            }
+            this[key] = toothData[key]
+            // if (toothData[key] === "-") {
+            //   this[key] = 0;
+            // }
             // todo ...
         });
     }

@@ -25,10 +25,10 @@ function readUserDataFromFile(filePath: string): RegistrationUserBody {
     userData.patronymic,
     userData.dateOfBirthday,
     userData.phone,
-    userData['e-mail'],
+    userData.email,
     userData.allergies,
     userData.photo,
-    userData['photo-name'],
+    userData.photoName,
     userData.address,
     userData.login,
     userData.password
@@ -46,7 +46,7 @@ function readDoctorDataFromFile(filePath: string): RegistrationDoctorBody {
     doctorData.specialization,
     doctorData.description,
     doctorData.photo,
-    doctorData['photo-name'],
+    doctorData.photoName,
     doctorData.pluses,
     doctorData.login,
     doctorData.password
@@ -62,7 +62,7 @@ function readAdminDataFromFile(filePath: string): RegistrationAdminBody {
     adminData.surname,
     adminData.patronymic,
     adminData.photo,
-    adminData['photo-name'],
+    adminData.photoName,
     adminData.login,
     adminData.password
   );
@@ -77,21 +77,19 @@ function readDirectorDataFromFile(filePath: string): RegistrationDirectorBody {
     directorData.surname,
     directorData.patronymic,
     directorData.photo,
-    directorData['photo-name'],
+    directorData.photoName,
     directorData.login,
     directorData.password
   );
 }
 
-function readUserDiagnosisDataFromFile(filePath: string): Diagnosis[] {
+function readDiagnosisDataFromFile(filePath: string): Diagnosis[] {
   const rawData = fs.readFileSync(filePath, 'utf8');
   const diagnosesData = JSON.parse(rawData);
   return diagnosesData.map(diagnosisData => new Diagnosis(
-    diagnosisData.id,
+    null,
     diagnosisData.name,
-    diagnosisData.description,
-    diagnosisData.isActual,
-    diagnosisData.userId
+    diagnosisData.description
   ));
 }
 
@@ -128,7 +126,7 @@ function readDoctorServicesFromFile(filePath: string): DoctorService[] {
   const rawData = fs.readFileSync(filePath, 'utf8');
   const doctorServicesData = JSON.parse(rawData);
   return doctorServicesData.map(doctorServiceData => new DoctorService(
-    null,
+    doctorServiceData.id,
     doctorServiceData.doctorId,
     doctorServiceData.doctor,
     doctorServiceData.services,
@@ -238,7 +236,7 @@ async function createAppointments(db: Db): Promise<void> {
 }
 
 async function createDiagnosis(db: Db): Promise<void> {
-  const migrateDiagnosis = readUserDiagnosisDataFromFile('./stub/responses/user/diagnosis/diagnosis_created.json');
+  const migrateDiagnosis = readDiagnosisDataFromFile('./stub/responses/user/diagnosis/diagnosis_1.json');
 
   const diagnosisCollection = await db.createCollection('diagnosis');
   for (const diagnosis of migrateDiagnosis) {
@@ -247,13 +245,23 @@ async function createDiagnosis(db: Db): Promise<void> {
   console.log('All diagnoses have been saved successfully.');
 }
 
+async function createUserDiagnosis(db: Db): Promise<void> {
+  //const migrateDiagnosis = readUserDiagnosisDataFromFile('./stub/responses/user/diagnosis/diagnosis_created.json');
+
+  const diagnosisCollection = await db.createCollection('users-diagnosis');
+  // for (const diagnosis of migrateDiagnosis) {
+  //   await diagnosisCollection.insertOne(diagnosis.toMongoObject());
+  // }
+  console.log('All users-diagnoses have been saved successfully.');
+}
+
 async function createPayments(db: Db): Promise<void> {
   const migratePayments = readPaymentsFromFile('./stub/responses/payments/payments.json');
 
   const paymentsCollection = await db.createCollection('payments');
-  for (const payment of migratePayments) {
-    await paymentsCollection.insertOne(payment.toMongoObject());
-  }
+  // for (const payment of migratePayments) {
+  //   await paymentsCollection.insertOne(payment.toMongoObject());
+  // }
   console.log('All payment have been saved successfully.');
 }
 
@@ -261,29 +269,30 @@ async function createRequests(db: Db): Promise<void> {
   const migrateRequests = readRequestsFromFile('./stub/responses/user/requests/3.json');
 
   const requestsCollection = await db.createCollection('requests');
-  for (const request of migrateRequests) {
-    await requestsCollection.insertOne(request.toMongoObject());
-  }
+  // for (const request of migrateRequests) {
+  //   await requestsCollection.insertOne(request.toMongoObject());
+  // }
   console.log('All requests have been saved successfully.');
 }
 
 async function createServices(db: Db): Promise<void> {
-  const migrateServices = readServicesFromFile('./stub/responses/services/services.json');
+  // const migrateServices = readServicesFromFile('./stub/responses/services/services.json');
 
+  // const servicesCollection = await db.createCollection('services');
+  // for (const service of migrateServices) {
+  //   await servicesCollection.insertOne(service.toMongoObject());
+  // }
   const servicesCollection = await db.createCollection('services');
-  for (const service of migrateServices) {
-    await servicesCollection.insertOne(service.toMongoObject());
-  }
   console.log('All services have been saved successfully.');
 }
 
 async function createDoctorsServices(db: Db): Promise<void> {
-  const migrateDoctorsServices = readDoctorServicesFromFile('./stub/responses/doctors_services.json');
+  // const migrateDoctorsServices = readDoctorServicesFromFile('./stub/responses/doctors_services.json');
 
   const doctorsServicesCollection = await db.createCollection('doctors-services');
-  for (const doctorService of migrateDoctorsServices) {
-    await doctorsServicesCollection.insertOne(doctorService.toMongoObject());
-  }
+  // for (const doctorService of migrateDoctorsServices) {
+  //   await doctorsServicesCollection.insertOne(doctorService.toMongoObject());
+  // }
   console.log('All doctors-services have been saved successfully.');
 }
 
@@ -306,8 +315,7 @@ async function createTooth(db: Db): Promise<void> {
 }
 
 async function createPrices(db: Db): Promise<void> {
-  const migratePrices = readPricesFromFile('./stub/responses/prices/prices.json');
-  // console.log(migratePrices);
+  // const migratePrices = readPricesFromFile('./stub/responses/prices/prices.json');
   const pricesCollection = await db.createCollection('prices');
   // for (const price of migratePrices) {
   //   await pricesCollection.insertOne(price.toMongoObject());
@@ -320,6 +328,7 @@ export async function createCollectionAndInsertData(db: Db): Promise<void> {
   await createUsers(db);
   await createAppointments(db);
   await createDiagnosis(db);
+  await createUserDiagnosis(db);
   await createPayments(db);
   await createRequests(db);
   await createDoctorsServices(db);

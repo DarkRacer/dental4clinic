@@ -21,7 +21,7 @@ class Price {
 
     toMongoObject(): any {
         return {
-            _id: this.serviceId == null ? null : new ObjectId(this.id),
+            _id: this.id == null ? null : new ObjectId(this.id),
             serviceId: this.serviceId,
             name: this.name,
             description: this.description,
