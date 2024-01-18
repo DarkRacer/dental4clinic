@@ -37,6 +37,7 @@ export class AppointmentController {
 
     public getAllAppointmentsById = async (req: Request, res: Response) => {
         try {
+            console.log("999999999999999999999999999999")
             const appointmentId = req.params.appointmentId;
             const appointments = await appointmentService.getAllAppointmentsById(appointmentId);
             res.status(200).json(appointments);
@@ -73,10 +74,8 @@ export class AppointmentController {
                     password: new ObjectId().toHexString(),
                 }
                 const saveUser = await userService.saveUserToMongo(userData)
-                console.log(saveUser)
                 role = "USER"
                 req.body.userId = saveUser._id.toString();
-                console.log("54353345", req.body)
                 await appointmentService.createAppointment(req.body, role);
                 res.status(200).json({login: saveUser.login, password: saveUser.password});
             }   

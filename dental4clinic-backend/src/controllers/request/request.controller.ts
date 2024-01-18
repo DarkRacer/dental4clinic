@@ -26,6 +26,7 @@ export class RequestController {
 
     public createRequest = async (req: Request, res: Response) => {
         try {
+            console.log("createRequest API")
             const currentUser = getCurrentUserFromRequest(req)
             await requestService.createRequestAndFetchAll(req.body, currentUser);
             res.status(204).send();

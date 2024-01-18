@@ -2,7 +2,6 @@ import {connect} from "../mongo";
 import {Doctor, Role} from '../models/user';
 import {ObjectId} from "mongodb";
 import {RegistrationDoctorBody} from "../models/registration-doctor";
-import { Service } from "../models/service";
 import {DoctorService} from "../models/doctor.service";
 
 export async function getDoctor(doctorId: string): Promise<Doctor> {
@@ -24,7 +23,7 @@ export async function getDoctor(doctorId: string): Promise<Doctor> {
             doctorData.specialization,
             doctorData.description,
             doctorData.photo,
-            doctorData['photo-name'],
+            doctorData.hotoName,
             doctorData.pluses
         );
     } catch (e) {
@@ -36,8 +35,22 @@ export async function getDoctor(doctorId: string): Promise<Doctor> {
 export async function getAllDoctorsServices(): Promise<DoctorService[]> {
   try {
     const db = await connect();
-    const collection = db.collection("doctors-services");
-    const servicesData = await collection.find({}).toArray();
+    const collectionDS = db.collection("doctors-services");
+    const collectionS = db.collection("services");
+    // let docServices = [];
+    // let allServices = '';
+    
+    const servicesData = await collectionDS.find({}).toArray();
+
+    // for(service of servicesData) {
+
+    // }
+    // servicesData.forEach(async service => {
+    //     const serviceData = await collectionS.findOne({_id : new ObjectId(service.serviceId)});
+    //     allServices += serviceData.service + ', ';
+    // });
+
+
     return servicesData.map(service => new DoctorService(
       service._id.toString(),
       service.doctorId,

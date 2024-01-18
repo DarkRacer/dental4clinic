@@ -2,6 +2,7 @@ import { connect } from "../mongo";
 import { Admin, Director, Doctor, User } from '../models/user';
 import { ObjectId } from "mongodb";
 import { RegistrationUserBody } from "../models/registration-user";
+import { Login } from "../models/login";
 
 export async function getUser(userId: string): Promise<any> {
     const db = await connect();
@@ -131,4 +132,12 @@ export async function editUser(userId: string, editedUserData: any) {
         console.error("Error fetching user from MongoDB", e);
         throw e;
     }
+}
+
+export async function createNewUser(editedUserData: any): Promise<Login> {
+    console.log(editedUserData);
+    editedUserData.login = editedUserData.phone;
+    editedUserData.password = new ObjectId().toHexString();
+    const login = saveUserToMongo(editedUserData);
+    return login;
 }

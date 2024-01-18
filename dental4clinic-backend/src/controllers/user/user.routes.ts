@@ -4,6 +4,7 @@ import { UserController } from "./user.controller";
 const userController = new UserController();
 export const userRouter = Router();
 
+userRouter.post('/create', userController.createNewUser);
 userRouter.post('/diagnosis/create', userController.createUserDiagnosis);
 userRouter.post('/diagnosis/update', userController.updateUserDiagnosis);
 userRouter.post('/edit/:userId', userController.editUser);

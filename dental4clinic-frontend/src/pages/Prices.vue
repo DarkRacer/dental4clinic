@@ -120,6 +120,7 @@ export default {
       this.priceForm.pluses = ''
     },
     createPrice: function () {
+      //this.priceForm.price = parseInt(this.priceForm.price)
       post('price/create', this.priceForm).then((data) => {
         this.prices = data;
         this.closeCreatePriceDialog()

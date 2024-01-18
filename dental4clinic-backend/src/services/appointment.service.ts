@@ -77,10 +77,11 @@ export async function getAllAppointmentsByDoctor(doctorId: string): Promise<Appo
 
 export async function getAllAppointmentsById(appointmentId: string): Promise<Appointment[]> {
     try {
+        console.log("999999999999999999999999999999-", appointmentId)
         const db = await connect();
         const collection = db.collection("appointments");
         const appointmentsData = await collection.find({ _id: new ObjectId(appointmentId) }).toArray();
-
+        console.log("999999999999999999999999999999--", appointmentsData)
         return appointmentsData.map(item => new Appointment(
             item._id.toString(),
             item.userId,
@@ -99,11 +100,10 @@ export async function getAllAppointmentsById(appointmentId: string): Promise<App
 }
 
 export async function createAppointment(appointmentData: any, userRole: string): Promise<void> {
-    console.log("1", appointmentData)
+    console.log("1111111111111111111111111111", appointmentData)
     let appointment;
     let user;
     let userName;
-    console.log(userRole)
     switch (userRole) {
       case "ADMIN":
         const request = await getRequestsById(appointmentData.requestId)
@@ -139,7 +139,6 @@ export async function createAppointment(appointmentData: any, userRole: string):
         );
         break;
     }
-    console.log(appointment)
     try {
         const db = await connect();
         const collection = db.collection("appointments");
@@ -157,6 +156,7 @@ export async function createAppointment(appointmentData: any, userRole: string):
 export async function getAppointmentToFinish(appointmentId: string, body: any): Promise<void> {
     const userId = body.userId;
     const services = body.services;
+    console.log(services)
     try {
         const db = await connect();
         const collectionAppointments = db.collection("appointments");
@@ -166,8 +166,8 @@ export async function getAppointmentToFinish(appointmentId: string, body: any): 
 
         let allServices = '';
         let allPrice = 0;
-        services.array.forEach(element => {
-            allServices += element.name + ', ';
+        services.forEach(element => {
+            allServices += element.service + ', ';
             allPrice += element.price;
         });
 
@@ -180,9 +180,8 @@ export async function getAppointmentToFinish(appointmentId: string, body: any): 
             appointmentData.doctorName,
             allServices,
             allPrice,
-            false
+            true
         );
-
         const collectionPayments = db.collection("payments");
         await collectionPayments.insertOne(payment.toMongoObject());
     } catch (error) {

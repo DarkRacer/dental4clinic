@@ -114,6 +114,7 @@ function readRequestsFromFile(filePath: string): MyRequest[] {
   const requestDataArray = JSON.parse(rawData);
   return requestDataArray.map(requestData => new MyRequest(
     requestData.id,
+    requestData.date,
     requestData.userId,
     requestData.name,
     requestData.phone,

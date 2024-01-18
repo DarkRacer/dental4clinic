@@ -83,7 +83,7 @@ export default {
       this.selectedPayments.forEach((selected) => {
         if (this.services[selected]) {
           servicesDone += " " + this.services[selected].service + ", "
-          summary += this.services[selected].price
+          summary += parseInt(this.services[selected].price, 10)
         }
       })
       cost += " " + summary + " Р."

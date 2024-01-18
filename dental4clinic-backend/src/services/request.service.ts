@@ -9,8 +9,10 @@ export async function getRequestsByUserId(userId: string): Promise<MyRequest[]> 
 
         const requestsData = await collection.find({ "userId": userId }).toArray();
 
+        console.log("requestsData", requestsData)
         return requestsData.map(requestData => new MyRequest(
             requestData._id.toString(),
+            requestData.date,
             requestData.userId,
             requestData.name,
             requestData.phone,
@@ -30,8 +32,10 @@ export async function getRequestsById(id: string): Promise<MyRequest> {
 
     const requestData = await collection.findOne({ _id: new ObjectId(id) });
 
+    console.log("requestsData", requestData)
     return new MyRequest(
       requestData._id.toString(),
+      null,
       requestData.userId,
       requestData.name,
       requestData.phone,
@@ -49,9 +53,11 @@ export async function getAllRequests(): Promise<MyRequest[]> {
     const db = await connect();
     const collection = db.collection("requests");
 
-    const pricesData = await collection.find({}).toArray();
-    return pricesData.map(request => new MyRequest(
+    const requestsData = await collection.find({}).toArray();
+    console.log("requestsData", requestsData)
+    return requestsData.map(request => new MyRequest(
         request._id.toString(),
+        null,
         request.userId,
         request.name,
         request.phone,
@@ -67,6 +73,7 @@ export async function getActiveRequests(): Promise<MyRequest[]> {
     const pricesData = await collection.find({ isActual: true }).toArray();
     return pricesData.map(request => new MyRequest(
         request._id.toString(),
+        null,
         request.userId,
         request.name,
         request.phone,
@@ -80,16 +87,28 @@ export async function createRequestAndFetchAll(requestData: any, currentUser: an
         const db = await connect();
         const collection = db.collection("requests");
 
+        console.log("3------------------------------------------")
+        console.log("3------------------------------------------")
+        console.log("3------------------------------------------")
+        console.log("3------------------------------------------")
+        console.log("3------------------------------------------")
+        console.log("3------------------------------------------")
+        console.log("3------------------------------------------")
         const requestObj = new MyRequest(
             null,
-            currentUser['id'],
+            null,
+            currentUser.id,
             requestData.name,
             requestData.phone,
             requestData.description,
             true
         );
-
-        await collection.insertOne(requestObj.toMongoObject());
+        console.log(requestObj)
+        const t = await collection.insertOne(requestObj.toMongoObject());
+        console.log("3------------------------------------------")
+        console.log("3------------------------------------------")
+        console.log("3------------------------------------------")
+        console.log(t)
     } catch (error) {
         console.error('Error in createRequestAndFetchAll:', error);
         throw error;
@@ -103,6 +122,7 @@ export async function editRequestAndFetchAll(requestData: any): Promise<MyReques
 
         const requestObj = new MyRequest(
             requestData.id,
+            requestData.date,
             requestData.userId,
             requestData.name,
             requestData.phone,
@@ -119,6 +139,7 @@ export async function editRequestAndFetchAll(requestData: any): Promise<MyReques
         const requests = await collection.find({}).toArray();
         return requests.map(request => new MyRequest(
             request._id.toString(),
+            null,
             request.userId,
             request.name,
             request.phone,
@@ -160,6 +181,7 @@ export async function deleteRequestAndFetchAll(requestData: any): Promise<MyRequ
         const requests = await collection.find({}).toArray();
         return requests.map(request => new MyRequest(
             request._id.toString(),
+            null,
             request.userId,
             request.name,
             request.phone,

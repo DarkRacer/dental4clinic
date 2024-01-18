@@ -53,6 +53,7 @@ export async function updatePaymentAndFetchAll(updatedData: any): Promise<Paymen
         const db = await connect();
         const collection = db.collection("payments");
 
+        console.log("ssssssssssssssssss", updatedData)
         const payment = new Payment(
             updatedData.id,
             updatedData.date,

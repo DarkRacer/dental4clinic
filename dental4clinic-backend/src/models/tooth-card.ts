@@ -1,46 +1,42 @@
 class ToothCard {
     userId: string;
-    left8Up: number;
-    left8Down: number;
-    left7Up: number;
-    left7Down: number;
-    left6Up: number;
-    left6Down: number;
-    left5Up: number;
-    left5Down: number;
-    left4Up: number;
-    left4Down: number;
-    left3Up: number;
-    left3Down: number;
-    left2Up: number;
-    left2Down: number;
-    left1Up: number;
-    left1Down: number;
-    right1Up: number;
-    right1Down: number;
-    right2Up: number;
-    right2Down: number;
-    right3Up: number;
-    right3Down: number;
-    right4Up: number;
-    right4Down: number;
-    right5Up: number;
-    right5Down: number;
-    right6Up: number;
-    right6Down: number;
-    right7Up: number;
-    right7Down: number;
-    right8Up: number;
-    right8Down: number;
+    left8Up: string;
+    left8Down: string;
+    left7Up: string;
+    left7Down: string;
+    left6Up: string;
+    left6Down: string;
+    left5Up: string;
+    left5Down: string;
+    left4Up: string;
+    left4Down: string;
+    left3Up: string;
+    left3Down: string;
+    left2Up: string;
+    left2Down: string;
+    left1Up: string;
+    left1Down: string;
+    right1Up: string;
+    right1Down: string;
+    right2Up: string;
+    right2Down: string;
+    right3Up: string;
+    right3Down: string;
+    right4Up: string;
+    right4Down: string;
+    right5Up: string;
+    right5Down: string;
+    right6Up: string;
+    right6Down: string;
+    right7Up: string;
+    right7Down: string;
+    right8Up: string;
+    right8Down: string;
 
-    constructor(userId: string, toothData: { [key: string]: string }) {
+    constructor(userId: string, toothData: { [key: number]: string }) {
         this.userId = userId;
         Object.keys(toothData).forEach(key => {
-            this[key] = toothData[key]
-            // if (toothData[key] === "-") {
-            //   this[key] = 0;
-            // }
-            // todo ...
+            this[key] = toothData[key];
         });
     }
 
@@ -80,6 +76,32 @@ class ToothCard {
             right8Up: this.right8Up,
             right8Down: this.right8Down
         };
+    }
+
+    convertStringsToNumbers(): void {
+        const mapping: { [key: string]: number } = {
+            "-": 0, "I": 1, "II": 2, "III": 3, "A": 4,
+            "O": 5, "P": 6, "C": 7, "Pt": 8, "R": 9
+        };
+
+        Object.keys(this).forEach(key => {
+            if (key !== "userId" && typeof this[key] === 'string') {
+                this[key] = mapping[this[key]];
+            }
+        });
+    }
+
+    convertNumbersToStrings(): void {
+        const mapping: { [key: number]: string } = {
+            0: "-", 1: "I", 2: "II", 3: "III", 4: "A",
+            5: "O", 6: "P", 7: "C", 8: "Pt", 9: "R"
+        };
+
+        Object.keys(this).forEach(key => {
+            if (key !== "userId" && typeof this[key] === 'number') {
+                this[key] = mapping[this[key]];
+            }
+        });
     }
 }
 

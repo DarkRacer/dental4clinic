@@ -6,10 +6,10 @@ class Price {
     name: string;
     description: string;
     pluses: string;
-    price: string;
+    price: number;
     group: string;
 
-    constructor(id: string, serviceId: string, name: string, description: string, pluses: string, price: string, group: string) {
+    constructor(id: string, serviceId: string, name: string, description: string, pluses: string, price: number, group: string) {
         this.id = id;
         this.serviceId = serviceId;
         this.name = name;

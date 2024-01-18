@@ -43,7 +43,8 @@ export default {
   },
   computed: {
     fullName: function() {
-      return `${this.user.surname}  ${this.user.name}  ${this.user.patronymic}`
+      surname = this.user.surname ? this.user.surname : ''
+      return `${surname}  ${this.user.name}  ${this.user.patronymic}`
     }
   },
   methods: {
@@ -153,7 +154,7 @@ export default {
         <div class="card-content-text" v-text="infoCardDescription"></div>
         <div class="card-accept-buttons">
           <div class="info-button" ref="openInfoPatientDialog" @click="openInfoPatientDialog">Посмотреть информацию о пациенте</div>
-          <div class="start-button" id="startButton" @click="$router.push({ path: `/${this.$route.params.userId}/reception/${this.nextAppointmentId}` })">Начать прием</div>
+          <div class="start-button" id="startButton" @click="$router.push({ path: `/${this.$route.params.userId}/reception/${this.nextAppointmentId}` })">Начать прием ближайшего пациента </div>
         </div>
       </div>
     </div>

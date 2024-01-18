@@ -4,7 +4,6 @@ import * as diagnosisService from "../../services/diagnose.service";
 import * as toothCardService from "../../services/tooth-card.service";
 import * as toothService from "../../services/tooth.service";
 import * as requestService from "../../services/request.service";
-import { User } from "../../models/user";
 
 export class UserController {
 
@@ -54,6 +53,17 @@ export class UserController {
             res.status(200).json(diagnoses);
         } catch (error) {
             console.error('Error in getUserDiagnosis:', error.message);
+            res.status(500).json({ message: 'Internal server error' });
+        }
+    };
+
+    public createNewUser = async (req: Request, res: Response) => {
+        try {
+            const userData = req.body
+            const login = await userService.createNewUser(userData);
+            res.status(200).json(login);
+        } catch (error) {
+            console.error('Error in addDiagnosis:', error.message);
             res.status(500).json({ message: 'Internal server error' });
         }
     };
