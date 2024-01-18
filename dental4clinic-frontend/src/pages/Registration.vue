@@ -4,9 +4,10 @@ import {useCookies} from "@vueuse/integrations/useCookies";
 
 export default {
   setup() {
-    const cookies = useCookies(['user_id', 'role', 'access_token'])
+    const cookies = useCookies(['access_token'])
+
     return {
-      cookies,
+      cookies
     }
   },
   data() {
@@ -43,8 +44,6 @@ export default {
       this.$emit('submit', this.registrationForm)
       post("registration", this.registrationForm).then(data => {
         this.cookies.set('access_token', data['access_token'])
-        this.cookies.set('user_id', data['id'])
-        this.cookies.set('role', data['role'])
         this.$router.push({ path: '/' })
       }).catch((error) => {console.error('Error:', error);});
     }

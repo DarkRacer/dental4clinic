@@ -2,8 +2,9 @@
 
 import {get, post} from "@/pages/js/core/rest.js";
 import {useCookies} from "@vueuse/integrations/useCookies";
-import { uuid } from 'vue-uuid';
 import {changeClassRows} from "@/pages/js/core/table.js";
+import {useJwt} from "@vueuse/integrations/useJwt";
+import ObjectID  from 'bson-objectid';
 
 export default {
   data() {
@@ -14,7 +15,6 @@ export default {
         id: null,
         surname: '',
         patronymic: '',
-        ['part-name']: '',
         name: '',
         description: 'Упс. Что-то пошло не так...',
         pluses: ''
@@ -24,7 +24,6 @@ export default {
         surname: '',
         patronymic: '',
         name: '',
-        ['part-name']: '',
         description: 'Упс. Что-то пошло не так...',
         pluses: ''
       },
@@ -48,9 +47,10 @@ export default {
     }
   },
   setup() {
-    const cookies = useCookies(['user_id', 'role', 'access_token'])
+    const cookies = useCookies(['access_token'])
+
     return {
-      cookies,
+      cookies
     }
   },
   created() {
@@ -68,21 +68,27 @@ export default {
   },
   computed: {
     filteredDoctorsValue: function () {
-      return this.doctorsValue.filter((doctorInfo) =>
-        doctorInfo.specialization.includes(this.selectedDocSpec) || this.selectedDocSpec === '')
+      return this.doctorsValue.filter((doctorInfo) => doctorInfo.specialization && (
+        doctorInfo.specialization.includes(this.selectedDocSpec) || this.selectedDocSpec === ''))
     },
     user: function () {
-      return {
-        id: this.cookies.get("user_id"),
-        role: this.cookies.get("role"),
-        token: this.cookies.get("access_token")
+      const { header, payload } = useJwt(this.cookies.get('access_token'))
+      if (!payload.value) {
+        return {
+          id: null,
+          role: null
+        }
+      }
+      return  {
+        id: payload.value.id,
+        role: payload.value.role
       }
     },
     doctorFormFullName: function () {
       return `${this.doctorForm.surname} ${this.doctorForm.name} ${this.doctorForm.patronymic}`
     },
     currentDoctorFullName: function () {
-      return `${this.currentDoctor.surname} ${this.currentDoctor['part-name']} ${this.currentDoctor.patronymic}`
+      return `${this.currentDoctor.surname} ${this.currentDoctor.name} ${this.currentDoctor.patronymic}`
     }
   },
   methods: {
@@ -91,7 +97,7 @@ export default {
       document.documentElement.scrollTop = 0;
     },
     getDoctors: function () {
-      get("doctors").then((data) => {
+      get("doctor/all").then((data) => {
         this.doctorsValue = data;
       }).catch((error) => console.log(error))
     },
@@ -140,7 +146,7 @@ export default {
         photoName: '',
         pluses: ''
       }
-      this.doctorForm.id = uuid.v4()
+      this.doctorForm.id = new ObjectID()
       this.$refs.createDoctorDialog.style.display = 'flex'
       this.$refs.createDoctorDialog.show()
     },
@@ -180,7 +186,6 @@ export default {
     },
     openEditDoctorDialog: function () {
       this.doctorForm = this.currentDoctor
-      this.doctorForm.name = this.currentDoctor['part-name']
       this.$refs.editDoctorDialog.style.display = 'flex'
       this.$refs.doctorsDialog.style.display = null
       this.$refs.doctorsDialog.close()
@@ -249,7 +254,6 @@ export default {
     openServicesDoctorDialog: function () {
       if (!this.doctorForm.id && this.currentDoctor.id) {
         this.doctorForm = this.currentDoctor
-        this.doctorForm.name = this.currentDoctor['part-name']
       }
       this.servicesTableValue = []
       this.doctorServiceTableValue = []
@@ -334,7 +338,9 @@ export default {
     },
     addService: function () {
       if (this.selectedServiceIndex > -1) {
-        post(`services/doctor/add/${this.doctorForm.id}`, this.servicesTableValue[this.selectedServiceIndex]).then((data) => {
+        var service = this.servicesTableValue[this.selectedServiceIndex]
+        service.doctor = this.doctorFormFullName
+        post(`services/doctor/add/${this.doctorForm.id}`, service).then((data) => {
           this.doctorServiceTableValue = data;
           this.selectedServiceIndex = -1;
 
@@ -375,7 +381,8 @@ export default {
       <div class="doctors-content">
         <div class="doctor-card" v-for="doctor in filteredDoctorsValue" @click="this.doctorId = doctor.id; openDoctorCard()" >
           <div class="doctor-avatar">
-            <img class="doctor-image" v-bind:src=doctor.photo>
+            <img class="doctor-image" v-if="doctor.photo" v-bind:src="doctor.photo"/>
+            <img class="doctor-image" v-else src="../img/user-logo.png"/>
           </div>
           <div class="doctor-name" v-text="doctor.name"></div>
           <div class="doctor-spec" v-text="doctor.specialization"></div>
@@ -441,8 +448,8 @@ export default {
                 <textarea type="text" name="description" placeholder="Описание" class="additional-field-input" v-model="doctorForm.description"></textarea>
               </div>
               <div class="additional-field">
-                <div class="additional-field-title">Проффесиональные навыки</div>
-                <textarea type="text" name="pluses" placeholder="Проффесиональные навыки" class="additional-field-input" v-model="doctorForm.pluses"></textarea>
+                <div class="additional-field-title">Профессиональные навыки</div>
+                <textarea type="text" name="pluses" placeholder="Профессиональные навыки" class="additional-field-input" v-model="doctorForm.pluses"></textarea>
               </div>
             </div>
             <div class="save-button" @click="createDoctor">Создать</div>
@@ -536,8 +543,8 @@ export default {
                 <textarea type="text" name="description" placeholder="Описание" class="additional-field-input" v-model="doctorForm.description"></textarea>
               </div>
               <div class="additional-field">
-                <div class="additional-field-title">Проффесиональные навыки</div>
-                <textarea type="text" id="plusesEdit" name="pluses" placeholder="Проффесиональные навыки" class="additional-field-input" v-model="doctorForm.pluses"></textarea>
+                <div class="additional-field-title">Профессиональные навыки</div>
+                <textarea type="text" id="plusesEdit" name="pluses" placeholder="Профессиональные навыки" class="additional-field-input" v-model="doctorForm.pluses"></textarea>
               </div>
             </div>
             <div class="save-button" @click="editDoctor">Изменить</div>

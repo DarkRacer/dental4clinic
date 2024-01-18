@@ -31,7 +31,7 @@ router.get('/prices',function(req,res){
 router.get('/price/1',function(req,res){
   res.sendFile(path.join(__dirname+'/responses/prices/price.json'));
 });
-router.get('/user/1',function(req,res){
+router.get('/user/507f1f77bcf86cd799439011',function(req,res){
   res.sendFile(path.join(__dirname+'/responses/user/1.json'));
 });
 router.get('/user/diagnosis/1',function(req,res){

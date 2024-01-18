@@ -47,14 +47,25 @@ export default {
       this.contactBodyInfo = `${date} ${this.monthName[month]} ${year} :
 `
       appointments.forEach((appointment) => {
-        this.contactBodyInfo += `${appointment.datetime} - ${appointment['doctor-name']} - ${appointment['service-name']}
+        this.contactBodyInfo += `${appointment.datetime} - ${appointment.doctorName}
 `
       })
     },
     submit() {
       this.$emit('submit', this.requestForm)
-      postWithoutResponse('request/create', this.requestForm)
-        .then(() => alert("Заявка отправлена"))
+      if (!this.requestForm.name || !this.requestForm.phone) {
+        alert("Заполните информацию о себе")
+        return
+      }
+      postWithoutResponse('requests/create', this.requestForm)
+        .then(() => {
+          alert("Заявка отправлена")
+          this.requestForm = {
+            name: '',
+            phone: '',
+            description: '',
+          }
+        })
         .catch((error) => alert("Заявка не отправлена"))
     }
   },

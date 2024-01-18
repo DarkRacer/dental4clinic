@@ -43,7 +43,8 @@ export default {
   },
   computed: {
     fullName: function() {
-      return `${this.user.surname}  ${this.user.name}  ${this.user.patronymic}`
+      surname = this.user.surname ? this.user.surname : ''
+      return `${surname}  ${this.user.name}  ${this.user.patronymic}`
     }
   },
   methods: {
@@ -66,9 +67,9 @@ export default {
           appointmentDate.setHours(parseInt(appointmentTime[0]), parseInt(appointmentTime[1]),0,0)
           return appointmentDate.getTime() === nextAppointmentDate.getTime()
         })[0];
-        this.patientId = nextAppointment['user-id']
+        this.patientId = nextAppointment.userId
         this.nextAppointmentId = nextAppointment.id
-        this.infoCard = `Ближайший пациент на приеме ${nextAppointment['user-name']} ${nextAppointment['date']} в ${nextAppointment['datetime']}`
+        this.infoCard = `Ближайший пациент на приеме ${nextAppointment.userName} ${nextAppointment.date} в ${nextAppointment.datetime}`
         this.infoCardDescription = `Жалобы пациента: ${nextAppointment.description}`
 
       }).catch((error) => {
@@ -76,18 +77,22 @@ export default {
       })
     },
     getUserInfo: function () {
-      get(`user/${ this.patientId }`).then(data => {
-        this.user = data;
-        this.user.email = data['e-mail'];
-      }).catch(error => {
-        console.error(error)
-      });
+      if (this.patientId) {
+        get(`user/${this.patientId}`).then(data => {
+          this.user = data;
+          this.user.email = data.email;
+        }).catch(error => {
+          console.error(error)
+        });
+      } else {
+        alert('Пользователь не зарегистрирован')
+      }
     },
     getInfoByDate: function({date, appointments}, month, year) {
       this.infoCard = ''
-      this.patientId = appointments[0]['user-id']
+      this.patientId = appointments[0].userId
       appointments.forEach((appointment) => {
-        this.infoCard += `Пациент ${appointment['user-name']} дата приема ${appointment['date']} в ${appointment['datetime']}
+        this.infoCard += `Пациент ${appointment.userName} дата приема ${appointment.date} в ${appointment.datetime}
 `
       })
     },
@@ -149,7 +154,7 @@ export default {
         <div class="card-content-text" v-text="infoCardDescription"></div>
         <div class="card-accept-buttons">
           <div class="info-button" ref="openInfoPatientDialog" @click="openInfoPatientDialog">Посмотреть информацию о пациенте</div>
-          <div class="start-button" id="startButton" @click="$router.push({ path: `/${this.$route.params.userId}/reception/${this.nextAppointmentId}` })">Начать прием</div>
+          <div class="start-button" id="startButton" @click="$router.push({ path: `/${this.$route.params.userId}/reception/${this.nextAppointmentId}` })">Начать прием ближайшего пациента </div>
         </div>
       </div>
     </div>
@@ -178,7 +183,7 @@ export default {
 
             <tr class="row" v-for="(n, index) in 6" :key="index" ref="tableRow" @click="selectRow(index)">
               <th class="cell">
-                <div class="cell-content" v-text="appointments[index] ? appointments[index]['user-name'] : ''"></div>
+                <div class="cell-content" v-text="appointments[index] ? appointments[index].userName : ''"></div>
               </th>
               <th class="cell">
                 <div class="cell-content" v-text="appointments[index] ? appointments[index].description : ''"></div>

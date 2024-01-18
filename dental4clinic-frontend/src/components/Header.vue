@@ -1,6 +1,7 @@
 <script>
 import { useCookies } from '@vueuse/integrations/useCookies'
 import {get} from "@/pages/js/core/rest.js";
+import {useJwt} from "@vueuse/integrations/useJwt";
 
 export default {
   data() {
@@ -24,15 +25,17 @@ export default {
     }
   },
   setup() {
-    const cookies = useCookies(['user_id', 'role', 'access_token'])
+    const cookies = useCookies(['access_token'])
+
     return {
-      cookies,
+      cookies
     }
   },
   created() {
     this.$watch(
       () => this.$route.params,
       () => {
+        this.getInfoFromToken()
         this.getUserInfo()
       },
       {immediate: true}
@@ -40,20 +43,37 @@ export default {
   },
   computed: {
     user: function () {
-      return {
-        id: this.cookies.get("user_id"),
-        role: this.cookies.get("role"),
-        token: this.cookies.get("access_token")
+      const { header, payload } = useJwt(this.cookies.get('access_token'))
+      if (!payload.value) {
+        return {
+          id: null,
+          role: null
+        }
+      }
+      return  {
+        id: payload.value.id,
+        role: payload.value.role
       }
     }
   },
   methods: {
     getUserInfo: function () {
-      get(`user/${this.user.id}`).then(data => {
-        this.currentUser = data;
-        this.currentUser.email = data['e-mail'];
-      }).catch(error => console.error(error));
+      if (this.user && this.user.id) {
+        get(`user/${this.user.id}`).then(data => {
+          this.currentUser = data;
+          this.currentUser.email = data.email;
+        }).catch(error => console.error(error));
+      }
     },
+    getInfoFromToken: function () {
+        const { header, payload } = useJwt(this.cookies.get('access_token'))
+        if (payload.value) {
+          this.user = {
+            id: payload.value.id,
+            role: payload.value.role
+          }
+        }
+    }
   }
 }
 </script>
@@ -100,11 +120,15 @@ export default {
     </div>
 
     <div class="header-div-right">
-      <div class="logo-user" v-if="!user.token" @click="$router.push({ path: '/login' });">
+      <div class="exit" v-if="user.id" @click="this.cookies.remove('access_token'); $router.go({ path: '/' });">
+        <img class="exit" src='../img/exit.png'/>
+      </div>
+      <div class="logo-user" v-if="!user.id" @click="$router.push({ path: '/login' });">
         <img class="logo-user-image" src="../img/user-logo.png"/>
       </div>
-      <div class="logo-user" v-else-if="user.token" @click="$router.push({ path: `/profile/${user.id}` });">
-        <img class="logo-user-image" v-bind:src="currentUser.photo ? currentUser.photo : '../img/default.jpg'"/>
+      <div class="logo-user" v-else-if="user.id" @click="$router.push({ path: `/profile/${user.id}` });">
+        <img class="logo-user-image" v-if="currentUser.photo" v-bind:src="currentUser.photo"/>
+        <img class="logo-user-image" v-else src="../img/user-logo.png"/>
       </div>
       <div class="phone-number">
         <img class="phone" src="../img/phone.png"/>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AutoResponder LastSave="2023-06-05T02:19:43.925571+03:00" FiddlerVersion="4.6.20172.34691">
+  <State Enabled="true" Fallthrough="true" UseLatency="false">
+    <ResponseRule Match="https://localhost:8000/role" Action="D:\dental site\responses\roles\user_role.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/login" Action="D:\dental site\responses\login\doctor_login.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/registration" Action="D:\dental site\responses\registration\user_registration.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/doctors/services" Action="D:\dental site\responses\doctors_services.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/appointments/create/unauthorized" Action="204_NoContent.dat" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/prices" Action="D:\dental site\responses\prices\prices.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/price/1" Action="D:\dental site\responses\prices\price.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/1" Action="D:\dental site\responses\user\1.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/diagnosis/1" Action="D:\dental site\responses\user\diagnosis\diagnosis_1.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/tooth/1" Action="D:\dental site\responses\user\tooth\tooths_1.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/doctors" Action="D:\dental site\responses\doctors\doctors.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/doctor/2" Action="D:\dental site\responses\doctors\doctor.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/appointments/create/user" Action="204_NoContent.dat" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/appointments/user/1" Action="D:\dental site\responses\appointments\user\1.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/request/create" Action="204_NoContent.dat" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/payments/user/1" Action="D:\dental site\responses\payments\user_1.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/edit/1" Action="204_NoContent.dat" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/appointments/doctor/2" Action="D:\dental site\responses\appointments\doctor\2.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/3" Action="D:\dental site\responses\user\3.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/appointments/1" Action="D:\dental site\responses\appointments\1.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/tooth-card/3" Action="D:\dental site\responses\user\tooth-card\3.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/requests/3" Action="D:\dental site\responses\user\requests\3.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/tooth/3" Action="D:\dental site\responses\user\tooth\tooths_3.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/doctor/2" Action="D:\dental site\responses\doctor\2.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/edit/2" Action="204_NoContent.dat" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/diagnosis" Action="D:\dental site\responses\diagnosis\diagnosis_1.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/diagnosis/3" Action="D:\dental site\responses\user\diagnosis\diagnosis_1.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/diagnosis/create" Action="D:\dental site\responses\user\diagnosis\diagnosis_created.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/diagnosis/update" Action="D:\dental site\responses\user\diagnosis\diagnosis_updated.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/doctors/2/services" Action="D:\dental site\responses\doctors\doctors_services.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/appointments/1/finish" Action="204_NoContent.dat" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/tooth-card/3/update" Action="204_NoContent.dat" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/registration" Action="D:\dental site\responses\admin\user_registration.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/admin/3" Action="D:\dental site\responses\admin\3.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/edit/3" Action="204_NoContent.dat" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/appointments/create/admin" Action="204_NoContent.dat" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/requests" Action="D:\dental site\responses\requests\requests.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/appointments/admin" Action="D:\dental site\responses\appointments\admin\appointments.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/payments/update" Action="D:\dental site\responses\payments\payments_updated.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/payments/all" Action="D:\dental site\responses\payments\payments.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/appointments/director" Action="D:\dental site\responses\appointments\admin\appointments.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/requests/update" Action="D:\dental site\responses\requests\requests_updated.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/requests/delete" Action="D:\dental site\responses\requests\requests_deleted.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/payments/delete" Action="D:\dental site\responses\payments\payments_deleted.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/price/create" Action="D:\dental site\responses\prices\prices_created.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/price/edit" Action="D:\dental site\responses\prices\prices_updated.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/price/delete" Action="D:\dental site\responses\prices\prices_deleted.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/doctor/create" Action="D:\dental site\responses\doctors\doctors_created.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/doctor/edit" Action="D:\dental site\responses\doctors\doctors_updated.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/doctor/delete" Action="D:\dental site\responses\doctors\doctors_deleted.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/services/doctor/1" Action="D:\dental site\responses\services\doctor_services.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/services/all" Action="D:\dental site\responses\services\services.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/services/doctor/delete/1" Action="D:\dental site\responses\services\doctor_services_deleted.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/services/doctor/add/1" Action="D:\dental site\responses\services\doctor_services_added.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/admins/all" Action="D:\dental site\responses\admin\admins.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/admins/create" Action="D:\dental site\responses\admin\admins_added.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/admins/edit" Action="D:\dental site\responses\admin\admins_updated.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/admins/delete" Action="D:\dental site\responses\admin\admins_deleted.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/director/4" Action="D:\dental site\responses\director\4.json" Enabled="true" />
+    <ResponseRule Match="https://localhost:8000/user/edit/4" Action="204_NoContent.dat" Enabled="true" />
+  </State>
+</AutoResponder>

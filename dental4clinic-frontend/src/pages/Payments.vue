@@ -2,6 +2,7 @@
 import {changeClassRows} from "@/pages/js/core/table.js";
 import {get, post} from "@/pages/js/core/rest.js";
 import {useCookies} from "@vueuse/integrations/useCookies";
+import {useJwt} from "@vueuse/integrations/useJwt";
 
 export default {
   data() {
@@ -11,9 +12,10 @@ export default {
     }
   },
   setup() {
-    const cookies = useCookies(['user_id', 'role', 'access_token'])
+    const cookies = useCookies(['access_token'])
+
     return {
-      cookies,
+      cookies
     }
   },
   created() {
@@ -34,10 +36,16 @@ export default {
   },
   computed: {
     user: function () {
-      return {
-        id: this.cookies.get("user_id"),
-        role: this.cookies.get("role"),
-        token: this.cookies.get("access_token")
+      const { header, payload } = useJwt(this.cookies.get('access_token'))
+      if (!payload.value) {
+        return {
+          id: null,
+          role: null
+        }
+      }
+      return  {
+        id: payload.value.id,
+        role: payload.value.role
       }
     }
   },
@@ -80,7 +88,7 @@ export default {
         return
       }
 
-      if (this.selectedIndex < this.paymentsTableValue.length) {
+      if (index < this.paymentsTableValue.length) {
         this.selectedIndex = index
         changeClassRows(this.$refs.tableRow[index].children, "cell-payments", "cell-payments-selected")
       }
@@ -142,10 +150,10 @@ export default {
             <div class="cell-content" v-text="paymentsTableValue[index] ? paymentsTableValue[index].date : ''"></div>
           </th>
           <th class="cell-payments">
-            <div class="cell-content" v-text="paymentsTableValue[index] ? paymentsTableValue[index]['user-name'] : ''"></div>
+            <div class="cell-content" v-text="paymentsTableValue[index] ? paymentsTableValue[index].userName : ''"></div>
           </th>
           <th class="cell-payments">
-            <div class="cell-content" v-text="paymentsTableValue[index] ? paymentsTableValue[index]['doctor-name'] : ''"></div>
+            <div class="cell-content" v-text="paymentsTableValue[index] ? paymentsTableValue[index].doctorName : ''"></div>
           </th>
           <th class="cell-payments">
             <div class="cell-content" v-text="paymentsTableValue[index] ? paymentsTableValue[index].service : ''"></div>

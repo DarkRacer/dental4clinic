@@ -1,6 +1,7 @@
 <script>
 import {get, post} from "@/pages/js/core/rest.js";
 import {useCookies} from "@vueuse/integrations/useCookies";
+import {useJwt} from "@vueuse/integrations/useJwt";
 
 export default {
   data() {
@@ -10,28 +11,32 @@ export default {
         name: '',
         description: 'Упс. Что-то пошло не так...',
         price: '',
-        pluses: ''
+        pluses: '',
+        group: ''
       },
       currentPrice: {
         name: '',
         description: 'Упс. Что-то пошло не так...',
         price: '',
-        pluses: ''
+        pluses: '',
+        group: ''
       },
       priceForm: {
         name: '',
         description: '',
         price: '',
-        pluses: ''
+        pluses: '',
+        group: ''
       },
       priceId: null,
       computedDisplay: 'none'
     }
   },
   setup() {
-    const cookies = useCookies(['user_id', 'role', 'access_token'])
+    const cookies = useCookies(['access_token'])
+
     return {
-      cookies,
+      cookies
     }
   },
   created() {
@@ -49,10 +54,16 @@ export default {
   },
   computed: {
     user: function () {
+      const {header, payload} = useJwt(this.cookies.get('access_token'))
+      if (!payload.value) {
+        return {
+          id: null,
+          role: null
+        }
+      }
       return {
-        id: this.cookies.get("user_id"),
-        role: this.cookies.get("role"),
-        token: this.cookies.get("access_token")
+        id: payload.value.id,
+        role: payload.value.role
       }
     }
   },
@@ -62,7 +73,7 @@ export default {
       document.documentElement.scrollTop = 0;
     },
     getPrices: function () {
-      get('prices').then(data => {
+      get('price/all').then(data => {
         this.prices = data
       }).catch(error => {
         console.error(error)
@@ -93,6 +104,10 @@ export default {
       }
     },
     openCreatePriceDialog: function () {
+      this.priceForm.name = ''
+      this.priceForm.description = ''
+      this.priceForm.price = ''
+      this.priceForm.pluses = ''
       this.$refs.createPriceDialog.style.display = 'flex'
       this.$refs.createPriceDialog.show()
     },
@@ -105,6 +120,7 @@ export default {
       this.priceForm.pluses = ''
     },
     createPrice: function () {
+      //this.priceForm.price = parseInt(this.priceForm.price)
       post('price/create', this.priceForm).then((data) => {
         this.prices = data;
         this.closeCreatePriceDialog()
@@ -173,7 +189,7 @@ export default {
         <div class="prices-group" v-for="price in prices">
           <div class="prices-group-title" v-text="price.group"></div>
           <div class="prices-group-content" v-for="service in price.services">
-            <div class="prices-group-content-item" @click="this.priceId = service['service-id']; openPriceCard()">
+            <div class="prices-group-content-item" @click="this.priceId = service.serviceId; openPriceCard()">
               <div class="prices-group-content-item-name" v-text="service.name"></div>
               <div class="prices-group-content-item-price" v-text="service.price + ' ₽'"></div>
             </div>
@@ -202,6 +218,12 @@ export default {
                 <input type="text" name="cost" placeholder="Стоимость (Р.)" class="required-field-input" v-model="priceForm.price">
               </div>
             </div>
+            <div class="required-fields">
+              <div class="required-field">
+                <div class="required-field-title-group">Название группы</div>
+                <input type="text" name="Группа" placeholder="Название группы" class="required-field-input-group" v-model="priceForm.group">
+              </div>
+            </div>
             <div class="additional-fields">
               <div class="additional-field">
                 <div class="additional-field-title">Описание</div>
@@ -228,7 +250,7 @@ export default {
         <div class="prices-dialog-body-content">
           <div class="prices-dialog-content-description" id="pricesDialogDescription" v-text="currentPrice.description" ></div>
           <div class="pluses-group" id="pricesDialogPluses">
-            <div class="pluses-group-title" v-if="currentPrice.name !== ''">{{ currentPrice.name }} владеет следующими профессиональными навыками:</div>
+            <div class="pluses-group-title" v-if="currentPrice.name !== ''">{{ currentPrice.name }} имеет следующие плюсы:</div>
             <div class="plus-price-group" v-if="currentPrice.pluses !== ''" v-for="plus in currentPrice.pluses.split('.')">
               <img class="doctors-dialog-content-plus" src="../img/point-plus.png"/>
               <div class="doctors-dialog-content-text">{{plus}}</div>
@@ -263,6 +285,12 @@ export default {
               <div class="required-field">
                 <div class="required-field-title">Стоимость</div>
                 <input type="text" name="cost" placeholder="Стоимость (Р.)" class="required-field-input" v-model="priceForm.price">
+              </div>
+            </div>
+            <div class="required-fields">
+              <div class="required-field">
+                <div class="required-field-title-group">Название группы</div>
+                <input type="text" name="Группа" placeholder="Название группы" class="required-field-input-group" v-model="priceForm.group">
               </div>
             </div>
             <div class="additional-fields">

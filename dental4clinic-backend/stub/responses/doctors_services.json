@@ -1,0 +1,20 @@
+[
+	{
+		"doctorId": "607f1f77bcf86cd799439014",
+		"doctor": "Щербаков Максим Сергеевич",
+		"services": "Лечение кариеса, Осмотр",
+		"serviceId": "65a7d5d2ed2564f9466d6d77"
+	},
+	{
+		"doctorId": "607f1f77bcf86cd799439014",
+		"doctor": "Иванов Петр Петрович",
+		"services": "Осмотр",
+		"serviceId": "65a7d5d2ed2564f9466d6d78"
+	},
+	{
+		"doctorId": "607f1f77bcf86cd799439014",
+		"doctor": "Петров Петр Петрович",
+		"services": "Лечение кариеса, Осмотр",
+		"serviceId": "65a7d5d2ed2564f9466d6d79"
+	}
+]

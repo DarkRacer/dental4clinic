@@ -83,7 +83,7 @@ export default {
       this.selectedPayments.forEach((selected) => {
         if (this.services[selected]) {
           servicesDone += " " + this.services[selected].service + ", "
-          summary += this.services[selected].price
+          summary += parseInt(this.services[selected].price, 10)
         }
       })
       cost += " " + summary + " Р."
@@ -95,8 +95,8 @@ export default {
   },
   methods: {
     getAppointment: function () {
-      get(`appointments/${this.$route.params.appointmentId}`).then((data) => {
-        this.dataAppointment = data;
+      get(`appointments/${this.$route.params.appointmentId }`).then((data) => {
+        this.dataAppointment = data[0];
         this.getUserInfo()
         this.getRequests()
         this.getUserToothCard()
@@ -105,35 +105,35 @@ export default {
       })
     },
     getUserInfo: function () {
-      get(`user/${ this.dataAppointment['user-id'] }`).then(data => {
+      get(`user/${ this.dataAppointment.userId }`).then(data => {
         this.user = data;
-        this.user.email = data['e-mail'];
+        this.user.email = data.email;
       }).catch(error => {
         console.error(error)
       });
     },
     getRequests: function () {
-      get(`user/requests/${ this.dataAppointment['user-id'] }`).then(data => {
+      get(`user/requests/${ this.dataAppointment.userId }`).then(data => {
         this.requests = data
       }).catch(error => console.error(error));
     },
     getServices: function () {
-      get(`doctors/${ this.$route.params.userId }/services`).then(data => {
+      get(`services/doctor/${ this.$route.params.userId }`).then(data => {
         this.services = data;
       }).catch(error => console.error(error));
     },
     getUserToothCard: function () {
-      get(`user/tooth-card/${ this.dataAppointment['user-id'] }`).then((data) => {
+      get(`user/tooth-card/${ this.dataAppointment.userId }`).then((data) => {
         this.toothCard = data;
       }).catch(error => console.error(error));
     },
     getToothPictures: function () {
-      get(`user/tooth/${ this.dataAppointment['user-id'] }`).then(data => {
+      get(`user/tooth/${ this.dataAppointment.userId }`).then(data => {
         this.toothPictures = data
       }).catch(error => console.error(error));
     },
     getUserDiagnosis: function () {
-      get(`user/diagnosis/${ this.dataAppointment['user-id'] }`).then(data => {
+      get(`user/diagnosis/${ this.dataAppointment.userId }`).then(data => {
         this.diagnosisTableValue = data
       }).catch(error => console.error(error));
     },
@@ -203,7 +203,7 @@ export default {
       diagnoseOfPatient.isActual = false
 
       const updateBody = {
-        userId: this.dataAppointment['user-id'],
+        userId: this.dataAppointment.userId,
         diagnose: diagnoseOfPatient
       }
 
@@ -221,7 +221,7 @@ export default {
       const newDiagnose = this.diagnosisFromDoctorTableValue[this.selectedRowDiagnosisFromDoctor]
 
       const createBody = {
-        userId: this.dataAppointment['user-id'],
+        userId: this.dataAppointment.userId,
         diagnose: newDiagnose
       }
 
@@ -252,11 +252,11 @@ export default {
         });
 
         const paymentBody = {
-          userId: this.dataAppointment['user-id'],
+          userId: this.dataAppointment.userId,
           services: resultServices
         }
         postWithoutResponse(`appointments/${this.dataAppointment.id}/finish`, paymentBody).then((data) => {
-          postWithoutResponse(`user/tooth-card/${this.dataAppointment['user-id']}/update`, this.toothCard).then((data) => {
+          postWithoutResponse(`user/tooth-card/${this.dataAppointment.userId}/update`, this.toothCard).then((data) => {
             this.$router.push({ path: `/${ this.$route.params.userId }/receptions` })
           }).catch((error) => console.log(error))
         }).catch((error) => console.log(error))

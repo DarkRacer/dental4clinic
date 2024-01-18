@@ -1,13 +1,15 @@
 <script>
-import {get, postWithoutResponse} from "@/pages/js/core/rest.js";
+import {get, post, postWithDynamicalResponse, postWithoutResponse} from "@/pages/js/core/rest.js";
 import {changeClassRows} from "@/pages/js/core/table.js";
 import {useCookies} from "@vueuse/integrations/useCookies";
+import {useJwt} from "@vueuse/integrations/useJwt";
 
 export default {
   setup() {
-    const cookies = useCookies(['user_id', 'role', 'access_token'])
+    const cookies = useCookies(['access_token'])
+
     return {
-      cookies,
+      cookies
     }
   },
   data() {
@@ -20,6 +22,7 @@ export default {
         phone: '',
         surname: '',
         doctorId: '',
+        doctorName: '',
         requestId: '',
         userId: '',
       },
@@ -54,10 +57,16 @@ export default {
       }
     },
     user: function () {
-      return {
-        id: this.cookies.get("user_id"),
-        role: this.cookies.get("role"),
-        token: this.cookies.get("access_token")
+      const { header, payload } = useJwt(this.cookies.get('access_token'))
+      if (!payload.value) {
+        return {
+          id: null,
+          role: null
+        }
+      }
+      return  {
+        id: payload.value.id,
+        role: payload.value.role
       }
     }
   },
@@ -65,22 +74,56 @@ export default {
     submit() {
       this.$emit('submit', this.appointmentForm)
       if (this.user.role === 'USER') {
-        this.appointmentForm.userId = this.user.id
-      }
-      if (this.user.role === 'ADMIN' && this.request !== {}) {
+        if (this.user.id) {
+          this.appointmentForm.userId = this.user.id
+        } else {
+          const { header, payload } = useJwt(this.cookies.get('access_token'))
+          this.appointmentForm.userId = payload.value.id
+        }
+      } else if (this.user.role === 'ADMIN' && this.request !== {}) {
         this.appointmentForm.requestId = this.request.id
+        this.appointmentForm.name = this.request.name
         this.appointmentForm.description = this.request.description
+        this.appointmentForm.phone = this.request.phone
+      } else {
+        if (!this.appointmentForm.name || !this.appointmentForm.surname || !this.appointmentForm.phone) {
+          alert("Заполните информацию о себе")
+          return
+        }
       }
-      postWithoutResponse("appointments/create", this.appointmentForm).then(data => {
+      if (!this.appointmentForm.date || !this.appointmentForm.datetime) {
+        alert("Выберите дату и время")
+        return
+      }
+      if (!this.appointmentForm.doctorId || !this.appointmentForm.doctorName) {
+        alert("Выберите врача")
+        return
+      }
+      post("appointments/create", this.appointmentForm).then(data => {
+        this.appointmentForm = {
+          name: '',
+          date: '',
+          datetime: '',
+          description: '',
+          phone: '',
+          surname: '',
+          doctorId: '',
+          doctorName: '',
+          requestId: '',
+          userId: '',
+        }
+        if (!this.user.id || !this.user.role) {
+          alert("Запись произошла успешна! \n Данные учетной записи: \n Логин: " + data.login + " Пароль: " + data.password)
+        }
       }).catch((error) => {console.error('Error:', error);});
     },
     getDoctorsServices: function () {
-      get("doctors/services").then(data => {
+      get("doctor/services").then(data => {
         this.doctorsTableValue = data
       }).catch((error) => {console.error('Error:', error);})
     },
     getRequests: function () {
-      get("requests").then(data => {
+      get("requests/active").then(data => {
         this.requestsTableValue = data
       })
         .catch((error) => {
@@ -96,7 +139,8 @@ export default {
         }
         return
       }
-      this.appointmentForm.doctorId = this.filteredDoctorsTableValue[index][`doctor-id`]
+      this.appointmentForm.doctorId = this.filteredDoctorsTableValue[index].doctorId
+      this.appointmentForm.doctorName = this.filteredDoctorsTableValue[index].doctor
       this.selectedIndex = index
 
       changeClassRows(this.$refs.tableRow[index].children, "cell-recording", "cell-recording-selected")
@@ -243,7 +287,8 @@ export default {
         </tr>
         </tbody>
       </table>
-      <div class="record-button" id="record-button" @click="submit">Записаться</div>
+      <div class="record-button" id="record-button" @click="submit" v-if="user.role !== 'ADMIN'">Записаться</div>
+      <div class="record-button" id="record-button" @click="submit" v-if="user.role === 'ADMIN'">Записать</div>
     </div>
 
     <dialog class="request-dialog-blackout" ref="requestsDialog">

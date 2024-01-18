@@ -24,8 +24,8 @@ export default {
   methods: {
     save: function () {
       this.$emit('submit', this.user)
-      // for stub user/registration
-      post("registration", this.registrationForm).then(data => {
+      // for stub /user/create
+      post("user/create", this.user).then(data => {
         const { login, password } = data;
         this.$refs.notification.style.visibility = 'visible';
         this.notificationText = `

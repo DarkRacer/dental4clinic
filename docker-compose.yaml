@@ -1,23 +1,17 @@
 version: '3.8'
 
 services:
-  front:
-    container_name: Dental4Clinic
-    image: dental4clinic:latest
-    build: ./
-    ports:
-      - "4200:80"
-
-  mongo:
+  mongo-db:
+    container_name: mongo-db
+    image: mongo:3.7.9
+    restart: always
     ports:
       - '27017:27017'
-    container_name: mongo
-    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=1234
+      - MONGO_INITDB_DATABASE=dental4clinic
     logging:
       options:
         max-size: 1g
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
-      - MONGO_INITDB_ROOT_PASSWORD=admin
-      - MONGO_INITDB_DATABASE=dental4clinic
-    image: mongo:3.7.9
+

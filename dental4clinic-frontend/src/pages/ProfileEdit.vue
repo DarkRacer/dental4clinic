@@ -1,6 +1,7 @@
 <script>
 import {get, postWithoutResponse} from "@/pages/js/core/rest.js";
 import {useCookies} from "@vueuse/integrations/useCookies";
+import {useJwt} from "@vueuse/integrations/useJwt";
 
 export default {
   data() {
@@ -23,9 +24,10 @@ export default {
     }
   },
   setup() {
-    const cookies = useCookies(['user_id', 'role', 'access_token'])
+    const cookies = useCookies(['access_token'])
+
     return {
-      cookies,
+      cookies
     }
   },
   created() {
@@ -39,10 +41,16 @@ export default {
   },
   computed: {
     userCookie: function () {
-      return {
-        id: this.cookies.get("user_id"),
-        role: this.cookies.get("role"),
-        token: this.cookies.get("access_token")
+      const { header, payload } = useJwt(this.cookies.get('access_token'))
+      if (!payload.value) {
+        return {
+          id: null,
+          role: null
+        }
+      }
+      return  {
+        id: payload.value.id,
+        role: payload.value.role
       }
     }
   },
@@ -50,7 +58,7 @@ export default {
     getUserInfo: function () {
       get(`user/${this.$route.params.userId}`).then(data => {
         this.userForm = data;
-        this.userForm.email = data['e-mail'];
+        this.userForm.email = data['email'];
       }).catch(error => console.error(error));
     },
     imageUploaded: function() {
@@ -58,9 +66,9 @@ export default {
         'input[type=file]')['files'][0];
 
       const reader = new FileReader();
-      this.userForm.fileName = file.name;
+      this.userForm.photoName = file.name;
 
-      reader.onload = () => this.userForm.imageString = reader.result;
+      reader.onload = () => this.userForm.photo = reader.result;
       reader.readAsDataURL(file);
     },
     submit: function () {

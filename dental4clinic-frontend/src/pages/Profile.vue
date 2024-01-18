@@ -1,6 +1,7 @@
 <script>
 import {get} from "@/pages/js/core/rest.js";
 import {useCookies} from "@vueuse/integrations/useCookies";
+import {useJwt} from "@vueuse/integrations/useJwt";
 
 export default {
   data() {
@@ -26,9 +27,10 @@ export default {
     }
   },
   setup() {
-    const cookies = useCookies(['user_id', 'role', 'access_token'])
+    const cookies = useCookies(['access_token'])
+
     return {
-      cookies,
+      cookies
     }
   },
   created() {
@@ -48,10 +50,16 @@ export default {
       return `${this.user.surname}  ${this.user.name}  ${this.user.patronymic}`
     },
     userCookie: function () {
-      return {
-        id: this.cookies.get("user_id"),
-        role: this.cookies.get("role"),
-        token: this.cookies.get("access_token")
+      const { header, payload } = useJwt(this.cookies.get('access_token'))
+      if (!payload.value) {
+        return {
+          id: null,
+          role: null
+        }
+      }
+      return  {
+        id: payload.value.id,
+        role: payload.value.role
       }
     }
   },
@@ -59,7 +67,7 @@ export default {
     getUserInfo: function () {
       get(`user/${this.$route.params.userId}`).then(data => {
         this.user = data;
-        this.user.email = data['e-mail'];
+        this.user.email = data.email;
       }).catch(error => console.error(error));
     },
     getUserDiagnosis: function () {
@@ -159,7 +167,7 @@ export default {
           <p class="doctor-info-content-text" v-text="user.description"></p>
         </div>
         <div class="doctor-info-content">
-          <p class="card-title">Проффесиональные навыки</p>
+          <p class="card-title">Профессиональные навыки</p>
           <p class="doctor-info-content-text" v-text="user.pluses"></p>
         </div>
       </div>
